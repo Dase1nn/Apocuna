@@ -1,0 +1,65 @@
+/* Estilo Snowflake base */
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Modificador global para Streamlit */
+.stApp {
+    background-color: var(--bg-light) !important;
+}
+
+/* Forzar color de texto para respetar el tema */
+h1, h2, h3, p, div, span, label, li {
+    color: var(--text-color) !important;
+}
+
+/* Tarjetas (Cards) */
+.card-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding-bottom: 1rem;
+}
+
+.card {
+    min-width: 280px;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--primary-color);
+    scroll-snap-align: start;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--dark-color) !important;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--text-color) !important;
+    margin: 0;
+}
+
+/* Scrollbar personalizada */
+.card-container::-webkit-scrollbar {
+    height: 8px;
+}
+.card-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+.card-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}

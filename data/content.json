@@ -1,0 +1,24 @@
+{
+  "home": {
+    "title": "Panel de Control Principal",
+    "description": "Bienvenido a Apocuna. Selecciona una categoría en la barra lateral o explora los resúmenes de políticas públicas y coyuntura a continuación.",
+    "featured_cards": [
+      {
+        "title": "Municipios Escolares",
+        "description": "Análisis de la brecha de implementación y burocracia participativa en el entorno escolar."
+      },
+      {
+        "title": "Observatorio JNE/ONPE",
+        "description": "Revisión de hojas de vida, financiamiento de partidos y trabajo electoral."
+      },
+      {
+        "title": "Presupuesto por Resultados",
+        "description": "Asignación condicionada a bienes y servicios que generen cambios comprobables (D.L. 1440)."
+      },
+      {
+        "title": "Gestión Pública",
+        "description": "Pilares de Modernización: Políticas, Procesos y Servicio Civil Meritocrático."
+      }
+    ]
+  }
+}
