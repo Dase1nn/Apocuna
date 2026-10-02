@@ -1,24 +1,93 @@
 import streamlit as st
-import json
-import os
-from components.cards import render_card_row
+from utils.loaders import (
+    load_noticias,
+    load_normas,
+    fetch_ckan_datasets,
+    load_fuentes
+)
+from components.cards import (
+    render_noticias_carousel,
+    render_normas_carousel,
+    render_ckan_carousel,
+    render_fuentes_grid
+)
 
 def render_home():
-    st.title("Panel Principal")
+    st.title("🌐 Inicio: Radar de Coyuntura, Normas y Fuentes")
+    st.markdown("Vigilancia endógena de políticas públicas, marco regulatorio y datos abiertos del Perú.")
     
-    # Cargar contenido de JSON
-    content_path = os.path.join(os.path.dirname(__file__), "..", "data", "content.json")
-    try:
-        with open(content_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except Exception as e:
-        st.error(f"Error cargando contenido estático: {e}")
-        data = {"home": {"featured_cards": []}}
+    # 1. NOTICIAS POR CATEGORÍA
+    st.header("📰 Radar de Noticias y Análisis")
+    noticias = load_noticias()
+    # Ordenar de más reciente a menos reciente por fecha_iso
+    noticias_ordenadas = sorted(noticias, key=lambda x: x.get("fecha_iso", ""), reverse=True)
+    
+    noticias_gestion = [n for n in noticias_ordenadas if n.get("categoria") == "gestion"]
+    noticias_polpub = [n for n in noticias_ordenadas if n.get("categoria") == "politicas_publicas"]
+    noticias_politica = [n for n in noticias_ordenadas if n.get("categoria") == "politica"]
+    
+    tab_n1, tab_n2, tab_n3 = st.tabs([
+        "📁 Gestión Pública", 
+        "📊 Políticas Públicas", 
+        "🏛️ Política y Gobernabilidad"
+    ])
+    
+    with tab_n1:
+        render_noticias_carousel("Gestión Pública", noticias_gestion)
+    with tab_n2:
+        render_noticias_carousel("Políticas Públicas", noticias_polpub)
+    with tab_n3:
+        render_noticias_carousel("Política y Gobernabilidad", noticias_politica)
         
-    home_data = data.get("home", {})
-    st.markdown(home_data.get("description", ""))
+    st.markdown("---")
     
-    # Renderizar tarjetas con scroll horizontal
-    cards = home_data.get("featured_cards", [])
-    if cards:
-        render_card_row("Destacados y Categorías", cards)
+    # 2. NORMAS LEGALES DE EL PERUANO
+    st.header("⚖️ Normas Legales (Diario Oficial El Peruano)")
+    st.markdown("Seguimiento regulatorio de normas publicadas, impacto sectorial y gobernanza.")
+    normas = load_normas()
+    
+    normas_del_dia = [n for n in normas if n.get("grupo") == "del_dia"]
+    normas_mas_vistas = [n for n in normas if n.get("grupo") == "mas_vistas"]
+    normas_gobernanza = [n for n in normas if n.get("grupo") == "gobernanza_endogena"]
+    
+    tab_norm1, tab_norm2, tab_norm3 = st.tabs([
+        "🗓️ Del Día", 
+        "🔥 Más Vistas", 
+        "🌱 Gobernanza Endógena"
+    ])
+    
+    with tab_norm1:
+        render_normas_carousel(normas_del_dia)
+    with tab_norm2:
+        render_normas_carousel(normas_mas_vistas)
+    with tab_norm3:
+        render_normas_carousel(normas_gobernanza)
+        
+    st.markdown("---")
+    
+    # 3. DATASETS RECIENTES CKAN
+    st.header("🔄 Datasets Recientes (Portales CKAN)")
+    st.markdown("Consulta automatizada a los catálogos nacionales de datos abiertos (PCM y MINSA).")
+    ckan_datasets = fetch_ckan_datasets()
+    render_ckan_carousel(ckan_datasets)
+    
+    st.markdown("---")
+    
+    # 4. DIRECTORIO DE FUENTES DE DATOS (5 BLOQUES)
+    st.header("📊 Catálogo de Fuentes de Información")
+    st.markdown("Bases de datos, plataformas de microdatos y repositorios organizados por bloques temáticos.")
+    
+    fuentes = load_fuentes()
+    
+    bloques = [
+        ("Datos abiertos y microdatos", "📊 1. Datos abiertos y microdatos", True),
+        ("Control gubernamental y conflictividad social", "⚖️ 2. Control gubernamental y conflictividad social", False),
+        ("Think tanks y repositorios", "🧠 3. Think tanks y repositorios académicos", False),
+        ("Organismos multilaterales", "🌍 4. Organismos multilaterales y cooperación", False),
+        ("Documentos e informes específicos", "📑 5. Documentos e informes específicos", False)
+    ]
+    
+    for key_bloque, titulo_bloque, exp_default in bloques:
+        fuentes_bloque = [f for f in fuentes if f.get("bloque", "").lower() == key_bloque.lower()]
+        with st.expander(titulo_bloque, expanded=exp_default):
+            render_fuentes_grid(fuentes_bloque)

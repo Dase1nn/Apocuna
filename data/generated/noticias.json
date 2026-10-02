@@ -1,0 +1,92 @@
+[
+  {
+    "id": "noticia_001",
+    "titulo": "Contraloría advierte retraso en inversiones del nuevo puerto de San Juan de Marcona",
+    "fuente": "Contraloría General de la República",
+    "categoria": "gestion",
+    "fecha_iso": "2026-09-28",
+    "url": "https://www.gob.pe/institucion/contraloria/noticias/1449744-contraloria-advierte-retraso-en-inversiones-del-nuevo-puerto-de-san-juan-de-marcona-por-demora-en-entrega-de-terrenos",
+    "resumen": "Demora en entrega de terrenos afecta cronograma de ejecución y genera alertas de control simultáneo.",
+    "demo": true
+  },
+  {
+    "id": "noticia_002",
+    "titulo": "Contraloría interviene en Chimbote para destrabar obra educativa paralizada",
+    "fuente": "Contraloría General de la República",
+    "categoria": "gestion",
+    "fecha_iso": "2026-09-18",
+    "url": "https://www.gob.pe/institucion/contraloria/noticias/1373454-contraloria-interviene-en-chimbote-para-destrabar-obra-educativa-paralizada",
+    "resumen": "Mecanismos de destrabe de inversiones públicas para infraestructura educativa en la región Áncash.",
+    "demo": true
+  },
+  {
+    "id": "noticia_003",
+    "titulo": "Publicaciones y análisis de gestión pública y servicio civil",
+    "fuente": "Videnza Instituto",
+    "categoria": "gestion",
+    "fecha_iso": "2026-08-30",
+    "url": "https://videnzainstituto.org/publicaciones/",
+    "resumen": "Análisis sobre la meritocracia, compras estatales y modernización operativa de las entidades ejecutoras.",
+    "demo": true
+  },
+  {
+    "id": "noticia_004",
+    "titulo": "El 64.5% de los hogares del país tiene conexión a internet durante el II Trimestre de 2026",
+    "fuente": "INEI",
+    "categoria": "politicas_publicas",
+    "fecha_iso": "2026-09-25",
+    "url": "https://www.gob.pe/institucion/inei/noticias/1450362-el-64-5-de-los-hogares-del-pais-tiene-conexion-a-internet-durante-el-segundo-trimestre-de-2026",
+    "resumen": "Brechas de conectividad digital y acceso a tecnologías de información en áreas urbanas y rurales.",
+    "demo": true
+  },
+  {
+    "id": "noticia_005",
+    "titulo": "Presentan estudio sobre el estado de la niñez y adolescencia indígena y afroperuana",
+    "fuente": "INEI / UNICEF",
+    "categoria": "politicas_publicas",
+    "fecha_iso": "2026-09-10",
+    "url": "https://www.gob.pe/institucion/inei/noticias/1449181-presentan-estudio-sobre-el-estado-de-la-ninez-y-adolescencia-indigena-y-afroperuana-en-el-peru",
+    "resumen": "Diagnóstico sociodemográfico e indicadores de inclusión social y acceso a servicios prioritarios.",
+    "demo": true
+  },
+  {
+    "id": "noticia_006",
+    "titulo": "Documentos de Política sobre educación, aprendizajes y desarrollo territorial",
+    "fuente": "GRADE",
+    "categoria": "politicas_publicas",
+    "fecha_iso": "2026-08-15",
+    "url": "https://grade.org.pe/publicaciones_categorias/documento-de-politica/",
+    "resumen": "Evidencia aplicada para el diseño de reformas del sistema escolar y programas de gobernanza local.",
+    "demo": true
+  },
+  {
+    "id": "noticia_007",
+    "titulo": "Integridad de la información en el marco de las Elecciones Generales 2026",
+    "fuente": "PNUD Perú",
+    "categoria": "politica",
+    "fecha_iso": "2026-09-22",
+    "url": "https://www.undp.org/es/peru/publicaciones/integridad-de-la-informacion-en-las-elecciones-generales-2026",
+    "resumen": "Monitoreo del ecosistema informativo y deliberación pública frente a desinformación electoral.",
+    "demo": true
+  },
+  {
+    "id": "noticia_008",
+    "titulo": "Encuestas de opinión pública y confianza institucional en el Perú",
+    "fuente": "Instituto de Estudios Peruanos (IEP)",
+    "categoria": "politica",
+    "fecha_iso": "2026-09-12",
+    "url": "https://iep.org.pe/publicaciones/encuestas/",
+    "resumen": "Evaluación mensual del clima político, aprobación ciudadana y expectativas de gobernabilidad.",
+    "demo": true
+  },
+  {
+    "id": "noticia_009",
+    "titulo": "Reporte y seguimiento de prevención de conflictos sociales",
+    "fuente": "Defensoría del Pueblo",
+    "categoria": "politica",
+    "fecha_iso": "2026-08-28",
+    "url": "https://www.defensoria.gob.pe/areas_tematicas/prevencion-de-conflictos/",
+    "resumen": "Registro mensual de casos activos, latentes y espacios de diálogo a nivel nacional.",
+    "demo": true
+  }
+]

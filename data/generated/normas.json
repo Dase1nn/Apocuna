@@ -1,0 +1,92 @@
+[
+  {
+    "id": "norma_001",
+    "titulo": "Decreto Supremo que actualiza los lineamientos de la Política Nacional de Modernización de la Gestión Pública",
+    "tipo_norma": "Decreto Supremo",
+    "entidad": "Presidencia del Consejo de Ministros (PCM)",
+    "fecha_iso": "2026-10-01",
+    "url": "https://www.datosabiertos.gob.pe",
+    "grupo": "del_dia",
+    "demo": true
+  },
+  {
+    "id": "norma_002",
+    "titulo": "Resolución Ministerial sobre interoperabilidad de datos abiertos en el sector salud",
+    "tipo_norma": "Resolución Ministerial",
+    "entidad": "Ministerio de Salud (MINSA)",
+    "fecha_iso": "2026-10-01",
+    "url": "https://www.gob.pe/minsa",
+    "grupo": "del_dia",
+    "demo": true
+  },
+  {
+    "id": "norma_003",
+    "titulo": "Resolución de Contraloría que aprueba directivas de control gubernamental simultáneo",
+    "tipo_norma": "Resolución de Contraloría",
+    "entidad": "Contraloría General de la República",
+    "fecha_iso": "2026-10-01",
+    "url": "https://www.gob.pe/institucion/contraloria/noticias",
+    "grupo": "del_dia",
+    "demo": true
+  },
+  {
+    "id": "norma_004",
+    "titulo": "Decreto Legislativo N° 1440 del Sistema Nacional de Presupuesto Público",
+    "tipo_norma": "Decreto Legislativo",
+    "entidad": "Ministerio de Economía y Finanzas",
+    "fecha_iso": "2026-09-15",
+    "url": "https://systems.inei.gob.pe/SigaINei/",
+    "grupo": "mas_vistas",
+    "demo": true
+  },
+  {
+    "id": "norma_005",
+    "titulo": "Reglamento de la Ley del Servicio Civil y régimen de mérito",
+    "tipo_norma": "Decreto Supremo",
+    "entidad": "SERVIR / PCM",
+    "fecha_iso": "2026-09-20",
+    "url": "https://www.datosabiertos.gob.pe",
+    "grupo": "mas_vistas",
+    "demo": true
+  },
+  {
+    "id": "norma_006",
+    "titulo": "Norma técnica para la gestión escolar y comités de participación estudiantil",
+    "tipo_norma": "Resolución Viceministerial",
+    "entidad": "Ministerio de Educación (MINEDU)",
+    "fecha_iso": "2026-09-10",
+    "url": "https://escale.minedu.gob.pe/",
+    "grupo": "mas_vistas",
+    "demo": true
+  },
+  {
+    "id": "norma_007",
+    "titulo": "Lineamientos para la implementación de gobernanza territorial y descentralización",
+    "tipo_norma": "Decreto Supremo",
+    "entidad": "PCM - Viceministerio de Gobernanza Territorial",
+    "fecha_iso": "2026-08-25",
+    "url": "https://www.defensoria.gob.pe/categorias_de_documentos/reportes/",
+    "grupo": "gobernanza_endogena",
+    "demo": true
+  },
+  {
+    "id": "norma_008",
+    "titulo": "Disposiciones para la rendición de cuentas social y vigilancia comunitaria en gobiernos locales",
+    "tipo_norma": "Resolución de Contraloría",
+    "entidad": "Contraloría General de la República",
+    "fecha_iso": "2026-08-14",
+    "url": "https://www.gob.pe/contraloria",
+    "grupo": "gobernanza_endogena",
+    "demo": true
+  },
+  {
+    "id": "norma_009",
+    "titulo": "Guía metodológica para la formulación de planes de desarrollo concertado regional",
+    "tipo_norma": "Resolución de Presidencia de Consejo Directivo",
+    "entidad": "CEPLAN",
+    "fecha_iso": "2026-08-01",
+    "url": "https://www.datosabiertos.gob.pe",
+    "grupo": "gobernanza_endogena",
+    "demo": true
+  }
+]

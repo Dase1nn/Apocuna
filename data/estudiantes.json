@@ -1,0 +1,184 @@
+[
+  {
+    "id": "est_sub_1",
+    "subseccion": "1. Actualización académica y estado del arte",
+    "tarjetas": [
+      {
+        "id": "est_card_1_1",
+        "titulo": "Alertas Temáticas en Gobernanza Subnacional y Políticas Públicas",
+        "descripcion": "Configuración de búsquedas y seguimiento de papers indexados y repositorios de tesis institucionales.",
+        "fuente": "Cybertesis / Repositorios Universitarios",
+        "frecuencia": "Semanal",
+        "url": "https://repositorio.iep.org.pe"
+      },
+      {
+        "id": "est_card_1_2",
+        "titulo": "Boletines de Centros de Pensamiento (Think Tanks)",
+        "descripcion": "Revisión periódica de resúmenes de política (policy briefs) elaborados por CIES, IEP y GRADE para conectar teoría y coyuntura.",
+        "fuente": "CIES / IEP / GRADE",
+        "frecuencia": "Semanal",
+        "url": "https://cies.org.pe/investigaciones/"
+      },
+      {
+        "id": "est_card_1_3",
+        "titulo": "Revistas Especializadas en Ciencia Política y Administración",
+        "descripcion": "Seguimiento de convocatorias para publicar artículos y ensayos de investigación estudiantil.",
+        "fuente": "Revistas Académicas",
+        "frecuencia": "Mensual",
+        "url": "https://clad.org/publicaciones/revista-clad"
+      }
+    ]
+  },
+  {
+    "id": "est_sub_2",
+    "subseccion": "2. Herramientas metodológicas y analíticas",
+    "tarjetas": [
+      {
+        "id": "est_card_2_1",
+        "titulo": "Manipulación y Limpieza de Microdatos en Python y R",
+        "descripcion": "Prácticas de código para extracción, filtrado y cálculo de indicadores con microdatos de ENAHO y el Censo Escolar.",
+        "fuente": "INEI Microdatos / ESCALE",
+        "frecuencia": "Práctica Constante",
+        "url": "http://iinei.inei.gob.pe/microdatos/"
+      },
+      {
+        "id": "est_card_2_2",
+        "titulo": "Manuales y Guías Metodológicas Internacionales",
+        "descripcion": "Metodologías de evaluación de impacto, matriz de marco lógico y teoría del cambio del BID y Banco Mundial.",
+        "fuente": "BID / Banco Mundial",
+        "frecuencia": "Permanente",
+        "url": "https://publications.iadb.org/"
+      },
+      {
+        "id": "est_card_2_3",
+        "titulo": "Gestión de Referencias y Archivo Bibliográfico",
+        "descripcion": "Flujos de trabajo con Zotero para etiquetado, citación bajo normas APA y sistematización de fuentes oficiales.",
+        "fuente": "Herramientas de Investigación",
+        "frecuencia": "Permanente",
+        "url": "https://openknowledge.worldbank.org/"
+      }
+    ]
+  },
+  {
+    "id": "est_sub_3",
+    "subseccion": "3. Coyuntura y debate político",
+    "tarjetas": [
+      {
+        "id": "est_card_3_1",
+        "titulo": "Observatorios Electorales y Transparencia Institucional",
+        "descripcion": "Auditoría ciudadana de declaraciones juradas de hoja de vida y financiamiento partidario.",
+        "fuente": "JNE / ONPE / Datos Abiertos",
+        "frecuencia": "Semanal",
+        "url": "https://www.datosabiertos.gob.pe"
+      },
+      {
+        "id": "est_card_3_2",
+        "titulo": "Puntos de Opinión y Diseño Institucional en Prensa",
+        "descripcion": "Análisis crítico de notas de prensa, informes técnicos y debates sobre reformas electorales y políticas.",
+        "fuente": "INEI / Defensoría",
+        "frecuencia": "Diaria",
+        "url": "https://www.gob.pe/institucion/inei/noticias"
+      }
+    ]
+  },
+  {
+    "id": "est_sub_4",
+    "subseccion": "4. Espacios de formación y redes",
+    "tarjetas": [
+      {
+        "id": "est_card_4_1",
+        "titulo": "Macrocoloquio de Estudiantes de Ciencia Política",
+        "descripcion": "Red nacional de estudiantes para deliberación en mesas temáticas sobre gestión pública y descentralización.",
+        "fuente": "Red de Estudiantes",
+        "frecuencia": "Anual",
+        "url": "https://www.datosabiertos.gob.pe"
+      },
+      {
+        "id": "est_card_4_2",
+        "titulo": "Seminario de Investigación Educativa (SIEP)",
+        "descripcion": "Foro para la presentación de ponencias y discusión de tesis sobre gobernanza escolar y reformas curriculares.",
+        "fuente": "SIEP Perú",
+        "frecuencia": "Bienal",
+        "url": "https://siep.org.pe/rpie"
+      }
+    ]
+  },
+  {
+    "id": "est_sub_5",
+    "subseccion": "5. Apuntes de clases y guías (Sistemas administrativos del Estado)",
+    "apuntes": [
+      {
+        "id": "apunte_001",
+        "sistema": "Presupuesto Público",
+        "curso": "Finanzas Públicas",
+        "titulo": "Sistema Nacional de Presupuesto Público (D.L. N° 1440)",
+        "resumen": "Principios del Presupuesto por Resultados (PpR): la asignación condicionada a metas físicas y productos comprobables en beneficio del ciudadano.",
+        "normativa": "D.L. 1440",
+        "url": "https://systems.inei.gob.pe/SigaINei/"
+      },
+      {
+        "id": "apunte_002",
+        "sistema": "Modernización del Estado",
+        "curso": "Gestión Pública I",
+        "titulo": "Política Nacional de Modernización de la Gestión Pública al 2030",
+        "resumen": "Pilares de la modernización: Políticas públicas y planes, presupuesto por resultados, gestión por procesos, servicio civil y seguimiento-evaluación.",
+        "normativa": "D.S. 103-2022-PCM",
+        "url": "https://www.datosabiertos.gob.pe"
+      },
+      {
+        "id": "apunte_003",
+        "sistema": "Planeamiento Estratégico",
+        "curso": "Políticas Públicas",
+        "titulo": "Sistema Nacional de Planeamiento Estratégico (SINAPLAN / CEPLAN)",
+        "resumen": "Cadena de planes: Plan Estratégico de Desarrollo Nacional (PEDN), PESEM, PDC y articulación con POI/PEI institucional.",
+        "normativa": "D.L. 1088",
+        "url": "https://www.datosabiertos.gob.pe"
+      },
+      {
+        "id": "apunte_004",
+        "sistema": "Inversión Pública",
+        "curso": "Proyectos de Inversión",
+        "titulo": "Sistema Nacional de Programación Multianual y Gestión de Inversiones (Invierte.pe)",
+        "resumen": "Ciclo de inversión: Programación Multianual de Inversiones (PMI), formulación y evaluación (fichas técnicas), ejecución y funcionamiento.",
+        "normativa": "D.L. 1252",
+        "url": "https://systems.inei.gob.pe/SigaINei/"
+      },
+      {
+        "id": "apunte_005",
+        "sistema": "Control Gubernamental",
+        "curso": "Derecho Administrativo",
+        "titulo": "Sistema Nacional de Control (Ley N° 27785)",
+        "resumen": "Modalidades de control gubernamental: control previo, control simultáneo (visitas de control y control concurrente) y control posterior (auditorías).",
+        "normativa": "Ley 27785",
+        "url": "https://www.gob.pe/contraloria"
+      },
+      {
+        "id": "apunte_006",
+        "sistema": "Servicio Civil",
+        "curso": "Recursos Humanos en el Estado",
+        "titulo": "Sistema Administrativo de Gestión de Recursos Humanos (SERVIR)",
+        "resumen": "Régimen del Servicio Civil (Ley N° 30057), subsistemas de planificación de políticas de RRHH, organización del trabajo y evaluación del desempeño.",
+        "normativa": "Ley 30057",
+        "url": "https://www.datosabiertos.gob.pe"
+      },
+      {
+        "id": "apunte_007",
+        "sistema": "Abastecimiento",
+        "curso": "Contrataciones del Estado",
+        "titulo": "Sistema Nacional de Abastecimiento (D.L. N° 1439 y Ley de Contrataciones)",
+        "resumen": "Cadena de abastecimiento público: programación multianual de bienes, servicios y obras, gestión de adquisiciones y administración de bienes.",
+        "normativa": "D.L. 1439",
+        "url": "https://www.datosabiertos.gob.pe"
+      },
+      {
+        "id": "apunte_008",
+        "sistema": "Tesorería y Contabilidad",
+        "curso": "Administración Financiera",
+        "titulo": "Sistemas de Tesorería y Contabilidad Pública (D.L. N° 1441 y N° 1438)",
+        "resumen": "Gestión centralizada de fondos públicos mediante la Cuenta Única del Tesoro (CUT) e integración contable de los hechos económicos del Estado.",
+        "normativa": "D.L. 1441 / D.L. 1438",
+        "url": "https://systems.inei.gob.pe/SigaINei/"
+      }
+    ]
+  }
+]

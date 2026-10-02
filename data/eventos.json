@@ -1,0 +1,83 @@
+[
+  {
+    "id": "e_001",
+    "tipo": "revista",
+    "titulo": "Revista Peruana de Investigación Educativa (RPIE - SIEP)",
+    "tematica": "Gobernanza escolar, gestión educativa, políticas educativas y participación.",
+    "fecha_limite": "Recepción continua",
+    "enlace": "https://siep.org.pe/rpie",
+    "descripcion": "Convocatoria abierta permanente."
+  },
+  {
+    "id": "e_002",
+    "tipo": "revista",
+    "titulo": "Archivos Analíticos de Políticas Educativas (EPAA/AAPE)",
+    "tematica": "Políticas educativas, gobernanza del sistema escolar y reformas comparadas.",
+    "fecha_limite": "Recepción continua",
+    "enlace": "https://epaa.asu.edu",
+    "descripcion": "Recepción continua de artículos sobre políticas."
+  },
+  {
+    "id": "e_003",
+    "tipo": "revista",
+    "titulo": "Revista Estado y Políticas Públicas (FLACSO Argentina)",
+    "tematica": "Gobernanza territorial, ordenamiento territorial, descentralización y gestión pública.",
+    "fecha_limite": "Recepción continua",
+    "enlace": "https://politicaspublicas.flacso.org.ar",
+    "descripcion": "Recepción continua de investigaciones en gestión pública."
+  },
+  {
+    "id": "e_004",
+    "tipo": "revista",
+    "titulo": "Revista Eletrônica de Administração (READ - UFRGS)",
+    "tematica": "Administración pública comparada, gobernanza y gestión de organizaciones públicas.",
+    "fecha_limite": "Recepción continua",
+    "enlace": "https://seer.ufrgs.br/read",
+    "descripcion": "Recepción continua sobre administración pública."
+  },
+  {
+    "id": "e_005",
+    "tipo": "revista",
+    "titulo": "Revista del CLAD Reforma y Democracia",
+    "tematica": "Formas emergentes de gobernanza, administración pública comparada y gestión.",
+    "fecha_limite": "Recepción continua permanente",
+    "enlace": "https://clad.org/publicaciones/revista-clad",
+    "descripcion": "Convocatoria del CLAD para artículos sobre reforma del Estado."
+  },
+  {
+    "id": "e_006",
+    "tipo": "congreso",
+    "titulo": "Macrocoloquio de Estudiantes de Ciencia Política (Perú)",
+    "tematica": "Gestión Pública, Gobernanza y Políticas Públicas.",
+    "fecha_limite": "Por anunciar",
+    "enlace": "#",
+    "descripcion": "Principal espacio nacional de deliberación estudiantil con mesas dedicadas a Gestión Pública y Gobernanza."
+  },
+  {
+    "id": "e_007",
+    "tipo": "congreso",
+    "titulo": "Seminario Nacional de Investigación Educativa (SIEP - Perú)",
+    "tematica": "Gobernanza, reformas y actores escolares.",
+    "fecha_limite": "Por anunciar",
+    "enlace": "#",
+    "descripcion": "Foro nacional bienal enfocado en la presentación y discusión de evidencia empírica."
+  },
+  {
+    "id": "e_008",
+    "tipo": "congreso",
+    "titulo": "Congreso Internacional del CLAD",
+    "tematica": "Innovación pública y gobiernos subnacionales.",
+    "fecha_limite": "Entre marzo y mayo (anual)",
+    "enlace": "#",
+    "descripcion": "Abre convocatorias para paneles y ponencias individuales regularmente sobre el Estado y la administración."
+  },
+  {
+    "id": "e_009",
+    "tipo": "congreso",
+    "titulo": "Congreso Latinoamericano de Ciencia Política (ALACIP)",
+    "tematica": "Gobiernos Locales, Descentralización y Políticas Públicas.",
+    "fecha_limite": "Por anunciar",
+    "enlace": "#",
+    "descripcion": "Incluye áreas temáticas periódicas dedicadas a la ciencia política en la región."
+  }
+]

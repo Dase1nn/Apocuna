@@ -1,0 +1,146 @@
+[
+  {
+    "id": "pol_sub_1",
+    "subseccion": "1. Actualización normativa y regulatoria",
+    "tarjetas": [
+      {
+        "id": "card_pol_1_1",
+        "titulo": "Boletines de Normas Legales y Diario Oficial",
+        "descripcion": "Monitoreo permanente de decretos supremos, resoluciones ministeriales y ordenanzas emitidas por los tres niveles de gobierno.",
+        "frecuencia": "Diaria",
+        "fuente": "El Peruano / PCM",
+        "url": "https://www.datosabiertos.gob.pe"
+      },
+      {
+        "id": "card_pol_1_2",
+        "titulo": "Alertas de Modernización del Estado (SGP / PCM)",
+        "descripcion": "Revisión de directivas metodológicas, simplificación administrativa y lineamientos de rectoría emitidos por la Secretaría de Gestión Pública.",
+        "frecuencia": "Semanal",
+        "fuente": "PCM / Plataforma de Datos Abiertos",
+        "url": "https://www.datosabiertos.gob.pe"
+      },
+      {
+        "id": "card_pol_1_3",
+        "titulo": "Auditoría y Control Gubernamental",
+        "descripcion": "Informes de control concurrente, alertas preventivas y resoluciones emitidas por el Sistema Nacional de Control.",
+        "frecuencia": "Diaria",
+        "fuente": "Contraloría General de la República",
+        "url": "https://www.gob.pe/institucion/contraloria/noticias"
+      }
+    ]
+  },
+  {
+    "id": "pol_sub_2",
+    "subseccion": "2. Datos estadísticos y microdatos",
+    "tarjetas": [
+      {
+        "id": "card_pol_2_1",
+        "titulo": "Microdatos ENAHO, ENDES y ENAPRES",
+        "descripcion": "Encuestas continuas de hogares y demografía para la formulación de políticas y focalización del gasto público.",
+        "frecuencia": "Mensual",
+        "fuente": "INEI Microdatos",
+        "url": "http://iinei.inei.gob.pe/microdatos/"
+      },
+      {
+        "id": "card_pol_2_2",
+        "titulo": "Estadística de la Calidad Educativa (ESCALE)",
+        "descripcion": "Censos escolares, padrón de instituciones educativas y evaluación de infraestructura escolar en el territorio.",
+        "frecuencia": "Mensual",
+        "fuente": "MINEDU ESCALE",
+        "url": "https://escale.minedu.gob.pe/censo-escolar"
+      },
+      {
+        "id": "card_pol_2_3",
+        "titulo": "Competitividad Regional (INCORE)",
+        "descripcion": "Evolución de pilares económicos, laborales, institucionales y sociales por regiones.",
+        "frecuencia": "Mensual",
+        "fuente": "Instituto Peruano de Economía (IPE)",
+        "url": "https://incoreperu.pe"
+      },
+      {
+        "id": "card_pol_2_4",
+        "titulo": "Indicadores Estadísticos CEPALSTAT",
+        "descripcion": "Series de tiempo, cuentas nacionales y comparabilidad económica en América Latina y el Caribe.",
+        "frecuencia": "Mensual",
+        "fuente": "CEPALSTAT",
+        "url": "https://statistics.cepal.org/portal/cepalstat/"
+      }
+    ]
+  },
+  {
+    "id": "pol_sub_3",
+    "subseccion": "3. Coyuntura, opinión pública y clima político",
+    "tarjetas": [
+      {
+        "id": "card_pol_3_1",
+        "titulo": "Estudios de Opinión y Aprobación Institucional",
+        "descripcion": "Monitoreo del clima político, confianza ciudadana en poderes del Estado y prioridades de la agenda pública.",
+        "frecuencia": "Semanal",
+        "fuente": "Instituto de Estudios Peruanos (IEP)",
+        "url": "https://iep.org.pe/publicaciones/encuestas/"
+      },
+      {
+        "id": "card_pol_3_2",
+        "titulo": "Reportes de Prevención de Conflictos Sociales",
+        "descripcion": "Seguimiento de conflictos activos, latentes, mesas de diálogo y alertas tempranas en todo el país.",
+        "frecuencia": "Mensual",
+        "fuente": "Defensoría del Pueblo",
+        "url": "https://www.defensoria.gob.pe/areas_tematicas/prevencion-de-conflictos/"
+      },
+      {
+        "id": "card_pol_3_3",
+        "titulo": "Policy Briefs y Documentos de Política",
+        "descripcion": "Análisis de evidencia empírica aplicada para incidir en la agenda y resolver problemas públicos sectoriales.",
+        "frecuencia": "Semanal",
+        "fuente": "GRADE / CIES",
+        "url": "https://grade.org.pe/publicaciones_categorias/documento-de-politica/"
+      },
+      {
+        "id": "card_pol_3_4",
+        "titulo": "Diagnósticos de Gobernabilidad e Información",
+        "descripcion": "Estudios sobre integridad institucional, participación electoral y fortalecimiento de capacidades.",
+        "frecuencia": "Semanal",
+        "fuente": "PNUD Perú",
+        "url": "https://www.undp.org/es/peru/publicaciones"
+      }
+    ]
+  },
+  {
+    "id": "pol_sub_4",
+    "subseccion": "4. Gestión del conocimiento y herramientas técnicas",
+    "tarjetas": [
+      {
+        "id": "card_pol_4_1",
+        "titulo": "Investigaciones Económicas y Sociales (CIES)",
+        "descripcion": "Fondo de investigación concursable y publicaciones orientadas a la toma de decisiones basada en evidencia.",
+        "frecuencia": "Permanente",
+        "fuente": "CIES",
+        "url": "https://cies.org.pe/investigaciones/"
+      },
+      {
+        "id": "card_pol_4_2",
+        "titulo": "Repositorio Abierto del Banco Mundial",
+        "descripcion": "Evaluaciones de impacto, manuales de gestión pública y estudios comparados sobre desarrollo social.",
+        "frecuencia": "Permanente",
+        "fuente": "Banco Mundial (OKR)",
+        "url": "https://openknowledge.worldbank.org/"
+      },
+      {
+        "id": "card_pol_4_3",
+        "titulo": "Repositorio de Publicaciones BID",
+        "descripcion": "Herramientas de evaluación económica, gobernanza digital y modernización fiscal en América Latina.",
+        "frecuencia": "Permanente",
+        "fuente": "BID Publications",
+        "url": "https://publications.iadb.org/"
+      },
+      {
+        "id": "card_pol_4_4",
+        "titulo": "Informes de Políticas de Infancia y Juventud",
+        "descripcion": "Evidencia sobre cierre de brechas, protección social y bienestar de niños, niñas y adolescentes en el Perú.",
+        "frecuencia": "Permanente",
+        "fuente": "UNICEF Perú",
+        "url": "https://www.unicef.org/peru/informes"
+      }
+    ]
+  }
+]

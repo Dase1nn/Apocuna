@@ -1,0 +1,344 @@
+[
+  {
+    "id": "f_001",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "Plataforma Nacional de Datos Abiertos",
+    "institucion": "PCM",
+    "descripcion_corta": "Portal general de datos abiertos.",
+    "url": "https://www.datosabiertos.gob.pe",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_002",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "API CKAN Datos Abiertos",
+    "institucion": "PCM",
+    "descripcion_corta": "Endpoint API CKAN.",
+    "url": "https://www.datosabiertos.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=10",
+    "tipo": "api"
+  },
+  {
+    "id": "f_003",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "API CKAN MINSA",
+    "institucion": "MINSA / CDC Perú",
+    "descripcion_corta": "Endpoint API CKAN MINSA.",
+    "url": "https://datos.minsa.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=5",
+    "tipo": "api"
+  },
+  {
+    "id": "f_004",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "Portal CDC Perú",
+    "institucion": "MINSA / CDC Perú",
+    "descripcion_corta": "Portal de Vigilancia Epidemiológica.",
+    "url": "https://www.dge.gob.pe/portalnuevo/",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_005",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "Portal Integrado de Microdatos",
+    "institucion": "INEI",
+    "descripcion_corta": "ENAHO, ENDES, ENAPRES.",
+    "url": "http://iinei.inei.gob.pe/microdatos/",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_006",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "Sistema SIGA INEI",
+    "institucion": "INEI",
+    "descripcion_corta": "Consulta y descarga de microdatos.",
+    "url": "https://systems.inei.gob.pe/SigaINei/",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_007",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "ESCALE",
+    "institucion": "MINEDU",
+    "descripcion_corta": "Estadística de la Calidad Educativa.",
+    "url": "https://escale.minedu.gob.pe/",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_008",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "Repositorio del Censo Escolar",
+    "institucion": "MINEDU",
+    "descripcion_corta": "Microdatos del censo escolar.",
+    "url": "https://escale.minedu.gob.pe/censo-escolar",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_009",
+    "bloque": "Control gubernamental y conflictividad social",
+    "nombre": "Repositorio General de Reportes",
+    "institucion": "Defensoría del Pueblo",
+    "descripcion_corta": "Reportes defensoriales.",
+    "url": "https://www.defensoria.gob.pe/categorias_de_documentos/reportes/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_010",
+    "bloque": "Control gubernamental y conflictividad social",
+    "nombre": "Prevención de Conflictos Sociales",
+    "institucion": "Defensoría del Pueblo",
+    "descripcion_corta": "Alertas y reportes de conflictos.",
+    "url": "https://www.defensoria.gob.pe/areas_tematicas/prevencion-de-conflictos/",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_011",
+    "bloque": "Control gubernamental y conflictividad social",
+    "nombre": "Sala de Noticias y Alertas de Control",
+    "institucion": "Contraloría General de la República",
+    "descripcion_corta": "Noticias y alertas de control.",
+    "url": "https://www.gob.pe/institucion/contraloria/noticias",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_012",
+    "bloque": "Control gubernamental y conflictividad social",
+    "nombre": "Portal Institucional Contraloría",
+    "institucion": "Contraloría General de la República",
+    "descripcion_corta": "Portal de la Contraloría.",
+    "url": "https://www.gob.pe/contraloria",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_013",
+    "bloque": "Think tanks y repositorios",
+    "nombre": "Investigaciones CIES",
+    "institucion": "CIES",
+    "descripcion_corta": "Investigaciones del CIES.",
+    "url": "https://cies.org.pe/investigaciones/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_014",
+    "bloque": "Think tanks y repositorios",
+    "nombre": "Encuestas y Estudios de Opinión IEP",
+    "institucion": "IEP",
+    "descripcion_corta": "Encuestas de opinión del IEP.",
+    "url": "https://iep.org.pe/publicaciones/encuestas/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_015",
+    "bloque": "Think tanks y repositorios",
+    "nombre": "Repositorio Institucional IEP",
+    "institucion": "IEP",
+    "descripcion_corta": "Repositorio académico del IEP.",
+    "url": "https://repositorio.iep.org.pe",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_016",
+    "bloque": "Think tanks y repositorios",
+    "nombre": "Publicaciones Generales GRADE",
+    "institucion": "GRADE",
+    "descripcion_corta": "Publicaciones de GRADE.",
+    "url": "https://grade.org.pe/publicaciones/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_017",
+    "bloque": "Think tanks y repositorios",
+    "nombre": "Documentos de Política GRADE",
+    "institucion": "GRADE",
+    "descripcion_corta": "Policy briefs.",
+    "url": "https://grade.org.pe/publicaciones_categorias/documento-de-politica/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_018",
+    "bloque": "Think tanks y repositorios",
+    "nombre": "Investigaciones en Educación GRADE",
+    "institucion": "GRADE",
+    "descripcion_corta": "Educación y aprendizajes.",
+    "url": "https://grade.org.pe/publicaciones/areas/educacion-y-aprendizajes/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_019",
+    "bloque": "Think tanks y repositorios",
+    "nombre": "Publicaciones y Análisis IPE",
+    "institucion": "IPE",
+    "descripcion_corta": "Análisis económicos e INCORE.",
+    "url": "https://www.ipe.org.pe/portal/publicaciones/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_020",
+    "bloque": "Think tanks y repositorios",
+    "nombre": "Publicaciones de Gestión Pública Videnza",
+    "institucion": "Videnza Instituto",
+    "descripcion_corta": "Gestión pública.",
+    "url": "https://videnzainstituto.org/publicaciones/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_021",
+    "bloque": "Organismos multilaterales",
+    "nombre": "Portal CEPALSTAT",
+    "institucion": "CEPAL",
+    "descripcion_corta": "Bases de datos y publicaciones estadísticas.",
+    "url": "https://statistics.cepal.org/portal/cepalstat/",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_022",
+    "bloque": "Organismos multilaterales",
+    "nombre": "API CEPALSTAT",
+    "institucion": "CEPAL",
+    "descripcion_corta": "Acceso programático a datos de la CEPAL.",
+    "url": "https://api-cepalstat.cepal.org",
+    "tipo": "api"
+  },
+  {
+    "id": "f_023",
+    "bloque": "Organismos multilaterales",
+    "nombre": "Publicaciones CEPAL",
+    "institucion": "CEPAL",
+    "descripcion_corta": "Publicaciones CEPAL.",
+    "url": "https://www.cepal.org/es/publicaciones",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_024",
+    "bloque": "Organismos multilaterales",
+    "nombre": "Informes UNICEF Perú",
+    "institucion": "UNICEF Perú",
+    "descripcion_corta": "Informes UNICEF.",
+    "url": "https://www.unicef.org/peru/informes",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_025",
+    "bloque": "Organismos multilaterales",
+    "nombre": "Publicaciones PNUD Perú",
+    "institucion": "PNUD Perú",
+    "descripcion_corta": "Publicaciones PNUD.",
+    "url": "https://www.undp.org/es/peru/publicaciones",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_026",
+    "bloque": "Organismos multilaterales",
+    "nombre": "OIT Países Andinos",
+    "institucion": "OIT",
+    "descripcion_corta": "Sede Lima.",
+    "url": "https://www.ilo.org/lima",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_027",
+    "bloque": "Organismos multilaterales",
+    "nombre": "ILOSTAT Data",
+    "institucion": "OIT",
+    "descripcion_corta": "Datos laborales.",
+    "url": "https://ilostat.ilo.org/data/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_028",
+    "bloque": "Organismos multilaterales",
+    "nombre": "Open Knowledge Repository Banco Mundial",
+    "institucion": "Banco Mundial",
+    "descripcion_corta": "Open Knowledge Repository.",
+    "url": "https://openknowledge.worldbank.org/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_029",
+    "bloque": "Organismos multilaterales",
+    "nombre": "Repositorio de Publicaciones BID",
+    "institucion": "BID",
+    "descripcion_corta": "Publicaciones BID.",
+    "url": "https://publications.iadb.org/",
+    "tipo": "repositorio"
+  },
+  {
+    "id": "f_030",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "TIC en Hogares (Nota de Prensa II Trim. 2026)",
+    "institucion": "INEI",
+    "descripcion_corta": "Nota de Prensa sobre TIC.",
+    "url": "https://www.gob.pe/institucion/inei/noticias/1450362-el-64-5-de-los-hogares-del-pais-tiene-conexion-a-internet-durante-el-segundo-trimestre-de-2026",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_031",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "TIC en Hogares (Informe Técnico I Trim. 2026)",
+    "institucion": "INEI",
+    "descripcion_corta": "Informe Técnico sobre TIC.",
+    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655560-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-i-trimestre-2026",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_032",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "ENAHO Estado de la Niñez 2025",
+    "institucion": "INEI",
+    "descripcion_corta": "Informe ENAHO Niñez 2025.",
+    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655583-estado-de-la-ninez-y-adolescencia-2025",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_033",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "Estructura Empresarial Lima 2025",
+    "institucion": "INEI",
+    "descripcion_corta": "Informe de Estructura Empresarial.",
+    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655609-region-lima-estructura-empresarial-2025",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_034",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "Estudio Niñez Indígena y Afroperuana (Nota 2026)",
+    "institucion": "INEI",
+    "descripcion_corta": "Nota sobre el estudio.",
+    "url": "https://www.gob.pe/institucion/inei/noticias/1449181-presentan-estudio-sobre-el-estado-de-la-ninez-y-adolescencia-indigena-y-afroperuana-en-el-peru",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_035",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "Informe Niñez Indígena y Afroperuana",
+    "institucion": "UNICEF",
+    "descripcion_corta": "Informe Niñez Indígena.",
+    "url": "https://www.unicef.org/peru/informes/ninez-y-adolescencia-indigena-y-afroperuana",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_036",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "Integridad de Información Elecciones 2026",
+    "institucion": "PNUD",
+    "descripcion_corta": "Informe del PNUD sobre elecciones.",
+    "url": "https://www.undp.org/es/peru/publicaciones/integridad-de-la-informacion-en-las-elecciones-generales-2026",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_037",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "Hito de Control (Puerto San Juan de Marcona)",
+    "institucion": "Contraloría General de la República",
+    "descripcion_corta": "Hito de Control Puerto Marcona.",
+    "url": "https://www.gob.pe/institucion/contraloria/noticias/1449744-contraloria-advierte-retraso-en-inversiones-del-nuevo-puerto-de-san-juan-de-marcona-por-demora-en-entrega-de-terrenos",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_038",
+    "bloque": "Documentos e informes específicos",
+    "nombre": "Intervención Obra Educativa Parizada (Áncash)",
+    "institucion": "Contraloría General de la República",
+    "descripcion_corta": "Intervención de Contraloría en Áncash.",
+    "url": "https://www.gob.pe/institucion/contraloria/noticias/1373454-contraloria-interviene-en-chimbote-para-destrabar-obra-educativa-paralizada",
+    "tipo": "informe"
+  }
+]

@@ -16,6 +16,10 @@ if "tema_oscuro" not in st.session_state:
 
 from components.sidebar import render_sidebar
 from sections.home import render_home
+from sections.polity import render_polity
+from sections.estudiantes import render_estudiantes
+from sections.notas import render_notas
+from sections.eventos import render_eventos
 
 def load_css():
     """Carga los estilos personalizados de Snowsight dinámicamente."""
@@ -108,17 +112,13 @@ def main():
     if current == "Inicio":
         render_home()
     elif current == "Polity and Policy":
-        st.title("🏛️ Polity and Policy")
-        st.info("Vista en construcción: Insumos para formulación y evaluación.")
+        render_polity()
     elif current == "Estudiantes (Próximamente)":
-        st.title("🎓 Área de Estudiantes (Próximamente)")
-        st.info("Vista en construcción: Formación analítica y metodológica.")
+        render_estudiantes()
     elif current == "Notas":
-        st.title("📝 Notas e Investigación")
-        st.info("Vista en construcción: Reflexiones y ensayos.")
+        render_notas()
     elif current == "Eventos":
-        st.title("📅 Eventos y Congresos")
-        st.info("Vista en construcción: Revistas y foros clave.")
+        render_eventos()
 
 if __name__ == "__main__":
     main()
