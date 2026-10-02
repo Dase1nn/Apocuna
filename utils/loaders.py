@@ -70,38 +70,48 @@ def load_notas():
             st.warning(f"Aviso: No se pudo leer nota {filename} ({e})")
     return notas
 
-@st.cache_data
+def load_remote_or_local_json(filename):
+    data_base_url = None
+    try:
+        data_base_url = st.secrets.get("DATA_BASE_URL")
+    except:
+        pass
+        
+    if not data_base_url:
+        data_base_url = os.getenv("DATA_BASE_URL")
+        
+    if data_base_url:
+        url = f"{data_base_url.rstrip('/')}/{filename}"
+        try:
+            resp = requests.get(url, timeout=5)
+            if resp.status_code == 200:
+                return resp.json()
+        except Exception as e:
+            st.warning(f"Aviso: No se pudo cargar remotamente {url} ({e})")
+            
+    # Fallback to local
+    path = os.path.join("data", "generated", filename)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        st.warning(f"Aviso: No se pudo cargar localmente {path} ({e})")
+        return []
+
+@st.cache_data(ttl=900)
 def load_noticias():
     """Carga el catálogo de noticias de ejemplo o generadas."""
-    path = os.path.join("data", "generated", "noticias.json")
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        st.warning(f"Aviso: No se pudo cargar {path} ({e})")
-        return []
+    return load_remote_or_local_json("noticias.json")
 
-@st.cache_data
+@st.cache_data(ttl=900)
 def load_normas():
     """Carga el catálogo de normas de ejemplo o generadas."""
-    path = os.path.join("data", "generated", "normas.json")
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        st.warning(f"Aviso: No se pudo cargar {path} ({e})")
-        return []
+    return load_remote_or_local_json("normas.json")
 
-@st.cache_data
+@st.cache_data(ttl=900)
 def load_ckan_fallback():
     """Carga el dataset fallback de portales CKAN."""
-    path = os.path.join("data", "generated", "ckan.json")
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        st.warning(f"Aviso: No se pudo cargar {path} ({e})")
-        return []
+    return load_remote_or_local_json("ckan.json")
 
 @st.cache_data(ttl=300)
 def fetch_ckan_datasets():

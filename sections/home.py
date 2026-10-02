@@ -42,26 +42,14 @@ def render_home():
     st.markdown("---")
     
     # 2. NORMAS LEGALES DE EL PERUANO
-    st.header("⚖️ Normas Legales (Diario Oficial El Peruano)")
-    st.markdown("Seguimiento regulatorio de normas publicadas, impacto sectorial y gobernanza.")
+    st.header("⚖️ Normas Legales")
+    st.markdown("Seguimiento regulatorio de normas. *(Vía Google News, no es el listado oficial)*")
     normas = load_normas()
     
-    normas_del_dia = [n for n in normas if n.get("grupo") == "del_dia"]
-    normas_mas_vistas = [n for n in normas if n.get("grupo") == "mas_vistas"]
-    normas_gobernanza = [n for n in normas if n.get("grupo") == "gobernanza_endogena"]
+    normas_filtradas = [n for n in normas if n.get("grupo") == "Noticias sobre normas legales"]
     
-    tab_norm1, tab_norm2, tab_norm3 = st.tabs([
-        "🗓️ Del Día", 
-        "🔥 Más Vistas", 
-        "🌱 Gobernanza Endógena"
-    ])
-    
-    with tab_norm1:
-        render_normas_carousel(normas_del_dia)
-    with tab_norm2:
-        render_normas_carousel(normas_mas_vistas)
-    with tab_norm3:
-        render_normas_carousel(normas_gobernanza)
+    # Mostrar directamente en carrusel
+    render_normas_carousel(normas_filtradas)
         
     st.markdown("---")
     
