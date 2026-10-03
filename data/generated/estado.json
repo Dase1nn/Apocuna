@@ -1,0 +1,49 @@
+{
+  "fuentes": {
+    "noticias": {
+      "last_success": "2026-10-03T20:41:25.596688Z",
+      "items": 30,
+      "errores": []
+    },
+    "normas": {
+      "last_success": "2026-10-03T20:41:26.255000Z",
+      "items": 10,
+      "errores": []
+    },
+    "ckan": {
+      "items": 0,
+      "portales": {
+        "PCM": {
+          "codigo": "deshabilitado",
+          "causa": "deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)"
+        },
+        "MINSA": {
+          "codigo": "sin conexión",
+          "causa": "sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+        }
+      },
+      "errores_recientes": [
+        "PCM: deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)",
+        "MINSA: sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+      ]
+    },
+    "academico": {
+      "last_success": "2026-10-03T20:41:32.671187Z",
+      "items": 17,
+      "errores": [
+        "CLACSO: HTTP 520"
+      ]
+    },
+    "polity": {
+      "last_success": "2026-10-03T20:41:35.157135Z",
+      "items": 20,
+      "errores": []
+    },
+    "eventos": {
+      "last_success": "2026-10-03T20:41:36.423985Z",
+      "items": 7,
+      "errores": []
+    }
+  },
+  "last_run": "2026-10-03T23:33:23.121096Z"
+}
