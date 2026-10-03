@@ -6,9 +6,10 @@ import requests
 import streamlit as st
 
 try:
-    from config import CKAN_MINSA_HABILITADO
+    from config import CKAN_MINSA_HABILITADO, CKAN_PCM_HABILITADO
 except ImportError:
     CKAN_MINSA_HABILITADO = False
+    CKAN_PCM_HABILITADO = False
 
 @st.cache_data
 def load_fuentes():
@@ -79,8 +80,8 @@ def load_remote_or_local_json(filename):
     data_base_url = None
     try:
         data_base_url = st.secrets.get("DATA_BASE_URL")
-    except:
-        pass
+    except Exception:
+        data_base_url = None
         
     if not data_base_url:
         data_base_url = os.getenv("DATA_BASE_URL")
@@ -133,6 +134,8 @@ def fetch_ckan_datasets():
         if f.get("tipo") == "api" and "action/package_search" in f.get("url", ""):
             portal = "PCM" if "datosabiertos.gob.pe" in f.get("url", "") else "MINSA"
             if portal == "MINSA" and not CKAN_MINSA_HABILITADO:
+                continue
+            if portal == "PCM" and not CKAN_PCM_HABILITADO:
                 continue
             endpoints.append((portal, f.get("url")))
             

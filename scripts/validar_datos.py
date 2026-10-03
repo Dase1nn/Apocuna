@@ -51,19 +51,19 @@ def main():
     # Validar noticias
     success &= validar_json(
         os.path.join("data", "generated", "noticias.json"),
-        ["id", "titulo", "fuente", "categoria", "fecha_iso", "url", "resumen", "demo"]
+        ["id", "titulo", "fuente", "categoria", "fecha_iso", "url", "resumen"]
     )
     
     # Validar normas
     success &= validar_json(
         os.path.join("data", "generated", "normas.json"),
-        ["id", "titulo", "tipo_norma", "entidad", "fecha_iso", "url", "grupo", "demo"]
+        ["id", "titulo", "tipo_norma", "entidad", "fecha_iso", "url", "grupo"]
     )
     
     # Validar ckan
     success &= validar_json(
         os.path.join("data", "generated", "ckan.json"),
-        ["id", "titulo", "portal", "fecha_modificacion_iso", "url", "demo"]
+        ["id", "titulo", "portal", "fecha_modificacion_iso", "url"]
     )
     
     # Validar polity
@@ -78,7 +78,7 @@ def main():
                         if field not in card:
                             print(f"ERROR en tarjeta {card.get('id', '?')}: Falta el campo '{field}'")
                             success = False
-                    if "url" in card and "google.com/search" in card["url"]:
+                    if "url" in card and card.get("url") and "google.com/search" in card["url"]:
                         print(f"ERROR en tarjeta: URL contiene google.com/search: {card['url']}")
                         success = False
             print(f"OK: {polity_path} es válido.")
@@ -95,7 +95,7 @@ def main():
                         if field not in card:
                             print(f"ERROR en tarjeta {card.get('id', '?')}: Falta el campo '{field}'")
                             success = False
-                    if "url" in card and "google.com/search" in card["url"]:
+                    if "url" in card and card.get("url") and "google.com/search" in card["url"]:
                         print(f"ERROR en tarjeta: URL contiene google.com/search: {card['url']}")
                         success = False
                 for apunte in sub.get("apuntes", []):
@@ -103,7 +103,7 @@ def main():
                         if field not in apunte:
                             print(f"ERROR en apunte {apunte.get('id', '?')}: Falta el campo '{field}'")
                             success = False
-                    if "url" in apunte and "google.com/search" in apunte["url"]:
+                    if "url" in apunte and apunte.get("url") and "google.com/search" in apunte["url"]:
                         print(f"ERROR en apunte: URL contiene google.com/search: {apunte['url']}")
                         success = False
             print(f"OK: {est_path} es válido.")

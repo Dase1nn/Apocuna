@@ -46,7 +46,7 @@ jobs:
             "https://datos.minsa.gob.pe/api/3/action/package_search?rows=1"; do
             echo "== $url"
             rm -f /tmp/resp.txt
-            curl -sS -A "Mozilla/5.0" -m 15 -o /tmp/resp.txt -w "HTTP %{http_code}\n" "$url" || echo "curl falló"
+            curl -sS -A "ApocunaBot/1.0 (+https://github.com/Dase1nn/Apocuna)" -m 15 -o /tmp/resp.txt -w "HTTP %{http_code}\n" "$url" || echo "curl falló"
             head -c 200 /tmp/resp.txt 2>/dev/null || echo "(sin respuesta)"
             echo
           done

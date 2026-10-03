@@ -9,7 +9,7 @@
         "descripcion": "Monitoreo permanente de decretos supremos, resoluciones ministeriales y ordenanzas emitidas por los tres niveles de gobierno.",
         "frecuencia": "Diaria",
         "fuente": "El Peruano / PCM",
-        "url": "https://www.datosabiertos.gob.pe"
+        "url": null
       },
       {
         "id": "card_pol_1_2",
@@ -17,7 +17,7 @@
         "descripcion": "Revisión de directivas metodológicas, simplificación administrativa y lineamientos de rectoría emitidos por la Secretaría de Gestión Pública.",
         "frecuencia": "Semanal",
         "fuente": "PCM / Plataforma de Datos Abiertos",
-        "url": "https://www.datosabiertos.gob.pe"
+        "url": null
       },
       {
         "id": "card_pol_1_3",
@@ -77,7 +77,7 @@
         "descripcion": "Monitoreo del clima político, confianza ciudadana en poderes del Estado y prioridades de la agenda pública.",
         "frecuencia": "Semanal",
         "fuente": "Instituto de Estudios Peruanos (IEP)",
-        "url": "https://iep.org.pe/publicaciones/encuestas/"
+        "url": "https://estudiosdeopinion.iep.org.pe/"
       },
       {
         "id": "card_pol_3_2",
@@ -85,7 +85,7 @@
         "descripcion": "Seguimiento de conflictos activos, latentes, mesas de diálogo y alertas tempranas en todo el país.",
         "frecuencia": "Mensual",
         "fuente": "Defensoría del Pueblo",
-        "url": "https://www.defensoria.gob.pe/areas_tematicas/prevencion-de-conflictos/"
+        "url": "https://www.defensoria.gob.pe/areas_tematicas/paz-social-y-prevencion-de-conflictos/"
       },
       {
         "id": "card_pol_3_3",
@@ -139,7 +139,7 @@
         "descripcion": "Evidencia sobre cierre de brechas, protección social y bienestar de niños, niñas y adolescentes en el Perú.",
         "frecuencia": "Permanente",
         "fuente": "UNICEF Perú",
-        "url": "https://www.unicef.org/peru/informes"
+        "url": "https://www.unicef.org/peru/publicaciones"
       }
     ]
   }

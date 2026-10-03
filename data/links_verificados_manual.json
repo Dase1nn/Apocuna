@@ -1,0 +1,54 @@
+{
+  "fecha_verificacion": "2026-10-02",
+  "descripcion": "URLs verificadas manualmente por el usuario en su navegador web que bloquean bots automatizados o presentan timeouts por políticas de firewall",
+  "verificados": {
+    "https://www.undp.org/es/peru/publicaciones": {
+      "entidad": "PNUD Perú",
+      "fecha": "2026-10-02",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador por el usuario; servidor bloquea clientes automáticos (HTTP 403)"
+    },
+    "https://www.undp.org/es/peru/publicaciones/integridad-de-la-informacion-en-las-elecciones-generales-2026": {
+      "entidad": "PNUD Perú",
+      "fecha": "2026-10-02",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador por el usuario; servidor bloquea clientes automáticos (HTTP 403)"
+    },
+    "https://ilostat.ilo.org/data/": {
+      "entidad": "OIT / ILOSTAT",
+      "fecha": "2026-10-02",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador por el usuario; servidor bloquea clientes automáticos (HTTP 403)"
+    },
+    "https://publications.iadb.org/": {
+      "entidad": "Banco Interamericano de Desarrollo (BID)",
+      "fecha": "2026-10-02",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador por el usuario; servidor bloquea clientes automáticos (HTTP 403)"
+    },
+    "https://systems.inei.gob.pe/SigaINei/": {
+      "entidad": "INEI - Sistema SIGA",
+      "fecha": "2026-10-02",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador por el usuario; no responde a consultas de terminal"
+    },
+    "https://cies.org.pe/investigaciones/": {
+      "entidad": "Consorcio de Investigación Económica y Social (CIES)",
+      "fecha": "2026-10-02",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador por el usuario; tiempo de espera agotado para bots"
+    },
+    "http://iinei.inei.gob.pe/microdatos/": {
+      "entidad": "INEI - Portal Integrado de Microdatos",
+      "fecha": "2026-10-02",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador por el usuario; tiempo de espera agotado para bots"
+    },
+    "https://linktr.ee/ximacrocp": {
+      "entidad": "Macrocoloquio de Estudiantes de Ciencia Política",
+      "fecha": "2026-10-02",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador por el usuario; robots.txt restringe rastreo a bots de búsqueda"
+    }
+  }
+}

@@ -5,7 +5,7 @@
     "titulo": "Revista Peruana de Investigación Educativa (RPIE - SIEP)",
     "tematica": "Gobernanza escolar, gestión educativa, políticas educativas y participación.",
     "fecha_limite": "Recepción continua",
-    "enlace": "https://siep.org.pe/rpie",
+    "enlace": "https://revistas.siep.org.pe/",
     "descripcion": "Convocatoria abierta permanente."
   },
   {
@@ -14,7 +14,7 @@
     "titulo": "Archivos Analíticos de Políticas Educativas (EPAA/AAPE)",
     "tematica": "Políticas educativas, gobernanza del sistema escolar y reformas comparadas.",
     "fecha_limite": "Recepción continua",
-    "enlace": "https://epaa.asu.edu",
+    "enlace": "https://epaa.asu.edu/index.php/epaa",
     "descripcion": "Recepción continua de artículos sobre políticas."
   },
   {
@@ -50,7 +50,7 @@
     "titulo": "Macrocoloquio de Estudiantes de Ciencia Política (Perú)",
     "tematica": "Gestión Pública, Gobernanza y Políticas Públicas.",
     "fecha_limite": "Por anunciar",
-    "enlace": "#",
+    "enlace": "https://linktr.ee/ximacrocp",
     "descripcion": "Principal espacio nacional de deliberación estudiantil con mesas dedicadas a Gestión Pública y Gobernanza."
   },
   {
@@ -59,7 +59,7 @@
     "titulo": "Seminario Nacional de Investigación Educativa (SIEP - Perú)",
     "tematica": "Gobernanza, reformas y actores escolares.",
     "fecha_limite": "Por anunciar",
-    "enlace": "#",
+    "enlace": "https://siep.org.pe/",
     "descripcion": "Foro nacional bienal enfocado en la presentación y discusión de evidencia empírica."
   },
   {
@@ -68,7 +68,7 @@
     "titulo": "Congreso Internacional del CLAD",
     "tematica": "Innovación pública y gobiernos subnacionales.",
     "fecha_limite": "Entre marzo y mayo (anual)",
-    "enlace": "#",
+    "enlace": "https://clad.org/congresos/",
     "descripcion": "Abre convocatorias para paneles y ponencias individuales regularmente sobre el Estado y la administración."
   },
   {
@@ -77,7 +77,7 @@
     "titulo": "Congreso Latinoamericano de Ciencia Política (ALACIP)",
     "tematica": "Gobiernos Locales, Descentralización y Políticas Públicas.",
     "fecha_limite": "Por anunciar",
-    "enlace": "#",
+    "enlace": "https://alacip.org/congresos/",
     "descripcion": "Incluye áreas temáticas periódicas dedicadas a la ciencia política en la región."
   }
 ]

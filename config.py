@@ -15,3 +15,6 @@ EXCLUDED_DOMAINS = ["facebook.com", "youtube.com", "tiktok.com", "instagram.com"
 
 # Indicador para reactivar portal CKAN MINSA si vuelve a estar en línea (inactivo por timeout verificado 2026-10-02)
 CKAN_MINSA_HABILITADO = False
+
+# Indicador para reactivar portal CKAN PCM si vuelve a estar accesible para clientes automáticos (bloqueado por WAF HTTP 418 verificado 2026-10-02)
+CKAN_PCM_HABILITADO = False

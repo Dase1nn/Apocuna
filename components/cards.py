@@ -7,6 +7,15 @@ def escape(val):
         return ""
     return html.escape(str(val))
 
+def safe_url(val):
+    """Valida que una URL comience por http:// o https:// y la escapa con quote=True."""
+    if not val or not isinstance(val, str):
+        return None
+    val_clean = val.strip()
+    if val_clean.startswith("http://") or val_clean.startswith("https://"):
+        return html.escape(val_clean, quote=True)
+    return None
+
 def render_card_row(title: str, cards_data: list):
     """
     Renderiza una fila genérica de tarjetas con scroll horizontal (estilo Snowsight).
@@ -40,14 +49,19 @@ def render_noticias_carousel(title: str, noticias: list):
         fuente = escape(item.get("fuente", ""))
         fecha = escape(item.get("fecha_iso", ""))
         resumen = escape(item.get("resumen", ""))
-        url = escape(item.get("url", "#"))
+        url_s = safe_url(item.get("url"))
         demo_badge = '<span class="badge-demo">Datos de ejemplo</span>' if item.get("demo") else ''
+        
+        btn_html = (
+            f'<a href="{url_s}" target="_blank" rel="noopener noreferrer" class="btn-open">Abrir ↗</a>'
+            if url_s else '<span class="btn-demo-disabled">Demo</span>'
+        )
         
         card_html = (
             f'<div class="card">'
             f'<div class="card-header-meta"><span class="card-source">{fuente}</span><span class="card-date">{fecha}</span></div>'
             f'<div>{demo_badge}<h3>{titulo}</h3><p>{resumen}</p></div>'
-            f'<a href="{url}" target="_blank" class="btn-open">Abrir ↗</a>'
+            f'{btn_html}'
             f'</div>'
         )
         cards_list.append(card_html)
@@ -69,14 +83,19 @@ def render_normas_carousel(normas: list):
         tipo_norma = escape(item.get("tipo_norma", ""))
         entidad = escape(item.get("entidad", ""))
         fecha = escape(item.get("fecha_iso", ""))
-        url = escape(item.get("url", "#"))
+        url_s = safe_url(item.get("url"))
         demo_badge = '<span class="badge-demo">Datos de ejemplo</span>' if item.get("demo") else ''
+        
+        btn_html = (
+            f'<a href="{url_s}" target="_blank" rel="noopener noreferrer" class="btn-open">Abrir ↗</a>'
+            if url_s else '<span class="btn-demo-disabled">Demo</span>'
+        )
         
         card_html = (
             f'<div class="card">'
             f'<div class="card-header-meta"><span class="card-source">{tipo_norma}</span><span class="card-date">{fecha}</span></div>'
             f'<div>{demo_badge}<div style="font-size:0.78rem; font-weight:600; opacity:0.8; margin-bottom:0.3rem;">{entidad}</div><h3>{titulo}</h3></div>'
-            f'<a href="{url}" target="_blank" class="btn-open">Abrir ↗</a>'
+            f'{btn_html}'
             f'</div>'
         )
         cards_list.append(card_html)
@@ -97,13 +116,17 @@ def render_ckan_carousel(ckan_list: list, portales_directos: list = None):
                 nombre = escape(item.get("nombre", ""))
                 institucion = escape(item.get("institucion", ""))
                 desc = escape(item.get("descripcion_corta", ""))
-                url = escape(item.get("url", "#"))
+                url_s = safe_url(item.get("url"))
+                btn_html = (
+                    f'<a href="{url_s}" target="_blank" rel="noopener noreferrer" class="btn-open">Abrir portal ↗</a>'
+                    if url_s else '<span class="btn-demo-disabled">Portal no disponible</span>'
+                )
                 
                 card_html = (
                     f'<div class="card">'
                     f'<div class="card-header-meta"><span class="badge-portal">{institucion}</span><span class="card-date">Portal Oficial</span></div>'
                     f'<div><h3>{nombre}</h3><p style="font-size:0.85rem; color:#4A6B82; margin-top:0.4rem;">{desc}</p></div>'
-                    f'<a href="{url}" target="_blank" class="btn-open">Abrir portal ↗</a>'
+                    f'{btn_html}'
                     f'</div>'
                 )
                 cards_list.append(card_html)
@@ -117,13 +140,17 @@ def render_ckan_carousel(ckan_list: list, portales_directos: list = None):
         portal = escape(item.get("portal", "CKAN"))
         fecha_raw = item.get("fecha_modificacion_iso", "")
         fecha = escape(fecha_raw[:10] if fecha_raw else "Reciente")
-        url = escape(item.get("url", "#"))
+        url_s = safe_url(item.get("url"))
+        btn_html = (
+            f'<a href="{url_s}" target="_blank" rel="noopener noreferrer" class="btn-open">Abrir ↗</a>'
+            if url_s else '<span class="btn-demo-disabled">Demo</span>'
+        )
         
         card_html = (
             f'<div class="card">'
             f'<div class="card-header-meta"><span class="badge-portal">{portal}</span><span class="card-date">{fecha}</span></div>'
             f'<div><h3>{titulo}</h3></div>'
-            f'<a href="{url}" target="_blank" class="btn-open">Abrir ↗</a>'
+            f'{btn_html}'
             f'</div>'
         )
         cards_list.append(card_html)
@@ -144,12 +171,16 @@ def render_fuentes_grid(fuentes: list):
         nombre = escape(item.get("nombre", ""))
         institucion = escape(item.get("institucion", ""))
         desc = escape(item.get("descripcion_corta", ""))
-        url = escape(item.get("url", "#"))
+        url_s = safe_url(item.get("url"))
+        btn_html = (
+            f'<a href="{url_s}" target="_blank" rel="noopener noreferrer" class="btn-open">Abrir ↗</a>'
+            if url_s else '<span class="btn-demo-disabled">No disponible</span>'
+        )
         
         card_html = (
             f'<div class="fuente-card">'
             f'<div><div class="inst">{institucion}</div><h4>{nombre}</h4><p>{desc}</p></div>'
-            f'<a href="{url}" target="_blank" class="btn-open">Abrir ↗</a>'
+            f'{btn_html}'
             f'</div>'
         )
         cards_list.append(card_html)
@@ -171,7 +202,7 @@ def render_polity_cards(tarjetas: list):
         desc = escape(item.get("descripcion", ""))
         frecuencia = item.get("frecuencia", "Permanente")
         fuente = escape(item.get("fuente", ""))
-        url = escape(item.get("url", "#"))
+        url_s = safe_url(item.get("url"))
         
         freq_class = "badge-freq-permanente"
         frec_lower = frecuencia.lower()
@@ -183,11 +214,15 @@ def render_polity_cards(tarjetas: list):
             freq_class = "badge-freq-mensual"
             
         freq_badge = f'<span class="badge-freq {freq_class}">{escape(frecuencia)}</span>'
+        btn_html = (
+            f'<a href="{url_s}" target="_blank" rel="noopener noreferrer" class="btn-open">Abrir ↗</a>'
+            if url_s else '<span class="btn-demo-disabled">Demo</span>'
+        )
         
         card_html = (
             f'<div class="fuente-card">'
             f'<div>{freq_badge}<div class="inst">{fuente}</div><h4>{titulo}</h4><p>{desc}</p></div>'
-            f'<a href="{url}" target="_blank" class="btn-open">Abrir ↗</a>'
+            f'{btn_html}'
             f'</div>'
         )
         cards_list.append(card_html)
@@ -210,7 +245,12 @@ def render_estudiantes_apuntes(apuntes: list):
         sistema = escape(item.get("sistema", ""))
         resumen = escape(item.get("resumen", ""))
         normativa = escape(item.get("normativa", ""))
-        url = escape(item.get("url", "#"))
+        url_s = safe_url(item.get("url"))
+        
+        normativa_btn = (
+            f'<a href="{url_s}" target="_blank" rel="noopener noreferrer" class="btn-open" style="margin-top:0;">Normativa ↗</a>'
+            if url_s else '<span class="btn-demo-disabled" style="margin-top:0;">Normativa (Demo)</span>'
+        )
         
         card_html = (
             f'<div class="fuente-card">'
@@ -222,7 +262,7 @@ def render_estudiantes_apuntes(apuntes: list):
             f'</div>'
             f'<div style="display:flex; gap:0.5rem; align-items:center; margin-top:0.75rem;">'
             f'<span class="btn-demo-disabled">Descargar (Demo)</span>'
-            f'<a href="{url}" target="_blank" class="btn-open" style="margin-top:0;">Normativa ↗</a>'
+            f'{normativa_btn}'
             f'</div>'
             f'</div>'
         )
@@ -270,7 +310,7 @@ def render_eventos_grid(eventos: list):
         tipo = escape(item.get("tipo", "evento")).upper()
         tematica = escape(item.get("tematica", ""))
         fecha_limite = escape(item.get("fecha_limite", "Por anunciar"))
-        enlace = escape(item.get("enlace", "#"))
+        enlace_s = safe_url(item.get("enlace"))
         desc = escape(item.get("descripcion", ""))
         
         f_lower = fecha_limite.lower()
@@ -280,8 +320,8 @@ def render_eventos_grid(eventos: list):
             badge_fecha = f'<span class="badge-deadline">⏳ {fecha_limite}</span>'
             
         link_html = (
-            f'<a href="{enlace}" target="_blank" class="btn-open">Sitio oficial ↗</a>'
-            if enlace and enlace != "#"
+            f'<a href="{enlace_s}" target="_blank" rel="noopener noreferrer" class="btn-open">Sitio oficial ↗</a>'
+            if enlace_s
             else '<span class="btn-demo-disabled">Enlace pendiente</span>'
         )
         

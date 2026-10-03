@@ -13,9 +13,10 @@
     "bloque": "Datos abiertos y microdatos",
     "nombre": "API CKAN Datos Abiertos",
     "institucion": "PCM",
-    "descripcion_corta": "Endpoint API CKAN.",
+    "descripcion_corta": "Endpoint API CKAN (no disponible: el portal bloquea clientes automáticos).",
     "url": "https://www.datosabiertos.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=10",
-    "tipo": "api"
+    "tipo": "no_disponible",
+    "estado": "no disponible: el portal bloquea clientes automáticos"
   },
   {
     "id": "f_003",
@@ -87,7 +88,7 @@
     "nombre": "Prevención de Conflictos Sociales",
     "institucion": "Defensoría del Pueblo",
     "descripcion_corta": "Alertas y reportes de conflictos.",
-    "url": "https://www.defensoria.gob.pe/areas_tematicas/prevencion-de-conflictos/",
+    "url": "https://www.defensoria.gob.pe/areas_tematicas/paz-social-y-prevencion-de-conflictos/",
     "tipo": "portal"
   },
   {
@@ -123,7 +124,7 @@
     "nombre": "Encuestas y Estudios de Opinión IEP",
     "institucion": "IEP",
     "descripcion_corta": "Encuestas de opinión del IEP.",
-    "url": "https://iep.org.pe/publicaciones/encuestas/",
+    "url": "https://estudiosdeopinion.iep.org.pe/",
     "tipo": "repositorio"
   },
   {
@@ -168,7 +169,7 @@
     "nombre": "Publicaciones y Análisis IPE",
     "institucion": "IPE",
     "descripcion_corta": "Análisis económicos e INCORE.",
-    "url": "https://www.ipe.org.pe/portal/publicaciones/",
+    "url": "https://ipe.org.pe/nuestras-publicaciones/",
     "tipo": "repositorio"
   },
   {
@@ -213,7 +214,7 @@
     "nombre": "Informes UNICEF Perú",
     "institucion": "UNICEF Perú",
     "descripcion_corta": "Informes UNICEF.",
-    "url": "https://www.unicef.org/peru/informes",
+    "url": "https://www.unicef.org/peru/publicaciones",
     "tipo": "repositorio"
   },
   {
@@ -231,7 +232,7 @@
     "nombre": "OIT Países Andinos",
     "institucion": "OIT",
     "descripcion_corta": "Sede Lima.",
-    "url": "https://www.ilo.org/lima",
+    "url": "https://www.ilo.org/es/regiones-y-paises/america-latina-y-el-caribe/oficina-de-la-oit-para-los-paises-andinos",
     "tipo": "portal"
   },
   {

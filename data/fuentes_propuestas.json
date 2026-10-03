@@ -1,0 +1,196 @@
+[
+  {
+    "archivo": "data/fuentes.json",
+    "id": "f_014",
+    "titulo": "IEP - Encuestas y Estudios de Opinión",
+    "url_original": "https://iep.org.pe/publicaciones/encuestas/",
+    "url_propuesta": "https://estudiosdeopinion.iep.org.pe/",
+    "pagina_hallazgo": "Portal oficial del Instituto de Estudios Peruanos (iep.org.pe - sección Estudios de Opinión)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/polity.json",
+    "id": "card_pol_3_1",
+    "titulo": "Estudios de Opinión y Aprobación Institucional (IEP)",
+    "url_original": "https://iep.org.pe/publicaciones/encuestas/",
+    "url_propuesta": "https://estudiosdeopinion.iep.org.pe/",
+    "pagina_hallazgo": "Portal oficial del Instituto de Estudios Peruanos (iep.org.pe - sección Estudios de Opinión)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/fuentes.json",
+    "id": "f_019",
+    "titulo": "Publicaciones y Análisis IPE",
+    "url_original": "https://www.ipe.org.pe/portal/publicaciones/",
+    "url_propuesta": "https://ipe.org.pe/nuestras-publicaciones/",
+    "pagina_hallazgo": "Portal oficial del Instituto Peruano de Economía (ipe.org.pe - menú Nuestras Publicaciones)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/fuentes.json",
+    "id": "f_020",
+    "titulo": "Publicaciones de Gestión Pública Videnza",
+    "url_original": "https://videnzainstituto.org/publicaciones/",
+    "url_propuesta": "https://videnzainstituto.org/",
+    "pagina_hallazgo": "Portal institucional de Videnza Instituto (la sección independiente /publicaciones/ fue discontinuada y centralizada en el home institucional)",
+    "codigo_verificado": 200,
+    "estado": "por confirmar"
+  },
+  {
+    "archivo": "data/fuentes.json",
+    "id": "f_024",
+    "titulo": "Informes UNICEF Perú",
+    "url_original": "https://www.unicef.org/peru/informes",
+    "url_propuesta": "https://www.unicef.org/peru/publicaciones",
+    "pagina_hallazgo": "Portal oficial de UNICEF Perú (unicef.org/peru - sección de publicaciones oficiales)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/polity.json",
+    "id": "card_pol_4_4",
+    "titulo": "Informes de Políticas de Infancia y Juventud (UNICEF)",
+    "url_original": "https://www.unicef.org/peru/informes",
+    "url_propuesta": "https://www.unicef.org/peru/publicaciones",
+    "pagina_hallazgo": "Portal oficial de UNICEF Perú (unicef.org/peru - sección de publicaciones oficiales)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/eventos.json",
+    "id": "e_001",
+    "titulo": "Revista Peruana de Investigación Educativa (RPIE - SIEP)",
+    "url_original": "https://siep.org.pe/rpie",
+    "url_propuesta": "https://revistas.siep.org.pe/",
+    "pagina_hallazgo": "Portal oficial de Revistas OJS de la Sociedad de Investigación Educativa Peruana (siep.org.pe)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/estudiantes.json",
+    "id": "est_card_4_2",
+    "titulo": "Seminario de Investigación Educativa (SIEP)",
+    "url_original": "https://siep.org.pe/rpie",
+    "url_propuesta": "https://revistas.siep.org.pe/",
+    "pagina_hallazgo": "Portal oficial de Revistas OJS de la Sociedad de Investigación Educativa Peruana (siep.org.pe)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/fuentes.json",
+    "id": "f_010",
+    "titulo": "Prevención de Conflictos Sociales (Defensoría del Pueblo)",
+    "url_original": "https://www.defensoria.gob.pe/areas_tematicas/prevencion-de-conflictos/",
+    "url_propuesta": "https://www.defensoria.gob.pe/areas_tematicas/paz-social-y-prevencion-de-conflictos/",
+    "pagina_hallazgo": "Portal oficial de la Defensoría del Pueblo (defensoria.gob.pe - Área temática Paz Social y Prevención de Conflictos)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/polity.json",
+    "id": "card_pol_3_2",
+    "titulo": "Reportes de Prevención de Conflictos Sociales (Defensoría del Pueblo)",
+    "url_original": "https://www.defensoria.gob.pe/areas_tematicas/prevencion-de-conflictos/",
+    "url_propuesta": "https://www.defensoria.gob.pe/areas_tematicas/paz-social-y-prevencion-de-conflictos/",
+    "pagina_hallazgo": "Portal oficial de la Defensoría del Pueblo (defensoria.gob.pe - Área temática Paz Social y Prevención de Conflictos)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/eventos.json",
+    "id": "e_006",
+    "titulo": "Macrocoloquio de Estudiantes de Ciencia Política (Perú)",
+    "url_original": "#",
+    "url_propuesta": "https://linktr.ee/ximacrocp",
+    "pagina_hallazgo": "Linktree y canal oficial del Macrocoloquio de Estudiantes de Ciencia Política del Perú",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/estudiantes.json",
+    "id": "est_card_4_1",
+    "titulo": "Macrocoloquio de Estudiantes de Ciencia Política",
+    "url_original": "https://www.datosabiertos.gob.pe",
+    "url_propuesta": "https://linktr.ee/ximacrocp",
+    "pagina_hallazgo": "Linktree y canal oficial del Macrocoloquio de Estudiantes de Ciencia Política del Perú",
+    "codigo_verificado": 200,
+    "estado": "descartado: tarjeta catalogada como demo (url en null)"
+  },
+  {
+    "archivo": "data/eventos.json",
+    "id": "e_007",
+    "titulo": "Seminario Nacional de Investigación Educativa (SIEP - Perú)",
+    "url_original": "#",
+    "url_propuesta": "https://siep.org.pe/",
+    "pagina_hallazgo": "Portal institucional oficial de la Sociedad de Investigación Educativa Peruana (siep.org.pe - convocatorias y X Seminario)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/eventos.json",
+    "id": "e_008",
+    "titulo": "Congreso Internacional del CLAD",
+    "url_original": "#",
+    "url_propuesta": "https://clad.org/congresos/",
+    "pagina_hallazgo": "Portal oficial de Congresos Internacionales del Centro Latinoamericano de Administración para el Desarrollo (clad.org)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/eventos.json",
+    "id": "e_009",
+    "titulo": "Congreso Latinoamericano de Ciencia Política (ALACIP)",
+    "url_original": "#",
+    "url_propuesta": "https://alacip.org/congresos/",
+    "pagina_hallazgo": "Portal oficial de Congresos de la Asociación Latinoamericana de Ciencia Política (alacip.org)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/fuentes.json",
+    "id": "f_026",
+    "titulo": "OIT Países Andinos",
+    "url_original": "https://www.ilo.org/lima",
+    "url_propuesta": "https://www.ilo.org/es/regiones-y-paises/america-latina-y-el-caribe/oficina-de-la-oit-para-los-paises-andinos",
+    "pagina_hallazgo": "Redirección institucional canónica en el portal oficial de la OIT (ilo.org)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/eventos.json",
+    "id": "e_002",
+    "titulo": "Archivos Analíticos de Políticas Educativas (EPAA/AAPE)",
+    "url_original": "https://epaa.asu.edu",
+    "url_propuesta": "https://epaa.asu.edu/index.php/epaa",
+    "pagina_hallazgo": "Redirección institucional canónica del sistema OJS de la revista en Arizona State University (epaa.asu.edu)",
+    "codigo_verificado": 200,
+    "estado": "verificado manualmente por el usuario (2026-10-02)"
+  },
+  {
+    "archivo": "data/polity.json",
+    "id": "card_pol_1_1",
+    "titulo": "Boletines de Normas Legales y Diario Oficial (El Peruano)",
+    "url_original": "https://www.datosabiertos.gob.pe",
+    "url_propuesta": "https://busquedas.elperuano.pe/",
+    "pagina_hallazgo": "Buscador oficial del Diario Oficial El Peruano (busquedas.elperuano.pe)",
+    "codigo_verificado": 200,
+    "url_final": "https://busquedas.elperuano.pe/?ci=full&fecha=20261002",
+    "title_verificado": "Búsquedas El Peruano",
+    "estado": "propuesta sin aplicar"
+  },
+  {
+    "archivo": "data/polity.json",
+    "id": "card_pol_1_2",
+    "titulo": "Alertas de Modernización del Estado (SGP / PCM)",
+    "url_original": "https://www.datosabiertos.gob.pe",
+    "url_propuesta": "https://www.gob.pe/institucion/pcm/tema/gestion-publica",
+    "pagina_hallazgo": "Portal oficial de la Secretaría de Gestión Pública - Presidencia del Consejo de Ministros (gob.pe/institucion/pcm/tema/gestion-publica)",
+    "codigo_verificado": 200,
+    "url_final": "https://www.gob.pe/institucion/pcm/tema/gestion-publica",
+    "title_verificado": "Gestión pública - Categorías - Presidencia del Consejo de Ministros - Plataforma del Estado Peruano",
+    "estado": "propuesta sin aplicar"
+  }
+]

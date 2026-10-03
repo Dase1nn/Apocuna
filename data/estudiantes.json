@@ -69,7 +69,7 @@
         "descripcion": "Auditoría ciudadana de declaraciones juradas de hoja de vida y financiamiento partidario.",
         "fuente": "JNE / ONPE / Datos Abiertos",
         "frecuencia": "Semanal",
-        "url": "https://www.datosabiertos.gob.pe"
+        "url": null
       },
       {
         "id": "est_card_3_2",
@@ -91,7 +91,7 @@
         "descripcion": "Red nacional de estudiantes para deliberación en mesas temáticas sobre gestión pública y descentralización.",
         "fuente": "Red de Estudiantes",
         "frecuencia": "Anual",
-        "url": "https://www.datosabiertos.gob.pe"
+        "url": null
       },
       {
         "id": "est_card_4_2",
@@ -99,7 +99,7 @@
         "descripcion": "Foro para la presentación de ponencias y discusión de tesis sobre gobernanza escolar y reformas curriculares.",
         "fuente": "SIEP Perú",
         "frecuencia": "Bienal",
-        "url": "https://siep.org.pe/rpie"
+        "url": "https://revistas.siep.org.pe/"
       }
     ]
   },
@@ -114,7 +114,7 @@
         "titulo": "Sistema Nacional de Presupuesto Público (D.L. N° 1440)",
         "resumen": "Principios del Presupuesto por Resultados (PpR): la asignación condicionada a metas físicas y productos comprobables en beneficio del ciudadano.",
         "normativa": "D.L. 1440",
-        "url": "https://systems.inei.gob.pe/SigaINei/"
+        "url": null
       },
       {
         "id": "apunte_002",
@@ -123,7 +123,7 @@
         "titulo": "Política Nacional de Modernización de la Gestión Pública al 2030",
         "resumen": "Pilares de la modernización: Políticas públicas y planes, presupuesto por resultados, gestión por procesos, servicio civil y seguimiento-evaluación.",
         "normativa": "D.S. 103-2022-PCM",
-        "url": "https://www.datosabiertos.gob.pe"
+        "url": null
       },
       {
         "id": "apunte_003",
@@ -132,7 +132,7 @@
         "titulo": "Sistema Nacional de Planeamiento Estratégico (SINAPLAN / CEPLAN)",
         "resumen": "Cadena de planes: Plan Estratégico de Desarrollo Nacional (PEDN), PESEM, PDC y articulación con POI/PEI institucional.",
         "normativa": "D.L. 1088",
-        "url": "https://www.datosabiertos.gob.pe"
+        "url": null
       },
       {
         "id": "apunte_004",
@@ -141,7 +141,7 @@
         "titulo": "Sistema Nacional de Programación Multianual y Gestión de Inversiones (Invierte.pe)",
         "resumen": "Ciclo de inversión: Programación Multianual de Inversiones (PMI), formulación y evaluación (fichas técnicas), ejecución y funcionamiento.",
         "normativa": "D.L. 1252",
-        "url": "https://systems.inei.gob.pe/SigaINei/"
+        "url": null
       },
       {
         "id": "apunte_005",
@@ -159,7 +159,7 @@
         "titulo": "Sistema Administrativo de Gestión de Recursos Humanos (SERVIR)",
         "resumen": "Régimen del Servicio Civil (Ley N° 30057), subsistemas de planificación de políticas de RRHH, organización del trabajo y evaluación del desempeño.",
         "normativa": "Ley 30057",
-        "url": "https://www.datosabiertos.gob.pe"
+        "url": null
       },
       {
         "id": "apunte_007",
@@ -168,7 +168,7 @@
         "titulo": "Sistema Nacional de Abastecimiento (D.L. N° 1439 y Ley de Contrataciones)",
         "resumen": "Cadena de abastecimiento público: programación multianual de bienes, servicios y obras, gestión de adquisiciones y administración de bienes.",
         "normativa": "D.L. 1439",
-        "url": "https://www.datosabiertos.gob.pe"
+        "url": null
       },
       {
         "id": "apunte_008",
@@ -177,7 +177,7 @@
         "titulo": "Sistemas de Tesorería y Contabilidad Pública (D.L. N° 1441 y N° 1438)",
         "resumen": "Gestión centralizada de fondos públicos mediante la Cuenta Única del Tesoro (CUT) e integración contable de los hechos económicos del Estado.",
         "normativa": "D.L. 1441 / D.L. 1438",
-        "url": "https://systems.inei.gob.pe/SigaINei/"
+        "url": null
       }
     ]
   }
