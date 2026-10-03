@@ -109,7 +109,7 @@ def main():
         render_home()
     elif current == "Polity and Policy":
         render_polity()
-    elif current == "Estudiantes":
+    elif current in ["Estudiantes (DEMO)", "Estudiantes"]:
         render_estudiantes()
     elif current == "Notas":
         render_notas()

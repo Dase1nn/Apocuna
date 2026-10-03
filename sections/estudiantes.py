@@ -3,7 +3,7 @@ from utils.loaders import load_estudiantes, load_cursos, load_becas
 from components.cards import render_polity_cards, render_estudiantes_apuntes, render_cursos_grid, render_becas_grid
 
 def render_estudiantes():
-    st.title("🎓 Estudiantes")
+    st.title("🎓 Estudiantes (DEMO)")
     st.markdown(
         '<div class="banner-demo-top">🚀 <strong>Sección Activa:</strong> '
         'Las categorías de esta sección se actualizan de forma automatizada (becas, cursos, revistas y eventos). Espacio para la formación metodológica e investigación.</div>',

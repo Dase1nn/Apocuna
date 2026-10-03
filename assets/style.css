@@ -578,3 +578,104 @@ div[data-testid="stButton"] > button:hover {
     opacity: 0 !important;
     pointer-events: none !important;
 }
+
+/* 11. VISIBILIDAD PERMANENTE Y DESTACADA DEL BOTÓN DE COLAPSO / DESPLIEGUE DEL MENÚ */
+/* Asegurar que la barra lateral quede SIEMPRE por encima del header al abrirse */
+[data-testid="stSidebar"] {
+    z-index: 1000000 !important;
+}
+
+[data-testid="stSidebarHeader"],
+[data-testid="stSidebarCollapseButton"] {
+    z-index: 1000005 !important;
+}
+
+/* Visibilidad forzada de los controles tanto colapsado como expandido */
+[data-testid="stSidebarCollapseButton"],
+[data-testid="stSidebarCollapseButton"] button,
+[data-testid="collapsedControl"],
+[data-testid="collapsedControl"] button,
+[data-testid="stSidebarCollapsedControl"],
+[data-testid="stSidebarCollapsedControl"] button,
+button[data-testid="stExpandSidebarButton"],
+[data-testid="stSidebar"] [data-testid="stSidebarCollapseButton"] button,
+button[data-testid="stBaseButton-headerNoPadding"] {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Estilo botón destacado, distinguible y con contraste óptimo */
+[data-testid="stSidebarCollapseButton"] button,
+[data-testid="collapsedControl"] button,
+[data-testid="stSidebarCollapsedControl"] button,
+button[data-testid="stExpandSidebarButton"],
+[data-testid="stSidebar"] button[data-testid="stBaseButton-headerNoPadding"] {
+    background: light-dark(rgba(0, 0, 0, 0.06), rgba(41, 181, 232, 0.16)) !important;
+    color: var(--primary-color) !important;
+    border: 1px solid light-dark(rgba(0, 0, 0, 0.15), rgba(41, 181, 232, 0.35)) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important;
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    min-width: 2.25rem !important;
+    min-height: 2.25rem !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+/* Asegurar color vivo del icono interior (anula el color inline gris de Streamlit) */
+[data-testid="stSidebarCollapseButton"] button *,
+[data-testid="collapsedControl"] button *,
+[data-testid="stSidebarCollapsedControl"] button *,
+button[data-testid="stExpandSidebarButton"] *,
+[data-testid="stSidebar"] button[data-testid="stBaseButton-headerNoPadding"] * {
+    color: var(--primary-color) !important;
+    fill: var(--primary-color) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Efecto hover y focus */
+[data-testid="stSidebarCollapseButton"] button:hover,
+[data-testid="collapsedControl"] button:hover,
+[data-testid="stSidebarCollapsedControl"] button:hover,
+button[data-testid="stExpandSidebarButton"]:hover,
+[data-testid="stSidebar"] button[data-testid="stBaseButton-headerNoPadding"]:hover {
+    background: light-dark(rgba(41, 181, 232, 0.22), rgba(41, 181, 232, 0.35)) !important;
+    border-color: var(--primary-color) !important;
+    transform: scale(1.06) !important;
+    box-shadow: 0 4px 12px rgba(41, 181, 232, 0.35) !important;
+}
+
+[data-testid="stSidebarCollapseButton"] button:hover *,
+[data-testid="collapsedControl"] button:hover *,
+[data-testid="stSidebarCollapsedControl"] button:hover *,
+button[data-testid="stExpandSidebarButton"]:hover *,
+[data-testid="stSidebar"] button[data-testid="stBaseButton-headerNoPadding"]:hover * {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+}
+
+/* En móvil, asegurar que el control de despliegue tenga z-index adecuado sin tapar el sidebar */
+@media (max-width: 768px) {
+    [data-testid="collapsedControl"],
+    [data-testid="stSidebarCollapsedControl"],
+    button[data-testid="stExpandSidebarButton"] {
+        z-index: 999995 !important;
+        position: relative !important;
+    }
+    
+    #apocuna-hub-banner {
+        padding-left: 3.8rem !important;
+        padding-right: 3.8rem !important;
+        font-size: 1.05rem !important;
+        letter-spacing: 2px !important;
+    }
+}
+
+
+

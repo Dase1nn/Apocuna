@@ -21,7 +21,7 @@ def render_sidebar():
         options_list = [
             "Inicio",
             "Polity and Policy",
-            "Estudiantes",
+            "Estudiantes (DEMO)",
             "Notas",
             "Eventos",
             "Sobre el sitio"
