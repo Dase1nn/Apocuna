@@ -84,12 +84,31 @@ def render_normas_carousel(normas: list):
     full_html = f'<div class="card-container">{"".join(cards_list)}</div>'
     st.markdown(full_html, unsafe_allow_html=True)
 
-def render_ckan_carousel(ckan_list: list):
+def render_ckan_carousel(ckan_list: list, portales_directos: list = None):
     """
     Renderiza carrusel de datasets recientes de portales CKAN.
+    Si ckan_list está vacío, muestra aviso y tarjetas con enlaces directos a los portales.
     """
     if not ckan_list:
-        st.info("No hay datasets disponibles para mostrar.")
+        st.info("ℹ️ La API de este portal no está disponible por ahora.")
+        if portales_directos:
+            cards_list = []
+            for item in portales_directos:
+                nombre = escape(item.get("nombre", ""))
+                institucion = escape(item.get("institucion", ""))
+                desc = escape(item.get("descripcion_corta", ""))
+                url = escape(item.get("url", "#"))
+                
+                card_html = (
+                    f'<div class="card">'
+                    f'<div class="card-header-meta"><span class="badge-portal">{institucion}</span><span class="card-date">Portal Oficial</span></div>'
+                    f'<div><h3>{nombre}</h3><p style="font-size:0.85rem; color:#4A6B82; margin-top:0.4rem;">{desc}</p></div>'
+                    f'<a href="{url}" target="_blank" class="btn-open">Abrir portal ↗</a>'
+                    f'</div>'
+                )
+                cards_list.append(card_html)
+            full_html = f'<div class="card-container">{"".join(cards_list)}</div>'
+            st.markdown(full_html, unsafe_allow_html=True)
         return
         
     cards_list = []
@@ -99,12 +118,11 @@ def render_ckan_carousel(ckan_list: list):
         fecha_raw = item.get("fecha_modificacion_iso", "")
         fecha = escape(fecha_raw[:10] if fecha_raw else "Reciente")
         url = escape(item.get("url", "#"))
-        demo_badge = '<span class="badge-demo">Datos de ejemplo</span>' if item.get("demo") else ''
         
         card_html = (
             f'<div class="card">'
             f'<div class="card-header-meta"><span class="badge-portal">{portal}</span><span class="card-date">{fecha}</span></div>'
-            f'<div>{demo_badge}<h3>{titulo}</h3></div>'
+            f'<div><h3>{titulo}</h3></div>'
             f'<a href="{url}" target="_blank" class="btn-open">Abrir ↗</a>'
             f'</div>'
         )

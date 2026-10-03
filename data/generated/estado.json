@@ -1,21 +1,32 @@
 {
   "fuentes": {
     "noticias": {
-      "last_success": "2026-10-02T22:54:00.426899Z",
+      "last_success": "2026-10-03T00:08:57.007190Z",
       "items": 30,
       "errores": []
     },
     "normas": {
-      "last_success": "2026-10-02T22:54:04.207216Z",
+      "last_success": "2026-10-03T00:08:58.279232Z",
       "items": 10,
       "errores": []
     },
     "ckan": {
+      "items": 0,
+      "portales": {
+        "PCM": {
+          "codigo": "418",
+          "causa": "418: bloqueado por CloudWAF"
+        },
+        "MINSA": {
+          "codigo": "sin conexión",
+          "causa": "sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+        }
+      },
       "errores_recientes": [
-        "https://www.datosabiertos.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=10 - Error: 404 Client Error: Not Found for url: https://www.datosabiertos.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=10",
-        "https://datos.minsa.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=10 - Error: HTTPSConnectionPool(host='datos.minsa.gob.pe', port=443): Max retries exceeded with url: /api/3/action/package_search?sort=metadata_modified+desc&rows=10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='datos.minsa.gob.pe', port=443) at 0x1b622a17890>, 'Connection to datos.minsa.gob.pe timed out. (connect timeout=10)'))"
+        "PCM: 418: bloqueado por CloudWAF",
+        "MINSA: sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
       ]
     }
   },
-  "last_run": "2026-10-02T22:54:16.715421Z"
+  "last_run": "2026-10-03T00:08:59.012198Z"
 }

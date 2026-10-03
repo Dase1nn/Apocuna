@@ -12,3 +12,6 @@ URL_ONPE = "https://www.onpe.gob.pe/"
 # Constantes de configuración
 TIMEOUT_RED = 10  # segundos
 EXCLUDED_DOMAINS = ["facebook.com", "youtube.com", "tiktok.com", "instagram.com"]
+
+# Indicador para reactivar portal CKAN MINSA si vuelve a estar en línea (inactivo por timeout verificado 2026-10-02)
+CKAN_MINSA_HABILITADO = False

@@ -56,8 +56,10 @@ def render_home():
     # 3. DATASETS RECIENTES CKAN
     st.header("🔄 Datasets Recientes (Portales CKAN)")
     st.markdown("Consulta automatizada a los catálogos nacionales de datos abiertos (PCM y MINSA).")
+    fuentes = load_fuentes()
+    portales_ckan = [f for f in fuentes if f.get("id") in ["f_001", "f_004"]]
     ckan_datasets = fetch_ckan_datasets()
-    render_ckan_carousel(ckan_datasets)
+    render_ckan_carousel(ckan_datasets, portales_directos=portales_ckan)
     
     st.markdown("---")
     

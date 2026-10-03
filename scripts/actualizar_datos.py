@@ -203,6 +203,13 @@ def main():
     if should_update(estado.get("fuentes", {}), "ckan", 6, args.forzar):
         print("\n[3] Actualizando CKAN...")
         nuevas, desc_ckan = fetch_ckan(timeout_red=TIMEOUT_RED)
+        portales_ckan = {}
+        errores_ckan_list = []
+        if isinstance(desc_ckan, tuple):
+            portales_ckan, errores_ckan_list = desc_ckan
+        elif isinstance(desc_ckan, list):
+            errores_ckan_list = desc_ckan
+
         if nuevas:
             viejas = load_json("ckan.json")
             final = deduplicate_and_sort(viejas, nuevas, sort_field="fecha_modificacion_iso")
@@ -210,18 +217,22 @@ def main():
             estado["fuentes"]["ckan"] = {
                 "last_success": get_now_utc_str(),
                 "items": len(nuevas),
-                "errores": desc_ckan
+                "portales": portales_ckan,
+                "errores": errores_ckan_list
             }
-            print(f"-> CKAN actualizado: {len(nuevas)} nuevos obtenidos. Errores: {len(desc_ckan)}")
-            if desc_ckan:
-                print("   Errores en CKAN:", desc_ckan)
+            print(f"-> CKAN actualizado: {len(nuevas)} nuevos obtenidos. Errores: {len(errores_ckan_list)}")
+            if errores_ckan_list:
+                print("   Errores en CKAN:", errores_ckan_list)
             print_sample("ckan.json", final)
         else:
-            print("-> Falló la recolección de CKAN. Se conservan datos anteriores.")
-            if "ckan" not in estado["fuentes"]:
-                 estado["fuentes"]["ckan"] = {}
-            estado["fuentes"]["ckan"]["errores_recientes"] = desc_ckan
-            print("   Errores:", desc_ckan)
+            print("-> Falló la recolección de CKAN (sin datos disponibles). Escribiendo lista vacía en ckan.json.")
+            save_json([], "ckan.json")
+            estado["fuentes"]["ckan"] = {
+                "items": 0,
+                "portales": portales_ckan,
+                "errores_recientes": errores_ckan_list
+            }
+            print("   Estado por portal:", portales_ckan)
     else:
         print("\n[3] CKAN no requiere actualización aún.")
         

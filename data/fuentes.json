@@ -22,9 +22,10 @@
     "bloque": "Datos abiertos y microdatos",
     "nombre": "API CKAN MINSA",
     "institucion": "MINSA / CDC Perú",
-    "descripcion_corta": "Endpoint API CKAN MINSA.",
+    "descripcion_corta": "Endpoint API CKAN MINSA (no disponible, verificado 2026-10-02).",
     "url": "https://datos.minsa.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=5",
-    "tipo": "api"
+    "tipo": "api",
+    "estado": "no disponible (verificado 2026-10-02)"
   },
   {
     "id": "f_004",

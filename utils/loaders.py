@@ -5,6 +5,11 @@ import html
 import requests
 import streamlit as st
 
+try:
+    from config import CKAN_MINSA_HABILITADO
+except ImportError:
+    CKAN_MINSA_HABILITADO = False
+
 @st.cache_data
 def load_fuentes():
     """Carga el catálogo de fuentes estructuradas."""
@@ -127,11 +132,13 @@ def fetch_ckan_datasets():
     for f in fuentes:
         if f.get("tipo") == "api" and "action/package_search" in f.get("url", ""):
             portal = "PCM" if "datosabiertos.gob.pe" in f.get("url", "") else "MINSA"
+            if portal == "MINSA" and not CKAN_MINSA_HABILITADO:
+                continue
             endpoints.append((portal, f.get("url")))
             
     for portal, url in endpoints:
         try:
-            resp = requests.get(url, timeout=3.5)
+            resp = requests.get(url, timeout=3.5, headers={"User-Agent": "ApocunaBot/1.0 (+https://github.com/Dase1nn/Apocuna)"})
             if resp.status_code == 200:
                 data = resp.json()
                 results = data.get("result", {}).get("results", [])
