@@ -579,8 +579,35 @@ div[data-testid="stButton"] > button:hover {
     pointer-events: none !important;
 }
 
-/* 11. VISIBILIDAD PERMANENTE Y DESTACADA DEL BOTÓN DE COLAPSO / DESPLIEGUE DEL MENÚ */
-/* Asegurar que la barra lateral quede SIEMPRE por encima del header al abrirse */
+/* 11. HEADER NATIVO INTEGRADO (SIN JAVASCRIPT NI BARRAS FLOTANTES INVASIVAS) */
+header[data-testid="stHeader"] {
+    background: light-dark(rgba(255, 255, 255, 0.92), rgba(14, 17, 23, 0.88)) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.07)) !important;
+    z-index: 99990 !important;
+    height: 3.5rem !important;
+    transition: background-color 0.25s ease !important;
+}
+
+/* Título central APOCUNA HUB integrado en el header nativo de Streamlit */
+header[data-testid="stHeader"]::before {
+    content: "APOCUNA HUB";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #EF4444 !important;
+    font-weight: 800 !important;
+    font-size: 1.15rem !important;
+    letter-spacing: 2.5px !important;
+    text-transform: uppercase !important;
+    pointer-events: none !important;
+    white-space: nowrap !important;
+    z-index: 10 !important;
+}
+
+/* 12. VISIBILIDAD PERMANENTE Y DESTACADA DEL BOTÓN DE COLAPSO / DESPLIEGUE DEL MENÚ */
 [data-testid="stSidebar"] {
     z-index: 1000000 !important;
 }
@@ -607,7 +634,7 @@ button[data-testid="stBaseButton-headerNoPadding"] {
     justify-content: center !important;
 }
 
-/* Estilo botón destacado, distinguible y con contraste óptimo */
+/* Estilo botón de colapso y despliegue */
 [data-testid="stSidebarCollapseButton"] button,
 [data-testid="collapsedControl"] button,
 [data-testid="stSidebarCollapsedControl"] button,
@@ -618,8 +645,6 @@ button[data-testid="stExpandSidebarButton"],
     border: 1px solid light-dark(rgba(0, 0, 0, 0.15), rgba(41, 181, 232, 0.35)) !important;
     border-radius: 8px !important;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18) !important;
-    width: 2.25rem !important;
-    height: 2.25rem !important;
     min-width: 2.25rem !important;
     min-height: 2.25rem !important;
     cursor: pointer !important;
@@ -647,7 +672,7 @@ button[data-testid="stExpandSidebarButton"]:hover,
 [data-testid="stSidebar"] button[data-testid="stBaseButton-headerNoPadding"]:hover {
     background: light-dark(rgba(41, 181, 232, 0.22), rgba(41, 181, 232, 0.35)) !important;
     border-color: var(--primary-color) !important;
-    transform: scale(1.06) !important;
+    transform: scale(1.04) !important;
     box-shadow: 0 4px 12px rgba(41, 181, 232, 0.35) !important;
 }
 
@@ -660,22 +685,198 @@ button[data-testid="stExpandSidebarButton"]:hover *,
     fill: #FFFFFF !important;
 }
 
-/* En móvil, asegurar que el control de despliegue tenga z-index adecuado sin tapar el sidebar */
+/* ==========================================================================
+   13. AUDITORÍA Y OPTIMIZACIÓN COMPLETA PARA DISPOSITIVOS MÓVILES (<= 768px)
+   ========================================================================== */
 @media (max-width: 768px) {
-    [data-testid="collapsedControl"],
-    [data-testid="stSidebarCollapsedControl"],
-    button[data-testid="stExpandSidebarButton"] {
+    /* Header compacto con título legible y sin solapamiento */
+    header[data-testid="stHeader"] {
+        height: 3.25rem !important;
+        padding: 0 0.5rem !important;
+    }
+
+    header[data-testid="stHeader"]::before {
+        font-size: 0.88rem !important;
+        letter-spacing: 1.2px !important;
+        left: 50% !important;
+    }
+
+    /* Botón MENÚ visible y autoexplicativo en móvil (diseño píldora destacada) */
+    button[data-testid="stExpandSidebarButton"],
+    [data-testid="stSidebarCollapsedControl"] button,
+    [data-testid="collapsedControl"] button {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        width: auto !important;
+        padding: 0.3rem 0.65rem !important;
+        border-radius: 18px !important;
+        border: 1.5px solid var(--primary-color) !important;
+        background: light-dark(rgba(41, 181, 232, 0.12), rgba(41, 181, 232, 0.22)) !important;
+        box-shadow: 0 2px 8px rgba(41, 181, 232, 0.3) !important;
         z-index: 999995 !important;
         position: relative !important;
     }
-    
-    #apocuna-hub-banner {
-        padding-left: 3.8rem !important;
-        padding-right: 3.8rem !important;
-        font-size: 1.05rem !important;
-        letter-spacing: 2px !important;
+
+    /* Etiqueta explícita 'Menú' al costado del icono para máxima claridad UX */
+    button[data-testid="stExpandSidebarButton"]::after,
+    [data-testid="stSidebarCollapsedControl"] button::after,
+    [data-testid="collapsedControl"] button::after {
+        content: "Menú";
+        color: var(--primary-color) !important;
+        font-weight: 700 !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.4px !important;
+        display: inline-block !important;
+    }
+
+    button[data-testid="stExpandSidebarButton"]:hover::after,
+    [data-testid="stSidebarCollapsedControl"] button:hover::after,
+    [data-testid="collapsedControl"] button:hover::after {
+        color: #FFFFFF !important;
+    }
+
+    /* Sidebar drawer en móvil: ancho controlado y cómodo */
+    [data-testid="stSidebar"] {
+        width: 86vw !important;
+        max-width: 320px !important;
+    }
+
+    /* Ajuste de contenedor principal para evitar márgenes desperdiciados */
+    [data-testid="block-container"],
+    .main .block-container {
+        padding-top: 3.6rem !important;
+        padding-left: 0.85rem !important;
+        padding-right: 0.85rem !important;
+        padding-bottom: 2.5rem !important;
+        max-width: 100% !important;
+    }
+
+    /* Jerarquía tipográfica adaptada a pantallas móviles (evita quiebres excesivos) */
+    h1, [data-testid="stHeadingWithActionElements"] h1 {
+        font-size: 1.25rem !important;
+        line-height: 1.25 !important;
+        letter-spacing: -0.015em !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    h2, [data-testid="stHeadingWithActionElements"] h2 {
+        font-size: 1.12rem !important;
+        line-height: 1.3 !important;
+        margin-top: 0.75rem !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    h3, [data-testid="stHeadingWithActionElements"] h3 {
+        font-size: 1rem !important;
+        line-height: 1.35 !important;
+    }
+
+    /* Hero intro block en móvil */
+    .hero-intro-block {
+        padding: 1rem 1.05rem !important;
+        border-radius: 10px !important;
+        margin-bottom: 0.65rem !important;
+    }
+
+    .hero-intro-title {
+        font-size: 1.18rem !important;
+        line-height: 1.25 !important;
+        margin-bottom: 0.45rem !important;
+    }
+
+    .hero-intro-text {
+        font-size: 0.86rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.84rem !important;
+        line-height: 1.4 !important;
+        margin-top: -0.15rem !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* Botones primarios en móvil: ancho completo para toque fácil con el pulgar */
+    div[data-testid="stButton"] > button {
+        width: 100% !important;
+        justify-content: center !important;
+        min-height: 42px !important;
+        font-size: 0.9rem !important;
+        margin-bottom: 0.85rem !important;
+    }
+
+    /* Tarjetas y carruseles en móvil */
+    .card-container {
+        gap: 0.75rem !important;
+        padding: 0.25rem 0.1rem 0.85rem 0.1rem !important;
+    }
+
+    .card {
+        min-width: 265px !important;
+        max-width: 82vw !important;
+        padding: 1rem !important;
+        border-radius: 10px !important;
+    }
+
+    .card h3 {
+        font-size: 0.94rem !important;
+        line-height: 1.35 !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    .card p {
+        font-size: 0.82rem !important;
+        line-height: 1.45 !important;
+        margin-bottom: 0.65rem !important;
+    }
+
+    .card-source {
+        font-size: 0.66rem !important;
+    }
+
+    .card-date {
+        font-size: 0.7rem !important;
+    }
+
+    /* Grid de fuentes a 1 columna en móvil para evitar compresión */
+    .fuentes-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+    }
+
+    .fuente-card {
+        padding: 1rem !important;
+        border-radius: 10px !important;
+    }
+
+    /* Pestañas (Tabs) en móvil */
+    [data-testid="stTabs"] button[role="tab"] {
+        font-size: 0.8rem !important;
+        padding: 0.4rem 0.55rem !important;
+    }
+
+    /* Acordeones / Expanders en móvil */
+    [data-testid="stExpander"] {
+        border-radius: 10px !important;
+        margin-bottom: 0.6rem !important;
+    }
+
+    [data-testid="stExpander"] summary {
+        font-size: 0.9rem !important;
+        padding: 0.65rem 0.85rem !important;
+    }
+
+    /* Banner demo top en sección estudiantes */
+    .banner-demo-top {
+        font-size: 0.82rem !important;
+        padding: 0.65rem 0.85rem !important;
+        line-height: 1.45 !important;
     }
 }
+
+
 
 
 
