@@ -15,6 +15,9 @@ except ImportError:
 from fuentes.noticias import fetch_noticias
 from fuentes.ckan import fetch_ckan
 from fuentes.normas import fetch_normas
+from fuentes.academico import fetch_academico
+from fuentes.polity_alertas import fetch_polity_alertas
+from fuentes.eventos_alertas import fetch_eventos_alertas
 
 try:
     import google.generativeai as genai
@@ -233,8 +236,71 @@ def main():
                 "errores_recientes": errores_ckan_list
             }
             print("   Estado por portal:", portales_ckan)
-    else:
         print("\n[3] CKAN no requiere actualización aún.")
+
+    # 4. Academico (cada 24 horas)
+    if should_update(estado.get("fuentes", {}), "academico", 24, args.forzar):
+        print("\n[4] Actualizando fuentes académicas...")
+        nuevas, desc_academico = fetch_academico(timeout_red=TIMEOUT_RED)
+        if nuevas:
+            viejas = load_json("academico.json")
+            final = deduplicate_and_sort(viejas, nuevas, limit_count=50, sort_field="fecha_iso")
+            save_json(final, "academico.json")
+            estado["fuentes"]["academico"] = {
+                "last_success": get_now_utc_str(),
+                "items": len(nuevas),
+                "errores": desc_academico
+            }
+            print(f"-> Académico actualizado: {len(nuevas)} nuevos obtenidos. Errores: {len(desc_academico)}")
+            if desc_academico:
+                print("   Errores en académico:", desc_academico)
+            print_sample("academico.json", final)
+        else:
+            print("-> Falló la recolección académica. Se conservan datos anteriores.")
+            if "academico" not in estado["fuentes"]:
+                 estado["fuentes"]["academico"] = {}
+            estado["fuentes"]["academico"]["errores_recientes"] = desc_academico
+            print("   Errores:", desc_academico)
+    else:
+        print("\n[4] Académico no requiere actualización aún.")
+        
+    # 5. Polity Alertas (cada 12 horas)
+    if should_update(estado.get("fuentes", {}), "polity", 12, args.forzar):
+        print("\n[5] Actualizando polity...")
+        nuevas, desc_polity = fetch_polity_alertas(timeout_red=TIMEOUT_RED)
+        if nuevas:
+            viejas = load_json("polity_alertas.json")
+            final = deduplicate_and_sort(viejas, nuevas, limit_count=50, sort_field="fecha_iso")
+            save_json(final, "polity_alertas.json")
+            estado["fuentes"]["polity"] = {
+                "last_success": get_now_utc_str(),
+                "items": len(nuevas),
+                "errores": desc_polity
+            }
+            print(f"-> Polity actualizado: {len(nuevas)} nuevos obtenidos. Errores: {len(desc_polity)}")
+        else:
+            print("-> Falló la recolección polity.")
+    else:
+        print("\n[5] Polity no requiere actualización aún.")
+
+    # 6. Eventos Alertas (cada 24 horas)
+    if should_update(estado.get("fuentes", {}), "eventos", 24, args.forzar):
+        print("\n[6] Actualizando eventos...")
+        nuevas, desc_eventos = fetch_eventos_alertas(timeout_red=TIMEOUT_RED)
+        if nuevas:
+            viejas = load_json("eventos_alertas.json")
+            final = deduplicate_and_sort(viejas, nuevas, limit_count=30, sort_field="fecha_iso")
+            save_json(final, "eventos_alertas.json")
+            estado["fuentes"]["eventos"] = {
+                "last_success": get_now_utc_str(),
+                "items": len(nuevas),
+                "errores": desc_eventos
+            }
+            print(f"-> Eventos actualizados: {len(nuevas)} nuevos obtenidos. Errores: {len(desc_eventos)}")
+        else:
+            print("-> Falló la recolección eventos.")
+    else:
+        print("\n[6] Eventos no requieren actualización aún.")
         
     estado["last_run"] = get_now_utc_str()
     save_json(estado, "estado.json")

@@ -1,6 +1,6 @@
 import streamlit as st
-from utils.loaders import load_polity
-from components.cards import render_polity_cards
+from utils.loaders import load_polity, load_polity_alertas
+from components.cards import render_polity_cards, render_polity_alertas_carousel
 
 def render_polity():
     st.title("🏛️ Polity and Policy")
@@ -9,6 +9,13 @@ def render_polity():
         "ejecución y evaluación de políticas públicas en el Perú."
     )
     
+    
+    alertas = load_polity_alertas()
+    if alertas:
+        st.subheader("📢 Últimas Alertas Institucionales (Automatizado)")
+        render_polity_alertas_carousel(alertas)
+        st.markdown("---")
+
     subsecciones = load_polity()
     
     if not subsecciones:

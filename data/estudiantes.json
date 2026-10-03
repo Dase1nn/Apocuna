@@ -5,7 +5,7 @@
     "tarjetas": [
       {
         "id": "est_card_1_1",
-        "titulo": "Alertas Temáticas en Gobernanza Subnacional y Políticas Públicas",
+        "titulo": "Alertas Temáticas en Gobernanza Subnacional y Políticas Públicas [Automatizado]",
         "descripcion": "Configuración de búsquedas y seguimiento de papers indexados y repositorios de tesis institucionales.",
         "fuente": "Cybertesis / Repositorios Universitarios",
         "frecuencia": "Semanal",
@@ -13,7 +13,7 @@
       },
       {
         "id": "est_card_1_2",
-        "titulo": "Boletines de Centros de Pensamiento (Think Tanks)",
+        "titulo": "Boletines de Centros de Pensamiento (Think Tanks) [Automatizado]",
         "descripcion": "Revisión periódica de resúmenes de política (policy briefs) elaborados por CIES, IEP y GRADE para conectar teoría y coyuntura.",
         "fuente": "CIES / IEP / GRADE",
         "frecuencia": "Semanal",
@@ -21,11 +21,19 @@
       },
       {
         "id": "est_card_1_3",
-        "titulo": "Revistas Especializadas en Ciencia Política y Administración",
+        "titulo": "Revistas Especializadas en Ciencia Política y Administración [Automatizado]",
         "descripcion": "Seguimiento de convocatorias para publicar artículos y ensayos de investigación estudiantil.",
         "fuente": "Revistas Académicas",
         "frecuencia": "Mensual",
         "url": "https://clad.org/publicaciones/revista-clad"
+      },
+      {
+        "id": "est_card_1_4",
+        "titulo": "Alertas Bibliográficas Abiertas (OpenAlex) [Automatizado]",
+        "descripcion": "Búsqueda periódica automatizada de artículos sobre gobernanza y políticas públicas, consumiendo la API abierta de OpenAlex para suplir restricciones de licencia.",
+        "fuente": "OpenAlex",
+        "frecuencia": "Semanal",
+        "url": "https://openalex.org/"
       }
     ]
   },
@@ -69,7 +77,7 @@
         "descripcion": "Auditoría ciudadana de declaraciones juradas de hoja de vida y financiamiento partidario.",
         "fuente": "JNE / ONPE / Datos Abiertos",
         "frecuencia": "Semanal",
-        "url": null
+        "url": "https://www.gob.pe/jne"
       },
       {
         "id": "est_card_3_2",
@@ -91,7 +99,7 @@
         "descripcion": "Red nacional de estudiantes para deliberación en mesas temáticas sobre gestión pública y descentralización.",
         "fuente": "Red de Estudiantes",
         "frecuencia": "Anual",
-        "url": null
+        "url": "https://linktr.ee/ximacrocp"
       },
       {
         "id": "est_card_4_2",
@@ -114,7 +122,7 @@
         "titulo": "Sistema Nacional de Presupuesto Público (D.L. N° 1440)",
         "resumen": "Principios del Presupuesto por Resultados (PpR): la asignación condicionada a metas físicas y productos comprobables en beneficio del ciudadano.",
         "normativa": "D.L. 1440",
-        "url": null
+        "url": "https://www.mef.gob.pe/"
       },
       {
         "id": "apunte_002",
@@ -123,7 +131,7 @@
         "titulo": "Política Nacional de Modernización de la Gestión Pública al 2030",
         "resumen": "Pilares de la modernización: Políticas públicas y planes, presupuesto por resultados, gestión por procesos, servicio civil y seguimiento-evaluación.",
         "normativa": "D.S. 103-2022-PCM",
-        "url": null
+        "url": "https://www.gob.pe/institucion/pcm/normas-legales/3233804-103-2022-pcm"
       },
       {
         "id": "apunte_003",
@@ -132,7 +140,7 @@
         "titulo": "Sistema Nacional de Planeamiento Estratégico (SINAPLAN / CEPLAN)",
         "resumen": "Cadena de planes: Plan Estratégico de Desarrollo Nacional (PEDN), PESEM, PDC y articulación con POI/PEI institucional.",
         "normativa": "D.L. 1088",
-        "url": null
+        "url": "https://www.ceplan.gob.pe/"
       },
       {
         "id": "apunte_004",
@@ -141,7 +149,7 @@
         "titulo": "Sistema Nacional de Programación Multianual y Gestión de Inversiones (Invierte.pe)",
         "resumen": "Ciclo de inversión: Programación Multianual de Inversiones (PMI), formulación y evaluación (fichas técnicas), ejecución y funcionamiento.",
         "normativa": "D.L. 1252",
-        "url": null
+        "url": "https://www.mef.gob.pe/es/inversion-publica"
       },
       {
         "id": "apunte_005",
@@ -159,7 +167,7 @@
         "titulo": "Sistema Administrativo de Gestión de Recursos Humanos (SERVIR)",
         "resumen": "Régimen del Servicio Civil (Ley N° 30057), subsistemas de planificación de políticas de RRHH, organización del trabajo y evaluación del desempeño.",
         "normativa": "Ley 30057",
-        "url": null
+        "url": "https://www.servir.gob.pe/"
       },
       {
         "id": "apunte_007",
@@ -168,7 +176,7 @@
         "titulo": "Sistema Nacional de Abastecimiento (D.L. N° 1439 y Ley de Contrataciones)",
         "resumen": "Cadena de abastecimiento público: programación multianual de bienes, servicios y obras, gestión de adquisiciones y administración de bienes.",
         "normativa": "D.L. 1439",
-        "url": null
+        "url": "https://www.mef.gob.pe/es/sistema-nacional-de-abastecimiento"
       },
       {
         "id": "apunte_008",
@@ -177,7 +185,7 @@
         "titulo": "Sistemas de Tesorería y Contabilidad Pública (D.L. N° 1441 y N° 1438)",
         "resumen": "Gestión centralizada de fondos públicos mediante la Cuenta Única del Tesoro (CUT) e integración contable de los hechos económicos del Estado.",
         "normativa": "D.L. 1441 / D.L. 1438",
-        "url": null
+        "url": "https://www.mef.gob.pe/es/tesoro-publico"
       }
     ]
   }

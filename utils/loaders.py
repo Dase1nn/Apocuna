@@ -110,6 +110,21 @@ def load_noticias():
     return load_remote_or_local_json("noticias.json")
 
 @st.cache_data(ttl=900)
+def load_academico():
+    """Carga alertas académicas (RSS/OpenAlex)."""
+    return load_remote_or_local_json("academico.json")
+
+@st.cache_data(ttl=900)
+def load_polity_alertas():
+    """Carga alertas de polity and policy."""
+    return load_remote_or_local_json("polity_alertas.json")
+
+@st.cache_data(ttl=900)
+def load_eventos_alertas():
+    """Carga alertas de eventos y convocatorias."""
+    return load_remote_or_local_json("eventos_alertas.json")
+
+@st.cache_data(ttl=900)
 def load_normas():
     """Carga el catálogo de normas de ejemplo o generadas."""
     return load_remote_or_local_json("normas.json")
@@ -187,4 +202,24 @@ def load_estudiantes():
             return json.load(f)
     except Exception as e:
         st.warning(f"Aviso: No se pudo cargar {path} ({e})")
+        return []
+
+@st.cache_data
+def load_cursos():
+    """Carga el catálogo de cursos."""
+    path = os.path.join("data", "cursos.json")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        return []
+
+@st.cache_data
+def load_becas():
+    """Carga las becas y oportunidades."""
+    path = os.path.join("data", "becas.json")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
         return []

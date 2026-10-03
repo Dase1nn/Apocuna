@@ -1,12 +1,12 @@
 {
   "fuentes": {
     "noticias": {
-      "last_success": "2026-10-03T03:07:48.031656Z",
+      "last_success": "2026-10-03T15:51:09.561200Z",
       "items": 30,
       "errores": []
     },
     "normas": {
-      "last_success": "2026-10-03T03:07:48.998868Z",
+      "last_success": "2026-10-03T15:51:11.207206Z",
       "items": 10,
       "errores": []
     },
@@ -26,7 +26,24 @@
         "PCM: deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)",
         "MINSA: sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
       ]
+    },
+    "academico": {
+      "last_success": "2026-10-03T15:51:24.762056Z",
+      "items": 17,
+      "errores": [
+        "CLACSO: HTTP 520"
+      ]
+    },
+    "polity": {
+      "last_success": "2026-10-03T15:51:30.914789Z",
+      "items": 20,
+      "errores": []
+    },
+    "eventos": {
+      "last_success": "2026-10-03T15:51:35.540051Z",
+      "items": 7,
+      "errores": []
     }
   },
-  "last_run": "2026-10-03T03:07:48.999869Z"
+  "last_run": "2026-10-03T15:51:35.540051Z"
 }

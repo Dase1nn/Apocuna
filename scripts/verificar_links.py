@@ -99,6 +99,34 @@ def load_all_urls():
                         "url": raw_u.strip() if raw_u else None
                     })
                     
+    # 5. data/cursos.json
+    cursos_path = os.path.join("data", "cursos.json")
+    if os.path.exists(cursos_path):
+        with open(cursos_path, "r", encoding="utf-8") as f:
+            cursos = json.load(f)
+            for c in cursos:
+                raw_u = c.get("url")
+                items.append({
+                    "archivo": "data/cursos.json",
+                    "id": c.get("id", ""),
+                    "titulo": c.get("nombre", ""),
+                    "url": raw_u.strip() if raw_u else None
+                })
+                
+    # 6. data/becas.json
+    becas_path = os.path.join("data", "becas.json")
+    if os.path.exists(becas_path):
+        with open(becas_path, "r", encoding="utf-8") as f:
+            becas = json.load(f)
+            for b in becas:
+                raw_u = b.get("url")
+                items.append({
+                    "archivo": "data/becas.json",
+                    "id": b.get("id", ""),
+                    "titulo": b.get("nombre", ""),
+                    "url": raw_u.strip() if raw_u else None
+                })
+                
     return items
 
 class LinkChecker:

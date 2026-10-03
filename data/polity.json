@@ -9,15 +9,15 @@
         "descripcion": "Monitoreo permanente de decretos supremos, resoluciones ministeriales y ordenanzas emitidas por los tres niveles de gobierno.",
         "frecuencia": "Diaria",
         "fuente": "El Peruano / PCM",
-        "url": null
+        "url": "https://busquedas.elperuano.pe/"
       },
       {
         "id": "card_pol_1_2",
-        "titulo": "Alertas de Modernización del Estado (SGP / PCM)",
-        "descripcion": "Revisión de directivas metodológicas, simplificación administrativa y lineamientos de rectoría emitidos por la Secretaría de Gestión Pública.",
-        "frecuencia": "Semanal",
-        "fuente": "PCM / Plataforma de Datos Abiertos",
-        "url": null
+        "titulo": "Gestión Pública (PCM)",
+        "descripcion": "Portal temático de la Presidencia del Consejo de Ministros con publicaciones, normativas, trámites y servicios sobre la administración de las entidades públicas.",
+        "frecuencia": "Permanente",
+        "fuente": "PCM / gob.pe",
+        "url": "https://www.gob.pe/institucion/pcm/tema/gestion-publica"
       },
       {
         "id": "card_pol_1_3",

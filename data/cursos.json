@@ -1,0 +1,74 @@
+[
+  {
+    "id": "c_001",
+    "nombre": "Santander Open Academy",
+    "proveedor": "Banco Santander",
+    "modalidad": "MOOC",
+    "costo": "gratuito",
+    "idioma": "Multilingüe",
+    "certificacion": "Sí",
+    "tema": "Habilidades blandas, idiomas, tecnología",
+    "url": "https://www.santanderopenacademy.com/",
+    "verificado_en": "2026-10-03T05:24:00Z"
+  },
+  {
+    "id": "c_002",
+    "nombre": "Catálogo de Cursos Coursera",
+    "proveedor": "Coursera",
+    "modalidad": "MOOC",
+    "costo": "gratuito con certificado de pago",
+    "idioma": "Multilingüe",
+    "certificacion": "Sí",
+    "tema": "Ciencia de datos, gestión pública, análisis",
+    "url": "https://www.coursera.org/",
+    "verificado_en": "2026-10-03T05:24:00Z"
+  },
+  {
+    "id": "c_003",
+    "nombre": "Campus Virtual CEPAL (ILPES)",
+    "proveedor": "CEPAL",
+    "modalidad": "autoguiado",
+    "costo": "por verificar",
+    "idioma": "Español",
+    "certificacion": "Sí",
+    "tema": "Planificación, desarrollo, políticas públicas",
+    "url": "https://www.cepal.org/es/capacitacion",
+    "verificado_en": "2026-10-03T05:24:00Z"
+  },
+  {
+    "id": "c_004",
+    "nombre": "Escuela Nacional de Administración Pública",
+    "proveedor": "SERVIR",
+    "modalidad": "sincrónico",
+    "costo": "gratuito",
+    "idioma": "Español",
+    "certificacion": "Sí",
+    "tema": "Sistemas administrativos del Estado",
+    "url": "https://www.enap.edu.pe/",
+    "verificado_en": "2026-10-03T05:24:00Z"
+  },
+  {
+    "id": "c_005",
+    "nombre": "Academia BID (INDES)",
+    "proveedor": "Banco Interamericano de Desarrollo",
+    "modalidad": "MOOC",
+    "costo": "gratuito con certificado de pago",
+    "idioma": "Español",
+    "certificacion": "Sí",
+    "tema": "Gestión de proyectos, evaluación de impacto",
+    "url": "https://cursos.iadb.org/es",
+    "verificado_en": "2026-10-03T05:24:00Z"
+  },
+  {
+    "id": "c_006",
+    "nombre": "Open Learning Campus (OLC)",
+    "proveedor": "Banco Mundial",
+    "modalidad": "autoguiado",
+    "costo": "por verificar",
+    "idioma": "Inglés / Español",
+    "certificacion": "Sí",
+    "tema": "Desarrollo global, economía",
+    "url": "https://olc.worldbank.org/",
+    "verificado_en": "2026-10-03T05:24:00Z"
+  }
+]

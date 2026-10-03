@@ -37,7 +37,7 @@
     "url_propuesta": "https://videnzainstituto.org/",
     "pagina_hallazgo": "Portal institucional de Videnza Instituto (la sección independiente /publicaciones/ fue discontinuada y centralizada en el home institucional)",
     "codigo_verificado": 200,
-    "estado": "por confirmar"
+    "estado": "aplicado por el sistema"
   },
   {
     "archivo": "data/fuentes.json",
@@ -179,18 +179,130 @@
     "codigo_verificado": 200,
     "url_final": "https://busquedas.elperuano.pe/?ci=full&fecha=20261002",
     "title_verificado": "Búsquedas El Peruano",
-    "estado": "propuesta sin aplicar"
+    "estado": "aplicada, verificada manualmente por el usuario (2026-10-03)"
   },
   {
     "archivo": "data/polity.json",
     "id": "card_pol_1_2",
-    "titulo": "Alertas de Modernización del Estado (SGP / PCM)",
+    "titulo": "Gestión Pública (PCM)",
     "url_original": "https://www.datosabiertos.gob.pe",
     "url_propuesta": "https://www.gob.pe/institucion/pcm/tema/gestion-publica",
-    "pagina_hallazgo": "Portal oficial de la Secretaría de Gestión Pública - Presidencia del Consejo de Ministros (gob.pe/institucion/pcm/tema/gestion-publica)",
+    "pagina_hallazgo": "Portal oficial de la Presidencia del Consejo de Ministros (gob.pe/institucion/pcm/tema/gestion-publica)",
     "codigo_verificado": 200,
     "url_final": "https://www.gob.pe/institucion/pcm/tema/gestion-publica",
     "title_verificado": "Gestión pública - Categorías - Presidencia del Consejo de Ministros - Plataforma del Estado Peruano",
-    "estado": "propuesta sin aplicar"
+    "estado": "aplicada, verificada manualmente por el usuario (2026-10-03)"
+  },
+  {
+    "url": "https://doi.org/10.53798/suprema.2026.v6.n2.a679",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.55892/jrg.v9i21.3756",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.61616/rvdc.v7i2.1817",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.12795/araucaria",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.5354/2452-5839.2026.81005",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.21670/ref.2612190",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.24215/26838559e056",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.64304/rac.v2i2.48",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.37261/37_alea/5",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.70577/s.e.v4i3.134",
+    "estado": "aplicado por el sistema",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://www.aspireleaders.org/",
+    "estado": "pendiente",
+    "codigo_http": 200,
+    "nota": "El usuario mencionó 'Aspire' sin más datos. Podría referirse al Aspire Leaders Program de Harvard."
+  },
+  {
+    "url": "https://aplijoven.pe/",
+    "estado": "pendiente",
+    "codigo_http": "Error DNS",
+    "nota": "El usuario mencionó 'Aplijoven' pero el dominio no resuelve o no existe. Por verificar."
+  },
+  {
+    "url": "https://doi.org/10.4324/9781003656043",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.12804/revistas.urosario.edu.co/desafios/a.15740",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.65011/prismaods.v5.i5.347",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.14244/agenda.2025.3.9",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.37811/cl_rcm.v10i5.25916",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.69484/rcz/v5/n3/213",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.32870/eees.v33i97.7492",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.59169/pentaciencias.v8i3.1907",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.37811/cl_rcm.v10i5.25919",
+    "estado": "pendiente",
+    "codigo_http": 200
+  },
+  {
+    "url": "https://doi.org/10.61616/rvdc.v7i2.1833",
+    "estado": "pendiente",
+    "codigo_http": 200
   }
 ]

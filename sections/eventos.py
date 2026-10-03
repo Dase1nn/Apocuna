@@ -1,11 +1,18 @@
 import streamlit as st
-from utils.loaders import load_eventos
-from components.cards import render_eventos_grid
+from utils.loaders import load_eventos, load_eventos_alertas
+from components.cards import render_eventos_grid, render_eventos_alertas_carousel
 
 def render_eventos():
     st.title("📅 Calendario de Eventos y Publicaciones")
     st.markdown("Revistas indexadas y congresos especializados para la difusión y deliberación en políticas públicas y gobernanza.")
     
+    
+    alertas = load_eventos_alertas()
+    if alertas:
+        st.subheader("📢 Últimas Novedades y Convocatorias (Automatizado)")
+        render_eventos_alertas_carousel(alertas)
+        st.markdown("---")
+
     eventos = load_eventos()
     if not eventos:
         st.info("No se encontraron registros en data/eventos.json.")

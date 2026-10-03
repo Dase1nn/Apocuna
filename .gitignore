@@ -1,4 +1,9 @@
 .streamlit/secrets.toml
 venv/
+.venv/
 __pycache__/
 .env
+
+docs/capturas/
+docs/fuentes/
+auditoria_tema/

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "b_001",
+    "nombre": "Programa Nacional de Becas y Crédito Educativo",
+    "institucion": "PRONABEC",
+    "tipo": "beca",
+    "url": "https://www.gob.pe/pronabec",
+    "verificado_en": "2026-10-03T05:24:00Z"
+  },
+  {
+    "id": "b_002",
+    "nombre": "Oportunidades, Becas y Movilidad",
+    "institucion": "Secretaría Nacional de la Juventud",
+    "tipo": "plataforma de búsqueda",
+    "url": "https://juventud.gob.pe/",
+    "verificado_en": "2026-10-03T05:24:00Z"
+  }
+]

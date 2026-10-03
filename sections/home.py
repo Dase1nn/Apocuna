@@ -13,8 +13,28 @@ from components.cards import (
 )
 
 def render_home():
+    # 1. BLOQUE EN HOME: ARRIBA DE TODO en Inicio, ANTES del título
+    st.markdown(
+        """
+        <div class="snow-card hero-intro-block">
+            <h1 class="hero-intro-title">¿Qué es APOCUNA y por qué existe?</h1>
+            <p class="hero-intro-text">
+                Un punto de encuentro que reúne herramientas, datos y oportunidades de formación para quienes hacen y estudian la política en el Perú. Descubre qué es APOCUNA, a quién sirve y hacia dónde va.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    if st.button("Conocer el sitio", key="btn_conocer_sitio"):
+        st.session_state.current_page = "Sobre el sitio"
+        st.rerun()
+
+    # 2. TÍTULO DE INICIO Y SUBTÍTULO
     st.title("🌐 Inicio: Radar de Coyuntura, Normas y Fuentes")
-    st.markdown("Vigilancia endógena de políticas públicas, marco regulatorio y datos abiertos del Perú.")
+    st.markdown(
+        '<p class="hero-subtitle">Vigilancia endógena de políticas públicas, marco regulatorio y datos abiertos del Perú.</p>',
+        unsafe_allow_html=True
+    )
     
     # 1. NOTICIAS POR CATEGORÍA
     st.header("📰 Radar de Noticias y Análisis")

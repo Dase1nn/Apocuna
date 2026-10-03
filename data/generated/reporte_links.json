@@ -7,7 +7,7 @@
     "estado": "bloquea bots",
     "codigo": 418,
     "url_final": "https://www.datosabiertos.gob.pe/",
-    "fecha_utc": "2026-10-03T04:15:50.001962Z"
+    "fecha_utc": "2026-10-03T13:28:55.417685Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -17,7 +17,7 @@
     "estado": "sin conexión",
     "codigo": "timeout (15s)",
     "url_final": null,
-    "fecha_utc": "2026-10-03T04:15:51.143432Z"
+    "fecha_utc": "2026-10-03T13:28:56.560503Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -27,7 +27,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.dge.gob.pe/portalnuevo/",
-    "fecha_utc": "2026-10-03T04:16:17.014556Z"
+    "fecha_utc": "2026-10-03T13:29:22.616656Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -37,7 +37,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": "timeout (15s)",
     "url_final": null,
-    "fecha_utc": "2026-10-03T04:16:19.485752Z"
+    "fecha_utc": "2026-10-03T13:29:25.191940Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -47,7 +47,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": "error de conexión",
     "url_final": null,
-    "fecha_utc": "2026-10-03T04:16:44.493547Z"
+    "fecha_utc": "2026-10-03T13:29:50.416885Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -57,7 +57,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://escale.minedu.gob.pe/",
-    "fecha_utc": "2026-10-03T04:16:45.768872Z"
+    "fecha_utc": "2026-10-03T13:29:51.715965Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -67,7 +67,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.defensoria.gob.pe/categorias_de_documentos/reportes/",
-    "fecha_utc": "2026-10-03T04:16:48.496604Z"
+    "fecha_utc": "2026-10-03T13:29:55.099118Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -77,17 +77,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/contraloria/noticias",
-    "fecha_utc": "2026-10-03T04:16:50.143037Z"
+    "fecha_utc": "2026-10-03T13:29:57.038153Z"
   },
   {
     "archivo": "data/fuentes.json",
     "id": "f_013",
     "titulo": "Investigaciones CIES",
     "url": "https://cies.org.pe/investigaciones/",
-    "estado": "ok (verificado a mano)",
-    "codigo": "timeout (15s)",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:16:52.103112Z"
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://cies.org.pe/investigaciones/",
+    "fecha_utc": "2026-10-03T13:29:58.742494Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -97,7 +97,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://estudiosdeopinion.iep.org.pe/",
-    "fecha_utc": "2026-10-03T04:17:17.698465Z"
+    "fecha_utc": "2026-10-03T13:30:11.477911Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -107,7 +107,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://repositorio.iep.org.pe/",
-    "fecha_utc": "2026-10-03T04:17:19.224562Z"
+    "fecha_utc": "2026-10-03T13:30:13.219075Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -117,7 +117,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://grade.org.pe/publicaciones/",
-    "fecha_utc": "2026-10-03T04:17:20.913111Z"
+    "fecha_utc": "2026-10-03T13:30:14.948213Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -127,17 +127,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://ipe.org.pe/nuestras-publicaciones/",
-    "fecha_utc": "2026-10-03T04:17:22.914305Z"
+    "fecha_utc": "2026-10-03T13:30:17.242565Z"
   },
   {
     "archivo": "data/fuentes.json",
     "id": "f_020",
     "titulo": "Publicaciones de Gestión Pública Videnza",
-    "url": "https://videnzainstituto.org/publicaciones/",
-    "estado": "roto",
-    "codigo": 404,
-    "url_final": "https://videnzainstituto.org/publicaciones/",
-    "fecha_utc": "2026-10-03T04:17:33.998487Z"
+    "url": "https://videnzainstituto.org/",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://videnzainstituto.org/",
+    "fecha_utc": "2026-10-03T13:30:28.165270Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -147,7 +147,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://statistics.cepal.org/portal/cepalstat/",
-    "fecha_utc": "2026-10-03T04:17:39.370859Z"
+    "fecha_utc": "2026-10-03T13:30:30.795985Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -157,7 +157,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://api-cepalstat.cepal.org/",
-    "fecha_utc": "2026-10-03T04:17:40.922585Z"
+    "fecha_utc": "2026-10-03T13:30:32.064602Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -167,7 +167,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.cepal.org/es/publicaciones",
-    "fecha_utc": "2026-10-03T04:17:42.945533Z"
+    "fecha_utc": "2026-10-03T13:30:34.084460Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -177,7 +177,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.unicef.org/peru/publicaciones",
-    "fecha_utc": "2026-10-03T04:17:45.024833Z"
+    "fecha_utc": "2026-10-03T13:30:36.175038Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -187,7 +187,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": 403,
     "url_final": "https://www.undp.org/es/peru/publicaciones",
-    "fecha_utc": "2026-10-03T04:17:46.967881Z"
+    "fecha_utc": "2026-10-03T13:30:38.179588Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -197,7 +197,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.ilo.org/es/regiones-y-paises/america-latina-y-el-caribe/oficina-de-la-oit-para-los-paises-andinos",
-    "fecha_utc": "2026-10-03T04:17:49.504013Z"
+    "fecha_utc": "2026-10-03T13:30:40.563190Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -207,7 +207,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": 403,
     "url_final": "https://ilostat.ilo.org/data/",
-    "fecha_utc": "2026-10-03T04:17:51.376791Z"
+    "fecha_utc": "2026-10-03T13:30:42.582079Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -217,7 +217,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://openknowledge.worldbank.org/",
-    "fecha_utc": "2026-10-03T04:17:53.283326Z"
+    "fecha_utc": "2026-10-03T13:30:44.874437Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -227,7 +227,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": 403,
     "url_final": "https://publications.iadb.org/",
-    "fecha_utc": "2026-10-03T04:18:05.088191Z"
+    "fecha_utc": "2026-10-03T13:30:56.435001Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -237,7 +237,7 @@
     "estado": "redirige",
     "codigo": 200,
     "url_final": "https://revistas.siep.org.pe/index.php/RPIE/es",
-    "fecha_utc": "2026-10-03T04:18:06.155893Z"
+    "fecha_utc": "2026-10-03T13:30:57.761000Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -247,7 +247,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://epaa.asu.edu/index.php/epaa",
-    "fecha_utc": "2026-10-03T04:18:08.740775Z"
+    "fecha_utc": "2026-10-03T13:31:00.946498Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -257,7 +257,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://politicaspublicas.flacso.org.ar/",
-    "fecha_utc": "2026-10-03T04:18:12.130328Z"
+    "fecha_utc": "2026-10-03T13:31:04.858988Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -267,7 +267,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://seer.ufrgs.br/read",
-    "fecha_utc": "2026-10-03T04:18:22.832148Z"
+    "fecha_utc": "2026-10-03T13:31:15.948671Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -277,7 +277,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://clad.org/publicaciones/revista-clad",
-    "fecha_utc": "2026-10-03T04:18:25.031859Z"
+    "fecha_utc": "2026-10-03T13:31:18.401412Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -287,7 +287,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": "bloqueado por robots.txt",
     "url_final": null,
-    "fecha_utc": "2026-10-03T04:18:27.074378Z"
+    "fecha_utc": "2026-10-03T13:31:20.975035Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -297,7 +297,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://siep.org.pe/",
-    "fecha_utc": "2026-10-03T04:18:27.704701Z"
+    "fecha_utc": "2026-10-03T13:31:21.800925Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -307,17 +307,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://alacip.org/congresos/",
-    "fecha_utc": "2026-10-03T04:18:29.571316Z"
+    "fecha_utc": "2026-10-03T13:31:23.390226Z"
   },
   {
     "archivo": "data/polity.json",
     "id": "card_pol_1_1",
     "titulo": "Boletines de Normas Legales y Diario Oficial",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:18:33.252098Z"
+    "url": "https://busquedas.elperuano.pe/",
+    "estado": "redirige",
+    "codigo": 200,
+    "url_final": "https://busquedas.elperuano.pe/?ci=full&fecha=20261003",
+    "fecha_utc": "2026-10-03T13:31:27.774129Z"
   },
   {
     "archivo": "data/polity.json",
@@ -327,7 +327,107 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://incoreperu.pe/",
-    "fecha_utc": "2026-10-03T04:18:33.252098Z"
+    "fecha_utc": "2026-10-03T13:31:30.607193Z"
+  },
+  {
+    "archivo": "data/estudiantes.json",
+    "id": "est_card_1_4",
+    "titulo": "Alertas Bibliográficas Abiertas (OpenAlex) [Automatizado]",
+    "url": "https://openalex.org/",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://openalex.org/",
+    "fecha_utc": "2026-10-03T13:31:35.927352Z"
+  },
+  {
+    "archivo": "data/estudiantes.json",
+    "id": "apunte_001",
+    "titulo": "Sistema Nacional de Presupuesto Público (D.L. N° 1440)",
+    "url": "https://www.mef.gob.pe/",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.mef.gob.pe/",
+    "fecha_utc": "2026-10-03T13:31:37.550123Z"
+  },
+  {
+    "archivo": "data/estudiantes.json",
+    "id": "apunte_003",
+    "titulo": "Sistema Nacional de Planeamiento Estratégico (SINAPLAN / CEPLAN)",
+    "url": "https://www.ceplan.gob.pe/",
+    "estado": "redirige",
+    "codigo": 200,
+    "url_final": "https://www.gob.pe/ceplan",
+    "fecha_utc": "2026-10-03T13:31:39.073929Z"
+  },
+  {
+    "archivo": "data/estudiantes.json",
+    "id": "apunte_006",
+    "titulo": "Sistema Administrativo de Gestión de Recursos Humanos (SERVIR)",
+    "url": "https://www.servir.gob.pe/",
+    "estado": "redirige",
+    "codigo": 200,
+    "url_final": "https://www.gob.pe/servir",
+    "fecha_utc": "2026-10-03T13:31:42.651028Z"
+  },
+  {
+    "archivo": "data/cursos.json",
+    "id": "c_001",
+    "titulo": "Santander Open Academy",
+    "url": "https://www.santanderopenacademy.com/",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.santanderopenacademy.com/",
+    "fecha_utc": "2026-10-03T13:31:45.042076Z"
+  },
+  {
+    "archivo": "data/cursos.json",
+    "id": "c_002",
+    "titulo": "Catálogo de Cursos Coursera",
+    "url": "https://www.coursera.org/",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.coursera.org/",
+    "fecha_utc": "2026-10-03T13:31:46.291982Z"
+  },
+  {
+    "archivo": "data/cursos.json",
+    "id": "c_004",
+    "titulo": "Escuela Nacional de Administración Pública",
+    "url": "https://www.enap.edu.pe/",
+    "estado": "sin conexión",
+    "codigo": "timeout (15s)",
+    "url_final": null,
+    "fecha_utc": "2026-10-03T13:31:48.487486Z"
+  },
+  {
+    "archivo": "data/cursos.json",
+    "id": "c_005",
+    "titulo": "Academia BID (INDES)",
+    "url": "https://cursos.iadb.org/es",
+    "estado": "bloquea bots",
+    "codigo": 403,
+    "url_final": "https://cursos.iadb.org/es",
+    "fecha_utc": "2026-10-03T13:32:14.114164Z"
+  },
+  {
+    "archivo": "data/cursos.json",
+    "id": "c_006",
+    "titulo": "Open Learning Campus (OLC)",
+    "url": "https://olc.worldbank.org/",
+    "estado": "redirige",
+    "codigo": 200,
+    "url_final": "https://login.microsoftonline.com/31a2fec0-266b-4c67-b56e-2796d8f59c36/oauth2/v2.0/authorize?client_id=66d9e67c-d895-453b-a9c9-be1b7f9ecda2&redirect_uri=https%3A%2F%2Folccustext.worldbank.org%2Foauth2%2Fidpresponse&response_type=code&scope=openid&state=P9mrH0R11lzHNArPDeJOWMLOkDn8katCEdl%2FdIqzMGJkHkW9Tc0eQv2jfUnE7d9Wg5rnJNN03CHXjifbKYFjHif8ly3sDZQ2YATWdjvySBBMG5AtI3pjyfO4%2BO4So2RKQXdrpPW8a%2BqnC2DJ0CfozSoWHnEok72e1ndPW4zvpozi5Qu0YVydH2HKpSglkDnEqpSgtk1Ub2%2FztNHSNM%2BtVr492fAC1pszxB2GvRdJEyE4bHeRV030HZ7E%2B0b4VJGxBD0x",
+    "fecha_utc": "2026-10-03T13:32:15.155869Z"
+  },
+  {
+    "archivo": "data/becas.json",
+    "id": "b_002",
+    "titulo": "Oportunidades, Becas y Movilidad",
+    "url": "https://juventud.gob.pe/",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://juventud.gob.pe/",
+    "fecha_utc": "2026-10-03T13:32:20.244986Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -337,7 +437,7 @@
     "estado": "bloquea bots",
     "codigo": 418,
     "url_final": "https://www.datosabiertos.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=10",
-    "fecha_utc": "2026-10-03T04:18:36.897039Z"
+    "fecha_utc": "2026-10-03T13:32:31.224175Z"
   },
   {
     "archivo": "data/polity.json",
@@ -347,7 +447,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": "timeout (15s)",
     "url_final": null,
-    "fecha_utc": "2026-10-03T04:18:37.491697Z"
+    "fecha_utc": "2026-10-03T13:32:32.600818Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -357,7 +457,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://escale.minedu.gob.pe/censo-escolar",
-    "fecha_utc": "2026-10-03T04:18:52.909948Z"
+    "fecha_utc": "2026-10-03T13:32:47.610167Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -367,7 +467,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.defensoria.gob.pe/areas_tematicas/paz-social-y-prevencion-de-conflictos/",
-    "fecha_utc": "2026-10-03T04:18:55.354333Z"
+    "fecha_utc": "2026-10-03T13:32:50.281516Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -377,17 +477,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/contraloria",
-    "fecha_utc": "2026-10-03T04:18:58.627638Z"
+    "fecha_utc": "2026-10-03T13:32:54.188150Z"
   },
   {
     "archivo": "data/polity.json",
     "id": "card_pol_4_1",
     "titulo": "Investigaciones Económicas y Sociales (CIES)",
     "url": "https://cies.org.pe/investigaciones/",
-    "estado": "ok (verificado a mano)",
-    "codigo": "timeout (15s)",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:18:59.148099Z"
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://cies.org.pe/investigaciones/",
+    "fecha_utc": "2026-10-03T13:32:55.299031Z"
   },
   {
     "archivo": "data/polity.json",
@@ -397,17 +497,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://estudiosdeopinion.iep.org.pe/",
-    "fecha_utc": "2026-10-03T04:19:14.638621Z"
+    "fecha_utc": "2026-10-03T13:32:58.563811Z"
   },
   {
     "archivo": "data/estudiantes.json",
     "id": "est_card_1_1",
-    "titulo": "Alertas Temáticas en Gobernanza Subnacional y Políticas Públicas",
+    "titulo": "Alertas Temáticas en Gobernanza Subnacional y Políticas Públicas [Automatizado]",
     "url": "https://repositorio.iep.org.pe",
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://repositorio.iep.org.pe/",
-    "fecha_utc": "2026-10-03T04:19:15.669591Z"
+    "fecha_utc": "2026-10-03T13:32:59.969096Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -417,7 +517,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://grade.org.pe/publicaciones_categorias/documento-de-politica/",
-    "fecha_utc": "2026-10-03T04:19:16.040886Z"
+    "fecha_utc": "2026-10-03T13:33:00.579165Z"
   },
   {
     "archivo": "data/polity.json",
@@ -427,7 +527,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://statistics.cepal.org/portal/cepalstat/",
-    "fecha_utc": "2026-10-03T04:19:17.543262Z"
+    "fecha_utc": "2026-10-03T13:33:02.058331Z"
+  },
+  {
+    "archivo": "data/cursos.json",
+    "id": "c_003",
+    "titulo": "Campus Virtual CEPAL (ILPES)",
+    "url": "https://www.cepal.org/es/capacitacion",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.cepal.org/es/capacitacion",
+    "fecha_utc": "2026-10-03T13:33:02.808259Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -437,7 +547,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.unicef.org/peru/informes/ninez-y-adolescencia-indigena-y-afroperuana",
-    "fecha_utc": "2026-10-03T04:19:18.111463Z"
+    "fecha_utc": "2026-10-03T13:33:03.826687Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -447,7 +557,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": 403,
     "url_final": "https://www.undp.org/es/peru/publicaciones/integridad-de-la-informacion-en-las-elecciones-generales-2026",
-    "fecha_utc": "2026-10-03T04:19:19.187541Z"
+    "fecha_utc": "2026-10-03T13:33:04.747056Z"
   },
   {
     "archivo": "data/polity.json",
@@ -457,7 +567,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://openknowledge.worldbank.org/",
-    "fecha_utc": "2026-10-03T04:19:20.095056Z"
+    "fecha_utc": "2026-10-03T13:33:05.695556Z"
   },
   {
     "archivo": "data/polity.json",
@@ -467,7 +577,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": 403,
     "url_final": "https://publications.iadb.org/",
-    "fecha_utc": "2026-10-03T04:19:23.909767Z"
+    "fecha_utc": "2026-10-03T13:33:07.410265Z"
   },
   {
     "archivo": "data/estudiantes.json",
@@ -477,7 +587,7 @@
     "estado": "redirige",
     "codigo": 200,
     "url_final": "https://revistas.siep.org.pe/index.php/RPIE/es",
-    "fecha_utc": "2026-10-03T04:19:24.303114Z"
+    "fecha_utc": "2026-10-03T13:33:07.993644Z"
   },
   {
     "archivo": "data/eventos.json",
@@ -487,17 +597,27 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://clad.org/congresos/",
-    "fecha_utc": "2026-10-03T04:19:26.015082Z"
+    "fecha_utc": "2026-10-03T13:33:09.727631Z"
   },
   {
-    "archivo": "data/polity.json",
-    "id": "card_pol_1_2",
-    "titulo": "Alertas de Modernización del Estado (SGP / PCM)",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
+    "archivo": "data/estudiantes.json",
+    "id": "est_card_4_1",
+    "titulo": "Macrocoloquio de Estudiantes de Ciencia Política",
+    "url": "https://linktr.ee/ximacrocp",
+    "estado": "ok (verificado a mano)",
+    "codigo": "bloqueado por robots.txt",
     "url_final": null,
-    "fecha_utc": "2026-10-03T04:19:27.240595Z"
+    "fecha_utc": "2026-10-03T13:33:11.446482Z"
+  },
+  {
+    "archivo": "data/estudiantes.json",
+    "id": "apunte_004",
+    "titulo": "Sistema Nacional de Programación Multianual y Gestión de Inversiones (Invierte.pe)",
+    "url": "https://www.mef.gob.pe/es/inversion-publica",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.mef.gob.pe/es/inversion-publica",
+    "fecha_utc": "2026-10-03T13:33:11.446482Z"
   },
   {
     "archivo": "data/estudiantes.json",
@@ -507,7 +627,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": "timeout (15s)",
     "url_final": null,
-    "fecha_utc": "2026-10-03T04:19:27.240595Z"
+    "fecha_utc": "2026-10-03T13:33:12.923831Z"
   },
   {
     "archivo": "data/polity.json",
@@ -517,7 +637,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://escale.minedu.gob.pe/censo-escolar",
-    "fecha_utc": "2026-10-03T04:19:42.245701Z"
+    "fecha_utc": "2026-10-03T13:33:27.942349Z"
   },
   {
     "archivo": "data/polity.json",
@@ -527,7 +647,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.defensoria.gob.pe/areas_tematicas/paz-social-y-prevencion-de-conflictos/",
-    "fecha_utc": "2026-10-03T04:19:44.044277Z"
+    "fecha_utc": "2026-10-03T13:33:30.198970Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -537,17 +657,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/inei/noticias/1450362-el-64-5-de-los-hogares-del-pais-tiene-conexion-a-internet-durante-el-segundo-trimestre-de-2026",
-    "fecha_utc": "2026-10-03T04:19:47.702792Z"
+    "fecha_utc": "2026-10-03T13:33:33.779512Z"
   },
   {
     "archivo": "data/estudiantes.json",
     "id": "est_card_1_2",
-    "titulo": "Boletines de Centros de Pensamiento (Think Tanks)",
+    "titulo": "Boletines de Centros de Pensamiento (Think Tanks) [Automatizado]",
     "url": "https://cies.org.pe/investigaciones/",
-    "estado": "ok (verificado a mano)",
-    "codigo": "timeout (15s)",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:19:48.222246Z"
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://cies.org.pe/investigaciones/",
+    "fecha_utc": "2026-10-03T13:33:34.621872Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -557,7 +677,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://grade.org.pe/publicaciones/areas/educacion-y-aprendizajes/",
-    "fecha_utc": "2026-10-03T04:20:03.713940Z"
+    "fecha_utc": "2026-10-03T13:33:37.430508Z"
   },
   {
     "archivo": "data/polity.json",
@@ -567,7 +687,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.unicef.org/peru/publicaciones",
-    "fecha_utc": "2026-10-03T04:20:04.673860Z"
+    "fecha_utc": "2026-10-03T13:33:38.666725Z"
   },
   {
     "archivo": "data/polity.json",
@@ -577,7 +697,7 @@
     "estado": "ok (verificado a mano)",
     "codigo": 403,
     "url_final": "https://www.undp.org/es/peru/publicaciones",
-    "fecha_utc": "2026-10-03T04:20:05.143682Z"
+    "fecha_utc": "2026-10-03T13:33:39.541584Z"
   },
   {
     "archivo": "data/estudiantes.json",
@@ -587,7 +707,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://openknowledge.worldbank.org/",
-    "fecha_utc": "2026-10-03T04:20:06.040077Z"
+    "fecha_utc": "2026-10-03T13:33:40.509755Z"
   },
   {
     "archivo": "data/estudiantes.json",
@@ -597,27 +717,27 @@
     "estado": "ok (verificado a mano)",
     "codigo": 403,
     "url_final": "https://publications.iadb.org/",
-    "fecha_utc": "2026-10-03T04:20:07.700033Z"
+    "fecha_utc": "2026-10-03T13:33:42.210749Z"
   },
   {
     "archivo": "data/estudiantes.json",
     "id": "est_card_1_3",
-    "titulo": "Revistas Especializadas en Ciencia Política y Administración",
+    "titulo": "Revistas Especializadas en Ciencia Política y Administración [Automatizado]",
     "url": "https://clad.org/publicaciones/revista-clad",
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://clad.org/publicaciones/revista-clad",
-    "fecha_utc": "2026-10-03T04:20:08.099699Z"
+    "fecha_utc": "2026-10-03T13:33:43.531470Z"
   },
   {
     "archivo": "data/estudiantes.json",
-    "id": "est_card_3_1",
-    "titulo": "Observatorios Electorales y Transparencia Institucional",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:09.717619Z"
+    "id": "apunte_007",
+    "titulo": "Sistema Nacional de Abastecimiento (D.L. N° 1439 y Ley de Contrataciones)",
+    "url": "https://www.mef.gob.pe/es/sistema-nacional-de-abastecimiento",
+    "estado": "roto",
+    "codigo": 404,
+    "url_final": "https://www.mef.gob.pe/es/sistema-nacional-de-abastecimiento",
+    "fecha_utc": "2026-10-03T13:33:45.183804Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -627,7 +747,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655560-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-i-trimestre-2026",
-    "fecha_utc": "2026-10-03T04:20:09.717619Z"
+    "fecha_utc": "2026-10-03T13:33:47.242026Z"
   },
   {
     "archivo": "data/polity.json",
@@ -637,17 +757,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://grade.org.pe/publicaciones_categorias/documento-de-politica/",
-    "fecha_utc": "2026-10-03T04:20:09.859636Z"
+    "fecha_utc": "2026-10-03T13:33:47.385402Z"
   },
   {
     "archivo": "data/estudiantes.json",
-    "id": "est_card_4_1",
-    "titulo": "Macrocoloquio de Estudiantes de Ciencia Política",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:12.379763Z"
+    "id": "apunte_008",
+    "titulo": "Sistemas de Tesorería y Contabilidad Pública (D.L. N° 1441 y N° 1438)",
+    "url": "https://www.mef.gob.pe/es/tesoro-publico",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.mef.gob.pe/es/tesoro-publico",
+    "fecha_utc": "2026-10-03T13:33:49.470671Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -657,17 +777,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655583-estado-de-la-ninez-y-adolescencia-2025",
-    "fecha_utc": "2026-10-03T04:20:12.379763Z"
-  },
-  {
-    "archivo": "data/estudiantes.json",
-    "id": "apunte_001",
-    "titulo": "Sistema Nacional de Presupuesto Público (D.L. N° 1440)",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:12.503349Z"
+    "fecha_utc": "2026-10-03T13:33:50.186614Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -677,17 +787,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655609-region-lima-estructura-empresarial-2025",
-    "fecha_utc": "2026-10-03T04:20:12.503349Z"
-  },
-  {
-    "archivo": "data/estudiantes.json",
-    "id": "apunte_002",
-    "titulo": "Política Nacional de Modernización de la Gestión Pública al 2030",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:13.504894Z"
+    "fecha_utc": "2026-10-03T13:33:50.688610Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -697,17 +797,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/inei/noticias/1449181-presentan-estudio-sobre-el-estado-de-la-ninez-y-adolescencia-indigena-y-afroperuana-en-el-peru",
-    "fecha_utc": "2026-10-03T04:20:13.504894Z"
-  },
-  {
-    "archivo": "data/estudiantes.json",
-    "id": "apunte_003",
-    "titulo": "Sistema Nacional de Planeamiento Estratégico (SINAPLAN / CEPLAN)",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:14.506915Z"
+    "fecha_utc": "2026-10-03T13:33:51.708000Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -717,17 +807,7 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/contraloria/noticias/1449744-contraloria-advierte-retraso-en-inversiones-del-nuevo-puerto-de-san-juan-de-marcona-por-demora-en-entrega-de-terrenos",
-    "fecha_utc": "2026-10-03T04:20:14.506915Z"
-  },
-  {
-    "archivo": "data/estudiantes.json",
-    "id": "apunte_004",
-    "titulo": "Sistema Nacional de Programación Multianual y Gestión de Inversiones (Invierte.pe)",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:15.502823Z"
+    "fecha_utc": "2026-10-03T13:33:52.629753Z"
   },
   {
     "archivo": "data/fuentes.json",
@@ -737,17 +817,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/contraloria/noticias/1373454-contraloria-interviene-en-chimbote-para-destrabar-obra-educativa-paralizada",
-    "fecha_utc": "2026-10-03T04:20:15.502823Z"
+    "fecha_utc": "2026-10-03T13:33:53.766482Z"
   },
   {
-    "archivo": "data/estudiantes.json",
-    "id": "apunte_006",
-    "titulo": "Sistema Administrativo de Gestión de Recursos Humanos (SERVIR)",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:16.511460Z"
+    "archivo": "data/polity.json",
+    "id": "card_pol_1_2",
+    "titulo": "Gestión Pública (PCM)",
+    "url": "https://www.gob.pe/institucion/pcm/tema/gestion-publica",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.gob.pe/institucion/pcm/tema/gestion-publica",
+    "fecha_utc": "2026-10-03T13:33:54.682697Z"
   },
   {
     "archivo": "data/polity.json",
@@ -757,17 +837,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/contraloria/noticias",
-    "fecha_utc": "2026-10-03T04:20:16.511460Z"
+    "fecha_utc": "2026-10-03T13:33:55.906889Z"
   },
   {
     "archivo": "data/estudiantes.json",
-    "id": "apunte_007",
-    "titulo": "Sistema Nacional de Abastecimiento (D.L. N° 1439 y Ley de Contrataciones)",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:17.963187Z"
+    "id": "est_card_3_1",
+    "titulo": "Observatorios Electorales y Transparencia Institucional",
+    "url": "https://www.gob.pe/jne",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.gob.pe/jne",
+    "fecha_utc": "2026-10-03T13:33:56.900122Z"
   },
   {
     "archivo": "data/estudiantes.json",
@@ -777,17 +857,17 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/institucion/inei/noticias",
-    "fecha_utc": "2026-10-03T04:20:17.963187Z"
+    "fecha_utc": "2026-10-03T13:33:57.713066Z"
   },
   {
     "archivo": "data/estudiantes.json",
-    "id": "apunte_008",
-    "titulo": "Sistemas de Tesorería y Contabilidad Pública (D.L. N° 1441 y N° 1438)",
-    "url": null,
-    "estado": "demo (sin url)",
-    "codigo": "N/A",
-    "url_final": null,
-    "fecha_utc": "2026-10-03T04:20:18.783166Z"
+    "id": "apunte_002",
+    "titulo": "Política Nacional de Modernización de la Gestión Pública al 2030",
+    "url": "https://www.gob.pe/institucion/pcm/normas-legales/3233804-103-2022-pcm",
+    "estado": "redirige",
+    "codigo": 200,
+    "url_final": "https://www.gob.pe/institucion/regionpiura-drtc/normas-legales/3233804-resolucion-directoral-regional-n-1716_2011",
+    "fecha_utc": "2026-10-03T13:33:58.897773Z"
   },
   {
     "archivo": "data/estudiantes.json",
@@ -797,6 +877,16 @@
     "estado": "ok",
     "codigo": 200,
     "url_final": "https://www.gob.pe/contraloria",
-    "fecha_utc": "2026-10-03T04:20:18.783166Z"
+    "fecha_utc": "2026-10-03T13:33:59.798318Z"
+  },
+  {
+    "archivo": "data/becas.json",
+    "id": "b_001",
+    "titulo": "Programa Nacional de Becas y Crédito Educativo",
+    "url": "https://www.gob.pe/pronabec",
+    "estado": "ok",
+    "codigo": 200,
+    "url_final": "https://www.gob.pe/pronabec",
+    "fecha_utc": "2026-10-03T13:34:00.654214Z"
   }
 ]
