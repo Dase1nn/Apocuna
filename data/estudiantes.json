@@ -108,6 +108,20 @@
         "fuente": "SIEP Perú",
         "frecuencia": "Bienal",
         "url": "https://revistas.siep.org.pe/"
+      },
+      {
+        "id": "est_card_4_3",
+        "titulo": "Colegio de Politólogos del Perú (CPOL)",
+        "nombre": "Colegio de Politólogos del Perú (CPOL)",
+        "descripcion": "Institución de derecho público interno (Ley N° 32147) para la representación gremial, defensa profesional, trámites de colegiatura y habilitación.",
+        "descripcion_corta": "Institución de derecho público interno (Ley N° 32147) para la representación gremial, defensa profesional, trámites de colegiatura y habilitación.",
+        "fuente": "CPOL Perú",
+        "institucion": "Colegio de Politólogos del Perú",
+        "frecuencia": "Permanente",
+        "url": "https://www.cpolperu.org.pe/",
+        "tipo": "portal",
+        "verificado_en": "2026-10-18T19:55:00Z",
+        "estado": "verificado por script"
       }
     ]
   },

@@ -304,5 +304,65 @@
     "url": "https://doi.org/10.61616/rvdc.v7i2.1833",
     "estado": "pendiente",
     "codigo_http": 200
+  },
+  {
+    "archivo": "data/cursos.json",
+    "titulo": "MIT OpenCourseWare (Portada general)",
+    "url": "https://ocw.mit.edu/",
+    "categoria_sugerida": "Catálogo de Cursos",
+    "codigo_verificado": 200,
+    "costo": "gratuito",
+    "certificacion": "no otorga créditos / no certifica (Non-Credit)",
+    "licencia": "por verificar",
+    "estado": "aplicado por el sistema",
+    "nota": "Plataforma de acceso abierto a materiales de cursos del MIT (notas de clase, exámenes y videos). Propuesta pendiente de confirmación."
+  },
+  {
+    "archivo": "data/cursos.json",
+    "titulo": "MIT OpenCourseWare - Political Science",
+    "url": "https://ocw.mit.edu/search/?t=Political+Science",
+    "categoria_sugerida": "Catálogo de Cursos (Ciencia Política)",
+    "codigo_verificado": 200,
+    "costo": "gratuito",
+    "certificacion": "no otorga créditos / no certifica (Non-Credit)",
+    "licencia": "por verificar",
+    "estado": "aplicado por el sistema",
+    "nota": "Filtro temático de cursos de Ciencia Política en MIT OCW."
+  },
+  {
+    "archivo": "data/cursos.json",
+    "titulo": "MIT OpenCourseWare - Social Science",
+    "url": "https://ocw.mit.edu/search/?t=Social+Science",
+    "categoria_sugerida": "Catálogo de Cursos (Ciencias Sociales / Políticas Públicas)",
+    "codigo_verificado": 200,
+    "costo": "gratuito",
+    "certificacion": "no otorga créditos / no certifica (Non-Credit)",
+    "licencia": "por verificar",
+    "estado": "aplicado por el sistema",
+    "nota": "Filtro temático de cursos de Ciencias Sociales en MIT OCW."
+  },
+  {
+    "archivo": "data/cursos.json",
+    "titulo": "MIT OpenCourseWare - Probability and Statistics",
+    "url": "https://ocw.mit.edu/search/?t=Probability+and+Statistics",
+    "categoria_sugerida": "Catálogo de Cursos (Estadística y Análisis de Datos)",
+    "codigo_verificado": 200,
+    "costo": "gratuito",
+    "certificacion": "no otorga créditos / no certifica (Non-Credit)",
+    "licencia": "por verificar",
+    "estado": "aplicado por el sistema",
+    "nota": "Filtro temático de cursos de Probabilidad y Estadística en MIT OCW."
+  },
+  {
+    "archivo": "data/cursos.json",
+    "titulo": "MIT OpenCourseWare - Public Administration",
+    "url": "https://ocw.mit.edu/search/?t=Public+Administration",
+    "categoria_sugerida": "Catálogo de Cursos (Gestión Pública y Políticas Públicas)",
+    "codigo_verificado": 200,
+    "costo": "gratuito",
+    "certificacion": "no otorga créditos / no certifica (Non-Credit)",
+    "licencia": "por verificar",
+    "estado": "aplicado por el sistema",
+    "nota": "Filtro temático de cursos de Administración Pública en MIT OCW."
   }
 ]

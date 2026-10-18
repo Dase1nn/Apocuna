@@ -342,5 +342,16 @@
     "descripcion_corta": "Intervención de Contraloría en Áncash.",
     "url": "https://www.gob.pe/institucion/contraloria/noticias/1373454-contraloria-interviene-en-chimbote-para-destrabar-obra-educativa-paralizada",
     "tipo": "informe"
+  },
+  {
+    "id": "f_039",
+    "bloque": "Organismos multilaterales",
+    "nombre": "Publicaciones CIDEU",
+    "institucion": "CIDEU",
+    "descripcion_corta": "Repositorio de publicaciones y herramientas sobre planificación estratégica urbana y gestión municipal iberoamericana.",
+    "url": "https://cideu.org/observatorio-del-pensamiento-estrategico-urbano/publicaciones/",
+    "tipo": "repositorio",
+    "verificado_en": "2026-10-18T19:55:00Z",
+    "estado": "verificado por script"
   }
 ]
