@@ -1,0 +1,50 @@
+{
+  "fuentes": {
+    "noticias": {
+      "last_success": "2026-10-31T11:48:27.695576Z",
+      "items": 30,
+      "errores": []
+    },
+    "normas": {
+      "last_success": "2026-10-31T11:48:28.313978Z",
+      "items": 10,
+      "errores": []
+    },
+    "ckan": {
+      "items": 0,
+      "portales": {
+        "PCM": {
+          "codigo": "deshabilitado",
+          "causa": "deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)"
+        },
+        "MINSA": {
+          "codigo": "sin conexión",
+          "causa": "sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+        }
+      },
+      "errores_recientes": [
+        "PCM: deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)",
+        "MINSA: sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+      ]
+    },
+    "academico": {
+      "last_success": "2026-10-31T04:29:06.283908Z",
+      "items": 12,
+      "errores": [
+        "Politai: Error de conexión (HTTPSConnectionPool(host='revistas.pucp.edu.pe', port=443): Read timed out. (read timeout=10))",
+        "CLACSO: HTTP 520"
+      ]
+    },
+    "polity": {
+      "last_success": "2026-10-31T11:48:31.053777Z",
+      "items": 20,
+      "errores": []
+    },
+    "eventos": {
+      "last_success": "2026-10-31T04:29:07.484123Z",
+      "items": 6,
+      "errores": []
+    }
+  },
+  "last_run": "2026-10-31T11:48:31.053798Z"
+}
