@@ -1649,3 +1649,22 @@ button[data-testid="stExpandSidebarButton"]:hover *,
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ==========================================================================
+   18. AJUSTES ADAPTATIVOS LIGHT/DARK PARA STREAMLIT OPTION MENU Y SIDEBAR
+   ========================================================================== */
+[data-testid="stSidebar"] div[data-testid="stVerticalBlock"] div.nav-item a.nav-link {
+    color: var(--text-body) !important;
+}
+
+[data-testid="stSidebar"] div[data-testid="stVerticalBlock"] div.nav-item a.nav-link:hover {
+    background-color: var(--surface-hover) !important;
+    color: var(--text-title) !important;
+}
+
+[data-testid="stSidebar"] div[data-testid="stVerticalBlock"] div.nav-item a.nav-link.active {
+    background-color: light-dark(rgba(2, 132, 199, 0.12), rgba(41, 181, 232, 0.18)) !important;
+    color: var(--text-accent) !important;
+    font-weight: 700 !important;
+}
