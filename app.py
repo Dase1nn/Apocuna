@@ -12,6 +12,7 @@ st.set_page_config(
 from components.sidebar import render_sidebar
 from sections.home import render_home
 from sections.polity import render_polity
+from sections.fen import render_fen
 from sections.estudiantes import render_estudiantes
 from sections.notas import render_notas
 from sections.eventos import render_eventos
@@ -20,6 +21,8 @@ from sections.sobre_el_sitio import render_sobre_el_sitio
 ROUTES = {
     "Inicio": render_home,
     "Polity and Policy": render_polity,
+    "🌊 Fenómeno El Niño (FEN)": render_fen,
+    "Fenómeno El Niño (FEN)": render_fen,
     "Estudiantes (DEMO)": render_estudiantes,
     "Estudiantes": render_estudiantes,
     "Notas": render_notas,

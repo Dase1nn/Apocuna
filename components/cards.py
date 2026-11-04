@@ -518,3 +518,176 @@ def render_becas_grid(becas: list):
         )
 
     st.markdown(f'<div class="fuentes-grid">{"".join(cards_list)}</div>', unsafe_allow_html=True)
+
+
+def _build_fen_hero_card_html(item: dict, is_full_width: bool = False) -> str:
+    """Construye el HTML de una tarjeta del Hero Grid de monitoreo FEN con vista previa visual y fallback SVG/CSS."""
+    card_cls = "fen-hero-full-card" if is_full_width else "fen-hero-card"
+    entidad = escape(item.get("entidad", ""))
+    estado = escape(item.get("estado", "EN VIVO / TIEMPO REAL"))
+    titulo = escape(item.get("titulo", ""))
+    descripcion = escape(item.get("descripcion", ""))
+    preview_url = safe_url(item.get("preview_url")) or ""
+    theme_cls = escape(item.get("theme_class", "fen-theme-sat"))
+    svg_art = item.get("svg_fallback", "")
+    metricas = item.get("metricas", [])
+    url_principal = item.get("url")
+    btn_label = item.get("btn_label", "Abrir plataforma en vivo ↗")
+    secundarios = item.get("enlaces_secundarios", [])
+
+    pills_html = "".join(
+        f'<span class="fen-metric-pill">{escape(m)}</span>' for m in metricas
+    )
+    sec_btns = "".join(
+        f'<a href="{safe_url(sec["url"])}" target="_blank" rel="noopener noreferrer" class="btn-fen-secondary">'
+        f'{escape(sec["label"])} ↗</a>'
+        for sec in secundarios
+        if safe_url(sec.get("url"))
+    )
+    img_tag = (
+        f'<img src="{preview_url}" alt="{titulo}" class="fen-preview-img" loading="lazy" '
+        f'onerror="this.style.display=\'none\';" />'
+        if preview_url else ""
+    )
+
+    return (
+        f'<div class="{card_cls}">'
+        f'<div class="fen-preview-container {theme_cls}">'
+        f'<div class="fen-preview-svg-layer">{svg_art}</div>'
+        f'{img_tag}'
+        f'<div class="fen-preview-overlay-top">'
+        f'<span class="fen-entity-badge">{entidad}</span>'
+        f'<span class="fen-live-badge"><span class="status-dot-live"></span>{estado}</span>'
+        f'</div>'
+        f'<div class="fen-preview-overlay-bottom">'
+        f'<div class="fen-metrics-row">{pills_html}</div>'
+        f'</div>'
+        f'</div>'
+        f'<div class="fen-card-body">'
+        f'<div>'
+        f'<h3 class="fen-card-title">{titulo}</h3>'
+        f'<p class="fen-card-desc">{descripcion}</p>'
+        f'</div>'
+        f'<div class="fen-card-actions">'
+        f'{_action_button(url_principal, btn_label)}'
+        f'{sec_btns}'
+        f'</div>'
+        f'</div>'
+        f'</div>'
+    )
+
+
+def render_fen_hero_grid(top_four_cards: list[dict], bottom_wide_card: dict):
+    """Renderiza el Bloque 1 del FEN: Grilla 2x2 superior + 1 barra horizontal 100% width inferior."""
+    cards_2x2 = "".join(_build_fen_hero_card_html(c, is_full_width=False) for c in top_four_cards[:4])
+    wide_html = _build_fen_hero_card_html(bottom_wide_card, is_full_width=True)
+    full_block = (
+        f'<div class="fen-hero-wrapper">'
+        f'<div class="fen-hero-grid-2x2">{cards_2x2}</div>'
+        f'{wide_html}'
+        f'</div>'
+    )
+    st.markdown(full_block, unsafe_allow_html=True)
+
+
+def render_fen_radar_list(items: list[dict], empty_msg: str = "No se encontraron reportes recientes."):
+    """Renderiza una lista compacta y cronológica de noticias o normas sobre el Fenómeno El Niño."""
+    if not items:
+        st.info(empty_msg)
+        return
+
+    cards_html = []
+    for item in items:
+        titulo = escape(item.get("titulo", ""))
+        fuente = escape(item.get("fuente", "Fuente verificada"))
+        fecha = escape(item.get("fecha_legible") or _short_date(item.get("fecha_iso")))
+        categoria = escape(item.get("etiqueta", "MONITOREO FEN"))
+        badge_cls = "badge-freq-diaria" if item.get("es_oficial") else "badge-portal"
+        btn_html = _action_button(item.get("url"), "Verificar fuente ↗")
+
+        cards_html.append(
+            f'<div class="fen-radar-item">'
+            f'<div class="card-header-meta">'
+            f'<span class="badge-freq {badge_cls}">{categoria}</span>'
+            f'<span class="card-date">📅 {fecha}</span>'
+            f'</div>'
+            f'<div class="fen-radar-source">{fuente}</div>'
+            f'<h4 class="fen-radar-title">{titulo}</h4>'
+            f'<div class="fen-radar-footer">{btn_html}</div>'
+            f'</div>'
+        )
+    st.markdown(f'<div class="fen-radar-stack">{"".join(cards_html)}</div>', unsafe_allow_html=True)
+
+
+def render_fen_impact_grid(impact_cards: list[dict]):
+    """Renderiza las 4 tarjetas de monitoreo del impacto socioeconómico, presupuestal y sanitario del FEN."""
+    if not impact_cards:
+        return
+    cards_html = []
+    for item in impact_cards:
+        institucion = escape(item.get("institucion", ""))
+        eje = escape(item.get("eje", ""))
+        titulo = escape(item.get("titulo", ""))
+        desc = escape(item.get("descripcion", ""))
+        indicadores = item.get("indicadores", [])
+        pills = "".join(f'<span class="fen-impact-tag">{escape(ind)}</span>' for ind in indicadores)
+        sec_url = safe_url(item.get("url_secundaria"))
+        sec_label = escape(item.get("label_secundaria", "Portal adicional"))
+        sec_btn = (
+            f'<a href="{sec_url}" target="_blank" rel="noopener noreferrer" class="btn-fen-secondary">{sec_label} ↗</a>'
+            if sec_url else ""
+        )
+
+        cards_html.append(
+            f'<div class="fuente-card fen-impact-card">'
+            f'<div>'
+            f'<div class="card-header-meta">'
+            f'<span class="badge-portal">{eje}</span>'
+            f'<span class="badge-continua">DATOS ABIERTOS</span>'
+            f'</div>'
+            f'<div class="inst">{institucion}</div>'
+            f'<h4>{titulo}</h4>'
+            f'<p>{desc}</p>'
+            f'<div class="fen-impact-tags-row">{pills}</div>'
+            f'</div>'
+            f'<div class="card-actions-row">'
+            f'{_action_button(item.get("url"), item.get("btn_label", "Consultar plataforma ↗"))}'
+            f'{sec_btn}'
+            f'</div>'
+            f'</div>'
+        )
+    st.markdown(f'<div class="fuentes-grid">{"".join(cards_html)}</div>', unsafe_allow_html=True)
+
+
+def render_fen_catalog_grid(tools: list[dict]):
+    """Renderiza el directorio maestro filtrable de herramientas técnicas de monitoreo del FEN."""
+    if not tools:
+        st.info("No se encontraron herramientas con los criterios de búsqueda seleccionados.")
+        return
+
+    cards_html = []
+    for item in tools:
+        nombre = escape(item.get("nombre", ""))
+        institucion = escape(item.get("institucion", ""))
+        categoria = escape(item.get("categoria", ""))
+        frecuencia = escape(item.get("frecuencia", "Tiempo real"))
+        utilidad = escape(item.get("utilidad", ""))
+        freq_cls = _resolve_freq_class(frecuencia)
+
+        cards_html.append(
+            f'<div class="fuente-card">'
+            f'<div>'
+            f'<div class="card-header-meta">'
+            f'<span class="badge-portal">{categoria}</span>'
+            f'<span class="badge-freq {freq_cls}">{frecuencia}</span>'
+            f'</div>'
+            f'<div class="inst">{institucion}</div>'
+            f'<h4>{nombre}</h4>'
+            f'<p>{utilidad}</p>'
+            f'</div>'
+            f'<div class="card-footer-action">'
+            f'{_action_button(item.get("url"), "Abrir herramienta ↗")}'
+            f'</div>'
+            f'</div>'
+        )
+    st.markdown(f'<div class="fuentes-grid">{"".join(cards_html)}</div>', unsafe_allow_html=True)

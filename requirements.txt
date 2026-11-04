@@ -2,3 +2,5 @@ streamlit
 requests
 streamlit-option-menu
 markdown
+feedparser
+pandas

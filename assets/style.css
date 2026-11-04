@@ -1300,3 +1300,352 @@ button[data-testid="stExpandSidebarButton"]:hover *,
         line-height: 1.45 !important;
     }
 }
+
+
+/* ==========================================================================
+   17. SECCIÓN FENÓMENO EL NIÑO (FEN): HERO GRID 2x2 + 1, PREVIEWS Y RADAR
+   ========================================================================== */
+.fen-hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin: 0.45rem 0 1.85rem 0;
+    animation: fadeInSlide 0.32s var(--ease-out-expo) both;
+}
+
+.fen-hero-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+}
+
+.fen-hero-card,
+.fen-hero-full-card {
+    background-color: var(--surface-bg);
+    border: 1px solid var(--surface-border);
+    border-top: 3.5px solid var(--primary-color);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.24s var(--ease-out-expo), box-shadow 0.24s var(--ease-out-expo), border-color 0.2s ease;
+    will-change: transform;
+}
+
+.fen-hero-full-card {
+    width: 100%;
+    border-top: 4px solid #F59E0B;
+}
+
+.fen-hero-card:hover,
+.fen-hero-full-card:hover {
+    transform: translate3d(0, -3px, 0);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--surface-border-hover);
+}
+
+.fen-preview-container {
+    position: relative;
+    width: 100%;
+    height: 192px;
+    overflow: hidden;
+    background-color: #0F172A;
+    border-bottom: 1px solid var(--surface-border);
+}
+
+.fen-hero-full-card .fen-preview-container {
+    height: 205px;
+}
+
+.fen-preview-svg-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.fen-preview-svg-layer svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.fen-preview-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 2;
+    opacity: 0.9;
+    transition: transform 0.38s var(--ease-out-expo), opacity 0.25s ease;
+}
+
+.fen-hero-card:hover .fen-preview-img,
+.fen-hero-full-card:hover .fen-preview-img {
+    transform: scale(1.03);
+    opacity: 0.98;
+}
+
+.fen-preview-overlay-top {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.84) 0%, rgba(15, 23, 42, 0.35) 70%, transparent 100%);
+}
+
+.fen-preview-overlay-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 0.9rem 1rem 0.6rem 1rem;
+    background: linear-gradient(0deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.55) 65%, transparent 100%);
+}
+
+.fen-entity-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    background: rgba(15, 23, 42, 0.82);
+    color: #38BDF8 !important;
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    backdrop-filter: blur(6px);
+}
+
+.fen-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    background: rgba(15, 23, 42, 0.84);
+    color: #34D399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.48);
+    backdrop-filter: blur(6px);
+}
+
+.fen-metrics-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.fen-metric-pill {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.67rem;
+    font-weight: 700;
+    border-radius: 5px;
+    background: rgba(15, 23, 42, 0.82);
+    color: #F8FAFC !important;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.fen-card-body {
+    padding: 1.2rem 1.35rem 1.3rem 1.35rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 0.85rem;
+}
+
+.fen-card-title {
+    margin: 0 0 0.45rem 0 !important;
+    font-size: 1.08rem !important;
+    font-weight: 700 !important;
+    line-height: 1.35 !important;
+    color: var(--text-title) !important;
+    letter-spacing: -0.015em !important;
+}
+
+.fen-hero-full-card .fen-card-title {
+    font-size: 1.18rem !important;
+}
+
+.fen-card-desc {
+    margin: 0 !important;
+    font-size: 0.87rem !important;
+    line-height: 1.52 !important;
+    color: var(--text-body) !important;
+}
+
+.fen-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.2rem;
+}
+
+.btn-fen-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 0.78rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border-radius: 6px;
+    background-color: var(--surface-elevated);
+    color: var(--text-accent) !important;
+    border: 1px solid var(--surface-border);
+    text-decoration: none !important;
+    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s var(--ease-out-expo);
+}
+
+.btn-fen-secondary:hover {
+    background-color: var(--surface-hover);
+    border-color: var(--primary-color);
+    transform: translate3d(0, -1px, 0);
+}
+
+/* BLOQUE 2: RADAR DE NOTICIAS Y NORMATIVA FEN */
+.fen-radar-status-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1.05rem;
+    margin: 0.35rem 0 1.15rem 0;
+    border-radius: 10px;
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--surface-border);
+    font-size: 0.82rem;
+    color: var(--text-body);
+}
+
+.fen-radar-sync-pill {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--text-accent);
+    background: light-dark(rgba(2, 132, 199, 0.08), rgba(56, 189, 248, 0.14));
+    padding: 0.22rem 0.65rem;
+    border-radius: 9999px;
+    border: 1px solid var(--surface-border);
+}
+
+.fen-column-header {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 10px;
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--surface-border);
+    border-left: 3.5px solid var(--primary-color);
+}
+
+.fen-column-header h3 {
+    margin: 0 0 0.2rem 0 !important;
+    font-size: 1.02rem !important;
+    font-weight: 700 !important;
+    color: var(--text-title) !important;
+}
+
+.fen-column-header p {
+    margin: 0 !important;
+    font-size: 0.78rem !important;
+    color: var(--text-muted) !important;
+}
+
+.fen-radar-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 580px;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+}
+
+.fen-radar-item {
+    background-color: var(--surface-bg);
+    border: 1px solid var(--surface-border);
+    border-left: 3px solid var(--primary-color);
+    border-radius: 10px;
+    padding: 0.9rem 1.05rem;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s var(--ease-out-expo), border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.fen-radar-item:hover {
+    transform: translate3d(0, -2px, 0);
+    background-color: var(--surface-hover);
+    border-color: var(--surface-border-hover);
+}
+
+.fen-radar-source {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.45px;
+    color: var(--text-accent);
+    margin-bottom: 0.25rem;
+}
+
+.fen-radar-title {
+    margin: 0 0 0.65rem 0 !important;
+    font-size: 0.92rem !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    color: var(--text-title) !important;
+}
+
+.fen-radar-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* BLOQUE 3: IMPACTO SOCIOECONÓMICO TAGS */
+.fen-impact-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.38rem;
+    margin: 0.35rem 0 0.65rem 0;
+}
+
+.fen-impact-tag {
+    display: inline-block;
+    padding: 0.14rem 0.48rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: var(--surface-elevated);
+    color: var(--text-muted);
+    border: 1px solid var(--surface-border);
+}
+
+/* OCULTAR ANCLAS EN TARJETAS FEN */
+.fen-hero-card a[href^="#"],
+.fen-hero-full-card a[href^="#"],
+.fen-radar-item a[href^="#"],
+.fen-column-header a[href^="#"],
+.fen-hero-card [data-testid="stHeaderActionElements"],
+.fen-hero-full-card [data-testid="stHeaderActionElements"],
+.fen-radar-item [data-testid="stHeaderActionElements"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+@media (max-width: 960px) {
+    .fen-hero-grid-2x2 {
+        grid-template-columns: 1fr;
+    }
+}
