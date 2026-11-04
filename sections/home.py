@@ -2,25 +2,13 @@ import streamlit as st
 from utils.loaders import (
     load_noticias_grouped,
     load_normas,
-    fetch_ckan_datasets,
-    load_fuentes,
     load_dashboard_kpis
 )
 from components.cards import (
-    render_kpi_ribbon,
+    render_home_radar_and_boletines_split,
     render_noticias_carousel,
-    render_normas_carousel,
-    render_ckan_carousel,
-    render_fuentes_grid
+    render_normas_carousel
 )
-
-BLOQUES_FUENTES = [
-    ("Datos abiertos y microdatos", "📊 1. Datos abiertos y microdatos", True),
-    ("Control gubernamental y conflictividad social", "⚖️ 2. Control gubernamental y conflictividad social", False),
-    ("Think tanks y repositorios", "🧠 3. Think tanks y repositorios académicos", False),
-    ("Organismos multilaterales", "🌍 4. Organismos multilaterales y cooperación", False),
-    ("Documentos e informes específicos", "📑 5. Documentos e informes específicos", False),
-]
 
 
 def _render_hero_banner():
@@ -41,57 +29,15 @@ def _render_hero_banner():
         st.rerun()
 
 
-def _matches_fuente(f: dict, bloque_sel: str, q_lower: str) -> bool:
-    if bloque_sel != "Todos los bloques" and f.get("bloque", "").lower() != bloque_sel.lower():
-        return False
-    if not q_lower:
-        return True
-    blob = f"{f.get('nombre', '')} {f.get('institucion', '')} {f.get('descripcion_corta', '')}".lower()
-    return q_lower in blob
-
-
-def _render_catalogo_fuentes(fuentes: list):
-    st.header("📊 Catálogo Auditado de Fuentes de Información")
-    st.markdown("Bases de datos oficiales, plataformas de microdatos y repositorios organizados por bloques temáticos.")
-
-    col_search, col_bloque = st.columns([2, 1])
-    with col_search:
-        query = st.text_input(
-            "🔎 Filtrar fuentes por institución, nombre o temática:",
-            placeholder="Ej: INEI, ENAHO, GRADE, CEPAL, Contraloría, MINSA...",
-            key="home_fuentes_search"
-        )
-    with col_bloque:
-        opciones_bloque = ["Todos los bloques"] + [b[0] for b in BLOQUES_FUENTES]
-        bloque_sel = st.selectbox("Bloque temático:", opciones_bloque, key="home_fuentes_bloque")
-
-    q_lower = query.lower().strip()
-    if q_lower or bloque_sel != "Todos los bloques":
-        filtradas = [f for f in fuentes if _matches_fuente(f, bloque_sel, q_lower)]
-        st.caption(f"Mostrando **{len(filtradas)}** de **{len(fuentes)}** fuentes registradas.")
-        render_fuentes_grid(filtradas)
-        return
-
-    for key_bloque, titulo_bloque, exp_default in BLOQUES_FUENTES:
-        fuentes_bloque = [f for f in fuentes if f.get("bloque", "").lower() == key_bloque.lower()]
-        with st.expander(f"{titulo_bloque} ({len(fuentes_bloque)})", expanded=exp_default):
-            render_fuentes_grid(fuentes_bloque)
-
-
 def render_home():
     _render_hero_banner()
 
-    st.title("🌐 Radar de Coyuntura, Normas y Fuentes Oficiales")
-    st.markdown(
-        '<p class="hero-subtitle">Vigilancia continua de políticas públicas, marco regulatorio y portales de datos abiertos del Perú.</p>',
-        unsafe_allow_html=True
-    )
-
+    # SECCIÓN DIVIDIDA: Radar de Coyuntura (izquierda) + Tarjeta Grande Boletines de Normas Legales con un café (derecha)
     kpis = load_dashboard_kpis()
-    render_kpi_ribbon([
+    render_home_radar_and_boletines_split([
         {"icon": "📰", "value": str(kpis["noticias_total"]), "label": "Noticias en Radar", "sub": "Gestión, Políticas y Coyuntura"},
         {"icon": "⚖️", "value": str(kpis["normas_total"]), "label": "Normas Monitoreadas", "sub": "Seguimiento regulatorio diario"},
-        {"icon": "🗄️", "value": str(kpis["fuentes_total"]), "label": "Fuentes Verificadas", "sub": "5 bloques institucionales"},
+        {"icon": "🗄️", "value": str(kpis["fuentes_total"]), "label": "Fuentes Verificadas", "sub": "Disponibles en Polity & Policy"},
         {"icon": "🎓", "value": str(kpis["oportunidades_total"]), "label": "Cursos, Becas y Eventos", "sub": f"Sync: {kpis['last_sync']}"},
     ])
 
@@ -120,18 +66,3 @@ def render_home():
     normas = load_normas()
     normas_filtradas = [n for n in normas if n.get("grupo") == "Noticias sobre normas legales"] or normas
     render_normas_carousel(normas_filtradas)
-
-    st.markdown("---")
-
-    # 3. DATASETS RECIENTES Y PORTALES DE DATOS ABIERTOS
-    st.header("🔄 Portales Nacionales de Datos Abiertos y Salud")
-    st.markdown("Acceso directo a los catálogos nacionales de datos abiertos (PCM, GOB.PE, MINSA REUNIS y CDC Perú).")
-    fuentes = load_fuentes()
-    portales_ckan = [f for f in fuentes if f.get("id") in ("f_001", "f_002", "f_003", "f_004")]
-    ckan_datasets = fetch_ckan_datasets()
-    render_ckan_carousel(ckan_datasets, portales_directos=portales_ckan)
-
-    st.markdown("---")
-
-    # 4. DIRECTORIO DE FUENTES DE DATOS
-    _render_catalogo_fuentes(fuentes)

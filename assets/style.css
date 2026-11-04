@@ -223,6 +223,136 @@ body {
     color: var(--text-muted);
 }
 
+/* 3.1 SECCIÓN DIVIDIDA EN INICIO: RADAR + TARJETA GRANDE BOLETINES CON UN CAFÉ */
+.radar-spotlight-split {
+    display: grid;
+    grid-template-columns: 1.38fr 1fr;
+    gap: 1.35rem;
+    align-items: stretch;
+    margin: 0.35rem 0 2rem 0;
+    animation: fadeInSlide 0.32s var(--ease-out-expo) both;
+}
+
+.radar-split-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.radar-split-header {
+    margin-bottom: 0.85rem;
+}
+
+.radar-split-title {
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+    color: var(--text-title) !important;
+    margin: 0 0 0.35rem 0 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.radar-split-subtitle {
+    font-size: 0.94rem !important;
+    color: var(--text-muted) !important;
+    margin: 0 !important;
+    line-height: 1.45 !important;
+}
+
+.kpi-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+    flex-grow: 1;
+}
+
+.radar-split-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.boletines-featured-card {
+    height: 100%;
+    background: light-dark(
+        linear-gradient(145deg, #FFFFFF 0%, rgba(41, 181, 232, 0.08) 100%),
+        linear-gradient(145deg, #161F2E 0%, rgba(41, 181, 232, 0.12) 100%)
+    );
+    border: 1.5px solid light-dark(rgba(2, 132, 199, 0.32), rgba(41, 181, 232, 0.42));
+    border-top: 4px solid var(--primary-color);
+    border-radius: 14px;
+    padding: 1.55rem 1.65rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-card);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s var(--ease-out-expo), box-shadow 0.25s var(--ease-out-expo), border-color 0.2s ease;
+    will-change: transform;
+}
+
+.boletines-featured-card:hover {
+    transform: translate3d(0, -3px, 0);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--primary-color);
+}
+
+.boletines-featured-card .inst {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--text-accent) !important;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.coffee-ritual-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.28rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: light-dark(rgba(245, 158, 11, 0.14), rgba(245, 158, 11, 0.18));
+    color: light-dark(#B45309, #FBBF24) !important;
+    border: 1px solid rgba(245, 158, 11, 0.38);
+    margin: 0.35rem 0 0.75rem 0;
+}
+
+.boletines-featured-title {
+    font-size: 1.32rem !important;
+    font-weight: 800 !important;
+    line-height: 1.3 !important;
+    color: var(--text-title) !important;
+    margin: 0 0 0.65rem 0 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.boletines-featured-desc {
+    font-size: 0.92rem !important;
+    line-height: 1.58 !important;
+    color: var(--text-body) !important;
+    margin: 0 0 1.15rem 0 !important;
+}
+
+.boletines-featured-footer {
+    margin-top: auto;
+    padding-top: 0.25rem;
+}
+
+.btn-open-featured {
+    padding: 0.58rem 1.25rem !important;
+    font-size: 0.88rem !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+}
+
+@media (max-width: 960px) {
+    .radar-spotlight-split {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* 4. HERO BOX / SNOW CARD */
 .snow-card {
     background: light-dark(
@@ -1038,9 +1168,18 @@ button[data-testid="stExpandSidebarButton"]:hover *,
         max-width: 100% !important;
     }
 
-    .kpi-ribbon-grid {
+    .kpi-ribbon-grid,
+    .kpi-grid-2x2 {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.6rem !important;
+    }
+
+    .boletines-featured-card {
+        padding: 1.2rem !important;
+    }
+
+    .boletines-featured-title {
+        font-size: 1.12rem !important;
     }
 
     .kpi-metric-card {

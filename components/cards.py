@@ -63,6 +63,61 @@ def render_kpi_ribbon(metrics: list[dict]):
     st.markdown(f'<div class="kpi-ribbon-grid">{"".join(items_html)}</div>', unsafe_allow_html=True)
 
 
+def render_home_radar_and_boletines_split(metrics: list[dict]):
+    """
+    Renderiza en Inicio la sección combinada:
+    - Izquierda: Título Radar de Coyuntura, Normas y Fuentes Oficiales + Grilla 2x2 de KPIs.
+    - Derecha (pegada a la derecha y a altura completa): Tarjeta destacada grande de Boletines de Normas Legales con invitación a tomar un café.
+    """
+    kpi_items = []
+    for m in metrics:
+        icon = escape(m.get("icon", "📊"))
+        value = escape(m.get("value", "0"))
+        label = escape(m.get("label", ""))
+        sub = escape(m.get("sub", ""))
+        kpi_items.append(
+            f'<div class="kpi-metric-card">'
+            f'<div class="kpi-metric-top"><span class="kpi-metric-icon">{icon}</span><span class="kpi-metric-value">{value}</span></div>'
+            f'<div class="kpi-metric-label">{label}</div>'
+            f'<div class="kpi-metric-sub">{sub}</div>'
+            f'</div>'
+        )
+
+    split_html = (
+        f'<div class="radar-spotlight-split">'
+        f'<div class="radar-split-left">'
+        f'<div class="radar-split-header">'
+        f'<h2 class="radar-split-title">🌐 Radar de Coyuntura, Normas y Fuentes Oficiales</h2>'
+        f'<p class="radar-split-subtitle">Vigilancia continua de políticas públicas, marco regulatorio y portales de datos abiertos del Perú.</p>'
+        f'</div>'
+        f'<div class="kpi-grid-2x2">{"".join(kpi_items)}</div>'
+        f'</div>'
+        f'<div class="radar-split-right">'
+        f'<div class="boletines-featured-card">'
+        f'<div>'
+        f'<div class="card-header-meta">'
+        f'<span class="badge-freq badge-freq-diaria">DIARIA</span>'
+        f'<span class="inst">EL PERUANO / PCM</span>'
+        f'</div>'
+        f'<div class="coffee-ritual-pill">☕ Tu lectura regulatoria de cada mañana con un café</div>'
+        f'<h3 class="boletines-featured-title">Boletines de Normas Legales y Diario Oficial</h3>'
+        f'<p class="boletines-featured-desc">'
+        f'Acompaña tu primer café del día revisando las normas legales recién publicadas. '
+        f'Monitoreo permanente de decretos supremos, resoluciones ministeriales y ordenanzas emitidas por los tres niveles de gobierno.'
+        f'</p>'
+        f'</div>'
+        f'<div class="boletines-featured-footer">'
+        f'<a href="https://busquedas.elperuano.pe/" target="_blank" rel="noopener noreferrer" class="btn-open btn-open-featured">'
+        f'☕ Abrir recurso y tomar un café ↗'
+        f'</a>'
+        f'</div>'
+        f'</div>'
+        f'</div>'
+        f'</div>'
+    )
+    st.markdown(split_html, unsafe_allow_html=True)
+
+
 def render_card_row(title: str, cards_data: list):
     """Renderiza una fila genérica de tarjetas con scroll horizontal."""
     if not cards_data:
