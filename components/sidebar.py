@@ -1,51 +1,50 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+from utils.loaders import load_dashboard_kpis
+
+OPTIONS_LIST = [
+    "Inicio",
+    "Polity and Policy",
+    "Estudiantes (DEMO)",
+    "Notas",
+    "Eventos",
+    "Sobre el sitio"
+]
 
 
 def render_sidebar():
     with st.sidebar:
         st.markdown(
-            '<div style="padding: 0.2rem 0 0.8rem 0;">'
-            '<h1 style="color: #EF4444; font-size: 1.45rem; font-weight: 800; '
-            'letter-spacing: 2px; text-transform: uppercase; margin: 0 0 0.25rem 0;">'
-            'APOCUNA HUB'
-            '</h1>'
-            '<div style="font-size: 0.72rem; color: #94A3B8; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase;">'
-            'Evidencia & Política Pública'
-            '</div>'
+            '<div class="sidebar-brand-box">'
+            '<div class="sidebar-brand-badge">PERÚ • PUBLIC POLICY HUB</div>'
+            '<h1 class="sidebar-brand-title">APOCUNA HUB</h1>'
+            '<div class="sidebar-brand-subtitle">Evidencia, Datos & Gobernanza</div>'
             '</div>',
             unsafe_allow_html=True
         )
         st.markdown("---")
-        
-        options_list = [
-            "Inicio",
-            "Polity and Policy",
-            "Estudiantes (DEMO)",
-            "Notas",
-            "Eventos",
-            "Sobre el sitio"
-        ]
-        
-        default_idx = 0
-        if "current_page" in st.session_state and st.session_state.current_page in options_list:
-            default_idx = options_list.index(st.session_state.current_page)
-            
-        # Menú interactivo con iconos
+
+        current = st.session_state.get("current_page", "Inicio")
+        if current == "Estudiantes":
+            current = "Estudiantes (DEMO)"
+        default_idx = OPTIONS_LIST.index(current) if current in OPTIONS_LIST else 0
+
         menu = option_menu(
             menu_title=None,
-            options=options_list,
+            options=OPTIONS_LIST,
             icons=["house", "bank", "mortarboard", "journal-text", "calendar-event", "info-circle"],
             menu_icon="compass",
             default_index=default_idx,
             styles={
                 "container": {"padding": "0!important", "background-color": "transparent"},
-                "icon": {"color": "#29B5E8", "font-size": "1.05rem"},
+                "icon": {"color": "#29B5E8", "font-size": "1.02rem"},
                 "nav-link": {
-                    "font-size": "0.92rem",
+                    "font-size": "0.91rem",
                     "text-align": "left",
-                    "margin": "2px 0px",
-                    "--hover-color": "rgba(41, 181, 232, 0.1)",
+                    "margin": "3px 0px",
+                    "padding": "0.55rem 0.85rem",
+                    "border-radius": "8px",
+                    "--hover-color": "rgba(41, 181, 232, 0.12)",
                 },
                 "nav-link-selected": {
                     "background-color": "rgba(41, 181, 232, 0.18)",
@@ -56,3 +55,22 @@ def render_sidebar():
             }
         )
         st.session_state.current_page = menu
+
+        kpis = load_dashboard_kpis()
+        st.markdown(
+            f"""
+            <div class="sidebar-telemetry-card">
+                <div class="sidebar-telemetry-header">
+                    <span class="status-dot-live"></span>
+                    <span>RADAR AUTOMATIZADO</span>
+                </div>
+                <div class="sidebar-telemetry-grid">
+                    <div><strong>{kpis['fuentes_total']}</strong><span>Fuentes</span></div>
+                    <div><strong>{kpis['noticias_total']}</strong><span>Noticias</span></div>
+                    <div><strong>{kpis['oportunidades_total']}</strong><span>Recursos</span></div>
+                </div>
+                <div class="sidebar-telemetry-sync">Últ. sync: {kpis['last_sync']}</div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )

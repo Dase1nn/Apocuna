@@ -1,15 +1,13 @@
-import streamlit as st
 import os
+import streamlit as st
 
 # Configuración de página (debe ser la primera llamada a Streamlit)
 st.set_page_config(
-    page_title="Apocuna Dashboard",
+    page_title="Apocuna Hub | Evidencia y Políticas Públicas",
     page_icon="🏛️",
     layout="wide",
     initial_sidebar_state="auto"
 )
-
-# No explicit theme state needed
 
 from components.sidebar import render_sidebar
 from sections.home import render_home
@@ -19,35 +17,43 @@ from sections.notas import render_notas
 from sections.eventos import render_eventos
 from sections.sobre_el_sitio import render_sobre_el_sitio
 
+ROUTES = {
+    "Inicio": render_home,
+    "Polity and Policy": render_polity,
+    "Estudiantes (DEMO)": render_estudiantes,
+    "Estudiantes": render_estudiantes,
+    "Notas": render_notas,
+    "Eventos": render_eventos,
+    "Sobre el sitio": render_sobre_el_sitio,
+}
+
+
+@st.cache_data(show_spinner=False)
+def _get_cached_css(css_path: str, mtime: float) -> str:
+    """Lee y cachea la hoja de estilos en memoria invalidando solo si cambia el archivo."""
+    with open(css_path, "r", encoding="utf-8") as f:
+        return f"<style>{f.read()}</style>"
+
+
 def load_css():
-    """Carga los estilos personalizados de Snowsight dinámicamente."""
+    """Inyecta los estilos personalizados de Apocuna sin lecturas redundantes de disco."""
     css_path = os.path.join(os.path.dirname(__file__), "assets", "style.css")
     if os.path.exists(css_path):
-        with open(css_path, "r", encoding="utf-8") as f:
-            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+        mtime = os.path.getmtime(css_path)
+        st.markdown(_get_cached_css(css_path, mtime), unsafe_allow_html=True)
+
 
 def main():
-    # Renderizamos sidebar primero para que el toggle actualice el state
+    if "current_page" not in st.session_state:
+        st.session_state.current_page = "Inicio"
+
     render_sidebar()
-    # Cargamos CSS inyectando las variables del tema
     load_css()
 
-    
     current = st.session_state.get("current_page", "Inicio")
-    
-    # Enrutador
-    if current == "Inicio":
-        render_home()
-    elif current == "Polity and Policy":
-        render_polity()
-    elif current in ["Estudiantes (DEMO)", "Estudiantes"]:
-        render_estudiantes()
-    elif current == "Notas":
-        render_notas()
-    elif current == "Eventos":
-        render_eventos()
-    elif current == "Sobre el sitio":
-        render_sobre_el_sitio()
+    renderer = ROUTES.get(current, render_home)
+    renderer()
+
 
 if __name__ == "__main__":
     main()

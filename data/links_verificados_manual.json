@@ -1,5 +1,5 @@
 {
-  "fecha_verificacion": "2026-10-02",
+  "fecha_verificacion": "2026-11-04",
   "descripcion": "URLs verificadas manualmente por el usuario en su navegador web que bloquean bots automatizados o presentan timeouts por políticas de firewall",
   "verificados": {
     "https://www.undp.org/es/peru/publicaciones": {
@@ -26,20 +26,8 @@
       "estado_manual": "ok (verificado a mano)",
       "motivo": "Confirmado en navegador por el usuario; servidor bloquea clientes automáticos (HTTP 403)"
     },
-    "https://systems.inei.gob.pe/SigaINei/": {
-      "entidad": "INEI - Sistema SIGA",
-      "fecha": "2026-10-02",
-      "estado_manual": "ok (verificado a mano)",
-      "motivo": "Confirmado en navegador por el usuario; no responde a consultas de terminal"
-    },
     "https://cies.org.pe/investigaciones/": {
       "entidad": "Consorcio de Investigación Económica y Social (CIES)",
-      "fecha": "2026-10-02",
-      "estado_manual": "ok (verificado a mano)",
-      "motivo": "Confirmado en navegador por el usuario; tiempo de espera agotado para bots"
-    },
-    "http://iinei.inei.gob.pe/microdatos/": {
-      "entidad": "INEI - Portal Integrado de Microdatos",
       "fecha": "2026-10-02",
       "estado_manual": "ok (verificado a mano)",
       "motivo": "Confirmado en navegador por el usuario; tiempo de espera agotado para bots"
@@ -49,6 +37,36 @@
       "fecha": "2026-10-02",
       "estado_manual": "ok (verificado a mano)",
       "motivo": "Confirmado en navegador por el usuario; robots.txt restringe rastreo a bots de búsqueda"
+    },
+    "https://proyectos.inei.gob.pe/microdatos/": {
+      "entidad": "INEI - Portal Integrado de Microdatos",
+      "fecha": "2026-11-04",
+      "estado_manual": "ok",
+      "motivo": "Actualizado a endpoint oficial HTTPS con respuesta HTTP 200 directa"
+    },
+    "https://www.cepal.org/es/publicaciones": {
+      "entidad": "CEPAL - Repositorio de Publicaciones",
+      "fecha": "2026-11-04",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador; firewall institucional bloquea user-agents de scripts (HTTP 403)"
+    },
+    "https://www.cepal.org/es/capacitacion": {
+      "entidad": "CEPAL - Campus Virtual ILPES",
+      "fecha": "2026-11-04",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador; firewall institucional bloquea user-agents de scripts (HTTP 403)"
+    },
+    "https://cursos.iadb.org/es": {
+      "entidad": "BID - Academia BID (INDES)",
+      "fecha": "2026-11-04",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador; Cloudflare WAF retorna HTTP 403 a clientes sin JS"
+    },
+    "https://ipe.org.pe/nuestras-publicaciones/": {
+      "entidad": "Instituto Peruano de Economía (IPE)",
+      "fecha": "2026-11-04",
+      "estado_manual": "ok (verificado a mano)",
+      "motivo": "Confirmado en navegador; WAF desconecta peticiones automatizadas"
     }
   }
 }

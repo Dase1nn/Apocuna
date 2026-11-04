@@ -47,7 +47,7 @@
         "descripcion": "Prácticas de código para extracción, filtrado y cálculo de indicadores con microdatos de ENAHO y el Censo Escolar.",
         "fuente": "INEI Microdatos / ESCALE",
         "frecuencia": "Práctica Constante",
-        "url": "http://iinei.inei.gob.pe/microdatos/"
+        "url": "https://proyectos.inei.gob.pe/microdatos/"
       },
       {
         "id": "est_card_2_2",
@@ -107,7 +107,7 @@
         "descripcion": "Foro para la presentación de ponencias y discusión de tesis sobre gobernanza escolar y reformas curriculares.",
         "fuente": "SIEP Perú",
         "frecuencia": "Bienal",
-        "url": "https://revistas.siep.org.pe/"
+        "url": "https://siep.org.pe/"
       },
       {
         "id": "est_card_4_3",
@@ -145,7 +145,7 @@
         "titulo": "Política Nacional de Modernización de la Gestión Pública al 2030",
         "resumen": "Pilares de la modernización: Políticas públicas y planes, presupuesto por resultados, gestión por procesos, servicio civil y seguimiento-evaluación.",
         "normativa": "D.S. 103-2022-PCM",
-        "url": "https://www.gob.pe/institucion/pcm/normas-legales/3233804-103-2022-pcm"
+        "url": "https://www.gob.pe/institucion/pcm/normas-legales/3361746-103-2022-pcm"
       },
       {
         "id": "apunte_003",
@@ -154,7 +154,7 @@
         "titulo": "Sistema Nacional de Planeamiento Estratégico (SINAPLAN / CEPLAN)",
         "resumen": "Cadena de planes: Plan Estratégico de Desarrollo Nacional (PEDN), PESEM, PDC y articulación con POI/PEI institucional.",
         "normativa": "D.L. 1088",
-        "url": "https://www.ceplan.gob.pe/"
+        "url": "https://www.gob.pe/ceplan"
       },
       {
         "id": "apunte_004",
@@ -181,7 +181,7 @@
         "titulo": "Sistema Administrativo de Gestión de Recursos Humanos (SERVIR)",
         "resumen": "Régimen del Servicio Civil (Ley N° 30057), subsistemas de planificación de políticas de RRHH, organización del trabajo y evaluación del desempeño.",
         "normativa": "Ley 30057",
-        "url": "https://www.servir.gob.pe/"
+        "url": "https://www.gob.pe/servir"
       },
       {
         "id": "apunte_007",
@@ -190,7 +190,7 @@
         "titulo": "Sistema Nacional de Abastecimiento (D.L. N° 1439 y Ley de Contrataciones)",
         "resumen": "Cadena de abastecimiento público: programación multianual de bienes, servicios y obras, gestión de adquisiciones y administración de bienes.",
         "normativa": "D.L. 1439",
-        "url": "https://www.mef.gob.pe/es/sistema-nacional-de-abastecimiento"
+        "url": "https://www.mef.gob.pe/es/abastecimiento"
       },
       {
         "id": "apunte_008",

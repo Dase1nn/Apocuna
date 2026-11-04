@@ -11,22 +11,22 @@
   {
     "id": "f_002",
     "bloque": "Datos abiertos y microdatos",
-    "nombre": "API CKAN Datos Abiertos",
-    "institucion": "PCM",
-    "descripcion_corta": "Endpoint API CKAN (no disponible: el portal bloquea clientes automáticos).",
-    "url": "https://www.datosabiertos.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=10",
-    "tipo": "no_disponible",
-    "estado": "no disponible: el portal bloquea clientes automáticos"
+    "nombre": "Portal Gobernanza de Datos Abiertos",
+    "institucion": "PCM / SGTD",
+    "descripcion_corta": "Información oficial sobre la Plataforma Nacional de Datos Abiertos en gob.pe.",
+    "url": "https://www.gob.pe/datosabiertos",
+    "tipo": "portal",
+    "estado": "ok"
   },
   {
     "id": "f_003",
     "bloque": "Datos abiertos y microdatos",
-    "nombre": "API CKAN MINSA",
-    "institucion": "MINSA / CDC Perú",
-    "descripcion_corta": "Endpoint API CKAN MINSA (no disponible, verificado 2026-10-02).",
-    "url": "https://datos.minsa.gob.pe/api/3/action/package_search?sort=metadata_modified+desc&rows=5",
-    "tipo": "api",
-    "estado": "no disponible (verificado 2026-10-02)"
+    "nombre": "Repositorio Único Nacional de Información en Salud (REUNIS)",
+    "institucion": "MINSA",
+    "descripcion_corta": "Estadísticas, indicadores sanitarios y datos abiertos del Ministerio de Salud.",
+    "url": "https://www.minsa.gob.pe/reunis/",
+    "tipo": "repositorio",
+    "estado": "ok"
   },
   {
     "id": "f_004",
@@ -42,17 +42,17 @@
     "bloque": "Datos abiertos y microdatos",
     "nombre": "Portal Integrado de Microdatos",
     "institucion": "INEI",
-    "descripcion_corta": "ENAHO, ENDES, ENAPRES.",
-    "url": "http://iinei.inei.gob.pe/microdatos/",
+    "descripcion_corta": "ENAHO, ENDES y ENAPRES (Portal oficial HTTPS).",
+    "url": "https://proyectos.inei.gob.pe/microdatos/",
     "tipo": "portal"
   },
   {
     "id": "f_006",
     "bloque": "Datos abiertos y microdatos",
-    "nombre": "Sistema SIGA INEI",
+    "nombre": "Índice Temático de Estadísticas e Indicadores",
     "institucion": "INEI",
-    "descripcion_corta": "Consulta y descarga de microdatos.",
-    "url": "https://systems.inei.gob.pe/SigaINei/",
+    "descripcion_corta": "Consulta y descarga de series estadísticas e indicadores nacionales del INEI.",
+    "url": "https://www.inei.gob.pe/estadisticas/indice-tematico/",
     "tipo": "portal"
   },
   {

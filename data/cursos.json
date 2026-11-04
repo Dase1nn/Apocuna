@@ -44,8 +44,8 @@
     "idioma": "Español",
     "certificacion": "Sí",
     "tema": "Sistemas administrativos del Estado",
-    "url": "https://www.enap.edu.pe/",
-    "verificado_en": "2026-10-03T05:24:00Z"
+    "url": "https://www.gob.pe/enap",
+    "verificado_en": "2026-11-04T10:20:00Z"
   },
   {
     "id": "c_005",
@@ -61,15 +61,15 @@
   },
   {
     "id": "c_006",
-    "nombre": "Open Learning Campus (OLC)",
+    "nombre": "World Bank Group Academy (Open Learning)",
     "proveedor": "Banco Mundial",
     "modalidad": "autoguiado",
     "costo": "por verificar",
     "idioma": "Inglés / Español",
     "certificacion": "Sí",
     "tema": "Desarrollo global, economía",
-    "url": "https://olc.worldbank.org/",
-    "verificado_en": "2026-10-03T05:24:00Z"
+    "url": "https://academy.worldbank.org/en/home",
+    "verificado_en": "2026-11-04T10:20:00Z"
   },
   {
     "id": "c_007",

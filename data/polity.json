@@ -39,7 +39,7 @@
         "descripcion": "Encuestas continuas de hogares y demografía para la formulación de políticas y focalización del gasto público.",
         "frecuencia": "Mensual",
         "fuente": "INEI Microdatos",
-        "url": "http://iinei.inei.gob.pe/microdatos/"
+        "url": "https://proyectos.inei.gob.pe/microdatos/"
       },
       {
         "id": "card_pol_2_2",

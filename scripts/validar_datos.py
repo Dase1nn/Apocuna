@@ -2,118 +2,87 @@ import json
 import os
 import sys
 
-def validar_json(file_path, required_fields):
+
+def _check_item_fields(item: dict, required_fields: list, label: str) -> bool:
+    for field in required_fields:
+        if field not in item:
+            print(f"ERROR en {label} (ID: {item.get('id', '?')}): Falta el campo '{field}'")
+            return False
+    for url_key in ("url", "enlace"):
+        val = item.get(url_key)
+        if val and "google.com/search" in val:
+            print(f"ERROR en {label}: {url_key} contiene google.com/search: {val}")
+            return False
+    return True
+
+
+def validar_json(file_path: str, required_fields: list) -> bool:
     if not os.path.exists(file_path):
         print(f"ERROR: No se encontró {file_path}")
         return False
-        
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            
         print(f"Validando {file_path} ({len(data)} registros)...")
         for idx, item in enumerate(data):
-            for field in required_fields:
-                if field not in item:
-                    print(f"ERROR en registro {idx} (ID: {item.get('id', '?')}): Falta el campo '{field}'")
-                    return False
-                    
-            if "url" in item and "google.com/search" in item["url"]:
-                print(f"ERROR en registro {idx}: URL contiene google.com/search: {item['url']}")
+            if not _check_item_fields(item, required_fields, f"registro {idx}"):
                 return False
-                
-            if "enlace" in item and "google.com/search" in item["enlace"]:
-                print(f"ERROR en registro {idx}: Enlace contiene google.com/search: {item['enlace']}")
-                return False
-                
         print(f"OK: {file_path} es válido.")
         return True
     except Exception as e:
         print(f"ERROR leyendo {file_path}: {e}")
         return False
 
+
+def validar_nested_json(file_path: str, sub_checks: list[tuple[str, list]]) -> bool:
+    if not os.path.exists(file_path):
+        return True
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        print(f"Validando {file_path} ({len(data)} subsecciones)...")
+        ok = True
+        for sub in data:
+            for key_list, req_fields in sub_checks:
+                for item in sub.get(key_list, []):
+                    ok &= _check_item_fields(item, req_fields, key_list[:-1])
+        if ok:
+            print(f"OK: {file_path} es válido.")
+        return ok
+    except Exception as e:
+        print(f"ERROR leyendo {file_path}: {e}")
+        return False
+
+
 def main():
-    success = True
     print("Iniciando validación de datos...")
-    
-    # Validar fuentes
-    success &= validar_json(
-        os.path.join("data", "fuentes.json"), 
-        ["id", "bloque", "nombre", "institucion", "descripcion_corta", "url", "tipo"]
+    checks = [
+        (os.path.join("data", "fuentes.json"), ["id", "bloque", "nombre", "institucion", "descripcion_corta", "url", "tipo"]),
+        (os.path.join("data", "eventos.json"), ["id", "tipo", "titulo", "tematica", "fecha_limite", "enlace", "descripcion"]),
+        (os.path.join("data", "generated", "noticias.json"), ["id", "titulo", "fuente", "categoria", "fecha_iso", "url", "resumen"]),
+        (os.path.join("data", "generated", "normas.json"), ["id", "titulo", "tipo_norma", "entidad", "fecha_iso", "url", "grupo"]),
+        (os.path.join("data", "generated", "ckan.json"), ["id", "titulo", "portal", "fecha_modificacion_iso", "url"]),
+    ]
+
+    success = all(validar_json(path, fields) for path, fields in checks)
+    success &= validar_nested_json(
+        os.path.join("data", "polity.json"),
+        [("tarjetas", ["id", "titulo", "descripcion", "frecuencia", "fuente", "url"])]
     )
-    
-    # Validar eventos
-    success &= validar_json(
-        os.path.join("data", "eventos.json"), 
-        ["id", "tipo", "titulo", "tematica", "fecha_limite", "enlace", "descripcion"]
+    success &= validar_nested_json(
+        os.path.join("data", "estudiantes.json"),
+        [
+            ("tarjetas", ["id", "titulo", "descripcion", "fuente", "frecuencia", "url"]),
+            ("apuntes", ["id", "sistema", "curso", "titulo", "resumen", "normativa", "url"]),
+        ]
     )
-    
-    # Validar noticias
-    success &= validar_json(
-        os.path.join("data", "generated", "noticias.json"),
-        ["id", "titulo", "fuente", "categoria", "fecha_iso", "url", "resumen"]
-    )
-    
-    # Validar normas
-    success &= validar_json(
-        os.path.join("data", "generated", "normas.json"),
-        ["id", "titulo", "tipo_norma", "entidad", "fecha_iso", "url", "grupo"]
-    )
-    
-    # Validar ckan
-    success &= validar_json(
-        os.path.join("data", "generated", "ckan.json"),
-        ["id", "titulo", "portal", "fecha_modificacion_iso", "url"]
-    )
-    
-    # Validar polity
-    polity_path = os.path.join("data", "polity.json")
-    if os.path.exists(polity_path):
-        with open(polity_path, "r", encoding="utf-8") as f:
-            p_data = json.load(f)
-            print(f"Validando {polity_path} ({len(p_data)} subsecciones)...")
-            for sub in p_data:
-                for card in sub.get("tarjetas", []):
-                    for field in ["id", "titulo", "descripcion", "frecuencia", "fuente", "url"]:
-                        if field not in card:
-                            print(f"ERROR en tarjeta {card.get('id', '?')}: Falta el campo '{field}'")
-                            success = False
-                    if "url" in card and card.get("url") and "google.com/search" in card["url"]:
-                        print(f"ERROR en tarjeta: URL contiene google.com/search: {card['url']}")
-                        success = False
-            print(f"OK: {polity_path} es válido.")
-            
-    # Validar estudiantes
-    est_path = os.path.join("data", "estudiantes.json")
-    if os.path.exists(est_path):
-        with open(est_path, "r", encoding="utf-8") as f:
-            e_data = json.load(f)
-            print(f"Validando {est_path} ({len(e_data)} subsecciones)...")
-            for sub in e_data:
-                for card in sub.get("tarjetas", []):
-                    for field in ["id", "titulo", "descripcion", "fuente", "frecuencia", "url"]:
-                        if field not in card:
-                            print(f"ERROR en tarjeta {card.get('id', '?')}: Falta el campo '{field}'")
-                            success = False
-                    if "url" in card and card.get("url") and "google.com/search" in card["url"]:
-                        print(f"ERROR en tarjeta: URL contiene google.com/search: {card['url']}")
-                        success = False
-                for apunte in sub.get("apuntes", []):
-                    for field in ["id", "sistema", "curso", "titulo", "resumen", "normativa", "url"]:
-                        if field not in apunte:
-                            print(f"ERROR en apunte {apunte.get('id', '?')}: Falta el campo '{field}'")
-                            success = False
-                    if "url" in apunte and apunte.get("url") and "google.com/search" in apunte["url"]:
-                        print(f"ERROR en apunte: URL contiene google.com/search: {apunte['url']}")
-                        success = False
-            print(f"OK: {est_path} es válido.")
-    
+
     if success:
         print("Todas las validaciones pasaron correctamente.")
         sys.exit(0)
-    else:
-        print("Fallaron algunas validaciones.")
-        sys.exit(1)
+    print("Fallaron algunas validaciones.")
+    sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
