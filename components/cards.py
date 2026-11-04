@@ -16,11 +16,11 @@ def escape(val) -> str:
 
 
 def safe_url(val) -> str | None:
-    """Valida que una URL comience por http:// o https:// y la escapa con quote=True."""
+    """Valida que una URL comience por http://, https:// o data:image/ y la escapa con quote=True."""
     if not val or not isinstance(val, str):
         return None
     val_clean = val.strip()
-    if val_clean.startswith(("http://", "https://")):
+    if val_clean.startswith(("http://", "https://", "data:image/")):
         return html.escape(val_clean, quote=True)
     return None
 

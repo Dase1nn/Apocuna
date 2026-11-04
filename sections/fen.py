@@ -1,5 +1,7 @@
+import base64
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
+import os
 import urllib.parse
 import feedparser
 import pandas as pd
@@ -14,191 +16,161 @@ from components.cards import (
     render_kpi_ribbon,
 )
 
+PREVIEWS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "fen_previews")
+
+
+@st.cache_data(show_spinner=False)
+def _load_preview_data_uri(filename: str, mtime: float) -> str:
+    """Lee la captura real de pantalla desde assets/fen_previews/ y la devuelve como Data URI en caché."""
+    filepath = os.path.join(PREVIEWS_DIR, filename)
+    with open(filepath, "rb") as f:
+        b64 = base64.b64encode(f.read()).decode("ascii")
+    return f"data:image/png;base64,{b64}"
+
+
+def get_preview_uri(filename: str) -> str:
+    """Obtiene el Data URI de una captura local invalidando caché solo si el archivo cambia."""
+    filepath = os.path.join(PREVIEWS_DIR, filename)
+    if os.path.exists(filepath):
+        return _load_preview_data_uri(filename, os.path.getmtime(filepath))
+    return ""
+
+
 # ==============================================================================
 # BLOQUE 1: CONFIGURACIÓN DEL HERO GRID DE MONITOREO EN TIEMPO REAL (2x2 + 1)
 # ==============================================================================
 SVG_GOES19 = (
     '<svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">'
-    '<defs><radialGradient id="gSat" cx="35%" cy="45%" r="65%">'
-    '<stop offset="0%" stop-color="#38BDF8" stop-opacity="0.48"/>'
-    '<stop offset="55%" stop-color="#0284C7" stop-opacity="0.22"/>'
-    '<stop offset="100%" stop-color="#0B132B" stop-opacity="0.9"/>'
-    '</radialGradient></defs>'
-    '<rect width="600" height="220" fill="url(#gSat)"/>'
-    '<circle cx="210" cy="105" r="78" fill="none" stroke="rgba(56,189,248,0.35)" stroke-dasharray="5,5" stroke-width="1.5"/>'
-    '<circle cx="210" cy="105" r="125" fill="none" stroke="rgba(56,189,248,0.22)" stroke-width="1"/>'
-    '<path d="M80,65 Q190,25 310,85 T540,70" fill="none" stroke="rgba(125,211,252,0.55)" stroke-width="2.5"/>'
-    '<path d="M50,135 Q210,95 350,145 T560,120" fill="none" stroke="rgba(250,204,21,0.45)" stroke-width="2"/>'
-    '<text x="24" y="162" fill="rgba(226,232,240,0.65)" font-size="11" font-family="monospace" font-weight="700">'
-    'GOES-19 ABI • CANAL IR 10.3 µm • TOPES NUBOSOS &amp; CONVECCIÓN PROFUNDA'
-    '</text></svg>'
+    '<rect width="600" height="220" fill="#0B132B"/></svg>'
 )
 
 SVG_WINDY = (
     '<svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">'
-    '<defs><linearGradient id="gWindy" x1="0%" y1="0%" x2="100%" y2="100%">'
-    '<stop offset="0%" stop-color="#0F172A"/><stop offset="45%" stop-color="#0369A1"/>'
-    '<stop offset="80%" stop-color="#EA580C" stop-opacity="0.68"/><stop offset="100%" stop-color="#DC2626" stop-opacity="0.75"/>'
-    '</linearGradient></defs>'
-    '<rect width="600" height="220" fill="url(#gWindy)"/>'
-    '<path d="M20,50 C150,20 260,90 410,45 S540,70 590,40" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2" stroke-dasharray="10,4"/>'
-    '<path d="M10,100 C160,70 290,140 440,95 S550,115 595,85" fill="none" stroke="rgba(253,186,116,0.55)" stroke-width="2.5"/>'
-    '<path d="M35,148 C180,120 310,175 470,130 S560,150 590,135" fill="none" stroke="rgba(125,211,252,0.48)" stroke-width="2"/>'
-    '<text x="24" y="162" fill="rgba(255,255,255,0.72)" font-size="11" font-family="monospace" font-weight="700">'
-    'ECMWF / GFS • 9.19°S 75.01°W • VIENTOS ALISIOS, SST &amp; ACUMULADO PLUVIOMÉTRICO'
-    '</text></svg>'
+    '<rect width="600" height="220" fill="#0F172A"/></svg>'
 )
 
 SVG_ENFEN = (
     '<svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">'
-    '<defs><linearGradient id="gEnfen" x1="0%" y1="50%" x2="100%" y2="50%">'
-    '<stop offset="0%" stop-color="#1E3A8A"/><stop offset="50%" stop-color="#0284C7"/>'
-    '<stop offset="82%" stop-color="#F97316" stop-opacity="0.72"/><stop offset="100%" stop-color="#EF4444" stop-opacity="0.82"/>'
-    '</linearGradient></defs>'
-    '<rect width="600" height="220" fill="url(#gEnfen)"/>'
-    '<rect x="65" y="42" width="210" height="72" fill="rgba(255,255,255,0.06)" stroke="rgba(253,224,71,0.5)" stroke-dasharray="4,3"/>'
-    '<rect x="315" y="36" width="185" height="82" fill="rgba(239,68,68,0.16)" stroke="rgba(248,113,113,0.75)" stroke-width="1.5"/>'
-    '<text x="80" y="65" fill="#FDE047" font-size="11" font-family="monospace" font-weight="700">REGIÓN NIÑO 3.4</text>'
-    '<text x="330" y="62" fill="#FCA5A5" font-size="11" font-family="monospace" font-weight="700">REGIÓN NIÑO 1+2 (COSTA PERÚ)</text>'
-    '<text x="24" y="162" fill="rgba(255,255,255,0.75)" font-size="11" font-family="monospace" font-weight="700">'
-    'ICEN / ONI • ANOMALÍAS TSM (°C) • ONDAS KELVIN ECUATORIALES'
-    '</text></svg>'
+    '<rect width="600" height="220" fill="#1E3A8A"/></svg>'
 )
 
 SVG_SUNASS = (
     '<svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">'
-    '<defs><linearGradient id="gSunass" x1="0%" y1="0%" x2="100%" y2="100%">'
-    '<stop offset="0%" stop-color="#064E3B"/><stop offset="55%" stop-color="#0284C7"/>'
-    '<stop offset="100%" stop-color="#0F172A"/>'
-    '</linearGradient></defs>'
-    '<rect width="600" height="220" fill="url(#gSunass)"/>'
-    '<polyline points="40,130 120,95 195,110 280,62 365,88 455,52 550,74" fill="none" stroke="#34D399" stroke-width="2.5"/>'
-    '<circle cx="120" cy="95" r="4.5" fill="#38BDF8"/><circle cx="280" cy="62" r="5" fill="#FBBF24"/>'
-    '<circle cx="455" cy="52" r="5" fill="#34D399"/>'
-    '<text x="24" y="162" fill="rgba(209,250,229,0.78)" font-size="11" font-family="monospace" font-weight="700">'
-    'VISOR CAMIYAKU • CUENCAS APORTANTES, TURBIDEZ &amp; RESILIENCIA DE 50 EPS'
-    '</text></svg>'
+    '<rect width="600" height="220" fill="#064E3B"/></svg>'
 )
 
 SVG_SIGRID = (
     '<svg viewBox="0 0 1200 210" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">'
-    '<defs><linearGradient id="gSigrid" x1="0%" y1="0%" x2="100%" y2="0%">'
-    '<stop offset="0%" stop-color="#0F172A"/><stop offset="45%" stop-color="#1E293B"/>'
-    '<stop offset="78%" stop-color="#7C2D12" stop-opacity="0.72"/><stop offset="100%" stop-color="#991B1B" stop-opacity="0.78"/>'
-    '</linearGradient></defs>'
-    '<rect width="1200" height="210" fill="url(#gSigrid)"/>'
-    '<g stroke="rgba(56,189,248,0.18)" stroke-width="1">'
-    '<line x1="0" y1="50" x2="1200" y2="50"/><line x1="0" y1="105" x2="1200" y2="105"/>'
-    '<line x1="240" y1="0" x2="240" y2="210"/><line x1="520" y1="0" x2="520" y2="210"/><line x1="840" y1="0" x2="840" y2="210"/>'
-    '</g>'
-    '<circle cx="310" cy="82" r="32" fill="rgba(239,68,68,0.22)" stroke="#F87171" stroke-width="1.5"/>'
-    '<circle cx="670" cy="96" r="44" fill="rgba(245,158,11,0.2)" stroke="#FBBF24" stroke-width="1.5"/>'
-    '<circle cx="960" cy="76" r="28" fill="rgba(56,189,248,0.22)" stroke="#38BDF8" stroke-width="1.5"/>'
-    '<text x="28" y="156" fill="rgba(248,250,252,0.8)" font-size="12" font-family="monospace" font-weight="700">'
-    'CENEPRED SIGRID v3 + INDECI SINPAD / COEN • CAPAS DISTRITALES DE EXPOSICIÓN, INUNDACIONES, HUAICOS Y EMERGENCIAS ACTIVAS'
-    '</text></svg>'
+    '<rect width="1200" height="210" fill="#0F172A"/></svg>'
 )
 
-HERO_TOP_FOUR_CARDS = [
-    {
-        "entidad": "SENAMHI • PERÚ",
-        "estado": "EN VIVO / CADA 10 MIN",
-        "titulo": "SENAMHI — Imágenes Satelitales GOES-19 y Monitoreo Hidrometeorológico",
-        "descripcion": (
-            "Seguimiento satelital multiespectral en tiempo real de topes nubosos, sistemas convectivos "
-            "profundos, precipitación estimada y avisos meteorológicos e hidrológicos en el Pacífico y territorio peruano."
-        ),
-        "preview_url": "https://image.thum.io/get/width/800/crop/450/https://www.senamhi.gob.pe/?p=satelites",
-        "theme_class": "fen-theme-sat",
-        "svg_fallback": SVG_GOES19,
-        "metricas": ["GOES-19 Banda 13 IR", "Tope Nuboso (°C)", "Precipitación 24h", "Activación de Quebradas"],
-        "url": "https://www.senamhi.gob.pe/?p=satelites",
-        "btn_label": "Abrir GOES-19 SENAMHI ↗",
-        "enlaces_secundarios": [
-            {"label": "Avisos Meteorológicos", "url": "https://www.senamhi.gob.pe/?p=avisos-meteorologicos"},
-            {"label": "Monitoreo Hidrológico", "url": "https://www.senamhi.gob.pe/?p=monitoreo-hidrologico"},
-        ],
-    },
-    {
-        "entidad": "WINDY • ECMWF / GFS",
-        "estado": "TIEMPO REAL / MULTICAPA",
-        "titulo": "Windy.com — Foco Perú y Pacífico Oriental (Anomalías Térmicas y Lluvias)",
-        "descripcion": (
-            "Visualización interactiva de alta resolución para el monitoreo de vientos alisios del Pacífico Sur, "
-            "temperatura superficial del mar (SST), acumulado de lluvias a 3-10 días y comparación de modelos ECMWF y GFS."
-        ),
-        "preview_url": "https://image.thum.io/get/width/800/crop/450/https://www.windy.com/-9.190/-75.015",
-        "theme_class": "fen-theme-windy",
-        "svg_fallback": SVG_WINDY,
-        "metricas": ["Modelo Europeo ECMWF", "Modelo GFS NOAA", "Anomalía SST / Olas", "Acumulado de Lluvias"],
-        "url": "https://www.windy.com/-9.190/-75.015?temp,-9.190,-75.015,5",
-        "btn_label": "Abrir Mapa Interactivo Windy ↗",
-        "enlaces_secundarios": [],
-    },
-    {
-        "entidad": "ENFEN • IMARPE • NOAA",
-        "estado": "ALERTA OFICIAL / EN VIVO",
-        "titulo": "ENFEN / IMARPE / NOAA — Estado del Sistema de Alerta y Regiones Niño 1+2 y 3.4",
-        "descripcion": (
-            "Panel oficial de la Comisión Multisectorial ENFEN e IMARPE junto con el diagnóstico de la NOAA. "
-            "Mide el Índice Costero El Niño (ICEN), anomalías térmicas en Niño 1+2 (costa peruana) y Niño 3.4, y arribo de ondas Kelvin."
-        ),
-        "preview_url": "https://image.thum.io/get/width/800/crop/450/https://enfen.imarpe.gob.pe/",
-        "theme_class": "fen-theme-enfen",
-        "svg_fallback": SVG_ENFEN,
-        "metricas": ["Índice ICEN / ONI", "Región Niño 1+2", "Región Niño 3.4", "Ondas Kelvin Subsuperficiales"],
-        "url": "https://enfen.imarpe.gob.pe/",
-        "btn_label": "Portal Oficial ENFEN / IMARPE ↗",
-        "enlaces_secundarios": [
-            {"label": "NOAA ENSO Diagnostic", "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/"},
-        ],
-    },
-    {
-        "entidad": "SUNASS • CAMIYAKU",
-        "estado": "MONITOREO HÍDRICO / EPS",
-        "titulo": "SUNASS — Visor CamiYaku y Monitoreo de EPS y Cuencas de Agua Potable",
-        "descripcion": (
-            "Plataforma geoespacial e hidroclimática de SUNASS para el seguimiento de cuencas aportantes, "
-            "vulnerabilidad de infraestructura de agua potable y alcantarillado (EPS), turbidez por huaicos y estrés hídrico."
-        ),
-        "preview_url": "https://image.thum.io/get/width/800/crop/450/https://www.gob.pe/institucion/sunass/campa%C3%B1as/21633-cami-yaku",
-        "theme_class": "fen-theme-sunass",
-        "svg_fallback": SVG_SUNASS,
-        "metricas": ["Cuencas Aportantes", "Riesgo en 50 EPS", "Turbidez y Caudales", "Continuidad del Servicio"],
-        "url": "https://www.gob.pe/institucion/sunass/campa%C3%B1as/21633-cami-yaku",
-        "btn_label": "Abrir Visor CamiYaku SUNASS ↗",
-        "enlaces_secundarios": [
-            {"label": "Portal Institucional SUNASS", "url": "https://www.gob.pe/sunass"},
-        ],
-    },
-]
 
-HERO_BOTTOM_WIDE_CARD = {
-    "entidad": "CENEPRED • INDECI • COEN • SINPAD",
-    "estado": "PLATAFORMA GEOESPACIAL CENTRAL • EN VIVO",
-    "titulo": "INDECI / CENEPRED — SIGRID v3 y Monitoreo Nacional de Peligros y Emergencias (SINPAD / COEN)",
-    "descripcion": (
-        "Infraestructura geoespacial oficial del SINAGERD para consultar escenarios de riesgo por lluvias intensas, "
-        "inundaciones, movimientos en masa (huaicos y deslizamientos), elementos expuestos (población, centros de salud, "
-        "colegios, vías) y reportes de emergencias activas a nivel distrital, provincial y departamental."
-    ),
-    "preview_url": "https://image.thum.io/get/width/1000/crop/420/https://sigrid.cenepred.gob.pe/sigridv3/",
-    "theme_class": "fen-theme-sigrid",
-    "svg_fallback": SVG_SIGRID,
-    "metricas": [
-        "Escenarios de Riesgo FEN",
-        "Población y Viviendas Expuestas",
-        "Quebradas y Fajas Marginales",
-        "Emergencias SINPAD / COEN",
-        "Cartografía Distrital",
-    ],
-    "url": "https://sigrid.cenepred.gob.pe/sigridv3/",
-    "btn_label": "Abrir Visor Geoespacial SIGRID v3 ↗",
-    "enlaces_secundarios": [
-        {"label": "INDECI / Reportes COEN", "url": "https://www.gob.pe/indeci"},
-        {"label": "Portal CENEPRED", "url": "https://www.gob.pe/cenepred"},
-    ],
-}
+def _get_hero_cards() -> tuple[list[dict], dict]:
+    """Construye las 5 tarjetas principales inyectando la captura real verificada de cada plataforma."""
+    top_four = [
+        {
+            "entidad": "SENAMHI • PERÚ",
+            "estado": "EN VIVO / CADA 10 MIN",
+            "titulo": "SENAMHI — Imágenes Satelitales GOES-19 y Monitoreo Hidrometeorológico",
+            "descripcion": (
+                "Seguimiento satelital multiespectral en tiempo real de topes nubosos, sistemas convectivos "
+                "profundos, precipitación estimada y avisos meteorológicos e hidrológicos en el Pacífico y territorio peruano."
+            ),
+            "preview_url": get_preview_uri("senamhi_goes19.png"),
+            "theme_class": "fen-theme-sat",
+            "svg_fallback": SVG_GOES19,
+            "metricas": ["GOES-19 Banda 13 IR", "Tope Nuboso (°C)", "Precipitación 24h", "Activación de Quebradas"],
+            "url": "https://www.senamhi.gob.pe/?p=satelites-goes19",
+            "btn_label": "Abrir GOES-19 SENAMHI ↗",
+            "enlaces_secundarios": [
+                {"label": "Avisos Meteorológicos", "url": "https://www.senamhi.gob.pe/?p=avisos-meteorologicos"},
+                {"label": "Monitoreo Hidrológico", "url": "https://www.senamhi.gob.pe/?p=monitoreo-hidrologico"},
+            ],
+        },
+        {
+            "entidad": "WINDY • ECMWF / GFS",
+            "estado": "TIEMPO REAL / MULTICAPA",
+            "titulo": "Windy.com — Foco Perú y Pacífico Oriental (Anomalías Térmicas y Lluvias)",
+            "descripcion": (
+                "Visualización interactiva de alta resolución para el monitoreo de vientos alisios del Pacífico Sur, "
+                "temperatura superficial del mar (SST), acumulado de lluvias a 3-10 días y comparación de modelos ECMWF y GFS."
+            ),
+            "preview_url": get_preview_uri("windy_peru.png"),
+            "theme_class": "fen-theme-windy",
+            "svg_fallback": SVG_WINDY,
+            "metricas": ["Modelo Europeo ECMWF", "Modelo GFS NOAA", "Anomalía SST / Olas", "Acumulado de Lluvias"],
+            "url": "https://www.windy.com/-9.190/-75.015?temp,-9.190,-75.015,5",
+            "btn_label": "Abrir Mapa Interactivo Windy ↗",
+            "enlaces_secundarios": [],
+        },
+        {
+            "entidad": "ENFEN • IMARPE • NOAA",
+            "estado": "ALERTA OFICIAL / EN VIVO",
+            "titulo": "ENFEN / IMARPE / NOAA — Estado del Sistema de Alerta y Regiones Niño 1+2 y 3.4",
+            "descripcion": (
+                "Panel oficial de la Comisión Multisectorial ENFEN e IMARPE junto con el diagnóstico de la NOAA. "
+                "Mide el Índice Costero El Niño (ICEN), anomalías térmicas en Niño 1+2 (costa peruana) y Niño 3.4, y arribo de ondas Kelvin."
+            ),
+            "preview_url": get_preview_uri("enfen_imarpe.png"),
+            "theme_class": "fen-theme-enfen",
+            "svg_fallback": SVG_ENFEN,
+            "metricas": ["Índice ICEN / ONI", "Región Niño 1+2", "Región Niño 3.4", "Ondas Kelvin Subsuperficiales"],
+            "url": "https://enfen.imarpe.gob.pe/",
+            "btn_label": "Portal Oficial ENFEN / IMARPE ↗",
+            "enlaces_secundarios": [
+                {"label": "NOAA ENSO Diagnostic", "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/"},
+            ],
+        },
+        {
+            "entidad": "SUNASS • CAMI YAKU",
+            "estado": "MONITOREO HÍDRICO / EPS",
+            "titulo": "SUNASS — Centro de Análisis y Monitoreo CAMI Yaku (EPS y Cuencas)",
+            "descripcion": (
+                "Plataforma geoespacial e hidroclimática de SUNASS para el seguimiento de cuencas aportantes, "
+                "vulnerabilidad de infraestructura de agua potable y alcantarillado (EPS), turbidez por huaicos y estrés hídrico."
+            ),
+            "preview_url": get_preview_uri("sunass_camiyaku.png"),
+            "theme_class": "fen-theme-sunass",
+            "svg_fallback": SVG_SUNASS,
+            "metricas": ["Cuencas Aportantes", "Riesgo en 50 EPS", "Turbidez y Caudales", "Continuidad del Servicio"],
+            "url": "https://www.gob.pe/institucion/sunass/campa%C3%B1as/21633-cami-yaku",
+            "btn_label": "Abrir CAMI Yaku SUNASS ↗",
+            "enlaces_secundarios": [
+                {"label": "Portal Institucional SUNASS", "url": "https://www.gob.pe/sunass"},
+            ],
+        },
+    ]
+
+    bottom_wide = {
+        "entidad": "CENEPRED • INDECI • COEN • SINPAD",
+        "estado": "PLATAFORMA GEOESPACIAL CENTRAL • EN VIVO",
+        "titulo": "INDECI / CENEPRED — SIGRID v3 y Monitoreo Nacional de Peligros y Emergencias (SINPAD / COEN)",
+        "descripcion": (
+            "Infraestructura geoespacial oficial del SINAGERD para consultar escenarios de riesgo por lluvias intensas, "
+            "inundaciones, movimientos en masa (huaicos y deslizamientos), elementos expuestos (población, centros de salud, "
+            "colegios, vías) y reportes de emergencias activas a nivel distrital, provincial y departamental."
+        ),
+        "preview_url": get_preview_uri("cenepred_sigrid.png"),
+        "theme_class": "fen-theme-sigrid",
+        "svg_fallback": SVG_SIGRID,
+        "metricas": [
+            "Escenarios de Riesgo FEN",
+            "Población y Viviendas Expuestas",
+            "Quebradas y Fajas Marginales",
+            "Emergencias SINPAD / COEN",
+            "Cartografía Distrital",
+        ],
+        "url": "https://sigrid.cenepred.gob.pe/sigridv3/",
+        "btn_label": "Abrir Visor Geoespacial SIGRID v3 ↗",
+        "enlaces_secundarios": [
+            {"label": "INDECI / Reportes COEN", "url": "https://www.gob.pe/indeci"},
+            {"label": "Portal CENEPRED", "url": "https://www.gob.pe/cenepred"},
+        ],
+    }
+    return top_four, bottom_wide
+
+
+HERO_TOP_FOUR_CARDS, HERO_BOTTOM_WIDE_CARD = _get_hero_cards()
 
 # ==============================================================================
 # BLOQUE 2: RADAR AUTOMATIZADO DE NOTICIAS Y NORMATIVA SOBRE EL NIÑO
@@ -469,7 +441,7 @@ MASTER_FEN_TOOLS = [
         "categoria": "Meteorológico",
         "frecuencia": "Tiempo real (10 min)",
         "utilidad": "Monitoreo de convección profunda, temperatura de topes nubosos y desplazamiento de sistemas de lluvias intensas en costa, sierra y selva.",
-        "url": "https://www.senamhi.gob.pe/?p=satelites",
+        "url": "https://www.senamhi.gob.pe/?p=satelites-goes19",
     },
     {
         "nombre": "Avisos Meteorológicos de Corto Plazo y Activación de Quebradas",
@@ -528,7 +500,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://marine.copernicus.eu/",
     },
     {
-        "nombre": "Visor CamiYaku — Monitoreo de Cuencas y Resiliencia de EPS",
+        "nombre": "Centro de Análisis y Monitoreo CAMI Yaku (Cuencas y Resiliencia de EPS)",
         "institucion": "SUNASS",
         "categoria": "Hídrico/Saneamiento",
         "frecuencia": "Permanente",
@@ -624,7 +596,7 @@ def _render_fen_header():
         """
         <div class="snow-card hero-intro-block">
             <div class="hero-eyebrow">OBSERVATORIO CLIMÁTICO, GESTIÓN DEL RIESGO DE DESASTRES Y GOBERNANZA TERRITORIAL</div>
-            <h1 class="hero-intro-title">🌊 Fenómeno El Niño (FEN): Monitoreo en Tiempo Real, Normativa e Impacto Público</h1>
+            <h1 class="hero-intro-title">Fenómeno El Niño (FEN): Monitoreo en Tiempo Real, Normativa e Impacto Público</h1>
             <p class="hero-intro-text">
                 Centro integrado de inteligencia climática y territorial que articula las plataformas satelitales, oceanográficas y geoespaciales del Estado peruano y agencias internacionales con el seguimiento de declaratorias de emergencia, ejecución presupuestal (PP 0068 PREVAED) e impactos sectoriales.
             </p>
@@ -639,7 +611,7 @@ def _render_fen_header():
                 "icon": "🛰️",
                 "value": "5",
                 "label": "Visores en Tiempo Real",
-                "sub": "GOES-19, Windy, ENFEN, CamiYaku y SIGRID",
+                "sub": "GOES-19, Windy, ENFEN, CAMI Yaku y SIGRID",
             },
             {
                 "icon": "📡",
@@ -781,14 +753,15 @@ def _render_block_3_ecosystem():
 
 
 def render_fen():
-    """Punto de entrada principal de la sección 🌊 Fenómeno El Niño (FEN)."""
+    """Punto de entrada principal de la sección Fenómeno El Niño (FEN)."""
     _render_fen_header()
 
     st.subheader("🛰️ Panel Protagonista de Monitoreo Satelital, Oceanográfico y Geoespacial en Tiempo Real")
     st.caption(
         "Acceso directo a las 5 infraestructuras críticas de vigilancia del Fenómeno El Niño en el Perú y el Pacífico Oriental (Disposición 2x2 + 1)."
     )
-    render_fen_hero_grid(HERO_TOP_FOUR_CARDS, HERO_BOTTOM_WIDE_CARD)
+    top_four, bottom_wide = _get_hero_cards()
+    render_fen_hero_grid(top_four, bottom_wide)
 
     _render_block_2_radar()
     _render_block_3_ecosystem()

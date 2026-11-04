@@ -5,7 +5,7 @@ from utils.loaders import load_dashboard_kpis
 OPTIONS_LIST = [
     "Inicio",
     "Polity and Policy",
-    "🌊 Fenómeno El Niño (FEN)",
+    "Fenómeno El Niño (FEN)",
     "Estudiantes (DEMO)",
     "Notas",
     "Eventos",
@@ -28,8 +28,8 @@ def render_sidebar():
         current = st.session_state.get("current_page", "Inicio")
         if current == "Estudiantes":
             current = "Estudiantes (DEMO)"
-        elif current == "Fenómeno El Niño (FEN)":
-            current = "🌊 Fenómeno El Niño (FEN)"
+        elif current == "🌊 Fenómeno El Niño (FEN)":
+            current = "Fenómeno El Niño (FEN)"
         default_idx = OPTIONS_LIST.index(current) if current in OPTIONS_LIST else 0
 
         menu = option_menu(
