@@ -1,0 +1,1030 @@
+{
+  "mes": "2026-11",
+  "actualizado_en": "2026-11-14T17:01:44Z",
+  "total_normas": 11,
+  "normas": [
+    {
+      "id": "decreto-supremo-252-2026-ef-2026-economia-y-finanzas",
+      "op": "2574516-3",
+      "tipo": "DECRETO SUPREMO",
+      "numero": "252-2026-EF",
+      "numero_raw": "N° 252-2026-EF",
+      "anio": "2026",
+      "entidad": "ECONOMÍA Y FINANZAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de diversos gobiernos regionales",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574516-3",
+      "eje": "policy",
+      "subtema": "Presupuesto, Hacienda Pública y Transferencias",
+      "prioridad": "baja prioridad",
+      "motivo_clasificacion": "Incluida con baja prioridad: autorización de transferencia de partidas o transferencia financiera",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "32513",
+          "anio": "2026",
+          "relacion_detectada": "base legal / invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1440",
+          "anio": "2018",
+          "relacion_detectada": "invocada en considerandos / base legal",
+          "url": null
+        }
+      ],
+      "que_dispone": "Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 hasta por la suma de S/ 7 278 000,00 a favor de diversos gobiernos regionales, con cargo al presupuesto institucional del Ministerio de Educación. El fin es financiar el costo diferencial del pago de la tercera y segunda armada del incentivo por ingreso de profesores a la Carrera Pública Magisterial de los Concursos de Nombramiento 2022 y 2024, así como el pago excepcional de la segunda y primera armada de dichos concursos.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Permitiría financiar el costo diferencial y el pago excepcional de las armadas del incentivo por ingreso de profesores a la Carrera Pública Magisterial en favor de diversos gobiernos regionales.",
+          "articulo": "Artículo 1",
+          "cita": "financiar el costo diferencial que implica el pago de la tercera y segunda armada"
+        },
+        {
+          "efecto": "Obligaría a los titulares de los pliegos habilitador y habilitados a aprobar la desagregación de los recursos mediante resolución dentro del plazo establecido.",
+          "articulo": "Artículo 2",
+          "cita": "aprueban, mediante resolución, la desagregación de los recursos autorizados en el numeral 1.1"
+        },
+        {
+          "efecto": "Restringiría el uso de los recursos transferidos prohibiendo su destino a fines distintos para los cuales fueron autorizados.",
+          "articulo": "Artículo 3",
+          "cita": "no pueden ser destinados, bajo responsabilidad, a fines distintos para los cuales son transferidos"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Qué pliegos específicos y montos exactos corresponden a cada gobierno regional según el anexo publicado en las sedes digitales del Ministerio de Educación y del Ministerio de Economía y Finanzas?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:00:26Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "715c19d60406357ca145183a115ac9cddb1e044d8d9b8dbf5e8e910bcd8e0a8b",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "decreto-supremo-251-2026-ef-2026-economia-y-finanzas",
+      "op": "2574516-2",
+      "tipo": "DECRETO SUPREMO",
+      "numero": "251-2026-EF",
+      "numero_raw": "N° 251-2026-EF",
+      "anio": "2026",
+      "entidad": "ECONOMÍA Y FINANZAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de diversos pliegos del gobierno nacional y de los gobiernos regionales",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574516-2",
+      "eje": "policy",
+      "subtema": "Presupuesto, Hacienda Pública y Transferencias",
+      "prioridad": "baja prioridad",
+      "motivo_clasificacion": "Incluida con baja prioridad: autorización de transferencia de partidas o transferencia financiera",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "32513",
+          "anio": "2026",
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "32059",
+          "anio": null,
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "32185",
+          "anio": "2025",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1057",
+          "anio": null,
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1440",
+          "anio": null,
+          "relacion_detectada": "base legal",
+          "url": null
+        }
+      ],
+      "que_dispone": "Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 hasta por la suma de S/ 3 267 312,00 a favor del Instituto Nacional de Salud, del Instituto Nacional de Enfermedades Neoplásicas y de diversas unidades ejecutoras de salud de los gobiernos regionales. Los recursos provienen del presupuesto institucional del Ministerio de Salud y se destinan a financiar el costo diferencial del nombramiento de profesionales, técnicos y auxiliares administrativos para el mes de diciembre de 2026.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Permitiría a los titulares de los pliegos habilitador y habilitados aprobar la desagregación de los recursos autorizados mediante resolución en el plazo establecido.",
+          "articulo": "Artículo 2",
+          "cita": "aprueban, mediante resolución, la desagregación de los recursos autorizados en el numeral 1.1"
+        },
+        {
+          "efecto": "Facultaría a la Dirección General de Gestión Fiscal de los Recursos Humanos actualizar la información registrada en el AIRHSP con las plazas financiadas.",
+          "articulo": "Artículo 4",
+          "cita": "actualizar la información registrada en el Aplicativo Informático para el Registro Centralizado"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Se publicaron íntegramente los anexos con el detalle de los pliegos habilitados en las sedes digitales correspondientes?",
+        "¿Las unidades ejecutoras remitieron las copias de las resoluciones de desagregación dentro de los plazos establecidos?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:00:30Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "a8843ec45e98b34c2d5d4681b4c1cf5017e4e9ae5501499f588619c08ec2a7b9",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "decreto-supremo-250-2026-ef-2026-economia-y-finanzas",
+      "op": "2574516-1",
+      "tipo": "DECRETO SUPREMO",
+      "numero": "250-2026-EF",
+      "numero_raw": "N° 250-2026-EF",
+      "anio": "2026",
+      "entidad": "ECONOMÍA Y FINANZAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor del Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574516-1",
+      "eje": "policy",
+      "subtema": "Presupuesto, Hacienda Pública y Transferencias",
+      "prioridad": "baja prioridad",
+      "motivo_clasificacion": "Incluida con baja prioridad: autorización de transferencia de partidas o transferencia financiera",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "D000208-2026-MINAM",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "29968",
+          "anio": "2012",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1440",
+          "anio": "2018",
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "27658",
+          "anio": "2002",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        }
+      ],
+      "que_dispone": "Se autoriza una Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 hasta por la suma de S/ 27 282,00 a favor del Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles (SENACE), con cargo al presupuesto institucional del Ministerio de la Producción, para financiar las funciones del subsector Pesca y Acuicultura asumidas por dicha entidad.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Permitiría financiar las funciones del subsector Pesca y Acuicultura asumidas por el Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles.",
+          "articulo": "Artículo 1",
+          "cita": "para financiar las funciones del subsector Pesca y Acuicultura asumidas por el Servicio Nacional"
+        },
+        {
+          "efecto": "Obligaría a los titulares de los pliegos habilitador y habilitado a aprobar la desagregación de los recursos mediante resolución en un plazo determinado.",
+          "articulo": "Artículo 2",
+          "cita": "aprueban, mediante resolución, la desagregación de los recursos autorizados en el artículo 1"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Se remitieron las copias de las resoluciones de desagregación presupuestaria a los organismos correspondientes dentro del plazo de cinco días calendario establecido?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:00:33Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "6d062b12e3bebe9556adcb478ca668decfa384196fbec28fac5ff18bc4724c9d",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-ministerial-481-2026-minem-dm-2026-energia-y-minas",
+      "op": "2574506-1",
+      "tipo": "RESOLUCIÓN MINISTERIAL",
+      "numero": "481-2026-MINEM/DM",
+      "numero_raw": "N° 481-2026-MINEM/DM",
+      "anio": "2026",
+      "entidad": "ENERGÍA Y MINAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Modifican magnitud de la capacidad adicional de generación eléctrica de naturaleza temporal establecida en la R.M. N° 408-2025-MINEM/DM",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574506-1",
+      "eje": "policy",
+      "subtema": "Energía, Minería e Hidrocarburos",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Policy: generación eléctrica, electricidad (texto), minería (texto), osinergmin (texto)",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "408-2025-MINEM/DM",
+          "anio": "2025",
+          "relacion_detectada": "modificada",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "044-2014-EM",
+          "anio": "2014",
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "30705",
+          "anio": "2017",
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "031-2007-EM",
+          "anio": "2007",
+          "relacion_detectada": "base legal",
+          "url": null
+        }
+      ],
+      "que_dispone": "Modifica la magnitud de la capacidad adicional de generación eléctrica de naturaleza temporal establecida en la Resolución Ministerial N° 408-2025-MINEM/DM, fijándola en hasta 9,6 MW desde la publicación de la resolución hasta el 31 de mayo de 2027, y en hasta 11,7 MW desde el 01 de junio de 2027 hasta la puesta en operación comercial del proyecto respectivo, prevista como máximo al 29 de febrero de 2028.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Permitiría contar con una mayor capacidad de generación eléctrica temporal para los Sistemas Eléctricos de Tarapoto y Yurimaguas.",
+          "articulo": "Artículo 1",
+          "cita": "hasta 9,6 MW de capacidad adicional de generación"
+        },
+        {
+          "efecto": "Incrementaría la capacidad adicional de generación a hasta 11,7 MW a partir del 01 de junio de 2027.",
+          "articulo": "Artículo 1",
+          "cita": "hasta 11,7 MW de capacidad adicional de generación"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Se cuenta con la documentación completa de los informes técnicos del COES y OSINERGMIN mencionados en los vistos de la norma?",
+        "¿La empresa designada Electro Oriente S.A. ha emitido pronunciamiento sobre la capacidad operativa para asumir los nuevos requerimientos de MW?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:00:36Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "56ba51f403e5d97b410816ed0de6ae9c48630d1a4cb1e6e2751452fac2381c72",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-directoral-2951-2026-mtc-28-2026-transportes-y-comunicaciones",
+      "op": "2574404-1",
+      "tipo": "RESOLUCIÓN DIRECTORAL",
+      "numero": "2951-2026-MTC/28",
+      "numero_raw": "Nº 2951-2026-MTC/28",
+      "anio": "2026",
+      "entidad": "TRANSPORTES Y COMUNICACIONES",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Declaran que las autorizaciones para la prestación del servicio de radiodifusión sonora en la banda FM en localidad del departamento de Cusco serán otorgadas mediante Concurso Público",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574404-1",
+      "eje": "policy",
+      "subtema": "Transporte, Comunicaciones y Conectividad",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Policy: telecomunicaciones (texto), radiodifusión sonora, banda fm, sector:TRANSPORTES Y COMUNICACIONES",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "28278",
+          "anio": "2004",
+          "relacion_detectada": "invocada en considerandos / base legal",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "005-2005-MTC",
+          "anio": "2005",
+          "relacion_detectada": "invocada en considerandos / base legal",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "658-2021-MTC/01",
+          "anio": "2021",
+          "relacion_detectada": "invocada en considerandos / base legal",
+          "url": null
+        }
+      ],
+      "que_dispone": "Se declara que las autorizaciones para la prestación del servicio de radiodifusión sonora en la banda FM en la localidad de Paccaritambo, departamento de Cusco, serán otorgadas mediante Concurso Público, debido a que el número de solicitudes admitidas es superior al de las frecuencias disponibles.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Establecería que las autorizaciones para la respectiva banda y localidad sean otorgadas por Concurso Público.",
+          "articulo": "Artículo 1",
+          "cita": "será otorgada mediante Concurso Público"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Se encuentran detallados los datos específicos de los postulantes con solicitudes admitidas en el Informe N° 3032-2026-MTC/28.01?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:00:40Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "49c95ddee867a2c88196b160cbb31dd61985591a02d3ad235871d8754793a6f7",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-ministerial-421-2026-mincetur-2026-comercio-exterior-y-turismo",
+      "op": "2574402-1",
+      "tipo": "RESOLUCIÓN MINISTERIAL",
+      "numero": "421-2026-MINCETUR",
+      "numero_raw": "N° 421-2026-MINCETUR",
+      "anio": "2026",
+      "entidad": "COMERCIO EXTERIOR Y TURISMO",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Aprueban el Plan Operativo Institucional (POI) Anual 2026 Actualizado Versión 2 del Ministerio de Comercio Exterior y Turismo",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574402-1",
+      "eje": "polity",
+      "subtema": "Sistemas Administrativos, Planeamiento y Modernización",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Regla Polity prioritaria (instrumento de gestión institucional): plan operativo institucional",
+      "politica_nacional": [
+        {
+          "id": "pn_modernizacion_2030",
+          "tipo_alineacion": "sugerida por IA",
+          "evidencia": {
+            "articulo": "Considerando",
+            "cita": "implementar y ejecutar las normas y lineamientos en materia de planeamiento"
+          }
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1088",
+          "anio": "null",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "29158",
+          "anio": "null",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "216-2025-MINCETUR",
+          "anio": "2025",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "382-2025-MINCETUR",
+          "anio": "2025",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Secretarial",
+          "numero": "0001-2026-MINCETUR/SG",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "013-2026-MINCETUR",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "008-2026-MINCETUR",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "272-2026-MINCETUR",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "155-2026-EF",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "27790",
+          "anio": "null",
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "382-2025",
+          "anio": "2025",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "013-2026",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": "Se aprueba el Plan Operativo Institucional (POI) Anual 2026 Actualizado Versión 2 del Ministerio de Comercio Exterior y Turismo, el cual incluye su respectivo anexo. Asimismo, se dispone la publicación de la resolución y su anexo en el Portal Institucional del Ministerio y en la Plataforma Digital Única del Estado Peruano para Orientación al Ciudadano.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Permitiría implementar la estrategia de corto plazo del pliego mediante la programación de actividades operativas e inversiones.",
+          "articulo": "Artículo 1",
+          "cita": "Aprobar el Plan Operativo Institucional (POI) Anual 2026 Actualizado Versión 2"
+        },
+        {
+          "efecto": "Facilitaría el acceso público a la información institucional a través del Portal Institucional y la plataforma digital del Estado.",
+          "articulo": "Artículo 2",
+          "cita": "Disponer la publicación de la presente Resolución Ministerial y su Anexo en el Portal Institucional"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Qué actividades operativas e inversiones específicas contiene el Anexo del POI Anual 2026 Actualizado Versión 2 que no se detallan en el texto principal de la resolución?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:00:43Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "2257c295da5de8f96d1fc6c800bf9e570e5ed55e0b6a1bd1ea967b95d783a75f",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-ministerial-d000369-2026-minam-2026-ambiente",
+      "op": "2574281-1",
+      "tipo": "RESOLUCIÓN MINISTERIAL",
+      "numero": "D000369-2026-MINAM",
+      "numero_raw": "Nº D000369-2026-MINAM",
+      "anio": "2026",
+      "entidad": "AMBIENTE",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Aprueban la actualización de la Relación de Servicios del Sector Ambiente susceptibles de ser ejecutados bajo el régimen excepcional del mecanismo de Obras por Impuestos en el marco del Decreto de Urgencia N° 010-2026",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574281-1",
+      "eje": "policy",
+      "subtema": "Ambiente, Recursos Naturales y Gestión del Riesgo de Desastres",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Policy: ambiente, cambio climático (texto), áreas naturales protegidas (texto), sernanp (texto)",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1013",
+          "anio": "null",
+          "relacion_detectada": "invocada en considerandos / base legal",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "29230",
+          "anio": "null",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "081-2022-EF",
+          "anio": "2022",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "038-2026-EF",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto de Urgencia",
+          "numero": "010-2026",
+          "anio": "2026",
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "D000295-2026-MINAM",
+          "anio": "2026",
+          "relacion_detectada": "modificada",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "108-2023-MINAM",
+          "anio": "2023",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        }
+      ],
+      "que_dispone": "Aprueba la actualización de la Relación de Servicios del Sector Ambiente susceptibles de ser ejecutados bajo el régimen excepcional del mecanismo de Obras por Impuestos en el marco del Decreto de Urgencia Nº 010-2026, incorporando dos servicios orientados a la gestión y protección de ecosistemas ante el Fenómeno El Niño 2026-2027 y el cambio climático: el servicio temporal de implementación de capacidad básica de preparación y respuesta ante incendios forestales (S.9) y el servicio temporal de atención sanitaria y soporte hídrico de emergencia para camélidos sudamericanos silvestres (S.10). Asimismo, aprueba sus contenidos mínimos contenidos en un anexo y dispone su remisión a PROINVERSIÓN.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Permitiría incorporar dos servicios específicos en la lista de intervenciones del sector para su ejecución mediante Obras por Impuestos.",
+          "articulo": "Artículo 1",
+          "cita": "aprobar la actualización de la relación de servicios del sector ambiente"
+        },
+        {
+          "efecto": "Establecería los contenidos mínimos correspondientes a los servicios incorporados para su ejecución bajo el régimen excepcional.",
+          "articulo": "Artículo 2",
+          "cita": "aprobar los respectivos contenidos mínimos correspondientes a los servicios s.9 y s.10"
+        },
+        {
+          "efecto": "Contribuiría a la difusión y seguimiento del mecanismo de Obras por Impuestos mediante la remisión de la resolución y su anexo.",
+          "articulo": "Artículo 3",
+          "cita": "remitir copia de la presente resolución ministerial y su anexo a la agencia de promoción"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Qué detalles específicos contienen las fichas técnicas del Anexo que detalla los contenidos mínimos de los servicios S.9 y S.10 no transcritos en el cuerpo principal de la resolución?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:00:47Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "e5c0cbd3e91128ee306fc0e995882ce9d787eea0cc0071cbe818aa3891e9854c",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-701-2026-inpe-p-2026-instituto-nacional-penitenciario",
+      "op": "2574154-1",
+      "tipo": "RESOLUCIÓN",
+      "numero": "701-2026-INPE/P",
+      "numero_raw": "N° 701-2026-INPE/P",
+      "anio": "2026",
+      "entidad": "INSTITUTO NACIONAL PENITENCIARIO",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Modifican el Manual de Clasificador de Cargos del Instituto Nacional Penitenciario",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574154-1",
+      "eje": "polity",
+      "subtema": "Servicio Civil y Recursos Humanos del Estado",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Regla Polity prioritaria (instrumento de gestión institucional): manual de clasificador de cargos",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Resolución Presidencial",
+          "numero": "088-2022-INPE/P",
+          "anio": "2022",
+          "relacion_detectada": "modificada",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "30057",
+          "anio": "2013",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "003-2021-JUS",
+          "anio": "2021",
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Resolución de Presidencia Ejecutiva",
+          "numero": "150-2021-SERVIR-PE",
+          "anio": "2021",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "009-2007-JUS",
+          "anio": "2007",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "015-2003-JUS",
+          "anio": "2003",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1328",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Suprema",
+          "numero": "179-2026-JUS",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": "Modifica el Manual de Clasificador de Cargos del Instituto Nacional Penitenciario (INPE), adecuando la ficha del cargo funcional 'Agente de Seguridad II - Armero' para reducir el requisito de experiencia general de dieciséis a seis años y la experiencia específica de dieciséis a dos años. Asimismo, dispone la publicación de la resolución y su anexo en el portal institucional y en el portal de transparencia del INPE, encargando a la Oficina General de Administración las gestiones para su difusión oficial.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Modificaría la estructura del Manual de Clasificador de Cargos del Instituto Nacional Penitenciario conforme al anexo correspondiente.",
+          "articulo": "Artículo 1",
+          "cita": "MODIFICAR el Manual de Clasificador de Cargos del Instituto Nacional Penitenciario aprobado por Resolución Presidencial Nº 088-2022-INPE/P"
+        },
+        {
+          "efecto": "Requeriría la difusión de la norma y su anexo en los portales digitales institucionales y de transparencia.",
+          "articulo": "Artículo 3",
+          "cita": "la publicación de la presente resolución y su anexo, en el portal institucional del Instituto Nacional Penitenciario"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Se encuentra publicado el anexo con la totalidad de los requisitos del puesto en el portal institucional del INPE conforme a lo dispuesto en el artículo 3?",
+        "¿El ajuste en los años de experiencia para el cargo de Armero cumple con las especificaciones técnicas requeridas por SERVIR?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.6-flash",
+      "fecha_ia": "2026-11-14T17:01:33Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "37059607bfe25eed11f7414917fad26c85987413e7f1c58cafcc07a29f6fc218",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-39-2026-cco-unfay-2026-instituciones-educativas",
+      "op": "2574153-1",
+      "tipo": "RESOLUCIÓN",
+      "numero": "39-2026-CCO-UNFAY",
+      "numero_raw": "Nº 39-2026-CCO-UNFAY",
+      "anio": "2026",
+      "entidad": "INSTITUCIONES EDUCATIVAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Aprueban el Manual de Clasificador de Cargos de la Universidad Nacional Fronteriza Autónoma de Yunguyo (MCC)",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574153-1",
+      "eje": "polity",
+      "subtema": "Servicio Civil y Recursos Humanos del Estado",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Regla Polity prioritaria (instrumento de gestión institucional): manual de clasificador de cargos",
+      "politica_nacional": [
+        {
+          "id": "pn_modernizacion_2030",
+          "tipo_alineacion": "sugerida por IA",
+          "evidencia": {
+            "articulo": "Considerando",
+            "cita": "Objetivo Estratégico Institucional OEI.04 Modernización de las gestión institucional y Acción Estratégica Institucional AEI.04.01 Instrumentos de gestión implementados"
+          }
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "30220",
+          "anio": "2014",
+          "relacion_detectada": "base legal / invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "31520",
+          "anio": "2022",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "32090",
+          "anio": "2024",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "31419",
+          "anio": "2022",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución de Presidencia Ejecutiva",
+          "numero": "000150-2021-SERVIR-PE",
+          "anio": "2021",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Viceministerial",
+          "numero": "244-2021-MINEDU",
+          "anio": "2021",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Viceministerial",
+          "numero": "055-2022-MINEDU",
+          "anio": "2022",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Viceministerial",
+          "numero": "053-2023-MINEDU",
+          "anio": "2023",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        }
+      ],
+      "que_dispone": "Se aprueba el Manual de Clasificador de Cargos de la Universidad Nacional Fronteriza Autónoma de Yunguyo (MCC), el cual fue elaborado en cumplimiento de la Directiva Nº 006-2021-SERVIR-GDSRH. Asimismo, se dispone que la Unidad de Recursos Humanos realice la implementación, difusión y aplicación del documento de gestión aprobado, y se ordena la publicación de la resolución y su anexo en el Diario Oficial El Peruano y en los portales institucionales correspondientes.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Permitiría regular la correcta aplicación del documento de gestión en los procesos de empleo público universitario mediante la intervención de la Unidad de Recursos Humanos.",
+          "articulo": "Artículo Segundo",
+          "cita": "DISPONER que la Unidad de Recursos Humanos la implementación, difusión y aplicación del Manual de Clasificador de Cargos aprobado"
+        },
+        {
+          "efecto": "Facilitaría el acceso público a la normativa y al documento aprobado a través de su difusión en portales institucionales y electrónicos.",
+          "articulo": "Artículo Tercero",
+          "cita": "DISPONER la publicación de la presente Resolución en el Diario Oficial El Peruano"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Cuál es el contenido detallado del Anexo que aprueba el Manual de Clasificador de Cargos (MCC) mencionado en el Artículo Primero, dado que no figura íntegro en el texto de la publicación?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:01:37Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "5b2819f8d1bd219f868a02a53a4ba987f7fef3979c70ce8b9799a04d25cc8a93",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-000226-2026-sunat-2026-superintendencia-nacional-de-aduanas",
+      "op": "2574060-1",
+      "tipo": "RESOLUCIÓN",
+      "numero": "000226-2026/SUNAT",
+      "numero_raw": "N° 000226-2026/SUNAT",
+      "anio": "2026",
+      "entidad": "SUPERINTENDENCIA NACIONAL DE ADUANAS Y DE ADMINISTRACIÓN TRIBUTARIA",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Disponen la publicación de proyecto de resolución de superintendencia que aprueba el procedimiento específico “Aplicación de preferencias arancelarias al amparo de los acuerdos comerciales suscritos por el Perú” DESPA-PE.01.39 (versión 1), en la sede digital de la SUNAT",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574060-1",
+      "eje": "policy",
+      "subtema": "Presupuesto, Hacienda Pública y Transferencias",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Policy: preferencias arancelarias, acuerdos comerciales, procedimiento específico, sunat",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1053",
+          "anio": "2008",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "010-2009-EF",
+          "anio": "2009",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución de Superintendencia",
+          "numero": "000198-2026/SUNAT",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "012-2026-MINCETUR",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "040-2023-EF",
+          "anio": "2023",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "009-2024-JUS",
+          "anio": "2024",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        }
+      ],
+      "que_dispone": "Dispone la publicación del proyecto de resolución de superintendencia que aprueba el procedimiento específico “Aplicación de preferencias arancelarias al amparo de los acuerdos comerciales suscritos por el Perú” DESPA-PE.01.39 (versión 1), junto con su exposición de motivos, en la sede digital de la entidad. El plazo establecido es de quince días calendario, contados desde el día siguiente de la publicación de la resolución, con el propósito de recibir comentarios, aportes u opiniones de los operadores y del público en general.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Permitiría a los operadores y al público en general presentar comentarios, aportes u opiniones sobre el proyecto normativo publicado.",
+          "articulo": "Artículo 1",
+          "cita": "para recibir los comentarios, aportes u opiniones de los operadores y del público en general"
+        },
+        {
+          "efecto": "Establecería la recepción, sistematización y análisis de los aportes a cargo de la unidad competente de la entidad.",
+          "articulo": "Artículo 2",
+          "cita": "la Intendencia Nacional de Desarrollo e Innovación Aduanera se encuentra a cargo de su recepción, sistematización y análisis"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Se encuentra disponible el texto íntegro del procedimiento DESPA-PE.01.39 (versión 1) y su exposición de motivos en la sede digital de la SUNAT durante el plazo establecido?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:01:40Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "41de4340ef517d1174575aa1e70a9528167699ad0eef6a5de6808b99c9b9e53a",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "ordenanza-010-2026-cr-grl-2026-gobierno-regional-de-lima",
+      "op": "2553669-1",
+      "tipo": "ORDENANZA",
+      "numero": "010-2026-CR/GRL",
+      "numero_raw": "N° 010-2026-CR/GRL",
+      "anio": "2026",
+      "entidad": "GOBIERNO REGIONAL DE LIMA",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Ordenanza Regional que aprueba la constitución del Comité de Movilización Regional del Gobierno Regional de Lima",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2553669-1",
+      "eje": "polity",
+      "subtema": "Competencias y Descentralización",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Polity: gobierno regional, gobiernos regionales (texto), gobiernos locales (texto), ordenanza regional",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "27680",
+          "anio": "2002",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "27867",
+          "anio": "2002",
+          "relacion_detectada": "base legal",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "29053",
+          "anio": "2007",
+          "relacion_detectada": "modificatoria citada",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "31061",
+          "anio": "2020",
+          "relacion_detectada": "marco legal",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1131",
+          "anio": "2012",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "061-2016-PCM",
+          "anio": "2016",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "042-2026-PCM",
+          "anio": "2026",
+          "relacion_detectada": "invocada en considerandos",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ejecutiva Regional",
+          "numero": "278-2026-GOB",
+          "anio": "2026",
+          "relacion_detectada": "dejada sin efecto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1129",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": "Se aprueba la constitución del Comité de Movilización Regional del Gobierno Regional de Lima, detallando sus cuarenta y cuatro integrantes institucionales bajo la presidencia del Gobernador Regional. Asimismo, se deja sin efecto la Resolución Ejecutiva Regional Nº 278-2026-GOB, se encarga a la Gerencia Regional de Gestión de Riesgos y Desastres la elaboración del Reglamento Interno y se dispone la entrega de la norma a la Secretaría de Seguridad y Defensa Nacional.",
+      "repercusiones_esperadas": [
+        {
+          "efecto": "Dejaría sin efecto la norma ejecutiva previa emitida para constituir el comité regional.",
+          "articulo": "Artículo Segundo",
+          "cita": "DÉJESE SIN EFECTO la RESOLUCIÓN EJECUTIVA REGIONAL Nº 278-2026-GOB, de fecha 20 de abril de 2026"
+        },
+        {
+          "efecto": "Establecería la obligación de elaborar un reglamento interno en base a la directiva nacional correspondiente.",
+          "articulo": "Artículo Tercero",
+          "cita": "la elaboración el Reglamento Interno del Comité de Movilización Regional, en base al Anexo 6"
+        },
+        {
+          "efecto": "Determinaría la entrada en vigencia de la ordenanza a partir del día siguiente de su publicación oficial.",
+          "articulo": "Artículo Sexto",
+          "cita": "entrará en vigencia a partir del día siguiente de la publicación en el Diario Oficial"
+        }
+      ],
+      "preguntas_a_verificar": [
+        "¿Se cuenta con el detalle completo de las funciones operativas asignadas en el reglamento interno elaborado por la Gerencia Regional de Gestión de Riesgos y Desastres?"
+      ],
+      "estado": "borrador IA",
+      "modelo": "gemini-3.5-flash-lite",
+      "fecha_ia": "2026-11-14T17:01:44Z",
+      "version_instrucciones": "norma_v1",
+      "hash_texto": "b87b6bcc0a6ddcfcd5c6606e76117b65533698166a4d61fe25b6cdedd5af9f66",
+      "revision_humana_archivo": null
+    }
+  ]
+}

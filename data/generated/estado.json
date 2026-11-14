@@ -1,0 +1,85 @@
+{
+  "fuentes": {
+    "noticias": {
+      "last_success": "2026-11-14T13:05:37.731920Z",
+      "items": 30,
+      "errores": []
+    },
+    "normas": {
+      "last_success": "2026-11-14T13:05:38.120438Z",
+      "items": 10,
+      "errores": []
+    },
+    "ckan": {
+      "items": 0,
+      "portales": {
+        "PCM": {
+          "codigo": "deshabilitado",
+          "causa": "deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)"
+        },
+        "MINSA": {
+          "codigo": "sin conexión",
+          "causa": "sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+        }
+      },
+      "errores_recientes": [
+        "PCM: deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)",
+        "MINSA: sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+      ]
+    },
+    "academico": {
+      "last_success": "2026-11-14T05:18:38.097197Z",
+      "items": 17,
+      "errores": [
+        "CLACSO: HTTP 520"
+      ]
+    },
+    "polity": {
+      "last_success": "2026-11-14T05:18:39.828242Z",
+      "items": 20,
+      "errores": []
+    },
+    "eventos": {
+      "last_success": "2026-11-14T05:18:41.044993Z",
+      "items": 7,
+      "errores": []
+    },
+    "normas_diario": {
+      "last_success": "2026-11-14T17:01:44Z",
+      "ultimo_intento": "2026-11-14T17:01:44Z",
+      "ultimo_estado": "ok",
+      "publicado": true,
+      "fecha_objetivo": "2026-11-13",
+      "archivo_indice": "data/generated/normas_oficiales/2026-11.json",
+      "listado": {
+        "fecha": "20261113",
+        "tipo_publicacion": "NL",
+        "total_reportado": 73,
+        "recibidos": 73,
+        "paginas_consultadas": 4
+      },
+      "conteo": {
+        "total_listado": 73,
+        "excluidas_reglas": 62,
+        "incluidas_radar": 11,
+        "omitidas_idempotentes": 0,
+        "rechazadas_verificacion": 0,
+        "revisadas_por_persona": 0,
+        "publicadas_nuevas": 11,
+        "total_mes": 11
+      },
+      "ia": {
+        "habilitada": true,
+        "modelo": "gemini-3.5-flash-lite",
+        "version_instrucciones": "norma_v1",
+        "normas_ia_procesadas": 11,
+        "llamadas_ia_realizadas": 12,
+        "tokens_entrada": 51262,
+        "tokens_salida": 8390
+      },
+      "duracion_seg": 90.19,
+      "errores": []
+    }
+  },
+  "last_run": "2026-11-14T17:01:44Z"
+}
