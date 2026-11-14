@@ -172,6 +172,12 @@ def generar_y_verificar_ia(
         raise ErrorVerificacionIA("Tope diario de normas o llamadas a IA alcanzado.")
 
     modelo_activo = modelo or getattr(config, "GEMINI_MODELO_NORMAS", "gemini-3.8-flash")
+    modelos_respaldo = (
+        []
+        if modelo
+        else list(getattr(config, "GEMINI_MODELOS_RESPALDO_NORMAS", []))
+    )
+    candidatos_modelo = [modelo_activo] + [m for m in modelos_respaldo if m and m != modelo_activo]
     ver_prompt = version_prompt or getattr(config, "NORMAS_PROMPT_VERSION", "norma_v1")
     instrucciones = cargar_instrucciones_prompt(ver_prompt)
     contenido_usuario = _construir_prompt_usuario(ficha_meta, texto_origen, catalogo_politicas)
@@ -182,10 +188,11 @@ def generar_y_verificar_ia(
     for intento in range(1, gestor.max_reintentos + 1):
         if gestor.llamadas_realizadas >= gestor.tope_llamadas:
             raise ErrorVerificacionIA("Tope máximo de llamadas a IA agotado durante reintento.")
+        modelo_intento = candidatos_modelo[min(intento - 1, len(candidatos_modelo) - 1)]
         gestor.llamadas_realizadas += 1
         try:
             crudo, tok_in, tok_out = _invocar_modelo_gemini(
-                cliente_activo, modelo_activo, instrucciones, contenido_usuario
+                cliente_activo, modelo_intento, instrucciones, contenido_usuario
             )
             gestor.tokens_entrada += tok_in
             gestor.tokens_salida += tok_out
@@ -200,9 +207,9 @@ def generar_y_verificar_ia(
                 msg = re.sub(r"AIza[0-9A-Za-z_-]+", "[REDACTED]", msg)[:140]
             detalle = " ".join(str(x) for x in (cod, est, msg) if x)
             etiq = f"{type(exc).__name__} {detalle}".strip()
-            errores_ultimos = [f"Intento {intento}: error de respuesta o JSON ({etiq})."]
+            errores_ultimos = [f"Intento {intento} ({modelo_intento}): error de respuesta o JSON ({etiq})."]
             if intento < gestor.max_reintentos:
-                time.sleep(2.0)
+                time.sleep(2.5)
             continue
 
         es_valida, errs = verificar_salida_ia_contra_texto(
@@ -215,12 +222,12 @@ def generar_y_verificar_ia(
             gestor.normas_procesadas += 1
             return {
                 "analisis": salida_json,
-                "modelo": modelo_activo,
+                "modelo": modelo_intento,
                 "version_instrucciones": ver_prompt,
             }
         errores_ultimos = errs
         if intento < gestor.max_reintentos:
-            time.sleep(1.0)
+            time.sleep(1.5)
 
     raise ErrorVerificacionIA(
         "Verificación automática de salida IA fallida tras reintentos: "
