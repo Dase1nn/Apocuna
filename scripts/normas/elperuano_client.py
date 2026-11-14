@@ -27,20 +27,31 @@ def _esperar_turno(min_intervalo: float = MIN_INTERVAL_SEC) -> None:
     _ULTIMA_PETICION_TS = time.monotonic()
 
 
-def _http_get_texto(url: str, timeout: int = 25) -> Tuple[int, str]:
-    """Ejecuta GET con User-Agent oficial ApocunaBot."""
-    _esperar_turno()
-    req = urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": USER_AGENT,
-            "Accept": "text/html,application/xhtml+xml",
-        },
-    )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        codigo = int(getattr(resp, "status", 200))
-        cuerpo = resp.read().decode("utf-8", errors="replace")
-    return codigo, cuerpo
+def _http_get_texto(url: str, timeout: int = 25, reintentos: int = 2) -> Tuple[int, str]:
+    """Ejecuta GET con User-Agent oficial ApocunaBot y reintento ante fallos de red."""
+    ultimo_err: Optional[Exception] = None
+    for intento in range(reintentos):
+        _esperar_turno()
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": USER_AGENT,
+                "Accept": "text/html,application/xhtml+xml",
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                codigo = int(getattr(resp, "status", 200))
+                cuerpo = resp.read().decode("utf-8", errors="replace")
+            return codigo, cuerpo
+        except OSError as exc:
+            ultimo_err = exc
+            if intento + 1 < reintentos:
+                time.sleep(3.0)
+                continue
+            raise
+    assert ultimo_err is not None
+    raise ultimo_err
 
 
 def _extraer_arrays_stream(raw_html: str) -> List[List[Any]]:
