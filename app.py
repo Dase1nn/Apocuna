@@ -276,6 +276,15 @@ def main():
     if "theme_mode" not in st.session_state:
         st.session_state.theme_mode = "💻 Auto"
 
+    qp = st.query_params
+    qp_sig = f"{qp.get('vista', '')}|{qp.get('norma', '')}"
+    if (qp.get("norma") or qp.get("vista") == "normas_comentadas") and st.session_state.get("_last_qp_routed") != qp_sig:
+        st.session_state.current_page = "Polity and Policy"
+        st.session_state._last_qp_routed = qp_sig
+        theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '💻 Auto')}"
+        st.session_state.pop(theme_key, None)
+        st.session_state.pop("_last_sidebar_menu", None)
+
     render_sidebar()
     load_css()
 

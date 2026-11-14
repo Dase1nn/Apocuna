@@ -12,6 +12,7 @@ from components.cards import (
     render_ckan_carousel,
     render_fuentes_grid
 )
+from sections.normas_comentadas import render_normas_comentadas_subsection
 
 BLOQUES_FUENTES = [
     ("Datos abiertos y microdatos", "📊 1. Datos abiertos y microdatos", True),
@@ -98,6 +99,9 @@ def render_polity():
         st.subheader("📢 Últimas Alertas Institucionales (Automatizado)")
         render_polity_alertas_carousel(alertas)
         st.markdown("---")
+
+    render_normas_comentadas_subsection()
+    st.markdown("---")
 
     if subsecciones:
         st.header("🧭 Ejes Estratégicos de Polity & Policy")

@@ -6,7 +6,7 @@ OPTIONS_LIST = [
     "Inicio",
     "Polity and Policy",
     "Fenómeno El Niño (FEN)",
-    "Estudiantes (DEMO)",
+    "Estudiantes",
     "Notas",
     "Eventos",
     "Sobre el sitio"
@@ -94,8 +94,8 @@ def render_sidebar():
         st.markdown("---")
 
         current = st.session_state.get("current_page", "Inicio")
-        if current == "Estudiantes":
-            current = "Estudiantes (DEMO)"
+        if current == "Estudiantes (DEMO)":
+            current = "Estudiantes"
         elif current == "🌊 Fenómeno El Niño (FEN)":
             current = "Fenómeno El Niño (FEN)"
         default_idx = OPTIONS_LIST.index(current) if current in OPTIONS_LIST else 0
@@ -117,7 +117,16 @@ def render_sidebar():
             key=f"apocuna_nav_{selected_theme}",
             styles=_resolve_option_menu_styles(selected_theme),
         )
-        st.session_state.current_page = menu
+        prev_menu = st.session_state.get("_last_sidebar_menu")
+        if prev_menu is None:
+            st.session_state._last_sidebar_menu = menu
+            st.session_state.current_page = menu
+        elif menu != prev_menu:
+            st.session_state._last_sidebar_menu = menu
+            st.session_state.current_page = menu
+            for qp_k in ("vista", "norma"):
+                if qp_k in st.query_params:
+                    del st.query_params[qp_k]
 
         kpis = load_dashboard_kpis()
         st.markdown(

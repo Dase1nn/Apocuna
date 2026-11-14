@@ -12,6 +12,7 @@ except ImportError:
     CKAN_PCM_HABILITADO = False
 
 USER_AGENT = "ApocunaBot/1.0 (+https://github.com/Dase1nn/Apocuna)"
+_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 @st.cache_resource
@@ -182,6 +183,73 @@ def load_normas():
 def load_ckan_fallback():
     """Carga el dataset fallback de portales CKAN."""
     return load_remote_or_local_json("ckan.json")
+
+
+@st.cache_data(ttl=900, show_spinner=False)
+def load_politicas_nacionales() -> list:
+    """Carga el catálogo oficial de Políticas Nacionales y planes estratégicos."""
+    datos = _read_local_json("data", "politicas_nacionales.json", default=[])
+    return datos if isinstance(datos, list) else []
+
+
+@st.cache_data(ttl=900, show_spinner=False)
+def load_criterios_normas() -> dict:
+    """Carga los criterios declarativos Polity/Policy para normas legales."""
+    datos = _read_local_json("data", "criterios_normas.json", default={})
+    return datos if isinstance(datos, dict) else {}
+
+
+def load_norma_comentada_md(norma_id: str) -> str | None:
+    """Lee el archivo Markdown de revisión humana `<norma_id>.md` si existe."""
+    import re as _re
+
+    if not norma_id or not _re.fullmatch(r"[a-z0-9\-]{4,140}", norma_id):
+        return None
+    ruta = os.path.join(_BASE_DIR, "data", "normas_comentadas", f"{norma_id}.md")
+    if not os.path.isfile(ruta):
+        return None
+    try:
+        with open(ruta, "r", encoding="utf-8") as fh:
+            return fh.read()
+    except Exception:
+        return None
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def load_normas_oficiales() -> list:
+    """Carga fichas mensuales acumuladas desde `normas_oficiales/AAAA-MM.json`."""
+    por_id: dict[str, dict] = {}
+    archivos_rel: set[str] = set()
+
+    local_dir = os.path.join(_BASE_DIR, "data", "generated", "normas_oficiales")
+    if os.path.isdir(local_dir):
+        for fp in glob.glob(os.path.join(local_dir, "*.json")):
+            archivos_rel.add(f"normas_oficiales/{os.path.basename(fp)}")
+
+    estado = load_estado_pipeline()
+    if isinstance(estado, dict):
+        indice = estado.get("fuentes", {}).get("normas_diario", {}).get("archivo_indice")
+        if isinstance(indice, str) and indice.startswith("data/generated/"):
+            archivos_rel.add(indice[len("data/generated/"):])
+
+    for rel in sorted(archivos_rel, reverse=True):
+        datos = load_remote_or_local_json(rel)
+        if not isinstance(datos, dict):
+            continue
+        for ficha in datos.get("normas", []):
+            if not isinstance(ficha, dict):
+                continue
+            nid = ficha.get("id")
+            if nid and nid not in por_id:
+                if load_norma_comentada_md(nid):
+                    ficha = {**ficha, "estado": "revisado por persona"}
+                por_id[nid] = ficha
+
+    return sorted(
+        por_id.values(),
+        key=lambda x: (x.get("fecha_publicacion") or "", x.get("op") or ""),
+        reverse=True,
+    )
 
 
 def _is_portal_enabled(portal: str) -> bool:

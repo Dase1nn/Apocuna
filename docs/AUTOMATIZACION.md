@@ -6,7 +6,7 @@ Este documento detalla el funcionamiento, operación y mantenimiento del pipelin
 
 ## 1. Funcionamiento y Frecuencia del Workflow
 
-El flujo está definido en [`.github/workflows/actualizar.yml`](file:///.github/workflows/actualizar.yml).
+El flujo principal de portales y RSS está definido en [`.github/workflows/actualizar.yml`](file:///.github/workflows/actualizar.yml).
 - **Frecuencia programada:** Se ejecuta automáticamente cada 3 horas mediante cron (`0 */3 * * *`).
 - **Runner:** Ejecuta en entorno Linux `ubuntu-24.04`.
 - **Mecanismo de preservación:** 
@@ -14,6 +14,16 @@ El flujo está definido en [`.github/workflows/actualizar.yml`](file:///.github/
   2. Ejecuta diagnóstico de conectividad HTTP contra los portales CKAN.
   3. Ejecuta el script recolector [`scripts/actualizar_datos.py`](file:///scripts/actualizar_datos.py).
   4. Publica los JSON resultantes de vuelta en la rama `data` con `--force`.
+
+### 1.1 Workflow Diario de Normas Legales (`normas_diario.yml`)
+
+El monitoreo directo de Normas Legales de *El Peruano* opera en un workflow independiente: [`.github/workflows/normas_diario.yml`](file:///.github/workflows/normas_diario.yml).
+- **Frecuencia programada:** Dos pasadas diarias en UTC: `15 11 * * *` (06:15 PET) y `15 23 * * *` (18:15 PET).
+- **Idempotencia y almacenamiento:** Consulta el listado `NL` del día con `User-Agent: ApocunaBot/1.0 (+https://github.com/Dase1nn/Apocuna)` (pausa `>= 2.2 s`), filtra exclusiones sin almacenar nombres de personas ni textos íntegros ni PDFs, calcula el `SHA-256` del texto oficial en memoria y guarda fichas acumuladas por mes en `data/generated/normas_oficiales/AAAA-MM.json`.
+- **Interruptor e IA verificada:** `NORMAS_IA_HABILITADA` en [`config.py`](file:///config.py) está activo (`True`) para invocar Gemini (`gemini-2.5-flash` vía SDK oficial `google-genai`) con las instrucciones versionadas de [`scripts/prompts/norma_v1.md`](file:///scripts/prompts/norma_v1.md); si se cambia a `False`, publica únicamente el radar determinístico sin IA.
+- **Términos de Gemini API (nivel gratuito vs. pago):** Según las condiciones de servicio de Google AI (`ai.google.dev`), el nivel gratuito (*Unpaid Services*) puede utilizar entradas y respuestas para mejorar los productos y modelos de Google (y revisores humanos pueden auditarlas), mientras que los servicios de pago (*Paid Services*) no entrenan con las entradas. Este pipeline envía únicamente texto público de normas legales ya filtrado sin nombres de personas.
+- **Verificación bloqueante y fail-safe:** [`scripts/normas/verificador_ia.py`](file:///scripts/normas/verificador_ia.py) comprueba que cada número de norma citado, artículo y extracto (`<= 25` palabras) exista literalmente en el texto fuente y prohíbe juicios o superación de topes (`NORMAS_TOPE_DIARIO_IA`, `NORMAS_TOPE_LLAMADAS_IA`). Si la IA o la verificación fallan, **no se publica ninguna ficha nueva** y se registra el fallo únicamente en `data/generated/estado.json`.
+- **Revisión humana prioritaria:** Si existe `data/normas_comentadas/<id>.md`, prevalece sobre el borrador automático con estado `"revisado por persona"`.
 
 ---
 
@@ -81,6 +91,6 @@ Quedan identificadas para futuras fases de recolección automatizada:
 
 ## 8. Límites Conocidos del Sistema
 
-1. **Normas Legales:** Las normas no provienen del listado oficial directo de El Peruano (debido a restricciones técnicas y de bloqueo), sino de un seguimiento regulatorio temático estructurado vía Google News RSS.
+1. **Normas Legales:** El bloque de **Inicio** consume noticias regulatorias agregadas vía Google News RSS (`normas.json`). En **Polity and Policy → Normas comentadas**, el radar diario consulta directamente `busquedas.elperuano.pe` respetando `robots.txt` y pausas mínimas de `2.2 s`; no almacena PDFs ni textos íntegros ni reemplaza la fuente oficial. Cuando se habilite IA (`NORMAS_IA_HABILITADA = True`), los borradores se muestran bajo advertencia visible y requieren verificación en el diario oficial.
 2. **Portal CKAN MINSA (`datos.minsa.gob.pe`):** No se encuentra disponible en la red (produce timeout de conexión verificado al 2026-10-02). Se encuentra desactivado por defecto mediante `CKAN_MINSA_HABILITADO = False` en [`config.py`](file:///config.py).
 3. **Portal CKAN PCM (`www.datosabiertos.gob.pe`):** Es una instalación CMS Drupal 7 que no expone la API estándar de CKAN (`/api/3/action/package_search` devuelve 404). Además, su `robots.txt` prohíbe el acceso a rutas `/search/` y exige un delay de 10 segundos entre peticiones, por lo que no se realiza scraping de su interfaz HTML.

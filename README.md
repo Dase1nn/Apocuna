@@ -131,8 +131,8 @@ El sistema implementa una arquitectura desacoplada para garantizar alta disponib
 [ Aplicación Streamlit ] ──(Fallback local si no hay red o secrets)──> [ data/generated/*.json local ]
 ```
 
-1. **Extracción y procesamiento:** El flujo de trabajo en GitHub Actions (`.github/workflows/actualizar.yml`) corre periódicamente. Ejecuta `scripts/actualizar_datos.py`, que recolecta, limpia, deduplica y formatea los datos.
-2. **Persistencia en rama `data`:** Los archivos resultantes (`noticias.json`, `normas.json`, `ckan.json`, `academico.json`, `polity_alertas.json`, `eventos_alertas.json`, `estado.json`) se publican en una rama huérfana e independiente denominada `data`.
+1. **Extracción y procesamiento:** El flujo principal en GitHub Actions (`.github/workflows/actualizar.yml`) corre cada 3 horas ejecutando `scripts/actualizar_datos.py`, mientras que `.github/workflows/normas_diario.yml` corre dos veces al día (`11:15` y `23:15 UTC`) ejecutando `scripts/actualizar_normas_diario.py` sobre Normas Legales de *El Peruano*.
+2. **Persistencia en rama `data`:** Los archivos resultantes (`noticias.json`, `normas.json`, `ckan.json`, `academico.json`, `polity_alertas.json`, `eventos_alertas.json`, `normas_oficiales/AAAA-MM.json`, `estado.json`) se publican en una rama huérfana e independiente denominada `data`.
 3. **Consumo en la aplicación:** La aplicación web intenta leer los datos remotos frescos desde la URL configurada en el secreto `DATA_BASE_URL`. Si dicho secreto no está presente o falla la conexión, la aplicación recurre de forma transparente a los datos estáticos locales guardados en `data/generated/`.
 
 Para más detalles sobre la arquitectura del flujo, frecuencia de ejecución, manejo de errores y diagnóstico, revise [`docs/AUTOMATIZACION.md`](docs/AUTOMATIZACION.md).
@@ -141,7 +141,7 @@ Para más detalles sobre la arquitectura del flujo, frecuencia de ejecución, ma
 
 ## Límites Conocidos
 
-- **Normas legales en Home:** Los registros mostrados provienen de agregadores de noticias y feeds RSS (Google News). **No constituyen el listado oficial ni reemplazan la publicación legal vinculante**, cuya única validez jurídica radica en el Diario Oficial El Peruano y el Sistema Peruano de Información Jurídica (SPIJ).
+- **Normas legales en Home y Normas comentadas:** Los registros de Inicio provienen de feeds RSS (Google News), y la subsección *Normas comentadas* de *Polity & Policy* indexa metadatos, extractos cortos verificados y hashes SHA-256 sin almacenar PDFs ni textos íntegros. **Ninguna vista reemplaza la publicación legal vinculante**, cuya única validez jurídica radica en el Diario Oficial El Peruano y el SPIJ. Los borradores generados con IA (cuando `NORMAS_IA_HABILITADA = True`) se muestran con advertencia visible y pueden contener imprecisiones.
 - **Portal CKAN MINSA:** Se encuentra deshabilitado preventivamente (`CKAN_MINSA_HABILITADO = False` en `config.py`) debido a problemas recurrentes de disponibilidad y tiempos de espera agotados (verificado 2026-10-02).
 - **Portal CKAN PCM (Plataforma Nacional de Datos Abiertos):** Bloquea activamente peticiones automáticas mediante un Web Application Firewall (WAF emite respuesta HTTP 418, verificado 2026-10-02). Siguiendo las directrices de seguridad y honestidad técnica, no se emplean cabeceras falsificadas ni mecanismos de evasión. Se encuentra deshabilitado en el pipeline (`CKAN_PCM_HABILITADO = False`), mostrándose en la interfaz enlaces directos a los portales para su consulta manual.
 - **Fuentes pendientes:** La integración automatizada de microdatos de INEI, indicadores del MEF, proyectos del Congreso de la República y publicaciones de think tanks nacionales (IEP, GRADE, IPE, CIES) está catalogada conceptualmente en `data/fuentes.json` y `docs/PROYECTO.md`, pero su extracción sistemática mediante API se encuentra en fase de diseño o sujeta a la disponibilidad técnica de dichos organismos.

@@ -43,7 +43,42 @@
       "last_success": "2026-10-03T15:51:35.540051Z",
       "items": 7,
       "errores": []
+    },
+    "normas_diario": {
+      "last_success": "2026-11-14T13:33:21Z",
+      "ultimo_intento": "2026-11-14T13:33:21Z",
+      "ultimo_estado": "ok",
+      "publicado": true,
+      "fecha_objetivo": "2026-11-13",
+      "archivo_indice": "data/generated/normas_oficiales/2026-11.json",
+      "listado": {
+        "fecha": "20261113",
+        "tipo_publicacion": "NL",
+        "total_reportado": 73,
+        "recibidos": 73,
+        "paginas_consultadas": 4
+      },
+      "conteo": {
+        "total_listado": 73,
+        "excluidas_reglas": 62,
+        "incluidas_radar": 11,
+        "omitidas_idempotentes": 11,
+        "revisadas_por_persona": 0,
+        "publicadas_nuevas": 0,
+        "total_mes": 11
+      },
+      "ia": {
+        "habilitada": false,
+        "modelo": "gemini-2.5-flash",
+        "version_instrucciones": "norma_v1",
+        "normas_ia_procesadas": 0,
+        "llamadas_ia_realizadas": 0,
+        "tokens_entrada": 0,
+        "tokens_salida": 0
+      },
+      "duracion_seg": 6.91,
+      "errores": []
     }
   },
-  "last_run": "2026-10-03T15:51:35.540051Z"
+  "last_run": "2026-11-14T13:33:21Z"
 }

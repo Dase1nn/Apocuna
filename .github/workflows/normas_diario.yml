@@ -1,0 +1,101 @@
+name: Radar Diario de Normas Legales
+
+on:
+  schedule:
+    # 11:15 UTC = 06:15 PET (primera pasada matinal); 23:15 UTC = 18:15 PET (cierre vespertino)
+    - cron: '15 11 * * *'
+    - cron: '15 23 * * *'
+  workflow_dispatch:
+    inputs:
+      fecha:
+        description: 'Fecha objetivo AAAAMMDD (vacío = hoy en America/Lima)'
+        required: false
+        default: ''
+      forzar:
+        description: 'Reprocesar normas existentes del día'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apocuna_rama_data
+  cancel-in-progress: false
+
+jobs:
+  radar-normas-diario:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: requirements-actions.txt
+
+      - name: Instalar dependencias
+        run: pip install -r requirements-actions.txt
+
+      - name: Restaurar datos previos desde la rama data
+        run: |
+          if git ls-remote --exit-code --heads origin data >/dev/null 2>&1; then
+            git fetch origin data:refs/remotes/origin/data --depth=1
+            git archive origin/data data/generated | tar -x || echo "La rama data existe pero no tiene data/generated."
+            echo "Datos previos restaurados desde la rama data."
+          else
+            echo "La rama data aún no existe; se parte de los datos locales."
+          fi
+
+      - name: Ejecutar radar diario y verificación de normas
+        id: ejecutar_normas
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.fecha }}" ]; then
+            ARGS="$ARGS --fecha ${{ github.event.inputs.fecha }}"
+          fi
+          if [ "${{ github.event.inputs.forzar }}" = "true" ]; then
+            ARGS="$ARGS --forzar"
+          fi
+          python scripts/actualizar_normas_diario.py $ARGS
+
+      - name: Publicar índices y estado en la rama data
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          test -f data/generated/estado.json || { echo "Falta estado.json"; exit 1; }
+          rm -rf /tmp/publicar && mkdir -p /tmp/publicar/data
+          cp -r data/generated /tmp/publicar/data/
+          cd /tmp/publicar
+          git init -q -b data
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Normas Legales: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data:data
+
+      - name: Registrar fallo en estado.json sin publicar fichas
+        if: failure() && steps.ejecutar_normas.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          test -f data/generated/estado.json || exit 0
+          rm -rf /tmp/publicar && mkdir -p /tmp/publicar
+          if git ls-remote --exit-code --heads origin data >/dev/null 2>&1; then
+            git fetch origin data:refs/remotes/origin/data --depth=1
+            git archive origin/data data/generated | tar -x -C /tmp/publicar || true
+          fi
+          mkdir -p /tmp/publicar/data/generated
+          cp data/generated/estado.json /tmp/publicar/data/generated/estado.json
+          cd /tmp/publicar
+          git init -q -b data
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Estado fallo Normas Legales: $(date -u +'%Y-%m-%dT%H:%M:%SZ')" || exit 0
+          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" data:data

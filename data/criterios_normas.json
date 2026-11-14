@@ -1,0 +1,470 @@
+{
+  "version": "1.0",
+  "ejes": {
+    "polity": {
+      "descripcion": "Reglas e instituciones del sistema político-administrativo: organización del Estado, competencias entre niveles de gobierno, descentralización, sistemas administrativos y funcionales, régimen electoral y partidos, participación ciudadana, transparencia, servicio civil, estructura de entidades y reforma del Estado.",
+      "subtemas": [
+        {
+          "id": "organizacion_estructura_estado",
+          "nombre": "Organización del Estado y Estructura de Entidades",
+          "palabras_clave": [
+            "reglamento de organización y funciones",
+            "manual de operaciones",
+            "estructura orgánica",
+            "crean grupo de trabajo",
+            "comisión multisectorial",
+            "consejo nacional",
+            "adscripción",
+            "fusión de entidades",
+            "reforma del estado",
+            "organigrama",
+            "constitución del comité",
+            "comité de movilización"
+          ]
+        },
+        {
+          "id": "descentralizacion_gobiernos_subnacionales",
+          "nombre": "Competencias y Descentralización",
+          "palabras_clave": [
+            "descentralización",
+            "transferencia de competencias",
+            "gobierno regional",
+            "gobiernos regionales",
+            "gobierno local",
+            "gobiernos locales",
+            "municipalidad",
+            "mancomunidad",
+            "ordenanza regional",
+            "ordenanza municipal",
+            "comité de movilización regional"
+          ]
+        },
+        {
+          "id": "sistemas_administrativos_planeamiento",
+          "nombre": "Sistemas Administrativos, Planeamiento y Modernización",
+          "palabras_clave": [
+            "plan operativo institucional",
+            "plan estratégico institucional",
+            "plan estratégico sectorial multianual",
+            "sinaplan",
+            "modernización de la gestión pública",
+            "simplificación administrativa",
+            "texto único de procedimientos administrativos",
+            "tupa",
+            "sistema administrativo",
+            "abastecimiento",
+            "contrataciones del estado",
+            "control interno",
+            "transformación digital",
+            "gobierno digital",
+            "política nacional de modernización"
+          ]
+        },
+        {
+          "id": "servicio_civil_recursos_humanos",
+          "nombre": "Servicio Civil y Recursos Humanos del Estado",
+          "palabras_clave": [
+            "manual de clasificador de cargos",
+            "cuadro para asignación de personal",
+            "cuadro de puestos de la entidad",
+            "servicio civil",
+            "servir",
+            "régimen disciplinario",
+            "carrera pública",
+            "negociación colectiva en el sector público",
+            "escala remunerativa",
+            "compensación económica"
+          ]
+        },
+        {
+          "id": "regimen_electoral_partidos_participacion",
+          "nombre": "Régimen Electoral, Partidos y Participación Ciudadana",
+          "palabras_clave": [
+            "régimen electoral",
+            "cronograma electoral",
+            "padrón electoral",
+            "organizaciones políticas",
+            "partidos políticos",
+            "participación ciudadana",
+            "consulta previa",
+            "transparencia y acceso a la información",
+            "integridad pública",
+            "lucha contra la corrupción",
+            "reglamento del jurado nacional de elecciones"
+          ]
+        },
+        {
+          "id": "justicia_defensa_orden_constitucional",
+          "nombre": "Administración de Justicia, Defensa Nacional y Movilización",
+          "palabras_clave": [
+            "sistema de defensa nacional",
+            "movilización nacional",
+            "movilización regional",
+            "organización judicial",
+            "proceso constitucional",
+            "reforma de justicia",
+            "sistema nacional de justicia"
+          ]
+        }
+      ]
+    },
+    "policy": {
+      "descripcion": "Decisiones, programas y regulación sectorial para resolver problemas públicos (educación, salud, seguridad, ambiente, economía, infraestructura, energía, transportes, etc.).",
+      "subtemas": [
+        {
+          "id": "presupuesto_hacienda_transferencias",
+          "nombre": "Presupuesto, Hacienda Pública y Transferencias",
+          "palabras_clave": [
+            "transferencia de partidas",
+            "transferencia financiera",
+            "crédito suplementario",
+            "presupuesto del sector público",
+            "modificación presupuestaria",
+            "endeudamiento",
+            "inversión pública",
+            "programación multianual de inversiones",
+            "cartera de inversiones",
+            "obras por impuestos",
+            "tributario",
+            "preferencias arancelarias",
+            "acuerdos comerciales",
+            "procedimiento específico",
+            "sunat",
+            "aduanas"
+          ],
+          "sectores_asociados": [
+            "ECONOMÍA Y FINANZAS",
+            "SUPERINTENDENCIA NACIONAL DE ADUANAS Y DE ADMINISTRACIÓN TRIBUTARIA"
+          ]
+        },
+        {
+          "id": "educacion_cultura_deporte",
+          "nombre": "Educación, Cultura y Deporte",
+          "palabras_clave": [
+            "educación básica",
+            "educación superior",
+            "carrera pública magisterial",
+            "universidad nacional",
+            "beca",
+            "currículo nacional",
+            "patrimonio cultural",
+            "santuario histórico",
+            "tarifas por ingreso",
+            "deporte",
+            "cultura"
+          ],
+          "sectores_asociados": [
+            "EDUCACIÓN",
+            "CULTURA"
+          ]
+        },
+        {
+          "id": "salud_saneamiento",
+          "nombre": "Salud Pública y Agua/Saneamiento",
+          "palabras_clave": [
+            "salud pública",
+            "establecimientos de salud",
+            "vigilancia epidemiológica",
+            "medicamentos",
+            "vacunación",
+            "agua potable",
+            "saneamiento",
+            "alcantarillado",
+            "sunass",
+            "otass",
+            "aseguramiento en salud"
+          ],
+          "sectores_asociados": [
+            "SALUD",
+            "VIVIENDA, CONSTRUCCIÓN Y SANEAMIENTO"
+          ]
+        },
+        {
+          "id": "ambiente_recursos_naturales_grd",
+          "nombre": "Ambiente, Recursos Naturales y Gestión del Riesgo de Desastres",
+          "palabras_clave": [
+            "ambiente",
+            "cambio climático",
+            "áreas naturales protegidas",
+            "sernanp",
+            "senace",
+            "certificación ambiental",
+            "residuos sólidos",
+            "calidad ambiental",
+            "fenómeno el niño",
+            "emergencia por lluvias",
+            "peligro inminente",
+            "inundación",
+            "recursos hídricos",
+            "gestión del riesgo de desastres",
+            "sector ambiente"
+          ],
+          "sectores_asociados": [
+            "AMBIENTE",
+            "SERVICIO NACIONAL DE AREAS NATURALES PROTEGIDAS POR EL ESTADO"
+          ]
+        },
+        {
+          "id": "energia_mineria_hidrocarburos",
+          "nombre": "Energía, Minería e Hidrocarburos",
+          "palabras_clave": [
+            "generación eléctrica",
+            "electricidad",
+            "hidrocarburos",
+            "combustibles",
+            "fondo para la estabilización de precios de los combustibles",
+            "fepc",
+            "minería",
+            "concesión eléctrica",
+            "osinergmin",
+            "tarifa eléctrica",
+            "sistema eléctrico"
+          ],
+          "sectores_asociados": [
+            "ENERGÍA Y MINAS",
+            "ORGANISMO SUPERVISOR DE LA INVERSIÓN EN ENERGÍA Y MINERÍA"
+          ]
+        },
+        {
+          "id": "transporte_comunicaciones_conectividad",
+          "nombre": "Transporte, Comunicaciones y Conectividad",
+          "palabras_clave": [
+            "transporte terrestre",
+            "transporte aéreo",
+            "ferroviario",
+            "infraestructura vial",
+            "telecomunicaciones",
+            "radiodifusión sonora",
+            "banda fm",
+            "espectro radioeléctrico",
+            "pronatel",
+            "red vial",
+            "concesión postal"
+          ],
+          "sectores_asociados": [
+            "TRANSPORTES Y COMUNICACIONES",
+            "AUTORIDAD DE TRANSPORTE URBANO PARA LIMA Y CALLAO"
+          ]
+        },
+        {
+          "id": "seguridad_ciudadana_orden_interno",
+          "nombre": "Seguridad Ciudadana y Orden Interno",
+          "palabras_clave": [
+            "seguridad ciudadana",
+            "lucha contra el crimen",
+            "policía nacional",
+            "crimen organizado",
+            "tráfico ilícito de drogas",
+            "sistema penitenciario",
+            "orden interno",
+            "inpe"
+          ],
+          "sectores_asociados": [
+            "INTERIOR",
+            "INSTITUTO NACIONAL PENITENCIARIO"
+          ]
+        },
+        {
+          "id": "desarrollo_productivo_comercio_turismo_agro",
+          "nombre": "Desarrollo Productivo, Comercio Exterior, Turismo y Agro",
+          "palabras_clave": [
+            "comercio exterior",
+            "turismo",
+            "agrario",
+            "riego",
+            "pesca",
+            "acuicultura",
+            "mype",
+            "micro y pequeña empresa",
+            "desarrollo productivo",
+            "exportaciones"
+          ],
+          "sectores_asociados": [
+            "COMERCIO EXTERIOR Y TURISMO",
+            "DESARROLLO AGRARIO Y RIEGO",
+            "PRODUCE"
+          ]
+        },
+        {
+          "id": "proteccion_social_poblaciones_vulnerables",
+          "nombre": "Protección Social, Mujer, Niñez y Trabajo",
+          "palabras_clave": [
+            "poblaciones vulnerables",
+            "igualdad de género",
+            "violencia contra la mujer",
+            "discapacidad",
+            "programas sociales",
+            "empleo",
+            "seguridad y salud en el trabajo",
+            "protección social",
+            "niñez y adolescencia"
+          ],
+          "sectores_asociados": [
+            "MUJER Y POBLACIONES VULNERABLES",
+            "DESARROLLO E INCLUSIÓN SOCIAL",
+            "TRABAJO Y PROMOCIÓN DEL EMPLEO"
+          ]
+        }
+      ]
+    }
+  },
+  "valores_eje_permitidos": [
+    "polity",
+    "policy",
+    "mixto",
+    "otro"
+  ],
+  "tipos_norma_incluidos": [
+    "LEY",
+    "RESOLUCIÓN LEGISLATIVA",
+    "DECRETO LEGISLATIVO",
+    "DECRETO DE URGENCIA",
+    "DECRETO SUPREMO",
+    "RESOLUCIÓN SUPREMA",
+    "RESOLUCIÓN MINISTERIAL",
+    "RESOLUCIÓN VICEMINISTERIAL",
+    "RESOLUCIÓN DIRECTORAL",
+    "RESOLUCIÓN JEFATURAL",
+    "RESOLUCIÓN DE SUPERINTENDENCIA",
+    "RESOLUCIÓN DE CONTRALORÍA",
+    "RESOLUCIÓN DE PRESIDENCIA EJECUTIVA",
+    "RESOLUCIÓN DE CONSEJO DIRECTIVO",
+    "ORDENANZA REGIONAL",
+    "ORDENANZA",
+    "DECRETO DE ALCALDÍA",
+    "RESOLUCIÓN ADMINISTRATIVA",
+    "RESOLUCIÓN"
+  ],
+  "entidades_prioritarias": [],
+  "patrones_exclusion": [
+    {
+      "id": "viajes",
+      "motivo": "Excluida: autorización o modificación de viaje de funcionarios o servidores públicos",
+      "patrones_regex": [
+        "\\bautorizan\\s+(?:el\\s+|la\\s+)?viaje\\b",
+        "\\bmodifican\\b.{0,120}\\bautoriza(?:n)?\\s+viaje\\b",
+        "\\ben\\s+comisi[oó]n\\s+de\\s+servicios\\b",
+        "\\ben\\s+misi[oó]n\\s+de\\s+estudios\\b",
+        "\\bviaje\\s+de\\s+pr[aá]cticas\\b"
+      ]
+    },
+    {
+      "id": "designaciones_nombramientos",
+      "motivo": "Excluida: designación o nombramiento de personal o autoridades en cargos específicos",
+      "patrones_regex": [
+        "^\\s*designan\\b",
+        "\\bdesignan\\s+(?:a\\s+|al\\s+|como\\s+|director|jefe|gerente|asesor|miembro|fiscales|representante)",
+        "^\\s*nombran\\b",
+        "\\bnombran\\s+(?:fiscal|a\\s+)",
+        "\\bdan\\s+por\\s+concluida\\s+la\\s+designaci[oó]n\\b",
+        "\\bdan\\s+por\\s+concluido\\s+el\\s+nombramiento\\b"
+      ]
+    },
+    {
+      "id": "encargos",
+      "motivo": "Excluida: encargo de despacho, puesto o funciones",
+      "patrones_regex": [
+        "^\\s*encargan\\b",
+        "\\bencargan\\s+(?:el\\s+despacho|la\\s+oficina|las\\s+funciones|el\\s+puesto)\\b",
+        "\\bencargo\\s+de\\s+(?:puesto|funciones|despacho)\\b"
+      ]
+    },
+    {
+      "id": "renuncias",
+      "motivo": "Excluida: aceptación de renuncia al cargo",
+      "patrones_regex": [
+        "\\baceptan\\s+(?:la\\s+)?renuncia\\b",
+        "\\brenuncia\\s+al\\s+cargo\\b"
+      ]
+    },
+    {
+      "id": "extradiciones",
+      "motivo": "Excluida: solicitud de extradición o traslado de personas condenadas",
+      "patrones_regex": [
+        "\\bextradici[oó]n\\s+(?:activa|pasiva)\\b",
+        "\\bsolicitud\\s+de\\s+extradici[oó]n\\b",
+        "\\btraslado\\s+de\\s+personas\\s+condenadas\\b"
+      ]
+    },
+    {
+      "id": "expropiaciones",
+      "motivo": "Excluida: aprobación de ejecución de expropiación o valor de tasación de inmueble particular",
+      "patrones_regex": [
+        "\\bejecuci[oó]n\\s+de\\s+expropiaci[oó]n\\b",
+        "\\bvalor\\s+de\\s+(?:la\\s+)?tasaci[oó]n\\b",
+        "\\bafectada\\s+de\\s+inmueble\\b"
+      ]
+    },
+    {
+      "id": "traslados_oficinas",
+      "motivo": "Excluida: traslado físico de oficina o dependencia administrativa",
+      "patrones_regex": [
+        "\\btraslado\\s+de\\s+(?:la\\s+)?oficina\\b",
+        "\\btraslado\\s+de\\s+sede\\b"
+      ]
+    },
+    {
+      "id": "edictos_matrimoniales",
+      "motivo": "Excluida: dispensa de edicto matrimonial o matrimonio civil comunitario",
+      "patrones_regex": [
+        "\\bedictos?\\s+matrimonial(?:es)?\\b",
+        "\\bmatrimonio\\s+civil\\s+comunitario\\b"
+      ]
+    },
+    {
+      "id": "proteccion_provisional_arqueologica",
+      "motivo": "Excluida: determinación de protección provisional de sitio o paisaje arqueológico individual",
+      "patrones_regex": [
+        "\\bprotecci[oó]n\\s+provisional\\s+del\\s+(?:sitio|paisaje|zona|monumento)\\s+arqueol[oó]gic[oa]\\b"
+      ]
+    },
+    {
+      "id": "actos_jurisdiccionales_y_particulares",
+      "motivo": "Excluida: resolución jurisdiccional/electoral sobre expediente individual o autorización operativa a empresa/administrado particular",
+      "patrones_regex": [
+        "\\b(?:confirman|revocan|declaran\\s+nula)\\s+(?:extremo\\s+de\\s+)?la\\s+resoluci[oó]n\\s+n\\.?\\s*º?°?",
+        "\\bresuelven\\s+recurso\\s+de\\s+apelaci[oó]n\\s+interpuesto\\s+en\\s+contra\\s+de\\s+la\\s+resoluci[oó]n\\b",
+        "\\bcaducidad\\s+del\\s+procedimiento\\s+administrativo\\s+sancionador\\b",
+        "\\bautorizan\\s+a\\s+la\\s+empresa\\b.{0,120}\\bpara\\s+operar\\s+como\\s+centro\\s+de\\s+inspecci[oó]n\\s+t[eé]cnica\\s+vehicular\\b"
+      ]
+    }
+  ],
+  "reglas_prioridad_especial": {
+    "transferencias_partidas": {
+      "excluir": false,
+      "prioridad": "baja prioridad",
+      "eje_forzado": "policy",
+      "subtema_forzado": "Presupuesto, Hacienda Pública y Transferencias",
+      "motivo": "Incluida con baja prioridad: autorización de transferencia de partidas o transferencia financiera",
+      "patrones_regex": [
+        "\\btransferencia\\s+de\\s+partidas\\b",
+        "\\btransferencia\\s+financiera\\b"
+      ]
+    },
+    "instrumentos_gestion_polity": [
+      {
+        "subtema": "Sistemas Administrativos, Planeamiento y Modernización",
+        "patrones": [
+          "plan operativo institucional",
+          "poi anual",
+          "plan estrategico institucional",
+          "texto unico de procedimientos administrativos"
+        ]
+      },
+      {
+        "subtema": "Servicio Civil y Recursos Humanos del Estado",
+        "patrones": [
+          "manual de clasificador de cargos",
+          "cuadro para asignacion de personal",
+          "manual de perfiles de puestos"
+        ]
+      },
+      {
+        "subtema": "Organización del Estado y Estructura de Entidades",
+        "patrones": [
+          "reglamento de organizacion y funciones"
+        ]
+      }
+    ]
+  }
+}

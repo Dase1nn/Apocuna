@@ -2,12 +2,19 @@ import streamlit as st
 from utils.loaders import (
     load_noticias_grouped,
     load_normas,
+    load_normas_oficiales,
+    load_politicas_nacionales,
     load_dashboard_kpis
 )
 from components.cards import (
     render_home_radar_and_boletines_split,
     render_noticias_carousel,
     render_normas_carousel
+)
+from sections.normas_comentadas import (
+    navegar_a_normas_comentadas,
+    render_normas_showcase_strip,
+    render_normas_visual_collection,
 )
 
 
@@ -60,9 +67,43 @@ def render_home():
 
     st.markdown("---")
 
-    # 2. NORMAS LEGALES
+    # 2. NUEVA CATEGORÍA VISUAL: NORMAS LEGALES OFICIALES DE EL PERUANO (POLITY & POLICY)
+    st.header("🏛️ Normas Legales Oficiales — El Peruano")
+    st.markdown(
+        "Clasificación diaria automatizada por ejes **Polity** (arquitectura institucional y gestión pública) "
+        "y **Policy** (regulación sectorial), alineada con Políticas Nacionales."
+    )
+    fichas_oficiales = load_normas_oficiales()
+    catalogo = load_politicas_nacionales()
+    catalogo_map = {p["id"]: p["nombre"] for p in catalogo if isinstance(p, dict) and p.get("id")}
+
+    if fichas_oficiales:
+        render_normas_showcase_strip(fichas_oficiales)
+        fichas_polity = [f for f in fichas_oficiales if (f.get("eje") or "").lower() == "polity"]
+        fichas_policy = [f for f in fichas_oficiales if (f.get("eje") or "").lower() == "policy"]
+        tab_of_all, tab_of_polity, tab_of_policy = st.tabs([
+            f"📋 Todas ({len(fichas_oficiales)})",
+            f"🏛️ Polity ({len(fichas_polity)})",
+            f"📊 Policy ({len(fichas_policy)})",
+        ])
+        with tab_of_all:
+            render_normas_visual_collection(fichas_oficiales, catalogo_map=catalogo_map, layout="carousel")
+        with tab_of_polity:
+            render_normas_visual_collection(fichas_polity, catalogo_map=catalogo_map, layout="carousel")
+        with tab_of_policy:
+            render_normas_visual_collection(fichas_policy, catalogo_map=catalogo_map, layout="carousel")
+
+    if st.button(
+        "⚖️ Abrir explorador completo y filtros en Polity & Policy →",
+        key="btn_home_normas_comentadas",
+    ):
+        navegar_a_normas_comentadas()
+
+    st.markdown("---")
+
+    # 3. SEGUIMIENTO DE NORMAS LEGALES (COYUNTURA Y PRENSA)
     st.header("⚖️ Seguimiento de Normas Legales")
-    st.markdown("Monitoreo regulatorio automatizado de decretos, leyes y resoluciones sectoriales.")
+    st.markdown("Monitoreo regulatorio automatizado de decretos, leyes y resoluciones sectoriales en prensa.")
     normas = load_normas()
     normas_filtradas = [n for n in normas if n.get("grupo") == "Noticias sobre normas legales"] or normas
     render_normas_carousel(normas_filtradas)

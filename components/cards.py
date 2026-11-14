@@ -299,7 +299,7 @@ def render_estudiantes_apuntes(apuntes: list):
         sistema = escape(item.get("sistema", ""))
         resumen = escape(item.get("resumen", ""))
         normativa = escape(item.get("normativa", ""))
-        normativa_btn = _action_button(item.get("url"), "Marco Normativo ↗", "Normativa (Demo)")
+        normativa_btn = _action_button(item.get("url"), "Marco Normativo ↗", "Normativa por confirmar")
 
         cards_list.append(
             f'<div class="fuente-card">'

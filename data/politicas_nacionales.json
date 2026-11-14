@@ -1,0 +1,311 @@
+[
+  {
+    "id": "acuerdo_nacional",
+    "nombre": "Políticas de Estado del Acuerdo Nacional",
+    "alias": [
+      "Acuerdo Nacional",
+      "Políticas de Estado"
+    ],
+    "tipo": "Política de Estado",
+    "norma_aprobacion": "Consenso del Foro del Acuerdo Nacional",
+    "entidad_rectora": "Acuerdo Nacional",
+    "url_oficial": "https://acuerdonacional.pe/politicas-de-estado-del-acuerdo-nacional/",
+    "codigo_http": 200,
+    "title_verificado": "Políticas de Estado del Acuerdo Nacional - Website - Acuerdo Nacional",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pgg_2026_2031",
+    "nombre": "Política General de Gobierno 2026-2031",
+    "alias": [
+      "Política General de Gobierno",
+      "PGG 2026-2031",
+      "D.S. N° 127-2026-PCM"
+    ],
+    "tipo": "Política General de Gobierno",
+    "norma_aprobacion": "D.S. N° 127-2026-PCM",
+    "entidad_rectora": "PCM",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2551404-3",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política General de Gobierno 2026-2031: Ordenar el Estado para recuperar la seguridad, destrabar el crecimiento y convertir las decisiones públicas en resultados - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_maritima",
+    "nombre": "Política Nacional Marítima 2019-2030",
+    "alias": [
+      "Política Nacional Marítima",
+      "D.S. N° 012-2019-DE"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 012-2019-DE",
+    "entidad_rectora": "MINDEF",
+    "url_oficial": "https://www.gob.pe/institucion/mindef/normas-legales/391605-012-2019-de",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo N.° 012--2019-DE - Normas y documentos legales - Ministerio de Defensa - Plataforma del Estado Peruano",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_transporte_urbano",
+    "nombre": "Política Nacional de Transporte Urbano",
+    "alias": [
+      "Política Nacional de Transporte Urbano",
+      "D.S. N° 012-2019-MTC"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 012-2019-MTC",
+    "entidad_rectora": "MTC",
+    "url_oficial": "https://www.gob.pe/institucion/mtc/normas-legales/272373-012-2019-mtc",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo N.° 012-2019-MTC - Normas y documentos legales - Ministerio de Transportes y Comunicaciones - Plataforma del Estado Peruano",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_cooperacion_tecnica_2030",
+    "nombre": "Política Nacional de Cooperación Técnica Internacional al 2030",
+    "alias": [
+      "PNCTI",
+      "Política Nacional de Cooperación Técnica Internacional",
+      "D.S. N° 008-2023-RE"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 008-2023-RE",
+    "entidad_rectora": "MRE",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2169917-1",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional de Cooperación Técnica Internacional (PNCTI) al 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_derechos_humanos_2040",
+    "nombre": "Política Nacional Multisectorial de Derechos Humanos al 2040",
+    "alias": [
+      "Política Nacional Multisectorial de Derechos Humanos",
+      "Política Nacional de Derechos Humanos",
+      "D.S. N° 018-2024-JUS"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 018-2024-JUS",
+    "entidad_rectora": "MINJUSDH",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2352000-1",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional Multisectorial de Derechos Humanos al 2040 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_cti",
+    "nombre": "Política Nacional de Ciencia, Tecnología e Innovación",
+    "alias": [
+      "Política Nacional de Ciencia, Tecnología e Innovación",
+      "D.S. N° 093-2025-PCM"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 093-2025-PCM",
+    "entidad_rectora": "PCM / CONCYTEC",
+    "url_oficial": "https://www.gob.pe/institucion/indecopi/normas-legales/6962527-93-2025-pcm",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo N.° 93-2025-PCM - Normas y documentos legales - Instituto Nacional de Defensa de la Competencia y de la Protección de la Propiedad Intelectual - Plataforma del Estado Peruano",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_agua_saneamiento",
+    "nombre": "Política Nacional Multisectorial de Agua Potable y Saneamiento",
+    "alias": [
+      "Política Nacional Multisectorial de Agua Potable y Saneamiento",
+      "Política Nacional de Saneamiento",
+      "D.S. N° 010-2026-VIVIENDA"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 010-2026-VIVIENDA",
+    "entidad_rectora": "MVCS",
+    "url_oficial": "https://www.gob.pe/institucion/vivienda/normas-legales/8267197-010-2026-vivienda",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo N.° 010-2026-VIVIENDA - Normas y documentos legales - Ministerio de Vivienda, Construcción y Saneamiento - Plataforma del Estado Peruano",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_seguridad_vial_2030",
+    "nombre": "Política Nacional Multisectorial de Seguridad Vial 2023-2030",
+    "alias": [
+      "Política Nacional Multisectorial de Seguridad Vial",
+      "Política Nacional de Seguridad Vial",
+      "D.S. N° 009-2023-MTC"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 009-2023-MTC",
+    "entidad_rectora": "MTC",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2190371-3",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional Multisectorial de Seguridad Vial 2023 - 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_comercio_exterior",
+    "nombre": "Política Nacional Multisectorial de Comercio Exterior",
+    "alias": [
+      "Política Nacional de Comercio Exterior",
+      "Política Nacional Multisectorial de Comercio Exterior",
+      "D.S. N° 010-2025-MINCETUR"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 010-2025-MINCETUR",
+    "entidad_rectora": "MINCETUR",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2473726-1",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional Multisectorial de Comercio Exterior al 2040 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_sst_2030",
+    "nombre": "Política Nacional de Seguridad y Salud en el Trabajo al 2030",
+    "alias": [
+      "Política Nacional de Seguridad y Salud en el Trabajo",
+      "D.S. N° 018-2021-TR"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 018-2021-TR",
+    "entidad_rectora": "MTPE",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/1976342-1",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional de Seguridad y Salud en el Trabajo al 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pedn_2050",
+    "nombre": "Plan Estratégico de Desarrollo Nacional al 2050",
+    "alias": [
+      "PEDN al 2050",
+      "PEDN 2050",
+      "Plan Estratégico de Desarrollo Nacional"
+    ],
+    "tipo": "Plan Estratégico",
+    "norma_aprobacion": "D.S. N° 095-2022-PCM",
+    "entidad_rectora": "CEPLAN / PCM",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2090829-7",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba el Plan Estratégico de Desarrollo Nacional al 2050 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_transformacion_digital_2030",
+    "nombre": "Política Nacional de Transformación Digital al 2030",
+    "alias": [
+      "PNTD",
+      "Política Nacional de Transformación Digital",
+      "Política Nacional Multisectorial de Transformación Digital"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 085-2023-PCM",
+    "entidad_rectora": "PCM",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2200457-5",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional de Transformación Digital al 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_ambiente_2030",
+    "nombre": "Política Nacional del Ambiente al 2030",
+    "alias": [
+      "PNA al 2030",
+      "Política Nacional del Ambiente"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 023-2021-MINAM",
+    "entidad_rectora": "MINAM",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/1976351-2",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional del Ambiente al 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_seguridad_ciudadana_2030",
+    "nombre": "Política Nacional Multisectorial de Seguridad Ciudadana al 2030",
+    "alias": [
+      "PNMSC",
+      "Política Nacional de Seguridad Ciudadana",
+      "Política Nacional Multisectorial de Seguridad Ciudadana"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 006-2022-IN",
+    "entidad_rectora": "MININTER",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2079733-1",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional Multisectorial de Seguridad Ciudadana al 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_agraria_2030",
+    "nombre": "Política Nacional Agraria 2021-2030",
+    "alias": [
+      "PNA 2021-2030",
+      "Política Nacional Agraria"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 017-2021-MIDAGRI",
+    "entidad_rectora": "MIDAGRI",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/1975873-14",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional Agraria 2021 - 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_inclusion_social_2030",
+    "nombre": "Política Nacional de Desarrollo e Inclusión Social al 2030",
+    "alias": [
+      "PNDIS",
+      "Política Nacional de Desarrollo e Inclusión Social"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 008-2022-MIDIS",
+    "entidad_rectora": "MIDIS",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2139652-3",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional de Desarrollo e Inclusión Social al 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_pesca_2040",
+    "nombre": "Política Nacional de Pesca",
+    "alias": [
+      "Política Nacional de Pesca",
+      "Política Nacional de Pesca al 2040"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 012-2025-PRODUCE",
+    "entidad_rectora": "PRODUCE",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2424011-2",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional de Pesca al 2040 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_modernizacion_2030",
+    "nombre": "Política Nacional de Modernización de la Gestión Pública al 2030",
+    "alias": [
+      "PNMGP",
+      "Política Nacional de Modernización de la Gestión Pública"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 103-2022-PCM",
+    "entidad_rectora": "PCM",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2097747-1",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional de Modernización de la Gestión Pública al 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  },
+  {
+    "id": "pn_vivienda_urbanismo_2030",
+    "nombre": "Política Nacional de Vivienda y Urbanismo al 2030",
+    "alias": [
+      "PNVU",
+      "Política Nacional de Vivienda y Urbanismo"
+    ],
+    "tipo": "Política Nacional",
+    "norma_aprobacion": "D.S. N° 012-2021-VIVIENDA",
+    "entidad_rectora": "MVCS",
+    "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/1972990-13",
+    "codigo_http": 200,
+    "title_verificado": "Decreto Supremo que aprueba la Política Nacional de Vivienda y Urbanismo, con horizonte temporal al 2030 - DECRETO SUPREMO -",
+    "estado": "aprobada"
+  }
+]

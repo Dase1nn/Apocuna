@@ -18,3 +18,13 @@ CKAN_MINSA_HABILITADO = False
 
 # Indicador para reactivar portal CKAN PCM si vuelve a estar accesible para clientes automáticos (bloqueado por WAF HTTP 418 verificado 2026-10-02)
 CKAN_PCM_HABILITADO = False
+
+# Automatización diaria de Normas Legales (El Peruano)
+NORMAS_IA_HABILITADA = True
+GEMINI_MODELO_NORMAS = "gemini-2.5-flash"
+NORMAS_PROMPT_VERSION = "norma_v1"
+NORMAS_TOPE_DIARIO_IA = 15
+NORMAS_TOPE_LLAMADAS_IA = 20
+NORMAS_MAX_REINTENTOS_IA = 2
+NORMAS_TOPE_EJECUCION = 80
+

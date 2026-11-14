@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: actualizar_datos
+  group: apocuna_rama_data
   cancel-in-progress: false
 
 jobs:

@@ -1683,3 +1683,352 @@ button[data-testid="stExpandSidebarButton"]:hover *,
     font-size: 0.78rem !important;
     font-weight: 600 !important;
 }
+
+
+/* ==========================================================================
+   19. TARJETAS VISUALES DE NORMAS LEGALES OFICIALES (EL PERUANO POLITY/POLICY)
+   ========================================================================== */
+.normas-showcase-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0.25rem 0 1.05rem 0;
+    padding: 0.65rem 0.9rem;
+    border-radius: 10px;
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--surface-border);
+    box-shadow: var(--shadow-card);
+}
+
+.normas-showcase-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.24rem 0.68rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: var(--surface-bg);
+    color: var(--text-title);
+    border: 1px solid var(--surface-border);
+}
+
+.normas-showcase-pill.pill-polity {
+    background: light-dark(rgba(79, 70, 229, 0.1), rgba(129, 140, 248, 0.16));
+    color: light-dark(#4338CA, #A5B4FC);
+    border-color: light-dark(rgba(79, 70, 229, 0.28), rgba(129, 140, 248, 0.35));
+}
+
+.normas-showcase-pill.pill-policy {
+    background: light-dark(rgba(2, 132, 199, 0.1), rgba(56, 189, 248, 0.16));
+    color: light-dark(#0369A1, #7DD3FC);
+    border-color: light-dark(rgba(2, 132, 199, 0.28), rgba(56, 189, 248, 0.35));
+}
+
+.normas-showcase-pill.pill-revisado {
+    background: light-dark(rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.16));
+    color: light-dark(#047857, #6EE7B7);
+    border-color: light-dark(rgba(16, 185, 129, 0.3), rgba(52, 211, 153, 0.35));
+}
+
+.normas-visual-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1.15rem;
+    padding: 0.35rem 0.2rem 1.15rem 0.2rem;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+.normas-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.15rem;
+    margin: 0.5rem 0 1.25rem 0;
+}
+
+.norma-visual-card {
+    background-color: var(--surface-bg);
+    border: 1px solid var(--surface-border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.24s var(--ease-out-expo), box-shadow 0.24s var(--ease-out-expo), border-color 0.2s ease, background-color 0.2s ease;
+    will-change: transform;
+}
+
+.normas-visual-carousel .norma-visual-card {
+    min-width: 332px;
+    max-width: 355px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.norma-visual-card:hover {
+    transform: translate3d(0, -3px, 0);
+    background-color: var(--surface-hover);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--surface-border-hover);
+}
+
+.norma-visual-top-bar {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, #0284C7 0%, #29B5E8 100%);
+}
+
+.norma-eje-polity .norma-visual-top-bar {
+    background: linear-gradient(90deg, #4F46E5 0%, #3B82F6 100%);
+}
+
+.norma-eje-policy .norma-visual-top-bar {
+    background: linear-gradient(90deg, #0284C7 0%, #10B981 100%);
+}
+
+.norma-eje-mixto .norma-visual-top-bar {
+    background: linear-gradient(90deg, #7C3AED 0%, #0EA5E9 100%);
+}
+
+.norma-eje-otro .norma-visual-top-bar {
+    background: linear-gradient(90deg, #64748B 0%, #94A3B8 100%);
+}
+
+.norma-card-body {
+    padding: 1.05rem 1.2rem 0.9rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.norma-card-toprow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+    margin-bottom: 0.65rem;
+}
+
+.norma-badge-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.norma-estado-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.16rem 0.54rem;
+    border-radius: 999px;
+    font-size: 0.69rem;
+    font-weight: 700;
+    letter-spacing: 0.25px;
+    color: #FFFFFF !important;
+}
+
+.norma-eje-pill {
+    display: inline-block;
+    padding: 0.16rem 0.52rem;
+    border-radius: 6px;
+    font-size: 0.69rem;
+    font-weight: 800;
+    letter-spacing: 0.55px;
+    text-transform: uppercase;
+}
+
+.norma-eje-polity .norma-eje-pill {
+    background: light-dark(rgba(79, 70, 229, 0.12), rgba(129, 140, 248, 0.18));
+    color: light-dark(#4338CA, #A5B4FC);
+}
+
+.norma-eje-policy .norma-eje-pill {
+    background: light-dark(rgba(2, 132, 199, 0.12), rgba(56, 189, 248, 0.18));
+    color: light-dark(#0369A1, #7DD3FC);
+}
+
+.norma-eje-mixto .norma-eje-pill {
+    background: light-dark(rgba(124, 58, 237, 0.12), rgba(167, 139, 250, 0.18));
+    color: light-dark(#6D28D9, #C4B5FD);
+}
+
+.norma-eje-otro .norma-eje-pill {
+    background: var(--surface-elevated);
+    color: var(--text-muted);
+}
+
+.norma-entity-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.71rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-accent);
+    margin-bottom: 0.28rem;
+}
+
+.norma-entity-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+    flex-shrink: 0;
+}
+
+.norma-card-title {
+    margin: 0 0 0.42rem 0 !important;
+    font-size: 0.99rem !important;
+    font-weight: 700 !important;
+    line-height: 1.32 !important;
+    color: var(--text-title) !important;
+    letter-spacing: -0.015em;
+}
+
+.norma-subtema-chip {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 0.18rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background-color: var(--surface-elevated);
+    color: var(--text-muted);
+    border: 1px solid var(--surface-border);
+    margin-bottom: 0.55rem;
+}
+
+.norma-sumilla {
+    font-size: 0.85rem;
+    line-height: 1.48;
+    color: var(--text-body) !important;
+    margin: 0 0 0.75rem 0;
+    flex-grow: 1;
+}
+
+.normas-visual-carousel .norma-sumilla {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.norma-signals-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.38rem;
+    margin-top: auto;
+}
+
+.norma-signal-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.14rem 0.48rem;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background-color: var(--surface-elevated);
+    color: var(--text-muted);
+    border: 1px solid var(--surface-border);
+}
+
+.norma-signal-chip.is-aligned {
+    background: light-dark(rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.14));
+    color: light-dark(#047857, #6EE7B7);
+    border-color: light-dark(rgba(16, 185, 129, 0.28), rgba(52, 211, 153, 0.3));
+}
+
+.norma-signal-chip.is-low-prio {
+    background: light-dark(rgba(245, 158, 11, 0.1), rgba(251, 191, 36, 0.14));
+    color: light-dark(#B45309, #FCD34D);
+    border-color: light-dark(rgba(245, 158, 11, 0.28), rgba(251, 191, 36, 0.3));
+}
+
+.norma-visual-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.72rem 1.2rem;
+    background-color: var(--surface-elevated);
+    border-top: 1px solid var(--surface-border);
+}
+
+.norma-btn-primary,
+.norma-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.38rem 0.78rem;
+    border-radius: 7px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration: none !important;
+    transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.norma-btn-primary {
+    background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%);
+    color: #FFFFFF !important;
+    border: 1px solid transparent;
+}
+
+.norma-eje-polity .norma-btn-primary {
+    background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%);
+}
+
+.norma-btn-primary:hover {
+    transform: translate3d(0, -1px, 0);
+    filter: brightness(1.06);
+}
+
+.norma-btn-ghost {
+    background-color: var(--surface-bg);
+    color: var(--text-title) !important;
+    border: 1px solid var(--surface-border);
+}
+
+.norma-btn-ghost:hover {
+    border-color: var(--primary-color);
+    color: var(--text-accent) !important;
+}
+
+.norma-detail-hero {
+    background-color: var(--surface-bg);
+    border: 1px solid var(--surface-border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    margin: 0.65rem 0 1rem 0;
+}
+
+.norma-detail-hero-inner {
+    padding: 1.35rem 1.5rem;
+}
+
+.norma-ia-disclaimer {
+    border-left: 4px solid #F59E0B;
+    background: light-dark(rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.14));
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin: 0.75rem 0;
+    color: var(--text-body);
+}
+
+.norma-visual-card a[href^="#"],
+.norma-detail-hero a[href^="#"],
+.norma-visual-card [data-testid="stHeaderActionElements"],
+.norma-detail-hero [data-testid="stHeaderActionElements"] {
+    display: none !important;
+    visibility: hidden !important;
+}

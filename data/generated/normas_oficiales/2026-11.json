@@ -1,0 +1,784 @@
+{
+  "mes": "2026-11",
+  "actualizado_en": "2026-11-14T13:33:21Z",
+  "total_normas": 11,
+  "normas": [
+    {
+      "id": "decreto-supremo-252-2026-ef-2026-economia-y-finanzas",
+      "op": "2574516-3",
+      "tipo": "DECRETO SUPREMO",
+      "numero": "252-2026-EF",
+      "numero_raw": "N° 252-2026-EF",
+      "anio": "2026",
+      "entidad": "ECONOMÍA Y FINANZAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de diversos gobiernos regionales",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574516-3",
+      "eje": "policy",
+      "subtema": "Presupuesto, Hacienda Pública y Transferencias",
+      "prioridad": "baja prioridad",
+      "motivo_clasificacion": "Incluida con baja prioridad: autorización de transferencia de partidas o transferencia financiera",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "32513",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1440",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "715c19d60406357ca145183a115ac9cddb1e044d8d9b8dbf5e8e910bcd8e0a8b",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "decreto-supremo-251-2026-ef-2026-economia-y-finanzas",
+      "op": "2574516-2",
+      "tipo": "DECRETO SUPREMO",
+      "numero": "251-2026-EF",
+      "numero_raw": "N° 251-2026-EF",
+      "anio": "2026",
+      "entidad": "ECONOMÍA Y FINANZAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor de diversos pliegos del gobierno nacional y de los gobiernos regionales",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574516-2",
+      "eje": "policy",
+      "subtema": "Presupuesto, Hacienda Pública y Transferencias",
+      "prioridad": "baja prioridad",
+      "motivo_clasificacion": "Incluida con baja prioridad: autorización de transferencia de partidas o transferencia financiera",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "32513",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "32059",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1057",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "32185",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1440",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "a8843ec45e98b34c2d5d4681b4c1cf5017e4e9ae5501499f588619c08ec2a7b9",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "decreto-supremo-250-2026-ef-2026-economia-y-finanzas",
+      "op": "2574516-1",
+      "tipo": "DECRETO SUPREMO",
+      "numero": "250-2026-EF",
+      "numero_raw": "N° 250-2026-EF",
+      "anio": "2026",
+      "entidad": "ECONOMÍA Y FINANZAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Decreto Supremo que autoriza Transferencia de Partidas en el Presupuesto del Sector Público para el Año Fiscal 2026 a favor del Servicio Nacional de Certificación Ambiental para las Inversiones Sostenibles",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574516-1",
+      "eje": "policy",
+      "subtema": "Presupuesto, Hacienda Pública y Transferencias",
+      "prioridad": "baja prioridad",
+      "motivo_clasificacion": "Incluida con baja prioridad: autorización de transferencia de partidas o transferencia financiera",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "29968",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1440",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "27658",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "6d062b12e3bebe9556adcb478ca668decfa384196fbec28fac5ff18bc4724c9d",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-ministerial-481-2026-minem-dm-2026-energia-y-minas",
+      "op": "2574506-1",
+      "tipo": "RESOLUCIÓN MINISTERIAL",
+      "numero": "481-2026-MINEM/DM",
+      "numero_raw": "N° 481-2026-MINEM/DM",
+      "anio": "2026",
+      "entidad": "ENERGÍA Y MINAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Modifican magnitud de la capacidad adicional de generación eléctrica de naturaleza temporal establecida en la R.M. N° 408-2025-MINEM/DM",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574506-1",
+      "eje": "policy",
+      "subtema": "Energía, Minería e Hidrocarburos",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Policy: generación eléctrica, electricidad (texto), minería (texto), osinergmin (texto)",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "044-2014-EM",
+          "anio": "2014",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "408-2025-MINEM/DM",
+          "anio": "2025",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "30705",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "031-2007-EM",
+          "anio": "2007",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "56ba51f403e5d97b410816ed0de6ae9c48630d1a4cb1e6e2751452fac2381c72",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-directoral-2951-2026-mtc-28-2026-transportes-y-comunicaciones",
+      "op": "2574404-1",
+      "tipo": "RESOLUCIÓN DIRECTORAL",
+      "numero": "2951-2026-MTC/28",
+      "numero_raw": "Nº 2951-2026-MTC/28",
+      "anio": "2026",
+      "entidad": "TRANSPORTES Y COMUNICACIONES",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Declaran que las autorizaciones para la prestación del servicio de radiodifusión sonora en la banda FM en localidad del departamento de Cusco serán otorgadas mediante Concurso Público",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574404-1",
+      "eje": "policy",
+      "subtema": "Transporte, Comunicaciones y Conectividad",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Policy: telecomunicaciones (texto), radiodifusión sonora, banda fm, sector:TRANSPORTES Y COMUNICACIONES",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "28278",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "005-2005-MTC",
+          "anio": "2005",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "658-2021-MTC/01",
+          "anio": "2021",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "49c95ddee867a2c88196b160cbb31dd61985591a02d3ad235871d8754793a6f7",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-ministerial-421-2026-mincetur-2026-comercio-exterior-y-turismo",
+      "op": "2574402-1",
+      "tipo": "RESOLUCIÓN MINISTERIAL",
+      "numero": "421-2026-MINCETUR",
+      "numero_raw": "N° 421-2026-MINCETUR",
+      "anio": "2026",
+      "entidad": "COMERCIO EXTERIOR Y TURISMO",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Aprueban el Plan Operativo Institucional (POI) Anual 2026 Actualizado Versión 2 del Ministerio de Comercio Exterior y Turismo",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574402-1",
+      "eje": "polity",
+      "subtema": "Sistemas Administrativos, Planeamiento y Modernización",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Regla Polity prioritaria (instrumento de gestión institucional): plan operativo institucional",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1088",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "29158",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "216-2025-MINCETUR",
+          "anio": "2025",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "382-2025",
+          "anio": "2025",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "013-2026",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "008-2026-MINCETUR",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "272-2026",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "155-2026-EF",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "272-2026-MINCETUR",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "27790",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "2257c295da5de8f96d1fc6c800bf9e570e5ed55e0b6a1bd1ea967b95d783a75f",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-ministerial-d000369-2026-minam-2026-ambiente",
+      "op": "2574281-1",
+      "tipo": "RESOLUCIÓN MINISTERIAL",
+      "numero": "D000369-2026-MINAM",
+      "numero_raw": "Nº D000369-2026-MINAM",
+      "anio": "2026",
+      "entidad": "AMBIENTE",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Aprueban la actualización de la Relación de Servicios del Sector Ambiente susceptibles de ser ejecutados bajo el régimen excepcional del mecanismo de Obras por Impuestos en el marco del Decreto de Urgencia N° 010-2026",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574281-1",
+      "eje": "policy",
+      "subtema": "Ambiente, Recursos Naturales y Gestión del Riesgo de Desastres",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Policy: ambiente, cambio climático (texto), áreas naturales protegidas (texto), sernanp (texto)",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Decreto De Urgencia",
+          "numero": "010-2026",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1013",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "29230",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "081-2022-EF",
+          "anio": "2022",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "038-2026-EF",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Ministerial",
+          "numero": "108-2023-MINAM",
+          "anio": "2023",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "e5c0cbd3e91128ee306fc0e995882ce9d787eea0cc0071cbe818aa3891e9854c",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-701-2026-inpe-p-2026-instituto-nacional-penitenciario",
+      "op": "2574154-1",
+      "tipo": "RESOLUCIÓN",
+      "numero": "701-2026-INPE/P",
+      "numero_raw": "N° 701-2026-INPE/P",
+      "anio": "2026",
+      "entidad": "INSTITUTO NACIONAL PENITENCIARIO",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Modifican el Manual de Clasificador de Cargos del Instituto Nacional Penitenciario",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574154-1",
+      "eje": "polity",
+      "subtema": "Servicio Civil y Recursos Humanos del Estado",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Regla Polity prioritaria (instrumento de gestión institucional): manual de clasificador de cargos",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "003-2021-JUS",
+          "anio": "2021",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "009-2007-JUS",
+          "anio": "2007",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "30057",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "015-2003-JUS",
+          "anio": "2003",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1328",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Resolución Suprema",
+          "numero": "179-2026-JUS",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "37059607bfe25eed11f7414917fad26c85987413e7f1c58cafcc07a29f6fc218",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-39-2026-cco-unfay-2026-instituciones-educativas",
+      "op": "2574153-1",
+      "tipo": "RESOLUCIÓN",
+      "numero": "39-2026-CCO-UNFAY",
+      "numero_raw": "Nº 39-2026-CCO-UNFAY",
+      "anio": "2026",
+      "entidad": "INSTITUCIONES EDUCATIVAS",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Aprueban el Manual de Clasificador de Cargos de la Universidad Nacional Fronteriza Autónoma de Yunguyo (MCC)",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574153-1",
+      "eje": "polity",
+      "subtema": "Servicio Civil y Recursos Humanos del Estado",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Regla Polity prioritaria (instrumento de gestión institucional): manual de clasificador de cargos",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "30220",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "31520",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "32090",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "31419",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "5b2819f8d1bd219f868a02a53a4ba987f7fef3979c70ce8b9799a04d25cc8a93",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "resolucion-000226-2026-sunat-2026-superintendencia-nacional-de-aduanas",
+      "op": "2574060-1",
+      "tipo": "RESOLUCIÓN",
+      "numero": "000226-2026/SUNAT",
+      "numero_raw": "N° 000226-2026/SUNAT",
+      "anio": "2026",
+      "entidad": "SUPERINTENDENCIA NACIONAL DE ADUANAS Y DE ADMINISTRACIÓN TRIBUTARIA",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Disponen la publicación de proyecto de resolución de superintendencia que aprueba el procedimiento específico “Aplicación de preferencias arancelarias al amparo de los acuerdos comerciales suscritos por el Perú” DESPA-PE.01.39 (versión 1), en la sede digital de la SUNAT",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2574060-1",
+      "eje": "policy",
+      "subtema": "Presupuesto, Hacienda Pública y Transferencias",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Policy: preferencias arancelarias, acuerdos comerciales, procedimiento específico, sunat",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1053",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "010-2009-EF",
+          "anio": "2009",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "012-2026-MINCETUR",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "040-2023-EF",
+          "anio": "2023",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "009-2024-JUS",
+          "anio": "2024",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "41de4340ef517d1174575aa1e70a9528167699ad0eef6a5de6808b99c9b9e53a",
+      "revision_humana_archivo": null
+    },
+    {
+      "id": "ordenanza-010-2026-cr-grl-2026-gobierno-regional-de-lima",
+      "op": "2553669-1",
+      "tipo": "ORDENANZA",
+      "numero": "010-2026-CR/GRL",
+      "numero_raw": "N° 010-2026-CR/GRL",
+      "anio": "2026",
+      "entidad": "GOBIERNO REGIONAL DE LIMA",
+      "fecha": "2026-11-13T00:00:00-05:00",
+      "fecha_publicacion": "2026-11-13",
+      "sumilla": "Ordenanza Regional que aprueba la constitución del Comité de Movilización Regional del Gobierno Regional de Lima",
+      "url_oficial": "https://busquedas.elperuano.pe/dispositivo/NL/2553669-1",
+      "eje": "polity",
+      "subtema": "Competencias y Descentralización",
+      "prioridad": "normal",
+      "motivo_clasificacion": "Reglas Polity: gobierno regional, gobiernos regionales (texto), gobiernos locales (texto), ordenanza regional",
+      "politica_nacional": [
+        {
+          "id": "ninguna",
+          "tipo_alineacion": "ninguna",
+          "evidencia": null
+        }
+      ],
+      "normas_citadas": [
+        {
+          "tipo": "Ley",
+          "numero": "27680",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "27867",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "29053",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Ley",
+          "numero": "31061",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1131",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "061-2016-PCM",
+          "anio": "2016",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Legislativo",
+          "numero": "1129",
+          "anio": null,
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        },
+        {
+          "tipo": "Decreto Supremo",
+          "numero": "042-2026-PCM",
+          "anio": "2026",
+          "relacion_detectada": "mencionada en el texto",
+          "url": null
+        }
+      ],
+      "que_dispone": null,
+      "repercusiones_esperadas": [],
+      "preguntas_a_verificar": [],
+      "estado": "radar sin IA",
+      "modelo": null,
+      "fecha_ia": null,
+      "version_instrucciones": null,
+      "hash_texto": "b87b6bcc0a6ddcfcd5c6606e76117b65533698166a4d61fe25b6cdedd5af9f66",
+      "revision_humana_archivo": null
+    }
+  ]
+}
