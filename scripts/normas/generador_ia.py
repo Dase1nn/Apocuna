@@ -118,7 +118,7 @@ def _crear_cliente_gemini():
         raise ErrorVerificacionIA(
             "El paquete oficial 'google-genai' no está instalado en este entorno."
         ) from exc
-    return genai.Client(api_key=api_key)
+    return genai.Client(api_key=api_key, http_options={"timeout": 45_000})
 
 
 def _invocar_modelo_gemini(
@@ -171,7 +171,7 @@ def generar_y_verificar_ia(
     if not gestor.puede_procesar_norma():
         raise ErrorVerificacionIA("Tope diario de normas o llamadas a IA alcanzado.")
 
-    modelo_activo = modelo or getattr(config, "GEMINI_MODELO_NORMAS", "gemini-3.8-flash")
+    modelo_activo = modelo or getattr(config, "GEMINI_MODELO_NORMAS", "gemini-3.5-flash-lite")
     modelos_respaldo = (
         []
         if modelo

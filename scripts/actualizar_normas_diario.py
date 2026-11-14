@@ -325,6 +325,7 @@ def ejecutar_pipeline_normas(
                 continue
 
             _, texto_limpio, sha256_texto, url_oficial = obtener_texto_norma(op)
+            print(f"[RADAR] Procesando {conteo['incluidas_radar']}: {norma_id} ({op})", flush=True)
             res_full = clasificar_norma(
                 item, criterios=criterios, catalogo=catalogo, texto_completo=texto_limpio
             )
