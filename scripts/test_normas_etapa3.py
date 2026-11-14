@@ -295,6 +295,29 @@ class TestNormasEtapa3(unittest.TestCase):
         self.assertNotIn("javascript:", tarjeta_html)
         self.assertNotIn("<script>", tarjeta_html)
 
+    def test_rastrea_la_norma_sidebar_y_diagrama(self):
+        from components.sidebar import OPTIONS_LIST
+        from sections.rastrea_la_norma import construir_diagrama_flujo_normas_html
+
+        self.assertIn("Rastrea la Norma", OPTIONS_LIST)
+        self.assertEqual(OPTIONS_LIST.index("Inicio") + 1, OPTIONS_LIST.index("Rastrea la Norma"))
+        self.assertEqual(OPTIONS_LIST.index("Rastrea la Norma") + 1, OPTIONS_LIST.index("Polity and Policy"))
+
+        flujo_html = construir_diagrama_flujo_normas_html(
+            ia_habilitada=True,
+            modelo_ia="gemini-2.5-flash",
+            ultimo_estado="ok",
+            ultimo_intento="<script>bad</script>2026-11-14",
+            total_fichas=11,
+        )
+        self.assertIn("¿Cómo seguimos la norma?", flujo_html)
+        self.assertIn("PASO 01", flujo_html)
+        self.assertIn("PASO 05", flujo_html)
+        self.assertIn("flow-connector-svg", flujo_html)
+        self.assertIn("11 fichas", flujo_html)
+        self.assertNotIn("\n    <div", flujo_html)
+        self.assertNotIn("<script>", flujo_html)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -193,9 +193,16 @@ def generar_y_verificar_ia(
         except ErrorVerificacionIA:
             raise
         except Exception as exc:
-            errores_ultimos = [f"Intento {intento}: error de respuesta o JSON ({type(exc).__name__})."]
+            cod = getattr(exc, "code", None)
+            est = getattr(exc, "status", None)
+            msg = str(getattr(exc, "message", "") or "")
+            if msg:
+                msg = re.sub(r"AIza[0-9A-Za-z_-]+", "[REDACTED]", msg)[:140]
+            detalle = " ".join(str(x) for x in (cod, est, msg) if x)
+            etiq = f"{type(exc).__name__} {detalle}".strip()
+            errores_ultimos = [f"Intento {intento}: error de respuesta o JSON ({etiq})."]
             if intento < gestor.max_reintentos:
-                time.sleep(1.5)
+                time.sleep(2.0)
             continue
 
         es_valida, errs = verificar_salida_ia_contra_texto(

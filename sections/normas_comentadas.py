@@ -43,14 +43,14 @@ def construir_url_reporte_error(ficha: Dict[str, Any]) -> str:
 
 
 def navegar_a_normas_comentadas(norma_id: Optional[str] = None) -> None:
-    """Navega programáticamente a Polity and Policy manteniendo sincronizado el sidebar."""
+    """Navega programáticamente a Rastrea la Norma manteniendo sincronizado el sidebar."""
     st.query_params["vista"] = "normas_comentadas"
     if norma_id:
         st.query_params["norma"] = norma_id
     elif "norma" in st.query_params:
         del st.query_params["norma"]
 
-    st.session_state.current_page = "Polity and Policy"
+    st.session_state.current_page = "Rastrea la Norma"
     st.session_state._last_qp_routed = f"normas_comentadas|{norma_id or ''}"
     theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '💻 Auto')}"
     st.session_state.pop(theme_key, None)
@@ -285,10 +285,10 @@ def render_ficha_detalle(ficha: Dict[str, Any], catalogo_map: Dict[str, str]) ->
     label_estado, color_estado = _etiqueta_estado(ficha.get("estado"))
     eje_cls = _clase_eje(ficha.get("eje"))
 
-    if st.button("← Volver al listado filtrado", key=f"btn_volver_{nid}"):
+    if st.button("← Volver a Rastrea la Norma", key=f"btn_volver_{nid}"):
         if "norma" in st.query_params:
             del st.query_params["norma"]
-        st.query_params["vista"] = "normas_comentadas"
+        st.query_params["vista"] = "rastrea_norma"
         st.rerun()
 
     tipo_esc = html.escape(str(ficha.get("tipo") or "Norma Legal"))
@@ -389,13 +389,18 @@ def render_ficha_detalle(ficha: Dict[str, Any], catalogo_map: Dict[str, str]) ->
     )
 
 
-def render_normas_comentadas_subsection() -> None:
-    """Renderiza el radar diario y detalle de normas comentadas dentro de Polity & Policy."""
-    st.header("⚖️ Normas comentadas y Radar diario (El Peruano)")
-    st.markdown(
-        "Seguimiento automatizado de normas legales filtradas por criterios **Polity / Policy** "
-        "y alineación con Políticas Nacionales."
-    )
+def render_normas_comentadas_subsection(
+    show_header: bool = True,
+    show_showcase: bool = True,
+    skip_detail_check: bool = False,
+) -> None:
+    """Renderiza el radar diario y detalle de normas comentadas dentro de Rastrea la Norma."""
+    if show_header:
+        st.header("⚖️ Normas comentadas y Radar diario (El Peruano)")
+        st.markdown(
+            "Seguimiento automatizado de normas legales filtradas por criterios **Polity / Policy** "
+            "y alineación con Políticas Nacionales."
+        )
 
     estado_pipe = load_estado_pipeline()
     estado_diario = (
@@ -420,15 +425,17 @@ def render_normas_comentadas_subsection() -> None:
         )
         return
 
-    norma_sel_id = st.query_params.get("norma")
-    if norma_sel_id:
-        objetivo = next((f for f in fichas if f.get("id") == norma_sel_id), None)
-        if objetivo:
-            render_ficha_detalle(objetivo, catalogo_map)
-            return
-        st.warning(f"No se encontró la ficha solicitada (`{norma_sel_id}`). Mostrando listado completo.")
+    if not skip_detail_check:
+        norma_sel_id = st.query_params.get("norma")
+        if norma_sel_id:
+            objetivo = next((f for f in fichas if f.get("id") == norma_sel_id), None)
+            if objetivo:
+                render_ficha_detalle(objetivo, catalogo_map)
+                return
+            st.warning(f"No se encontró la ficha solicitada (`{norma_sel_id}`). Mostrando listado completo.")
 
-    render_normas_showcase_strip(fichas)
+    if show_showcase:
+        render_normas_showcase_strip(fichas)
 
     ejes_disp = ["Todos"] + sorted({str(f.get("eje")) for f in fichas if f.get("eje")})
     subs_disp = ["Todos"] + sorted({str(f.get("subtema")) for f in fichas if f.get("subtema")})

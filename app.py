@@ -11,6 +11,7 @@ st.set_page_config(
 
 from components.sidebar import render_sidebar
 from sections.home import render_home
+from sections.rastrea_la_norma import render_rastrea_la_norma
 from sections.polity import render_polity
 from sections.fen import render_fen
 from sections.estudiantes import render_estudiantes
@@ -20,6 +21,7 @@ from sections.sobre_el_sitio import render_sobre_el_sitio
 
 ROUTES = {
     "Inicio": render_home,
+    "Rastrea la Norma": render_rastrea_la_norma,
     "Polity and Policy": render_polity,
     "🌊 Fenómeno El Niño (FEN)": render_fen,
     "Fenómeno El Niño (FEN)": render_fen,
@@ -278,8 +280,8 @@ def main():
 
     qp = st.query_params
     qp_sig = f"{qp.get('vista', '')}|{qp.get('norma', '')}"
-    if (qp.get("norma") or qp.get("vista") == "normas_comentadas") and st.session_state.get("_last_qp_routed") != qp_sig:
-        st.session_state.current_page = "Polity and Policy"
+    if (qp.get("norma") or qp.get("vista") in ("normas_comentadas", "rastrea_norma")) and st.session_state.get("_last_qp_routed") != qp_sig:
+        st.session_state.current_page = "Rastrea la Norma"
         st.session_state._last_qp_routed = qp_sig
         theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '💻 Auto')}"
         st.session_state.pop(theme_key, None)

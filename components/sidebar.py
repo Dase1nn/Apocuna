@@ -4,6 +4,7 @@ from utils.loaders import load_dashboard_kpis
 
 OPTIONS_LIST = [
     "Inicio",
+    "Rastrea la Norma",
     "Polity and Policy",
     "Fenómeno El Niño (FEN)",
     "Estudiantes",
@@ -105,6 +106,7 @@ def render_sidebar():
             options=OPTIONS_LIST,
             icons=[
                 "house",
+                "binoculars",
                 "bank",
                 "tsunami",
                 "mortarboard",

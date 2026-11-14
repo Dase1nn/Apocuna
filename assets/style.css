@@ -2032,3 +2032,328 @@ button[data-testid="stExpandSidebarButton"]:hover *,
     display: none !important;
     visibility: hidden !important;
 }
+
+/* ============================================================================
+   20. RASTREA LA NORMA · DIAGRAMA DE FLUJO ANIMADO (Beta v1-rastro-norma)
+   ============================================================================ */
+
+.rastrea-hero-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.rastrea-beta-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.34rem 0.85rem;
+    border-radius: 999px;
+    background: light-dark(rgba(14, 165, 233, 0.12), rgba(56, 189, 248, 0.16));
+    color: light-dark(#0369a1, #7dd3fc);
+    border: 1px solid light-dark(rgba(14, 165, 233, 0.32), rgba(56, 189, 248, 0.34));
+    box-shadow: 0 2px 10px light-dark(rgba(14, 165, 233, 0.08), rgba(0, 0, 0, 0.25));
+}
+
+.rastrea-beta-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: light-dark(#0284c7, #38bdf8);
+    animation: betaDotPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes betaDotPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.55);
+    }
+    50% {
+        transform: scale(1.18);
+        opacity: 0.85;
+        box-shadow: 0 0 0 6px rgba(56, 189, 248, 0);
+    }
+}
+
+.flow-pipeline-shell {
+    position: relative;
+    background: linear-gradient(
+        145deg,
+        light-dark(rgba(255, 255, 255, 0.96), rgba(15, 23, 42, 0.88)),
+        light-dark(rgba(241, 245, 249, 0.92), rgba(30, 41, 59, 0.82))
+    );
+    border: 1px solid light-dark(rgba(148, 163, 184, 0.32), rgba(71, 85, 105, 0.45));
+    border-radius: 20px;
+    padding: 1.35rem 1.1rem 1.2rem 1.1rem;
+    margin: 0.35rem 0 1.35rem 0;
+    box-shadow:
+        0 12px 32px -12px light-dark(rgba(15, 23, 42, 0.1), rgba(0, 0, 0, 0.45)),
+        inset 0 1px 0 light-dark(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.06));
+    overflow: hidden;
+}
+
+.flow-pipeline-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        light-dark(#0284c7, #38bdf8),
+        light-dark(#2563eb, #60a5fa),
+        light-dark(#059669, #34d399),
+        light-dark(#7c3aed, #a78bfa),
+        light-dark(#0284c7, #38bdf8)
+    );
+    background-size: 200% 100%;
+    animation: flowHeaderBeam 6s linear infinite;
+}
+
+@keyframes flowHeaderBeam {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+.flow-shell-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1.15rem;
+}
+
+.flow-shell-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em;
+    color: var(--text-title) !important;
+}
+
+.flow-shell-sub {
+    margin: 0.2rem 0 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
+.flow-track-wrapper {
+    position: relative;
+}
+
+.flow-connector-svg {
+    display: block;
+    width: 100%;
+    height: 28px;
+    margin-bottom: 0.35rem;
+    overflow: visible;
+}
+
+.flow-connector-base {
+    stroke: light-dark(rgba(148, 163, 184, 0.38), rgba(100, 116, 139, 0.45));
+    stroke-width: 2.5;
+    fill: none;
+}
+
+.flow-connector-dash {
+    stroke: light-dark(#0284c7, #38bdf8);
+    stroke-width: 3;
+    stroke-dasharray: 10 10;
+    fill: none;
+    stroke-linecap: round;
+    animation: flowDash 1.35s linear infinite;
+}
+
+@keyframes flowDash {
+    from { stroke-dashoffset: 40; }
+    to { stroke-dashoffset: 0; }
+}
+
+.flow-node-anchor {
+    fill: light-dark(#ffffff, #0f172a);
+    stroke: light-dark(#0284c7, #38bdf8);
+    stroke-width: 2.5;
+}
+
+.flow-packet-dot {
+    fill: light-dark(#059669, #34d399);
+    filter: drop-shadow(0 0 5px rgba(52, 211, 153, 0.8));
+}
+
+.flow-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.6rem;
+    align-items: stretch;
+}
+
+.flow-step-card {
+    position: relative;
+    background: light-dark(#ffffff, rgba(15, 23, 42, 0.92));
+    border: 1px solid light-dark(rgba(148, 163, 184, 0.28), rgba(71, 85, 105, 0.52));
+    border-radius: 14px;
+    padding: 0.82rem 0.7rem 0.78rem 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.42rem;
+    box-shadow: 0 4px 14px light-dark(rgba(15, 23, 42, 0.05), rgba(0, 0, 0, 0.28));
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    animation: stepPulse 7.5s ease-in-out infinite;
+    animation-delay: calc(var(--step-index, 0) * 1.4s);
+}
+
+.flow-step-card:hover {
+    transform: translateY(-3px);
+    border-color: light-dark(#0284c7, #38bdf8);
+    box-shadow: 0 10px 24px light-dark(rgba(2, 132, 199, 0.14), rgba(56, 189, 248, 0.16));
+}
+
+@keyframes stepPulse {
+    0%, 100% {
+        border-color: light-dark(rgba(148, 163, 184, 0.28), rgba(71, 85, 105, 0.52));
+        box-shadow: 0 4px 14px light-dark(rgba(15, 23, 42, 0.05), rgba(0, 0, 0, 0.28));
+    }
+    12%, 24% {
+        border-color: light-dark(rgba(2, 132, 199, 0.7), rgba(56, 189, 248, 0.72));
+        box-shadow: 0 8px 22px light-dark(rgba(2, 132, 199, 0.16), rgba(56, 189, 248, 0.18));
+    }
+    36% {
+        border-color: light-dark(rgba(148, 163, 184, 0.28), rgba(71, 85, 105, 0.52));
+        box-shadow: 0 4px 14px light-dark(rgba(15, 23, 42, 0.05), rgba(0, 0, 0, 0.28));
+    }
+}
+
+.flow-step-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+}
+
+.flow-step-num {
+    font-family: var(--font-mono);
+    font-size: 0.67rem;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 0.16rem 0.46rem;
+    border-radius: 6px;
+    background: light-dark(rgba(2, 132, 199, 0.1), rgba(56, 189, 248, 0.16));
+    color: light-dark(#0369a1, #7dd3fc);
+}
+
+.flow-step-icon {
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.flow-step-title {
+    margin: 0 !important;
+    font-size: 0.87rem !important;
+    font-weight: 750 !important;
+    line-height: 1.28 !important;
+    color: var(--text-title) !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+}
+
+.flow-step-desc {
+    margin: 0;
+    font-size: 0.77rem;
+    line-height: 1.42;
+    color: var(--text-body);
+    flex-grow: 1;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+}
+
+.flow-step-desc code {
+    overflow-wrap: anywhere;
+    font-size: 0.71rem;
+}
+
+.flow-step-tag {
+    font-family: var(--font-mono);
+    font-size: 0.69rem;
+    color: light-dark(#047857, #6ee7b7);
+    background: light-dark(rgba(16, 185, 129, 0.09), rgba(16, 185, 129, 0.14));
+    border: 1px solid light-dark(rgba(16, 185, 129, 0.22), rgba(52, 211, 153, 0.25));
+    padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+    width: fit-content;
+}
+
+.flow-telemetry-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem 1.1rem;
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px dashed light-dark(rgba(148, 163, 184, 0.4), rgba(100, 116, 139, 0.45));
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.flow-telemetry-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.22rem 0.65rem;
+    border-radius: 8px;
+    background: light-dark(rgba(255, 255, 255, 0.8), rgba(15, 23, 42, 0.72));
+    border: 1px solid light-dark(rgba(148, 163, 184, 0.3), rgba(71, 85, 105, 0.48));
+    color: var(--text-body);
+    font-weight: 600;
+}
+
+.flow-pipeline-shell a[href^="#"],
+.flow-pipeline-shell [data-testid="stHeaderActionElements"],
+.rastrea-hero-header a[href^="#"],
+.rastrea-hero-header [data-testid="stHeaderActionElements"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+@media (max-width: 960px) {
+    .flow-connector-svg {
+        display: none;
+    }
+    .flow-steps-grid {
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
+    }
+    .flow-step-card::after {
+        content: "↓";
+        position: absolute;
+        left: 50%;
+        bottom: -0.95rem;
+        transform: translateX(-50%);
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: light-dark(#0284c7, #38bdf8);
+        z-index: 2;
+    }
+    .flow-step-card:last-child::after {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rastrea-beta-dot,
+    .flow-pipeline-shell::before,
+    .flow-connector-dash,
+    .flow-step-card {
+        animation: none !important;
+    }
+}
