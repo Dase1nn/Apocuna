@@ -156,7 +156,7 @@ def render_rastrea_la_norma() -> None:
     # ELEMENTO 1 (INICIO DE LA SECCIÓN): Diagrama de flujo animado "¿Cómo seguimos la norma?"
     flujo_html = construir_diagrama_flujo_normas_html(
         ia_habilitada=bool(getattr(config, "NORMAS_IA_HABILITADA", False)),
-        modelo_ia=str(getattr(config, "GEMINI_MODELO_NORMAS", "gemini-2.5-flash")),
+        modelo_ia=str(getattr(config, "GEMINI_MODELO_NORMAS", "gemini-3.8-flash")),
         ultimo_estado=str(estado_diario.get("ultimo_estado") or "activo"),
         ultimo_intento=str(estado_diario.get("ultimo_intento") or "2 pasadas diarias (11:15 y 23:15 UTC)"),
         total_fichas=len(fichas_oficiales),

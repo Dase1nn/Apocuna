@@ -171,7 +171,7 @@ def generar_y_verificar_ia(
     if not gestor.puede_procesar_norma():
         raise ErrorVerificacionIA("Tope diario de normas o llamadas a IA alcanzado.")
 
-    modelo_activo = modelo or getattr(config, "GEMINI_MODELO_NORMAS", "gemini-2.5-flash")
+    modelo_activo = modelo or getattr(config, "GEMINI_MODELO_NORMAS", "gemini-3.8-flash")
     ver_prompt = version_prompt or getattr(config, "NORMAS_PROMPT_VERSION", "norma_v1")
     instrucciones = cargar_instrucciones_prompt(ver_prompt)
     contenido_usuario = _construir_prompt_usuario(ficha_meta, texto_origen, catalogo_politicas)

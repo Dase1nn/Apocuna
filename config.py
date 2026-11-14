@@ -21,7 +21,7 @@ CKAN_PCM_HABILITADO = False
 
 # Automatización diaria de Normas Legales (El Peruano)
 NORMAS_IA_HABILITADA = True
-GEMINI_MODELO_NORMAS = "gemini-2.5-flash"
+GEMINI_MODELO_NORMAS = "gemini-3.8-flash"
 NORMAS_PROMPT_VERSION = "norma_v1"
 NORMAS_TOPE_DIARIO_IA = 15
 NORMAS_TOPE_LLAMADAS_IA = 20
