@@ -18,10 +18,10 @@ Tu tarea es resumir de forma objetiva, verificable y estrictamente ceñida al te
    - Cada elemento DEBE incluir:
      - `efecto`: descripción condicional sin afirmar resultados reales observados.
      - `articulo`: referencia exacta al artículo, disposición o numeral del texto (p. ej., `"Artículo 1"` o `"Artículo 2"`), que exista textualmente.
-     - `cita`: extracto literal continuo del texto recibido de **máximo 25 palabras**, sin alterar palabras internas.
+     - `cita`: extracto literal continuo NO VACÍO copiado palabra por palabra del texto recibido, de entre **6 y 18 palabras** (NUNCA vacío ni mayor a 25 palabras; si no puedes extraer una cita literal corta exacta, omite esa repercusión).
 7. **Alineación con Políticas Nacionales (`politica_nacional`)**:
    - Elige SOLO entre los `id` del catálogo oficial incluido en este prompt.
-   - Si una política del catálogo cuenta con sustento directo y verificable en el texto, devuelve `"tipo_alineacion": "sugerida por IA"`, `"articulo"` y `"cita"` literal de **máximo 25 palabras**.
+   - Si una política del catálogo cuenta con sustento directo y verificable en el texto, devuelve `"tipo_alineacion": "sugerida por IA"`, `"articulo"` y `"cita"` literal NO VACÍA de entre **6 y 18 palabras** (máximo 25 palabras).
    - Si no existe sustento verificable en el texto para ninguna política del catálogo, devuelve exactamente `[{"id": "ninguna", "tipo_alineacion": "ninguna", "articulo": null, "cita": null}]`.
 8. **Normas citadas (`normas_citadas`)**:
    - Lista únicamente normas que figuren explícitamente en el texto recibido (`tipo`, `numero`, `anio`, `relacion_detectada`). Cada número citado debe aparecer en el texto.

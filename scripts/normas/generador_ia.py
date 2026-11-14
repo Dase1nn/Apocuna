@@ -189,10 +189,20 @@ def generar_y_verificar_ia(
         if gestor.llamadas_realizadas >= gestor.tope_llamadas:
             raise ErrorVerificacionIA("Tope máximo de llamadas a IA agotado durante reintento.")
         modelo_intento = candidatos_modelo[min(intento - 1, len(candidatos_modelo) - 1)]
+        prompt_intento = contenido_usuario
+        if errores_ultimos:
+            prompt_intento = (
+                f"{contenido_usuario}\n\n"
+                "CORRECCIÓN OBLIGATORIA TRAS RECHAZO DEL VERIFICADOR AUTOMÁTICO:\n"
+                + "\n".join(f"- {err}" for err in errores_ultimos[:4])
+                + "\nReglas clave: toda 'cita' debe ser un fragmento literal EXACTO no vacío "
+                "copiado del texto (idealmente entre 6 y 18 palabras, máximo 25), 'efecto' "
+                "en modo condicional, y artículos/números existentes en el texto fuente."
+            )
         gestor.llamadas_realizadas += 1
         try:
             crudo, tok_in, tok_out = _invocar_modelo_gemini(
-                cliente_activo, modelo_intento, instrucciones, contenido_usuario
+                cliente_activo, modelo_intento, instrucciones, prompt_intento
             )
             gestor.tokens_entrada += tok_in
             gestor.tokens_salida += tok_out

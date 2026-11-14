@@ -282,11 +282,13 @@ def ejecutar_pipeline_normas(
             )
 
         nuevas_por_id: Dict[str, Dict[str, Any]] = {}
+        rechazadas_ia: List[str] = []
         conteo = {
             "total_listado": len(listado_nl),
             "excluidas_reglas": 0,
             "incluidas_radar": 0,
             "omitidas_idempotentes": 0,
+            "rechazadas_verificacion": 0,
             "revisadas_por_persona": 0,
         }
 
@@ -345,13 +347,18 @@ def ejecutar_pipeline_normas(
                     "fecha": _formatear_fecha_corta(fecha_yyyymmdd),
                     "sumilla": res_full.get("sumilla_segura"),
                 }
-                salida_ia_info = generar_y_verificar_ia(
-                    meta_ficha,
-                    texto_limpio,
-                    catalogo,
-                    gestor=gestor_ia,
-                    cliente=cliente_ia,
-                )
+                try:
+                    salida_ia_info = generar_y_verificar_ia(
+                        meta_ficha,
+                        texto_limpio,
+                        catalogo,
+                        gestor=gestor_ia,
+                        cliente=cliente_ia,
+                    )
+                except ErrorVerificacionIA as exc_ia:
+                    conteo["rechazadas_verificacion"] += 1
+                    rechazadas_ia.append(f"{norma_id}: {exc_ia}")
+                    continue
 
             ficha = _construir_ficha(
                 norma_id=norma_id,
@@ -364,6 +371,11 @@ def ejecutar_pipeline_normas(
                 salida_ia_info=salida_ia_info,
             )
             nuevas_por_id[norma_id] = ficha
+
+        if ia_activa and not nuevas_por_id and rechazadas_ia:
+            raise ErrorVerificacionIA(
+                "Ninguna ficha superó la verificación IA: " + "; ".join(rechazadas_ia[:3])
+            )
 
         # Sincronizar overrides de revisión humana para todo el mes antes de publicar
         mapa_final = {**mapa_previo, **nuevas_por_id}
@@ -410,7 +422,7 @@ def ejecutar_pipeline_normas(
                 **gestor_ia.resumen_consumo(),
             },
             "duracion_seg": duracion_seg,
-            "errores": [],
+            "errores": rechazadas_ia,
         }
         _registrar_estado(estado, payload_ok)
         return payload_ok
