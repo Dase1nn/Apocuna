@@ -1,39 +1,55 @@
 /* ==========================================================================
-   APOCUNA HUB - SISTEMA DE DISEÑO EJECUTIVO Y ACADÉMICO (V2 OPTIMIZADO)
+   APOCUNA HUB - SISTEMA DE DISEÑO "APOCUNOSO-STYLE" (V3)
+   Síntesis: Arquitectura Mural Ndebele × Geometría Kené Shipibo-Konibo × Tipografía Swiss International
    ========================================================================== */
 
 /* 1. TOKENS DE DISEÑO Y VARIABLES GLOBALES (SOPORTE NATIVO LIGHT/DARK SIN FLICKER) */
 :root {
     color-scheme: light dark;
 
+    /* Paleta Apocunoso-Style (Ndebele / Kené + Señal Swiss International) */
+    --kene-paper: #FAF7E9;
+    --kene-stone: #F2EFE0;
+    --kene-ink: #171B18;
+    --kene-blue: #2775AA;
+    --kene-pink: #DF6A90;
+    --kene-gold: #F0BB38;
+    --kene-green: #1B8668;
+    --swiss-signal: #D93829;
+
     /* Brand & Accent Colors */
-    --primary-color: #29B5E8;
-    --primary-hover: #0284C7;
-    --primary-glow: rgba(41, 181, 232, 0.22);
-    --brand-red: #EF4444;
-    --brand-red-glow: rgba(239, 68, 68, 0.22);
+    --primary-color: #2775AA;
+    --primary-hover: #1E5D88;
+    --primary-glow: rgba(39, 117, 170, 0.18);
+    --brand-red: #D93829;
+    --brand-red-glow: rgba(217, 56, 41, 0.18);
 
-    /* Surfaces: Adaptativo Light/Dark con contraste calibrado */
-    --surface-bg: light-dark(#FFFFFF, #151B26);
-    --surface-elevated: light-dark(#F8FAFC, #1C2433);
-    --surface-hover: light-dark(#F1F5F9, #1F293B);
-    --surface-border: light-dark(rgba(15, 23, 42, 0.1), rgba(41, 181, 232, 0.2));
-    --surface-border-hover: light-dark(rgba(2, 132, 199, 0.48), rgba(56, 189, 248, 0.55));
+    /* Surfaces: Papel cálido (#FAF7E9) en modo claro y Tinta Amazónica (#181D1A) en modo oscuro */
+    --surface-bg: light-dark(#FAF7E9, #181D1A);
+    --surface-elevated: light-dark(#F2EFE0, #202723);
+    --surface-hover: light-dark(#EAE5D1, #262F2A);
+    --surface-border: light-dark(#171B18, #3E4A43);
+    --surface-border-hover: light-dark(#2775AA, #F0BB38);
 
-    /* Typography Colors: Contraste WCAG AAA/AA verificado en ambos modos */
-    --text-title: light-dark(#0F172A, #F8FAFC);
-    --text-body: light-dark(#334155, #CBD5E1);
-    --text-muted: light-dark(#64748B, #94A3B8);
-    --text-accent: light-dark(#0369A1, #38BDF8);
+    /* Typography Colors: Contraste WCAG AAA/AA verificado */
+    --text-title: light-dark(#171B18, #FAF7E9);
+    --text-body: light-dark(#252B27, #DCE0DB);
+    --text-muted: light-dark(#4E5752, #A3B0A8);
+    --text-accent: light-dark(#1E5D88, #5AB0E6);
 
-    /* Shadows & Elevation */
+    /* Typography Families (Swiss International Grotesk + Monospace para metadatos) */
+    --font-display: 'Inter', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'Consolas', monospace;
+
+    /* Elevación arquitectónica plana (0px blur, desplazamiento geométrico nítido) */
     --shadow-card: light-dark(
-        0 2px 8px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.04),
-        0 4px 16px rgba(0, 0, 0, 0.32), 0 1px 3px rgba(0, 0, 0, 0.2)
+        3px 3px 0px #171B18,
+        3px 3px 0px #080A09
     );
     --shadow-card-hover: light-dark(
-        0 10px 24px rgba(2, 132, 199, 0.12), 0 4px 8px rgba(15, 23, 42, 0.06),
-        0 12px 28px rgba(41, 181, 232, 0.18), 0 4px 12px rgba(0, 0, 0, 0.4)
+        5px 5px 0px #171B18,
+        5px 5px 0px #F0BB38
     );
 
     /* Curva de aceleración por hardware */
@@ -41,12 +57,13 @@
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-family: var(--font-body);
+    background-color: var(--surface-bg);
+    color: var(--text-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Animación de entrada sutil acelerada por GPU (sin layout shift) */
 @keyframes fadeInSlide {
     from {
         opacity: 0;
@@ -69,49 +86,250 @@ body {
     }
 }
 
-/* 2. SIDEBAR BRANDING & TELEMETRÍA EN VIVO */
+/* 2. SIDEBAR BRANDING (LOGO APOCUNOSO + BARRA KENÉ) & TELEMETRÍA EN VIVO */
 .sidebar-brand-box {
-    padding: 0.15rem 0 0.65rem 0;
+    padding: 0.25rem 0 0.75rem 0;
+}
+
+.sidebar-brand-toprow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.sidebar-logo-frame {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    flex-shrink: 0;
+    box-shadow: 2px 2px 0px #171B18;
+    background-color: #FAF7E9;
+}
+
+.sidebar-logo-frame svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar-brand-textcol {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
 }
 
 .sidebar-brand-badge {
     display: inline-block;
-    font-size: 0.64rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    background: light-dark(rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.16));
-    color: light-dark(#DC2626, #F87171);
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    margin-bottom: 0.35rem;
+    width: fit-content;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 0.14rem 0.45rem;
+    border-radius: 0px;
+    background: light-dark(#FAF7E9, #202723);
+    color: var(--text-title);
+    border: 1.5px solid var(--surface-border);
+    margin-bottom: 0.25rem;
 }
 
 .sidebar-brand-title {
-    color: #EF4444 !important;
-    font-size: 1.42rem !important;
-    font-weight: 800 !important;
-    letter-spacing: 1.8px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    font-family: var(--font-display) !important;
+    color: var(--text-title) !important;
+    font-size: 1.32rem !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.045em !important;
     text-transform: uppercase !important;
-    margin: 0 0 0.15rem 0 !important;
-    line-height: 1.15 !important;
+    margin: 0.1rem 0 0.22rem 0 !important;
+    line-height: 0.92 !important;
+}
+
+.sidebar-brand-title > span {
+    display: block !important;
+}
+
+.apocunoso-period-dot {
+    color: #1B8668 !important;
+    font-weight: 900 !important;
+    margin-left: 1px;
 }
 
 .sidebar-brand-subtitle {
-    font-size: 0.74rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
     color: var(--text-muted);
-    font-weight: 600;
-    letter-spacing: 0.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
+
+.sidebar-kene-colorbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.4fr 1fr;
+    height: 7px;
+    margin-top: 0.65rem;
+    border: 1.5px solid #171B18;
+    background-color: #171B18;
+    gap: 1.5px;
+}
+
+.sidebar-kene-colorbar .kbar-blue { background-color: #2775AA; }
+.sidebar-kene-colorbar .kbar-pink { background-color: #DF6A90; }
+.sidebar-kene-colorbar .kbar-gold { background-color: #F0BB38; }
+.sidebar-kene-colorbar .kbar-green { background-color: #1B8668; }
 
 .sidebar-telemetry-card {
     margin-top: 1.25rem;
     padding: 0.85rem 0.95rem;
-    border-radius: 10px;
+    border-radius: 0px;
+    background-color: var(--surface-bg);
+    border: 1.5px solid var(--surface-border);
+    box-shadow: var(--shadow-card);
+}
+
+/* 2.1 HERO ARQUITECTÓNICO APOCUNOSO (INSPIRADO EN COMMON ROOM + ARTE KENÉ SHIPIBO-KONIBO) */
+.apocunoso-hero-frame {
+    background-color: var(--surface-bg);
+    border: 2px solid var(--surface-border);
+    box-shadow: 4px 4px 0px light-dark(#171B18, #080A09);
+    padding: 1.35rem 1.55rem 1.45rem 1.55rem;
+    margin-bottom: 1.15rem;
+    border-radius: 0px;
+    animation: fadeInSlide 0.28s var(--ease-out-expo) both;
+}
+
+.apocunoso-hero-toprow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.apocunoso-hero-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.95rem;
+}
+
+.apocunoso-hero-logo {
+    width: 68px;
+    height: 68px;
+    min-width: 68px;
+    box-shadow: 3px 3px 0px #171B18;
+    background-color: #FAF7E9;
+}
+
+.apocunoso-hero-logo svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.apocunoso-hero-wordmark {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.85rem, 3.3vw, 2.65rem);
+    line-height: 0.92;
+    letter-spacing: -0.045em;
+    text-transform: uppercase;
+    color: var(--text-title);
+}
+
+.apocunoso-hero-motto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.38;
+    text-transform: uppercase;
+    color: var(--text-title);
+}
+
+.apocunoso-hero-submotto {
+    margin-top: 0.28rem;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-accent);
     background-color: var(--surface-elevated);
     border: 1px solid var(--surface-border);
-    box-shadow: var(--shadow-card);
+    padding: 0.14rem 0.48rem;
+}
+
+.apocunoso-kene-mural-wrap {
+    width: 100%;
+    margin: 0.2rem 0 1.15rem 0;
+    background-color: #FAF7E9;
+    line-height: 0;
+}
+
+.apocunoso-kene-mural-wrap svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.apocunoso-quiet-reading-panel {
+    background-color: var(--surface-elevated);
+    border: 1.5px solid var(--surface-border);
+    border-left: 6px solid #1B8668;
+    padding: 1.05rem 1.3rem;
+}
+
+.apocunoso-quiet-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.69rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-accent);
+    margin-bottom: 0.45rem;
+}
+
+.apocunoso-quiet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.85fr;
+    gap: 1.25rem;
+    align-items: baseline;
+}
+
+.apocunoso-quiet-title {
+    font-family: var(--font-display) !important;
+    font-size: clamp(1.22rem, 1.9vw, 1.52rem) !important;
+    font-weight: 900 !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.025em !important;
+    color: var(--text-title) !important;
+    margin: 0 !important;
+}
+
+.apocunoso-quiet-copy {
+    font-family: var(--font-body) !important;
+    font-size: 0.96rem !important;
+    line-height: 1.62 !important;
+    color: var(--text-body) !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 860px) {
+    .apocunoso-hero-motto {
+        align-items: flex-start;
+        text-align: left;
+    }
+    .apocunoso-quiet-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
 }
 
 .sidebar-telemetry-header {
@@ -1006,15 +1224,17 @@ header[data-testid="stHeader"] {
 }
 
 header[data-testid="stHeader"]::before {
-    content: "APOCUNA HUB";
+    content: "APOCUNA HUB.";
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: #EF4444 !important;
+    color: var(--text-title) !important;
+    opacity: 0.36 !important;
+    font-family: var(--font-display) !important;
     font-weight: 800 !important;
-    font-size: 1.15rem !important;
-    letter-spacing: 2.5px !important;
+    font-size: 0.92rem !important;
+    letter-spacing: 0.18em !important;
     text-transform: uppercase !important;
     pointer-events: none !important;
     white-space: nowrap !important;
@@ -2355,5 +2575,456 @@ button[data-testid="stExpandSidebarButton"]:hover *,
     .flow-connector-dash,
     .flow-step-card {
         animation: none !important;
+    }
+}
+
+
+/* ============================================================================
+   21. REGLAS MAESTRAS APOCUNOSO-STYLE:
+       - Geometría 0px (Ndebele + Swiss International)
+       - Reglas estructurales de 1.5px y 2px
+       - Tipografía Swiss Grotesk para normas largas y filtros densos (>=44px)
+       - Tarjetas ordenadas en 2 columnas para "Sobre el sitio"
+   ============================================================================ */
+
+.kpi-metric-card,
+.boletines-featured-card,
+.snow-card,
+.card,
+.fuente-card,
+.horizontal-note-card,
+.fen-hero-card,
+.fen-hero-full-card,
+.fen-radar-status-bar,
+.fen-column-header,
+.fen-radar-item,
+.normas-showcase-strip,
+.norma-visual-card,
+.norma-detail-hero,
+.norma-ia-disclaimer,
+.flow-pipeline-shell,
+.flow-step-card,
+.banner-demo-top,
+.beca-warning-box,
+.apocunoso-about-intro,
+.apocunoso-about-card,
+.apocunoso-about-refs-card,
+.apocunoso-order-badge,
+.apocunoso-about-tag,
+.apocunoso-ref-item,
+[data-testid="stExpander"],
+div[data-testid="stButton"] > button,
+.btn-open,
+.btn-demo-disabled,
+.btn-fen-secondary,
+.norma-btn-primary,
+.norma-btn-ghost,
+.badge-demo,
+.badge-portal,
+.badge-freq,
+.badge-continua,
+.badge-deadline,
+.badge-curso,
+.coffee-ritual-pill,
+.fen-entity-badge,
+.fen-live-badge,
+.fen-metric-pill,
+.fen-impact-tag,
+.fen-radar-sync-pill,
+.normas-showcase-pill,
+.norma-estado-pill,
+.norma-eje-pill,
+.norma-subtema-chip,
+.norma-signal-chip,
+.rastrea-beta-pill,
+.flow-step-num,
+.flow-step-tag,
+.flow-telemetry-chip,
+[data-testid="stTabs"] button[role="tab"] {
+    border-radius: 0px !important;
+}
+
+/* Tarjetas en panel tranquilo (#FAF7E9 claro / #181D1A oscuro) con borde estructural 1.5px */
+.kpi-metric-card,
+.card,
+.fuente-card,
+.snow-card,
+.horizontal-note-card,
+.fen-hero-card,
+.fen-hero-full-card,
+.fen-radar-item,
+.norma-visual-card,
+.norma-detail-hero,
+.flow-step-card {
+    border: 1.5px solid var(--surface-border) !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+.kpi-metric-card {
+    border-left: 5px solid var(--kene-blue) !important;
+}
+
+.kpi-grid-2x2 .kpi-metric-card:nth-child(1) { border-left-color: #2775AA !important; }
+.kpi-grid-2x2 .kpi-metric-card:nth-child(2) { border-left-color: #1B8668 !important; }
+.kpi-grid-2x2 .kpi-metric-card:nth-child(3) { border-left-color: #F0BB38 !important; }
+.kpi-grid-2x2 .kpi-metric-card:nth-child(4) { border-left-color: #DF6A90 !important; }
+
+.boletines-featured-card {
+    background: var(--surface-elevated) !important;
+    border: 2px solid var(--surface-border) !important;
+    border-top: 7px solid #F0BB38 !important;
+    box-shadow: var(--shadow-card) !important;
+}
+
+.coffee-ritual-pill {
+    background: var(--surface-bg) !important;
+    color: var(--text-title) !important;
+    border: 1.5px solid var(--surface-border) !important;
+    border-left: 4px solid #F0BB38 !important;
+    font-family: var(--font-mono) !important;
+}
+
+/* Botones de acción con estética arquitectónica Swiss/Ndebele adaptativa */
+.btn-open,
+.norma-btn-primary {
+    background: light-dark(#171B18, #2775AA) !important;
+    color: #FAF7E9 !important;
+    border: 1.5px solid light-dark(#171B18, #FAF7E9) !important;
+    box-shadow: 2px 2px 0px light-dark(#2775AA, #080A09) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+}
+
+.btn-open:hover,
+.norma-btn-primary:hover {
+    background: light-dark(#2775AA, #F0BB38) !important;
+    color: light-dark(#FAF7E9, #171B18) !important;
+    border-color: #171B18 !important;
+    box-shadow: 3px 3px 0px light-dark(#171B18, #080A09) !important;
+    filter: none !important;
+}
+
+.norma-eje-polity .norma-btn-primary {
+    background: #2775AA !important;
+    color: #FAF7E9 !important;
+}
+
+.norma-eje-policy .norma-btn-primary {
+    background: #1B8668 !important;
+    color: #FAF7E9 !important;
+}
+
+/* Bandas superiores de normas por eje usando paleta Apocunoso */
+.norma-visual-top-bar {
+    height: 6px !important;
+    border-bottom: 1.5px solid var(--surface-border) !important;
+    background: #2775AA !important;
+}
+
+.norma-eje-polity .norma-visual-top-bar { background: #2775AA !important; }
+.norma-eje-policy .norma-visual-top-bar { background: #1B8668 !important; }
+.norma-eje-mixto .norma-visual-top-bar { background: #DF6A90 !important; }
+.norma-eje-otro .norma-visual-top-bar { background: #F0BB38 !important; }
+
+/* Lectura de normas largas: tipografía Swiss limpia, interlineado amplio */
+.norma-sumilla,
+.snow-card p,
+.article-reader-body {
+    font-family: var(--font-body) !important;
+    line-height: 1.64 !important;
+}
+
+/* Filtros densos: controles >= 44px de alto, bordes nítidos de 1.5px y etiquetas grotescas claras */
+div[data-baseweb="select"] > div,
+div[data-baseweb="input"] > div,
+div[data-baseweb="base-input"] {
+    min-height: 44px !important;
+    border-radius: 0px !important;
+    border: 1.5px solid var(--surface-border) !important;
+    box-shadow: 2px 2px 0px light-dark(rgba(23, 27, 24, 0.18), rgba(0, 0, 0, 0.45)) !important;
+}
+
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] label {
+    font-family: var(--font-mono) !important;
+    font-size: 0.74rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.07em !important;
+    text-transform: uppercase !important;
+}
+
+div[data-testid="stButton"] > button {
+    min-height: 44px !important;
+    border: 1.5px solid var(--surface-border) !important;
+    border-left: 5px solid #1B8668 !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+}
+
+/* Expanders nativos con contraste garantizado tanto cerrados como abiertos (details[open]) */
+[data-testid="stExpander"] details {
+    background-color: var(--surface-bg) !important;
+}
+
+[data-testid="stExpander"] details > summary {
+    background-color: var(--surface-elevated) !important;
+    color: var(--text-title) !important;
+}
+
+[data-testid="stExpander"] details[open] > summary {
+    background-color: var(--surface-hover) !important;
+    color: var(--text-title) !important;
+    border-bottom: 1.5px solid var(--surface-border) !important;
+}
+
+/* Diagrama de flujo Rastrea la Norma con estética Apocunoso */
+.flow-pipeline-shell {
+    background: var(--surface-elevated) !important;
+    border: 2px solid var(--surface-border) !important;
+}
+
+.flow-pipeline-shell::before {
+    height: 5px !important;
+    background: linear-gradient(
+        90deg,
+        #2775AA 0%,
+        #2775AA 25%,
+        #DF6A90 25%,
+        #DF6A90 50%,
+        #F0BB38 50%,
+        #F0BB38 75%,
+        #1B8668 75%,
+        #1B8668 100%
+    ) !important;
+    animation: none !important;
+}
+
+.flow-step-card {
+    background: var(--surface-bg) !important;
+}
+
+.flow-telemetry-chip {
+    background: var(--surface-bg) !important;
+    border: 1.5px solid var(--surface-border) !important;
+    color: var(--text-body) !important;
+}
+
+/* Header superior nativo con sello monocromático sutil */
+header[data-testid="stHeader"]::before {
+    content: "APOCUNA HUB.";
+    color: var(--text-title) !important;
+    opacity: 0.36 !important;
+    font-family: var(--font-display) !important;
+    font-weight: 800 !important;
+    font-size: 0.92rem !important;
+    letter-spacing: 0.18em !important;
+}
+
+/* ============================================================================
+   22. SECCIÓN "SOBRE EL SITIO": TARJETAS ORDENADAS EN 2 COLUMNAS (APOCUNOSO-STYLE)
+   ============================================================================ */
+
+.apocunoso-about-intro {
+    background-color: var(--surface-bg);
+    border: 2px solid var(--surface-border);
+    border-left: 7px solid #1B8668;
+    box-shadow: var(--shadow-card);
+    padding: 1.35rem 1.65rem;
+    margin: 0.45rem 0 1.45rem 0;
+}
+
+.apocunoso-about-intro-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.55rem;
+}
+
+.apocunoso-order-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.55rem;
+    background-color: #171B18;
+    color: #FAF7E9 !important;
+    border: 1.5px solid var(--surface-border);
+}
+
+.apocunoso-about-tag {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-accent);
+}
+
+.apocunoso-about-intro-title {
+    margin: 0 0 0.45rem 0 !important;
+    font-family: var(--font-display) !important;
+    font-size: clamp(1.3rem, 2vw, 1.6rem) !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.025em !important;
+    color: var(--text-title) !important;
+}
+
+.apocunoso-about-intro-text {
+    margin: 0 !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.98rem !important;
+    line-height: 1.65 !important;
+    color: var(--text-body) !important;
+    max-width: 98ch;
+}
+
+.apocunoso-about-grid-2col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    align-items: stretch;
+    margin-bottom: 1.45rem;
+}
+
+.apocunoso-about-card {
+    background-color: var(--surface-bg);
+    border: 1.5px solid var(--surface-border);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s var(--ease-out-expo), box-shadow 0.2s var(--ease-out-expo);
+}
+
+.apocunoso-about-card:hover {
+    transform: translate3d(0, -2px, 0);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.apocunoso-about-card-topbar {
+    height: 7px;
+    width: 100%;
+    border-bottom: 1.5px solid var(--surface-border);
+    background-color: #2775AA;
+}
+
+.about-card-blue .apocunoso-about-card-topbar { background-color: #2775AA; }
+.about-card-green .apocunoso-about-card-topbar { background-color: #1B8668; }
+.about-card-gold .apocunoso-about-card-topbar { background-color: #F0BB38; }
+.about-card-pink .apocunoso-about-card-topbar { background-color: #DF6A90; }
+
+.about-card-blue .apocunoso-order-badge { background-color: #2775AA; color: #FAF7E9 !important; }
+.about-card-green .apocunoso-order-badge { background-color: #1B8668; color: #FAF7E9 !important; }
+.about-card-gold .apocunoso-order-badge { background-color: #F0BB38; color: #171B18 !important; }
+.about-card-pink .apocunoso-order-badge { background-color: #DF6A90; color: #171B18 !important; }
+
+.apocunoso-about-card-inner {
+    padding: 1.35rem 1.5rem 1.45rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.apocunoso-about-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+}
+
+.apocunoso-about-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.apocunoso-about-question {
+    margin: 0 0 0.75rem 0 !important;
+    font-family: var(--font-display) !important;
+    font-size: 1.22rem !important;
+    font-weight: 900 !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--text-title) !important;
+}
+
+.apocunoso-about-body p,
+.apocunoso-about-body li {
+    font-family: var(--font-body) !important;
+    font-size: 0.94rem !important;
+    line-height: 1.62 !important;
+    color: var(--text-body) !important;
+}
+
+.apocunoso-about-body p {
+    margin: 0 0 0.7rem 0 !important;
+}
+
+.apocunoso-about-body p:last-child {
+    margin-bottom: 0 !important;
+}
+
+.apocunoso-about-body ul {
+    margin: 0.35rem 0 0 1.15rem !important;
+    padding: 0 !important;
+}
+
+.apocunoso-about-body li {
+    margin-bottom: 0.4rem !important;
+}
+
+.apocunoso-about-refs-card {
+    background-color: var(--surface-elevated);
+    border: 2px solid var(--surface-border);
+    border-top: 6px solid #2775AA;
+    box-shadow: var(--shadow-card);
+    padding: 1.35rem 1.55rem 1.5rem 1.55rem;
+    margin-bottom: 1.5rem;
+}
+
+.apocunoso-refs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1.25rem;
+    margin-top: 0.85rem;
+}
+
+.apocunoso-ref-item {
+    background-color: var(--surface-bg);
+    border: 1px solid var(--surface-border);
+    border-left: 4px solid #1B8668;
+    padding: 0.65rem 0.85rem;
+    font-family: var(--font-body);
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: var(--text-body);
+}
+
+.apocunoso-about-intro a[href^="#"],
+.apocunoso-about-card a[href^="#"],
+.apocunoso-about-refs-card a[href^="#"],
+.apocunoso-about-intro [data-testid="stHeaderActionElements"],
+.apocunoso-about-card [data-testid="stHeaderActionElements"],
+.apocunoso-about-refs-card [data-testid="stHeaderActionElements"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+@media (max-width: 900px) {
+    .apocunoso-about-grid-2col,
+    .apocunoso-refs-grid {
+        grid-template-columns: 1fr;
     }
 }

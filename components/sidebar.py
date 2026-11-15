@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 from utils.loaders import load_dashboard_kpis
+from components.apocunoso_branding import build_sidebar_brand_html
 
 OPTIONS_LIST = [
     "Inicio",
@@ -17,47 +18,70 @@ THEME_OPTIONS = ["💻 Auto", "🌙 Oscuro", "☀️ Claro"]
 
 
 def _resolve_option_menu_styles(theme_mode: str) -> dict:
-    """Calibra el contenedor y los enlaces de option_menu para Auto, Oscuro y Claro."""
+    """Calibra el contenedor y los enlaces de option_menu bajo el sistema `apocunoso-style` (0px radio, bordes nítidos)."""
     container = {
         "padding": "0!important",
-        "background-color": "transparent",
+        "background-color": "#F2EFE0",
         "border-radius": "0px",
     }
     nav_link = {
-        "font-size": "0.91rem",
+        "font-size": "0.88rem",
+        "font-weight": "600",
         "text-align": "left",
         "margin": "3px 0px",
-        "padding": "0.55rem 0.85rem",
-        "border-radius": "8px",
-        "--hover-color": "rgba(41, 181, 232, 0.14)",
+        "padding": "0.62rem 0.85rem",
+        "border-radius": "0px",
+        "color": "#171B18",
+        "background-color": "transparent",
+        "--hover-color": "#E6E1CE",
     }
     nav_selected = {
-        "background-color": "rgba(41, 181, 232, 0.18)",
-        "color": "#29B5E8",
-        "font-weight": "600",
-        "border-left": "3px solid #29B5E8",
+        "background-color": "#FAF7E9",
+        "color": "#171B18",
+        "font-weight": "800",
+        "border-left": "5px solid #1B8668",
+        "border-top": "1.5px solid #171B18",
+        "border-right": "1.5px solid #171B18",
+        "border-bottom": "1.5px solid #171B18",
     }
+    icon_style = {"color": "#2775AA", "font-size": "1.02rem"}
 
     if theme_mode == "🌙 Oscuro":
-        container["background-color"] = "#151B26"
-        container["--secondary-background-color"] = "#151B26"
-        container["--text-color"] = "#E2E8F0"
-        nav_link["color"] = "#E2E8F0"
+        container["background-color"] = "#181D1A"
+        container["--secondary-background-color"] = "#181D1A"
+        container["--text-color"] = "#FAF7E9"
+        nav_link["color"] = "#DCE0DB"
         nav_link["background-color"] = "transparent"
-        nav_selected["background-color"] = "rgba(41, 181, 232, 0.22)"
-        nav_selected["color"] = "#38BDF8"
-    elif theme_mode == "☀️ Claro":
-        container["background-color"] = "#FFFFFF"
-        container["--secondary-background-color"] = "#FFFFFF"
-        container["--text-color"] = "#1E293B"
-        nav_link["color"] = "#1E293B"
+        nav_link["--hover-color"] = "#262F2A"
+        nav_selected["background-color"] = "#202723"
+        nav_selected["color"] = "#FAF7E9"
+        nav_selected["border-left"] = "5px solid #F0BB38"
+        nav_selected["border-top"] = "1.5px solid #4A5750"
+        nav_selected["border-right"] = "1.5px solid #4A5750"
+        nav_selected["border-bottom"] = "1.5px solid #4A5750"
+        icon_style["color"] = "#F0BB38"
+    elif theme_mode == "💻 Auto":
+        container["color-scheme"] = "light dark"
+        container["background-color"] = "light-dark(#F2EFE0, #181D1A)"
+        container["--secondary-background-color"] = "light-dark(#F2EFE0, #181D1A)"
+        container["--text-color"] = "light-dark(#171B18, #FAF7E9)"
+        nav_link["color-scheme"] = "light dark"
+        nav_link["color"] = "light-dark(#171B18, #DCE0DB)"
         nav_link["background-color"] = "transparent"
-        nav_selected["color"] = "#0284C7"
-        nav_selected["background-color"] = "rgba(2, 132, 199, 0.14)"
+        nav_link["--hover-color"] = "light-dark(#E6E1CE, #262F2A)"
+        nav_selected["color-scheme"] = "light dark"
+        nav_selected["background-color"] = "light-dark(#FAF7E9, #202723)"
+        nav_selected["color"] = "light-dark(#171B18, #FAF7E9)"
+        nav_selected["border-left"] = "5px solid light-dark(#1B8668, #F0BB38)"
+        nav_selected["border-top"] = "1.5px solid light-dark(#171B18, #4A5750)"
+        nav_selected["border-right"] = "1.5px solid light-dark(#171B18, #4A5750)"
+        nav_selected["border-bottom"] = "1.5px solid light-dark(#171B18, #4A5750)"
+        icon_style["color-scheme"] = "light dark"
+        icon_style["color"] = "light-dark(#2775AA, #F0BB38)"
 
     return {
         "container": container,
-        "icon": {"color": "#29B5E8", "font-size": "1.02rem"},
+        "icon": icon_style,
         "nav-link": nav_link,
         "nav-link-selected": nav_selected,
     }
@@ -66,19 +90,15 @@ def _resolve_option_menu_styles(theme_mode: str) -> dict:
 def render_sidebar():
     with st.sidebar:
         st.markdown(
-            '<div class="sidebar-brand-box">'
-            '<div class="sidebar-brand-badge">PERÚ • PUBLIC POLICY HUB</div>'
-            '<h1 class="sidebar-brand-title">APOCUNA HUB</h1>'
-            '<div class="sidebar-brand-subtitle">Evidencia, Datos & Gobernanza</div>'
-            '</div>',
+            build_sidebar_brand_html(),
             unsafe_allow_html=True
         )
 
-        current_theme = st.session_state.get("theme_mode", "💻 Auto")
+        current_theme = st.session_state.get("theme_mode", "☀️ Claro")
         if current_theme not in THEME_OPTIONS:
-            current_theme = "💻 Auto"
+            current_theme = "☀️ Claro"
 
-        st.markdown('<div class="sidebar-theme-label">🎨 MODO DE APARIENCIA</div>', unsafe_allow_html=True)
+        st.markdown('<div class="sidebar-theme-label">🎨 MODO DE APARIENCIA (APOCUNOSO)</div>', unsafe_allow_html=True)
         selected_theme = st.segmented_control(
             "Modo de apariencia",
             options=THEME_OPTIONS,

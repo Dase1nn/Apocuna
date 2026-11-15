@@ -19,6 +19,8 @@ from sections.notas import render_notas
 from sections.eventos import render_eventos
 from sections.sobre_el_sitio import render_sobre_el_sitio
 
+from utils.loaders import load_dashboard_kpis
+
 ROUTES = {
     "Inicio": render_home,
     "Rastrea la Norma": render_rastrea_la_norma,
@@ -32,57 +34,114 @@ ROUTES = {
     "Sobre el sitio": render_sobre_el_sitio,
 }
 
-DARK_THEME_OVERRIDE_CSS = """
-<style id="apocuna-theme-override-dark">
+_DARK_RULES_BODY = """
 :root, html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stSidebar"], header[data-testid="stHeader"] {
     color-scheme: dark !important;
-    --surface-bg: #151B26 !important;
-    --surface-elevated: #1C2433 !important;
-    --surface-hover: #1F293B !important;
-    --surface-border: rgba(41, 181, 232, 0.22) !important;
-    --surface-border-hover: rgba(56, 189, 248, 0.58) !important;
-    --text-title: #F8FAFC !important;
-    --text-body: #CBD5E1 !important;
-    --text-muted: #94A3B8 !important;
-    --text-accent: #38BDF8 !important;
-    --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.22) !important;
-    --shadow-card-hover: 0 12px 28px rgba(41, 181, 232, 0.2), 0 4px 12px rgba(0, 0, 0, 0.42) !important;
+    --surface-bg: #181D1A !important;
+    --surface-elevated: #202723 !important;
+    --surface-hover: #262F2A !important;
+    --surface-border: #4A5750 !important;
+    --surface-border-hover: #F0BB38 !important;
+    --text-title: #FAF7E9 !important;
+    --text-body: #DCE0DB !important;
+    --text-muted: #A3B0A8 !important;
+    --text-accent: #5AB0E6 !important;
+    --shadow-card: 3px 3px 0px #080A09 !important;
+    --shadow-card-hover: 5px 5px 0px #F0BB38 !important;
 }
 .stApp, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
-    background-color: #0E1117 !important;
-    color: #F8FAFC !important;
+    background-color: #121614 !important;
+    color: #FAF7E9 !important;
 }
 [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
-    background-color: #151B26 !important;
-    color: #F8FAFC !important;
-    border-right: 1px solid rgba(41, 181, 232, 0.16) !important;
+    background-color: #181D1A !important;
+    color: #FAF7E9 !important;
+    border-right: 2px solid #4A5750 !important;
 }
 [data-testid="stSidebar"] iframe[title="streamlit_option_menu.option_menu"] {
-    background-color: #151B26 !important;
+    background-color: #181D1A !important;
     color-scheme: dark !important;
     border-radius: 0px !important;
 }
-[data-testid="stBaseButton-secondary"] {
-    background-color: #1C2433 !important;
-    color: #F8FAFC !important;
-    border: 1px solid rgba(41, 181, 232, 0.28) !important;
+[data-testid="stBaseButton-secondary"],
+div[data-testid="stButton"] > button {
+    background-color: #202723 !important;
+    color: #FAF7E9 !important;
+    border: 1.5px solid #4A5750 !important;
+    border-left: 5px solid #F0BB38 !important;
+    border-radius: 0px !important;
 }
-[data-testid="stBaseButton-secondary"]:hover {
-    background-color: #1F293B !important;
-    border-color: #38BDF8 !important;
-    color: #38BDF8 !important;
+[data-testid="stBaseButton-secondary"]:hover,
+div[data-testid="stButton"] > button:hover {
+    background-color: #262F2A !important;
+    border-color: #F0BB38 !important;
+    color: #F0BB38 !important;
 }
-[data-testid="stExpander"], [data-testid="stExpander"] details {
-    background-color: #151B26 !important;
-    border-color: rgba(41, 181, 232, 0.22) !important;
-    color: #F8FAFC !important;
+.btn-open,
+.norma-btn-primary {
+    background: #2775AA !important;
+    color: #FAF7E9 !important;
+    border: 1.5px solid #FAF7E9 !important;
+    box-shadow: 2px 2px 0px #080A09 !important;
 }
-[data-testid="stExpander"] summary, [data-testid="stExpander"] summary p {
-    color: #F8FAFC !important;
+.btn-open:hover,
+.norma-btn-primary:hover {
+    background: #F0BB38 !important;
+    color: #171B18 !important;
+    border-color: #171B18 !important;
+    box-shadow: 3px 3px 0px #080A09 !important;
+}
+.norma-eje-policy .norma-btn-primary {
+    background: #1B8668 !important;
+    color: #FAF7E9 !important;
+    border: 1.5px solid #FAF7E9 !important;
+}
+.norma-btn-ghost,
+.btn-fen-secondary {
+    background-color: #202723 !important;
+    color: #FAF7E9 !important;
+    border: 1.5px solid #4A5750 !important;
+}
+.norma-btn-ghost:hover,
+.btn-fen-secondary:hover {
+    background-color: #262F2A !important;
+    border-color: #F0BB38 !important;
+    color: #F0BB38 !important;
+}
+[data-testid="stExpander"],
+[data-testid="stExpander"] details {
+    background-color: #181D1A !important;
+    border: 1.5px solid #4A5750 !important;
+    color: #FAF7E9 !important;
+    border-radius: 0px !important;
+}
+[data-testid="stExpander"] details > summary,
+[data-testid="stExpander"] details > summary:hover,
+[data-testid="stExpander"] details > summary:focus,
+[data-testid="stExpander"] details > summary:active {
+    background-color: #202723 !important;
+    color: #FAF7E9 !important;
+    border-radius: 0px !important;
+}
+[data-testid="stExpander"] details[open] > summary,
+[data-testid="stExpander"] details[open] > summary:hover,
+[data-testid="stExpander"] details[open] > summary:focus {
+    background-color: #262F2A !important;
+    color: #FAF7E9 !important;
+    border-bottom: 1.5px solid #4A5750 !important;
+}
+[data-testid="stExpander"] details > summary *,
+[data-testid="stExpander"] summary,
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] summary svg {
+    background-color: transparent !important;
+    color: #FAF7E9 !important;
+    fill: #FAF7E9 !important;
 }
 header[data-testid="stHeader"] {
-    background: rgba(14, 17, 23, 0.9) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: #121614 !important;
+    border-bottom: 2px solid #4A5750 !important;
 }
 .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6,
 [data-testid="stHeadingWithActionElements"] h1,
@@ -93,105 +152,235 @@ header[data-testid="stHeader"] {
 [data-testid="stMarkdownContainer"] h3,
 [data-testid="stMarkdownContainer"] h4,
 [data-testid="stMarkdownContainer"] strong {
-    color: #F8FAFC !important;
+    color: #FAF7E9 !important;
 }
 [data-testid="stMarkdownContainer"] p,
 [data-testid="stMarkdownContainer"] li,
 [data-testid="stWidgetLabel"] p,
-[data-testid="stWidgetLabel"] label {
-    color: #E2E8F0 !important;
+[data-testid="stWidgetLabel"] label,
+[data-testid="stCheckbox"] label,
+[data-testid="stCheckbox"] p {
+    color: #DCE0DB !important;
 }
 [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p {
-    color: #94A3B8 !important;
+    color: #A3B0A8 !important;
 }
+code, [data-testid="stMarkdownContainer"] code, .flow-step-desc code {
+    background-color: #262F2A !important;
+    color: #F0BB38 !important;
+    border: 1px solid #4A5750 !important;
+    padding: 0.1rem 0.3rem !important;
+    border-radius: 0px !important;
+}
+/* Inputs y Selectboxes en Modo Oscuro */
+div[data-baseweb="input"],
 div[data-baseweb="input"] > div,
+div[data-baseweb="base-input"],
+div[data-baseweb="select"],
 div[data-baseweb="select"] > div,
-div[data-baseweb="base-input"] {
-    background-color: #1C2433 !important;
-    color: #F8FAFC !important;
-    border-color: rgba(41, 181, 232, 0.28) !important;
+div[data-baseweb="select"] > div > div,
+[data-testid="stSelectbox"] .react-aria-ComboBox > div[role="group"],
+[data-testid="stMultiSelect"] .react-aria-ComboBox > div[role="group"] {
+    background-color: #202723 !important;
+    color: #FAF7E9 !important;
+    border-color: #4A5750 !important;
+    border-radius: 0px !important;
 }
 div[data-baseweb="input"] input,
+div[data-baseweb="base-input"] input,
+div[data-testid="stTextInput"] input,
 div[data-baseweb="select"] span,
-div[data-baseweb="select"] div {
-    color: #F8FAFC !important;
-    -webkit-text-fill-color: #F8FAFC !important;
+div[data-baseweb="select"] div,
+[data-testid="stSelectbox"] input[role="combobox"],
+[data-testid="stSelectbox"] button,
+[data-testid="stMultiSelect"] input[role="combobox"],
+[data-testid="stMultiSelect"] button {
+    background-color: #202723 !important;
+    color: #FAF7E9 !important;
+    -webkit-text-fill-color: #FAF7E9 !important;
+    caret-color: #FAF7E9 !important;
 }
-div[data-baseweb="input"] input::placeholder {
-    color: #94A3B8 !important;
-    -webkit-text-fill-color: #94A3B8 !important;
+div[data-baseweb="select"] svg,
+[data-testid="stSelectbox"] svg,
+[data-testid="stMultiSelect"] svg {
+    fill: #FAF7E9 !important;
+    color: #FAF7E9 !important;
+}
+div[data-baseweb="input"] input::placeholder,
+div[data-baseweb="base-input"] input::placeholder,
+[data-testid="stSelectbox"] input::placeholder {
+    color: #A3B0A8 !important;
+    -webkit-text-fill-color: #A3B0A8 !important;
+    opacity: 1 !important;
+}
+div[data-baseweb="popover"],
+div[data-baseweb="popover"] > div,
+div[data-baseweb="menu"],
+ul[role="listbox"],
+li[role="option"],
+.react-aria-Popover,
+.react-aria-ListBox,
+.react-aria-ListBoxItem,
+div[role="listbox"],
+div[role="option"] {
+    background-color: #202723 !important;
+    color: #FAF7E9 !important;
+    border-radius: 0px !important;
+}
+li[role="option"]:hover,
+li[role="option"][aria-selected="true"],
+.react-aria-ListBoxItem[data-focused],
+.react-aria-ListBoxItem[data-selected],
+div[role="option"]:hover,
+div[role="option"][aria-selected="true"] {
+    background-color: #262F2A !important;
+    color: #F0BB38 !important;
 }
 [data-testid="stTabs"] button[role="tab"] {
-    color: #94A3B8 !important;
+    color: #A3B0A8 !important;
+    background-color: transparent !important;
 }
 [data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
-    color: #38BDF8 !important;
+    color: #F0BB38 !important;
+    border-bottom: 3px solid #F0BB38 !important;
 }
 [data-testid="stButtonGroup"] button {
-    background-color: #1C2433 !important;
-    color: #E2E8F0 !important;
-    border-color: rgba(41, 181, 232, 0.28) !important;
+    background-color: #202723 !important;
+    color: #DCE0DB !important;
+    border: 1.5px solid #4A5750 !important;
+    border-radius: 0px !important;
 }
 [data-testid="stButtonGroup"] button[aria-checked="true"],
 [data-testid="stButtonGroup"] button[kind="segmented_controlActive"] {
-    background-color: rgba(41, 181, 232, 0.24) !important;
-    color: #38BDF8 !important;
-    border-color: #29B5E8 !important;
+    background-color: #F0BB38 !important;
+    color: #171B18 !important;
+    border-color: #FAF7E9 !important;
+    font-weight: 800 !important;
 }
-</style>
+[data-testid="stButtonGroup"] button[aria-checked="true"] *,
+[data-testid="stButtonGroup"] button[kind="segmented_controlActive"] * {
+    color: #171B18 !important;
+}
+.flow-step-card,
+.flow-telemetry-chip {
+    background-color: #181D1A !important;
+    border-color: #4A5750 !important;
+    color: #FAF7E9 !important;
+}
+.sidebar-logo-frame,
+.apocunoso-hero-logo {
+    box-shadow: 3px 3px 0px #F0BB38 !important;
+}
 """
 
-LIGHT_THEME_OVERRIDE_CSS = """
-<style id="apocuna-theme-override-light">
+_LIGHT_RULES_BODY = """
 :root, html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stSidebar"], header[data-testid="stHeader"] {
     color-scheme: light !important;
-    --surface-bg: #FFFFFF !important;
-    --surface-elevated: #F8FAFC !important;
-    --surface-hover: #F1F5F9 !important;
-    --surface-border: rgba(15, 23, 42, 0.12) !important;
-    --surface-border-hover: rgba(2, 132, 199, 0.5) !important;
-    --text-title: #0F172A !important;
-    --text-body: #334155 !important;
-    --text-muted: #64748B !important;
-    --text-accent: #0369A1 !important;
-    --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04) !important;
-    --shadow-card-hover: 0 10px 24px rgba(2, 132, 199, 0.14), 0 4px 8px rgba(15, 23, 42, 0.06) !important;
+    --surface-bg: #FAF7E9 !important;
+    --surface-elevated: #F2EFE0 !important;
+    --surface-hover: #EAE5D1 !important;
+    --surface-border: #171B18 !important;
+    --surface-border-hover: #2775AA !important;
+    --text-title: #171B18 !important;
+    --text-body: #252B27 !important;
+    --text-muted: #4E5752 !important;
+    --text-accent: #1E5D88 !important;
+    --shadow-card: 3px 3px 0px #171B18 !important;
+    --shadow-card-hover: 5px 5px 0px #171B18 !important;
 }
 .stApp, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
-    background-color: #F8FAFC !important;
-    color: #0F172A !important;
+    background-color: #FAF7E9 !important;
+    color: #171B18 !important;
 }
 [data-testid="stSidebar"], [data-testid="stSidebar"] > div:first-child {
-    background-color: #FFFFFF !important;
-    color: #0F172A !important;
-    border-right: 1px solid rgba(15, 23, 42, 0.1) !important;
+    background-color: #F2EFE0 !important;
+    color: #171B18 !important;
+    border-right: 2px solid #171B18 !important;
 }
 [data-testid="stSidebar"] iframe[title="streamlit_option_menu.option_menu"] {
-    background-color: #FFFFFF !important;
+    background-color: #F2EFE0 !important;
     color-scheme: light !important;
     border-radius: 0px !important;
 }
-[data-testid="stBaseButton-secondary"] {
-    background-color: #FFFFFF !important;
-    color: #0F172A !important;
-    border: 1px solid rgba(15, 23, 42, 0.16) !important;
+[data-testid="stBaseButton-secondary"],
+div[data-testid="stButton"] > button {
+    background-color: #F2EFE0 !important;
+    color: #171B18 !important;
+    border: 1.5px solid #171B18 !important;
+    border-left: 5px solid #1B8668 !important;
+    border-radius: 0px !important;
 }
-[data-testid="stBaseButton-secondary"]:hover {
-    background-color: #F1F5F9 !important;
-    border-color: #0284C7 !important;
-    color: #0369A1 !important;
+[data-testid="stBaseButton-secondary"]:hover,
+div[data-testid="stButton"] > button:hover {
+    background-color: #EAE5D1 !important;
+    border-color: #2775AA !important;
+    color: #1E5D88 !important;
 }
-[data-testid="stExpander"], [data-testid="stExpander"] details {
-    background-color: #FFFFFF !important;
-    border-color: rgba(15, 23, 42, 0.12) !important;
-    color: #0F172A !important;
+.btn-open,
+.norma-btn-primary {
+    background: #171B18 !important;
+    color: #FAF7E9 !important;
+    border: 1.5px solid #171B18 !important;
+    box-shadow: 2px 2px 0px #2775AA !important;
 }
-[data-testid="stExpander"] summary, [data-testid="stExpander"] summary p {
-    color: #0F172A !important;
+.btn-open:hover,
+.norma-btn-primary:hover {
+    background: #2775AA !important;
+    color: #FAF7E9 !important;
+    border-color: #171B18 !important;
+    box-shadow: 3px 3px 0px #171B18 !important;
+}
+.norma-eje-policy .norma-btn-primary {
+    background: #1B8668 !important;
+    color: #FAF7E9 !important;
+    border: 1.5px solid #171B18 !important;
+}
+.norma-btn-ghost,
+.btn-fen-secondary {
+    background-color: #FAF7E9 !important;
+    color: #171B18 !important;
+    border: 1.5px solid #171B18 !important;
+}
+.norma-btn-ghost:hover,
+.btn-fen-secondary:hover {
+    background-color: #EAE5D1 !important;
+    border-color: #2775AA !important;
+    color: #1E5D88 !important;
+}
+[data-testid="stExpander"],
+[data-testid="stExpander"] details {
+    background-color: #FAF7E9 !important;
+    border: 1.5px solid #171B18 !important;
+    color: #171B18 !important;
+    border-radius: 0px !important;
+}
+[data-testid="stExpander"] details > summary,
+[data-testid="stExpander"] details > summary:hover,
+[data-testid="stExpander"] details > summary:focus,
+[data-testid="stExpander"] details > summary:active {
+    background-color: #F2EFE0 !important;
+    color: #171B18 !important;
+    border-radius: 0px !important;
+}
+[data-testid="stExpander"] details[open] > summary,
+[data-testid="stExpander"] details[open] > summary:hover,
+[data-testid="stExpander"] details[open] > summary:focus {
+    background-color: #EAE5D1 !important;
+    color: #171B18 !important;
+    border-bottom: 1.5px solid #171B18 !important;
+}
+[data-testid="stExpander"] details > summary *,
+[data-testid="stExpander"] summary,
+[data-testid="stExpander"] summary p,
+[data-testid="stExpander"] summary span,
+[data-testid="stExpander"] summary svg {
+    background-color: transparent !important;
+    color: #171B18 !important;
+    fill: #171B18 !important;
 }
 header[data-testid="stHeader"] {
-    background: rgba(255, 255, 255, 0.94) !important;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+    background: #FAF7E9 !important;
+    border-bottom: 2px solid #171B18 !important;
 }
 .stApp h1, .stApp h2, .stApp h3, .stApp h4, .stApp h5, .stApp h6,
 [data-testid="stHeadingWithActionElements"] h1,
@@ -202,53 +391,131 @@ header[data-testid="stHeader"] {
 [data-testid="stMarkdownContainer"] h3,
 [data-testid="stMarkdownContainer"] h4,
 [data-testid="stMarkdownContainer"] strong {
-    color: #0F172A !important;
+    color: #171B18 !important;
 }
 [data-testid="stMarkdownContainer"] p,
 [data-testid="stMarkdownContainer"] li,
 [data-testid="stWidgetLabel"] p,
-[data-testid="stWidgetLabel"] label {
-    color: #334155 !important;
+[data-testid="stWidgetLabel"] label,
+[data-testid="stCheckbox"] label,
+[data-testid="stCheckbox"] p {
+    color: #252B27 !important;
 }
 [data-testid="stCaptionContainer"], [data-testid="stCaptionContainer"] p {
-    color: #475569 !important;
+    color: #4E5752 !important;
 }
+code, [data-testid="stMarkdownContainer"] code, .flow-step-desc code {
+    background-color: #EAE5D1 !important;
+    color: #171B18 !important;
+    border: 1px solid #171B18 !important;
+    padding: 0.1rem 0.3rem !important;
+    border-radius: 0px !important;
+}
+/* Inputs y Selectboxes en Modo Claro (incluso si el navegador está en Dark Mode) */
+div[data-baseweb="input"],
 div[data-baseweb="input"] > div,
+div[data-baseweb="base-input"],
+div[data-baseweb="select"],
 div[data-baseweb="select"] > div,
-div[data-baseweb="base-input"] {
-    background-color: #FFFFFF !important;
-    color: #0F172A !important;
-    border-color: rgba(15, 23, 42, 0.18) !important;
+div[data-baseweb="select"] > div > div,
+[data-testid="stSelectbox"] .react-aria-ComboBox > div[role="group"],
+[data-testid="stMultiSelect"] .react-aria-ComboBox > div[role="group"] {
+    background-color: #FAF7E9 !important;
+    color: #171B18 !important;
+    border: 1.5px solid #171B18 !important;
+    border-radius: 0px !important;
 }
 div[data-baseweb="input"] input,
+div[data-baseweb="base-input"] input,
+div[data-testid="stTextInput"] input,
 div[data-baseweb="select"] span,
-div[data-baseweb="select"] div {
-    color: #0F172A !important;
-    -webkit-text-fill-color: #0F172A !important;
+div[data-baseweb="select"] div,
+[data-testid="stSelectbox"] input[role="combobox"],
+[data-testid="stSelectbox"] button,
+[data-testid="stMultiSelect"] input[role="combobox"],
+[data-testid="stMultiSelect"] button {
+    background-color: #FAF7E9 !important;
+    color: #171B18 !important;
+    -webkit-text-fill-color: #171B18 !important;
+    caret-color: #171B18 !important;
 }
-div[data-baseweb="input"] input::placeholder {
-    color: #64748B !important;
-    -webkit-text-fill-color: #64748B !important;
+div[data-baseweb="select"] svg,
+[data-testid="stSelectbox"] svg,
+[data-testid="stMultiSelect"] svg {
+    fill: #171B18 !important;
+    color: #171B18 !important;
+}
+div[data-baseweb="input"] input::placeholder,
+div[data-baseweb="base-input"] input::placeholder,
+[data-testid="stSelectbox"] input::placeholder {
+    color: #4E5752 !important;
+    -webkit-text-fill-color: #4E5752 !important;
+    opacity: 1 !important;
+}
+div[data-baseweb="popover"],
+div[data-baseweb="popover"] > div,
+div[data-baseweb="menu"],
+ul[role="listbox"],
+li[role="option"],
+.react-aria-Popover,
+.react-aria-ListBox,
+.react-aria-ListBoxItem,
+div[role="listbox"],
+div[role="option"] {
+    background-color: #FAF7E9 !important;
+    color: #171B18 !important;
+    border-radius: 0px !important;
+}
+li[role="option"]:hover,
+li[role="option"][aria-selected="true"],
+.react-aria-ListBoxItem[data-focused],
+.react-aria-ListBoxItem[data-selected],
+div[role="option"]:hover,
+div[role="option"][aria-selected="true"] {
+    background-color: #EAE5D1 !important;
+    color: #1E5D88 !important;
 }
 [data-testid="stTabs"] button[role="tab"] {
-    color: #475569 !important;
+    color: #4E5752 !important;
+    background-color: transparent !important;
 }
 [data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
-    color: #0369A1 !important;
+    color: #171B18 !important;
+    border-bottom: 3px solid #1B8668 !important;
 }
 [data-testid="stButtonGroup"] button {
-    background-color: #F1F5F9 !important;
-    color: #334155 !important;
-    border-color: rgba(15, 23, 42, 0.15) !important;
+    background-color: #FAF7E9 !important;
+    color: #171B18 !important;
+    border: 1.5px solid #171B18 !important;
+    border-radius: 0px !important;
 }
 [data-testid="stButtonGroup"] button[aria-checked="true"],
 [data-testid="stButtonGroup"] button[kind="segmented_controlActive"] {
-    background-color: rgba(2, 132, 199, 0.15) !important;
-    color: #0369A1 !important;
-    border-color: #0284C7 !important;
+    background-color: #171B18 !important;
+    color: #FAF7E9 !important;
+    border-color: #171B18 !important;
+    font-weight: 800 !important;
 }
-</style>
+[data-testid="stButtonGroup"] button[aria-checked="true"] *,
+[data-testid="stButtonGroup"] button[kind="segmented_controlActive"] * {
+    color: #FAF7E9 !important;
+}
+.flow-step-card,
+.flow-telemetry-chip {
+    background-color: #FAF7E9 !important;
+    border-color: #171B18 !important;
+    color: #171B18 !important;
+}
 """
+
+DARK_THEME_OVERRIDE_CSS = f'<style id="apocuna-theme-override-dark">{_DARK_RULES_BODY}</style>'
+LIGHT_THEME_OVERRIDE_CSS = f'<style id="apocuna-theme-override-light">{_LIGHT_RULES_BODY}</style>'
+AUTO_THEME_OVERRIDE_CSS = (
+    '<style id="apocuna-theme-override-auto">'
+    f'@media (prefers-color-scheme: light) {{ {_LIGHT_RULES_BODY} }}'
+    f'@media (prefers-color-scheme: dark) {{ {_DARK_RULES_BODY} }}'
+    '</style>'
+)
 
 
 @st.cache_data(show_spinner=False)
@@ -265,25 +532,27 @@ def load_css():
         mtime = os.path.getmtime(css_path)
         st.markdown(_get_cached_css(css_path, mtime), unsafe_allow_html=True)
 
-    theme_mode = st.session_state.get("theme_mode", "💻 Auto")
+    theme_mode = st.session_state.get("theme_mode", "☀️ Claro")
     if theme_mode == "🌙 Oscuro":
         st.markdown(DARK_THEME_OVERRIDE_CSS, unsafe_allow_html=True)
     elif theme_mode == "☀️ Claro":
         st.markdown(LIGHT_THEME_OVERRIDE_CSS, unsafe_allow_html=True)
+    else:
+        st.markdown(AUTO_THEME_OVERRIDE_CSS, unsafe_allow_html=True)
 
 
 def main():
     if "current_page" not in st.session_state:
         st.session_state.current_page = "Inicio"
     if "theme_mode" not in st.session_state:
-        st.session_state.theme_mode = "💻 Auto"
+        st.session_state.theme_mode = "☀️ Claro"
 
     qp = st.query_params
     qp_sig = f"{qp.get('vista', '')}|{qp.get('norma', '')}"
     if (qp.get("norma") or qp.get("vista") in ("normas_comentadas", "rastrea_norma")) and st.session_state.get("_last_qp_routed") != qp_sig:
         st.session_state.current_page = "Rastrea la Norma"
         st.session_state._last_qp_routed = qp_sig
-        theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '💻 Auto')}"
+        theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '☀️ Claro')}"
         st.session_state.pop(theme_key, None)
         st.session_state.pop("_last_sidebar_menu", None)
 

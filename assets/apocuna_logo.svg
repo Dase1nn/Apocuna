@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" role="img" aria-label="Logo Apocuna - Estilo Apocunoso (Apu + Kené)">
+  <!-- Marco exterior doble estilo Ndebele / Kené (0px radio, tinta #171B18 sobre papel #FAF7E9) -->
+  <rect x="2" y="2" width="116" height="116" fill="#FAF7E9" stroke="#171B18" stroke-width="4"/>
+  <rect x="10" y="10" width="100" height="100" fill="#FAF7E9" stroke="#171B18" stroke-width="3"/>
+
+  <!-- Cuadrantes de fondo: Azul Ucayali (#2775AA) y Rosa Kené (#DF6A90) arriba, Verde Amazónico (#1B8668) abajo -->
+  <polygon points="13,13 60,13 60,60 13,60" fill="#2775AA"/>
+  <polygon points="60,13 107,13 107,60 60,60" fill="#DF6A90"/>
+  <polygon points="13,60 107,60 107,107 13,107" fill="#1B8668"/>
+
+  <!-- Líneas divisorias estructurales -->
+  <line x1="60" y1="10" x2="60" y2="60" stroke="#171B18" stroke-width="3"/>
+  <line x1="10" y1="60" x2="110" y2="60" stroke="#171B18" stroke-width="3"/>
+
+  <!-- Rombo / Apu escalonado central (Camino maestro Kano en crema #FAF7E9 con borde #171B18) -->
+  <polygon points="
+    60,18
+    72,18 72,30
+    84,30 84,42
+    96,42 96,54
+    102,54 102,66
+    96,66 96,78
+    84,78 84,90
+    72,90 72,102
+    48,102 48,90
+    36,90 36,78
+    24,78 24,66
+    18,66 18,54
+    24,54 24,42
+    36,42 36,30
+    48,30 48,18
+  " fill="#FAF7E9" stroke="#171B18" stroke-width="3" stroke-linejoin="miter"/>
+
+  <!-- Santuario interior Ocre Dorado (#F0BB38) en forma de Apu / Rombo Escalonado -->
+  <polygon points="
+    60,28
+    66,28 66,38
+    76,38 76,48
+    86,48 86,56
+    92,56 92,64
+    86,64 86,72
+    76,72 76,82
+    66,82 66,92
+    54,92 54,82
+    44,82 44,72
+    34,72 34,64
+    28,64 28,56
+    34,56 34,48
+    44,48 44,38
+    54,38 54,28
+  " fill="#F0BB38" stroke="#171B18" stroke-width="3" stroke-linejoin="miter"/>
+
+  <!-- Cruz Kené central (Vero Yushin / Chakana Amazónica) en Crema #FAF7E9 y centro Rojo Señal #D93829 -->
+  <polygon points="
+    54,42 66,42
+    66,54 78,54
+    78,66 66,66
+    66,78 54,78
+    54,66 42,66
+    42,54 54,54
+  " fill="#FAF7E9" stroke="#171B18" stroke-width="2.8" stroke-linejoin="miter"/>
+
+  <!-- Semilla / Ojo central (Vero) -->
+  <rect x="55" y="55" width="10" height="10" fill="#D93829" stroke="#171B18" stroke-width="2.2"/>
+
+  <!-- Puntos de visión (Shinan) en las 4 esquinas -->
+  <rect x="19" y="19" width="7" height="7" fill="#FAF7E9" stroke="#171B18" stroke-width="2"/>
+  <rect x="94" y="19" width="7" height="7" fill="#FAF7E9" stroke="#171B18" stroke-width="2"/>
+  <rect x="19" y="94" width="7" height="7" fill="#F0BB38" stroke="#171B18" stroke-width="2"/>
+  <rect x="94" y="94" width="7" height="7" fill="#F0BB38" stroke="#171B18" stroke-width="2"/>
+</svg>
+

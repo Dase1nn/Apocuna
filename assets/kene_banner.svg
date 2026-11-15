@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 236" width="100%" height="100%" role="img" aria-label="Banner Mural Kené Shipibo-Konibo - Estilo Apocunoso">
+  <!-- Marco exterior anidado doble (arquitectura COMMON ROOM / Ndebele sobre papel #FAF7E9 y tinta #171B18) -->
+  <rect x="3" y="3" width="1194" height="230" fill="#FAF7E9" stroke="#171B18" stroke-width="5"/>
+  <rect x="15" y="15" width="1170" height="206" fill="#FAF7E9" stroke="#171B18" stroke-width="4"/>
+
+  <!-- =====================================================================
+       PANEL IZQUIERDO (x=28..308, y=28..208): AZUL UCAYALI (#2775AA) Y ROSA KENÉ (#DF6A90)
+       Entrelazado escalonado Kano con espolones en T shipibo y cruces Vero Yushin
+       ===================================================================== -->
+  <g id="kene-panel-left">
+    <rect x="28" y="28" width="280" height="180" fill="#2775AA" stroke="#171B18" stroke-width="4"/>
+    <!-- Campo complementario en Rosa Kené (#DF6A90) -->
+    <polygon points="
+      46,190
+      46,94
+      122,94
+      122,134
+      202,134
+      202,58
+      290,58
+      290,190
+      248,190
+      248,150
+      92,150
+      92,190
+    " fill="#DF6A90" stroke="#171B18" stroke-width="4" stroke-linejoin="miter"/>
+
+    <!-- Camino Maestro Kano (doble canal crema #FAF7E9 con borde #171B18, estilo COMMON ROOM + Kené) -->
+    <polygon points="
+      38,198
+      38,82
+      134,82
+      134,122
+      190,122
+      190,46
+      298,46
+      298,198
+      258,198
+      258,162
+      82,162
+      82,198
+      60,198
+      60,140
+      276,140
+      276,68
+      212,68
+      212,144
+      112,144
+      112,104
+      60,104
+      60,198
+    " fill="#FAF7E9" stroke="#171B18" stroke-width="4" stroke-linejoin="miter"/>
+
+    <!-- Línea conductora central del Kano con espolones en T característicos del Kené Shipibo -->
+    <polyline points="49,192 49,93 123,93 123,133 201,133 201,57 287,57 287,151 71,151 71,192"
+              fill="none" stroke="#171B18" stroke-width="2.5" stroke-linejoin="miter"/>
+    <!-- Espolones Kené (terminales en T sobre los campos de color) -->
+    <path d="M 88,82 L 88,68 M 81,68 L 95,68 M 162,122 L 162,106 M 155,106 L 169,106 M 162,162 L 162,178 M 155,178 L 169,178 M 244,162 L 244,178 M 237,178 L 251,178"
+          fill="none" stroke="#FAF7E9" stroke-width="3" stroke-linecap="square"/>
+
+    <!-- Cruz Escalonada Kené (Vero Yushin) superior izquierda sobre Azul -->
+    <polygon points="104,40 116,40 116,50 126,50 126,62 116,62 116,72 104,72 104,62 94,62 94,50 104,50"
+             fill="#FAF7E9" stroke="#171B18" stroke-width="2.8" stroke-linejoin="miter"/>
+    <polygon points="110,48 118,56 110,64 102,56" fill="#F0BB38" stroke="#171B18" stroke-width="2"/>
+
+    <!-- Cruz Escalonada Kené inferior derecha sobre Rosa -->
+    <polygon points="238,84 250,84 250,94 260,94 260,106 250,106 250,116 238,116 238,106 228,106 228,94 238,94"
+             fill="#FAF7E9" stroke="#171B18" stroke-width="2.8" stroke-linejoin="miter"/>
+    <polygon points="244,92 252,100 244,108 236,100" fill="#1B8668" stroke="#171B18" stroke-width="2"/>
+  </g>
+
+  <!-- =====================================================================
+       PANEL CENTRAL AMPLIO (x=322..878, y=28..208): OCRE DORADO (#F0BB38) Y VERDE AMAZÓNICO (#1B8668)
+       Cartografía cósmica Kené: rombos concéntricos, cruces Vero Yushin, líneas Shinan rojas y ojo Vero central
+       ===================================================================== -->
+  <g id="kene-panel-center">
+    <rect x="322" y="28" width="556" height="180" fill="#F0BB38" stroke="#171B18" stroke-width="4"/>
+
+    <!-- Gran Camino Kano Simétrico en Papel Crema (#FAF7E9) con ángulos de 45° y 90° -->
+    <polygon points="
+      338,44
+      458,44
+      492,78
+      526,78
+      526,44
+      674,44
+      674,78
+      708,78
+      742,44
+      862,44
+      862,192
+      742,192
+      708,158
+      674,158
+      674,192
+      526,192
+      526,158
+      492,158
+      458,192
+      338,192
+    " fill="#FAF7E9" stroke="#171B18" stroke-width="4" stroke-linejoin="miter"/>
+
+    <!-- Santuario Verde Izquierdo (#1B8668) -->
+    <polygon points="
+      356,62
+      450,62
+      484,96
+      484,140
+      450,174
+      356,174
+    " fill="#1B8668" stroke="#171B18" stroke-width="4" stroke-linejoin="miter"/>
+
+    <!-- Santuario Verde Derecho (#1B8668) -->
+    <polygon points="
+      844,62
+      750,62
+      716,96
+      716,140
+      750,174
+      844,174
+    " fill="#1B8668" stroke="#171B18" stroke-width="4" stroke-linejoin="miter"/>
+
+    <!-- Santuario Verde Central (#1B8668) -->
+    <rect x="542" y="62" width="116" height="112" fill="#1B8668" stroke="#171B18" stroke-width="4"/>
+
+    <!-- Puentes Axiales Kano que conectan los 3 santuarios verdes -->
+    <line x1="484" y1="118" x2="542" y2="118" stroke="#171B18" stroke-width="8"/>
+    <line x1="658" y1="118" x2="716" y2="118" stroke="#171B18" stroke-width="8"/>
+
+    <!-- Trazos de vibración óptica Shinan en Rojo/Terracota (#D93829) dentro del canal crema (inspirado en Foto 3) -->
+    <polyline points="347,53 454,53 488,87 534,87 534,53 666,53 666,87 712,87 746,53 853,53"
+              fill="none" stroke="#D93829" stroke-width="2.2" stroke-linejoin="miter"/>
+    <polyline points="347,183 454,183 488,149 534,149 534,183 666,183 666,149 712,149 746,183 853,183"
+              fill="none" stroke="#D93829" stroke-width="2.2" stroke-linejoin="miter"/>
+
+    <!-- Rombos Concéntricos + Cruz Kené (Foto 3) en el Santuario Verde Izquierdo -->
+    <polygon points="414,74 458,118 414,162 370,118" fill="#FAF7E9" stroke="#171B18" stroke-width="3.2" stroke-linejoin="miter"/>
+    <polygon points="414,88 444,118 414,148 384,118" fill="#2775AA" stroke="#171B18" stroke-width="2.8" stroke-linejoin="miter"/>
+    <polygon points="408,102 420,102 420,112 430,112 430,124 420,124 420,134 408,134 408,124 398,124 398,112 408,112"
+             fill="#FAF7E9" stroke="#171B18" stroke-width="2.2"/>
+    <rect x="410" y="114" width="8" height="8" fill="#D93829"/>
+
+    <!-- Rombos Concéntricos + Cruz Kené (Foto 3) en el Santuario Verde Derecho -->
+    <polygon points="786,74 830,118 786,162 742,118" fill="#FAF7E9" stroke="#171B18" stroke-width="3.2" stroke-linejoin="miter"/>
+    <polygon points="786,88 816,118 786,148 756,118" fill="#2775AA" stroke="#171B18" stroke-width="2.8" stroke-linejoin="miter"/>
+    <polygon points="780,102 792,102 792,112 802,112 802,124 792,124 792,134 780,134 780,124 770,124 770,112 780,112"
+             fill="#FAF7E9" stroke="#171B18" stroke-width="2.2"/>
+    <rect x="782" y="114" width="8" height="8" fill="#D93829"/>
+
+    <!-- Rombos pequeños Kené en las bahías Ocre Dorado (#F0BB38) superiores e inferiores -->
+    <polygon points="509,46 521,58 509,70 497,58" fill="#FAF7E9" stroke="#171B18" stroke-width="2.5"/>
+    <rect x="506" y="55" width="6" height="6" fill="#D93829"/>
+    <polygon points="691,46 703,58 691,70 679,58" fill="#FAF7E9" stroke="#171B18" stroke-width="2.5"/>
+    <rect x="688" y="55" width="6" height="6" fill="#D93829"/>
+    <polygon points="509,166 521,178 509,190 497,178" fill="#FAF7E9" stroke="#171B18" stroke-width="2.5"/>
+    <rect x="506" y="175" width="6" height="6" fill="#D93829"/>
+    <polygon points="691,166 703,178 691,190 679,178" fill="#FAF7E9" stroke="#171B18" stroke-width="2.5"/>
+    <rect x="688" y="175" width="6" height="6" fill="#D93829"/>
+
+    <!-- Medallón Hexagonal Central (Vero / Semilla Cósmica) en Papel Crema (#FAF7E9) -->
+    <polygon points="552,118 574,90 626,90 648,118 626,146 574,146"
+             fill="#FAF7E9" stroke="#171B18" stroke-width="4" stroke-linejoin="miter"/>
+    <!-- Cruz Escalonada interior en Rosa Kené (#DF6A90) y centro Ocre (#F0BB38) -->
+    <polygon points="593,98 607,98 607,110 621,110 621,126 607,126 607,138 593,138 593,126 579,126 579,110 593,110"
+             fill="#DF6A90" stroke="#171B18" stroke-width="2.8" stroke-linejoin="miter"/>
+    <rect x="595" y="113" width="10" height="10" fill="#F0BB38" stroke="#171B18" stroke-width="2.2"/>
+  </g>
+
+  <!-- =====================================================================
+       PANEL DERECHO (x=892..1172, y=28..208): ROSA KENÉ (#DF6A90) Y AZUL UCAYALI (#2775AA)
+       Simetría bilateral con variación cromática viva y camino Kano
+       ===================================================================== -->
+  <g id="kene-panel-right">
+    <rect x="892" y="28" width="280" height="180" fill="#DF6A90" stroke="#171B18" stroke-width="4"/>
+    <!-- Campo complementario en Azul Ucayali (#2775AA) -->
+    <polygon points="
+      910,190
+      910,94
+      986,94
+      986,134
+      1066,134
+      1066,58
+      1154,58
+      1154,190
+      1112,190
+      1112,150
+      956,150
+      956,190
+    " fill="#2775AA" stroke="#171B18" stroke-width="4" stroke-linejoin="miter"/>
+
+    <!-- Camino Maestro Kano en Crema (#FAF7E9) con borde #171B18 -->
+    <polygon points="
+      902,198
+      902,82
+      998,82
+      998,122
+      1054,122
+      1054,46
+      1162,46
+      1162,198
+      1122,198
+      1122,162
+      946,162
+      946,198
+      924,198
+      924,140
+      1140,140
+      1140,68
+      1076,68
+      1076,144
+      976,144
+      976,104
+      924,104
+      924,198
+    " fill="#FAF7E9" stroke="#171B18" stroke-width="4" stroke-linejoin="miter"/>
+
+    <!-- Línea conductora central del Kano -->
+    <polyline points="913,192 913,93 987,93 987,133 1065,133 1065,57 1151,57 1151,151 935,151 935,192"
+              fill="none" stroke="#171B18" stroke-width="2.5" stroke-linejoin="miter"/>
+    <!-- Espolones Kené en T -->
+    <path d="M 952,82 L 952,68 M 945,68 L 959,68 M 1026,122 L 1026,106 M 1019,106 L 1033,106 M 1026,162 L 1026,178 M 1019,178 L 1033,178 M 1108,162 L 1108,178 M 1101,178 L 1115,178"
+          fill="none" stroke="#FAF7E9" stroke-width="3" stroke-linecap="square"/>
+
+    <!-- Cruz Escalonada Kené superior izquierda sobre Rosa -->
+    <polygon points="968,40 980,40 980,50 990,50 990,62 980,62 980,72 968,72 968,62 958,62 958,50 968,50"
+             fill="#FAF7E9" stroke="#171B18" stroke-width="2.8" stroke-linejoin="miter"/>
+    <polygon points="974,48 982,56 974,64 966,56" fill="#1B8668" stroke="#171B18" stroke-width="2"/>
+
+    <!-- Cruz Escalonada Kené inferior derecha sobre Azul -->
+    <polygon points="1102,84 1114,84 1114,94 1124,94 1124,106 1114,106 1114,116 1102,116 1102,106 1092,106 1092,94 1102,94"
+             fill="#FAF7E9" stroke="#171B18" stroke-width="2.8" stroke-linejoin="miter"/>
+    <polygon points="1108,92 1116,100 1108,108 1100,100" fill="#F0BB38" stroke="#171B18" stroke-width="2"/>
+  </g>
+</svg>

@@ -7,3 +7,5 @@ __pycache__/
 docs/capturas/
 docs/fuentes/
 auditoria_tema/
+
+.agent/

@@ -7,23 +7,16 @@ from components.cards import (
     render_home_radar_and_boletines_split,
     render_noticias_carousel,
 )
+from components.apocunoso_branding import build_apocunoso_hero_banner_html
 from sections.normas_comentadas import navegar_a_normas_comentadas
 
 
 def _render_hero_banner():
     st.markdown(
-        """
-        <div class="snow-card hero-intro-block">
-            <div class="hero-eyebrow">PLATAFORMA PERUANA DE EVIDENCIA Y POLÍTICAS PÚBLICAS</div>
-            <h1 class="hero-intro-title">¿Qué es APOCUNA y por qué existe?</h1>
-            <p class="hero-intro-text">
-                Un punto de encuentro que reúne herramientas, datos auditados y oportunidades de formación para quienes diseñan, evalúan y estudian la política pública en el Perú.
-            </p>
-        </div>
-        """,
+        build_apocunoso_hero_banner_html(),
         unsafe_allow_html=True
     )
-    if st.button("🏛️ Conocer la misión y metodología del sitio →", key="btn_conocer_sitio"):
+    if st.button("🏛️ Conocer la misión, identidad Kené y metodología del sitio →", key="btn_conocer_sitio"):
         st.session_state.current_page = "Sobre el sitio"
         st.rerun()
 

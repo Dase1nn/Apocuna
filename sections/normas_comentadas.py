@@ -59,12 +59,12 @@ def navegar_a_normas_comentadas(norma_id: Optional[str] = None) -> None:
 
 
 def _etiqueta_estado(estado: Optional[str]) -> tuple[str, str]:
-    """Devuelve texto visible y color semántico de insignia para el estado."""
+    """Devuelve texto visible y color semántico de insignia para el estado (apocunoso-style)."""
     if estado == "revisado por persona":
-        return "Revisado", "#10B981"
+        return "Revisado", "#1B8668"
     if estado == "borrador IA":
-        return "Borrador IA", "#F59E0B"
-    return "Radar sin IA", "#0284C7"
+        return "Borrador IA", "#B45309"
+    return "Radar sin IA", "#2775AA"
 
 
 def _clase_eje(eje: Optional[str]) -> str:
