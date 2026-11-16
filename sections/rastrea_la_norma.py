@@ -115,19 +115,19 @@ def construir_diagrama_flujo_normas_html(
 
 
 def render_rastrea_la_norma() -> None:
-    """Renderiza la sección principal 'Rastrea la Norma' (Beta v1-rastro-norma)."""
+    """Renderiza la sección principal 'Rastrea la Norma' con los filtros arriba."""
     st.markdown(
         """
         <div class="rastrea-hero-header">
           <div>
             <h1 style="margin:0;color:var(--text-title);">🔍 Rastrea la Norma</h1>
-            <p style="margin:0.25rem 0 0 0;color:var(--text-muted);font-size:0.96rem;">
-              Radar diario oficial de <strong>El Peruano</strong>, análisis por ejes <strong>Polity &amp; Policy</strong> y monitoreo regulatorio.
+            <p style="margin:0.25rem 0 0 0;color:var(--text-muted);font-size:0.95rem;">
+              Seguimiento diario de normas de <strong>El Peruano</strong> por ejes <strong>Polity &amp; Policy</strong>.
             </p>
           </div>
           <span class="rastrea-beta-pill">
             <span class="rastrea-beta-dot"></span>
-            Beta v1-rastro-norma
+            Radar Activo
           </span>
         </div>
         """,
@@ -153,59 +153,33 @@ def render_rastrea_la_norma() -> None:
         else {}
     )
 
-    # ELEMENTO 1 (INICIO DE LA SECCIÓN): Diagrama de flujo animado "¿Cómo seguimos la norma?"
-    flujo_html = construir_diagrama_flujo_normas_html(
-        ia_habilitada=bool(getattr(config, "NORMAS_IA_HABILITADA", False)),
-        modelo_ia=str(getattr(config, "GEMINI_MODELO_NORMAS", "gemini-3.5-flash-lite")),
-        ultimo_estado=str(estado_diario.get("ultimo_estado") or "activo"),
-        ultimo_intento=str(estado_diario.get("ultimo_intento") or "2 pasadas diarias (11:15 y 23:15 UTC)"),
-        total_fichas=len(fichas_oficiales),
-    )
-    st.markdown(flujo_html, unsafe_allow_html=True)
+    with st.expander("⚙️ Cómo funciona la verificación normativa (5 pasos)", expanded=False):
+        flujo_html = construir_diagrama_flujo_normas_html(
+            ia_habilitada=bool(getattr(config, "NORMAS_IA_HABILITADA", False)),
+            modelo_ia=str(getattr(config, "GEMINI_MODELO_NORMAS", "gemini-3.5-flash-lite")),
+            ultimo_estado=str(estado_diario.get("ultimo_estado") or "activo"),
+            ultimo_intento=str(estado_diario.get("ultimo_intento") or "2 pasadas diarias (11:15 y 23:15 UTC)"),
+            total_fichas=len(fichas_oficiales),
+        )
+        st.markdown(flujo_html, unsafe_allow_html=True)
 
-    st.markdown("---")
+    normas_prensa = load_normas()
+    normas_filtradas = [n for n in normas_prensa if n.get("grupo") == "Noticias sobre normas legales"] or normas_prensa
 
-    # CATEGORÍA 1: Normas Legales Oficiales — El Peruano
-    st.header("🏛️ Normas Legales Oficiales — El Peruano")
-    st.markdown(
-        "Clasificación diaria automatizada por ejes **Polity** (arquitectura institucional y gestión pública) "
-        "y **Policy** (regulación sectorial), alineada con Políticas Nacionales."
-    )
-    if fichas_oficiales:
-        render_normas_showcase_strip(fichas_oficiales)
-        fichas_polity = [f for f in fichas_oficiales if (f.get("eje") or "").lower() == "polity"]
-        fichas_policy = [f for f in fichas_oficiales if (f.get("eje") or "").lower() == "policy"]
-        tab_of_all, tab_of_polity, tab_of_policy = st.tabs([
-            f"📋 Todas ({len(fichas_oficiales)})",
-            f"🏛️ Polity ({len(fichas_polity)})",
-            f"📊 Policy ({len(fichas_policy)})",
-        ])
-        with tab_of_all:
-            render_normas_visual_collection(fichas_oficiales, catalogo_map=catalogo_map, layout="carousel")
-        with tab_of_polity:
-            render_normas_visual_collection(fichas_polity, catalogo_map=catalogo_map, layout="carousel")
-        with tab_of_policy:
-            render_normas_visual_collection(fichas_policy, catalogo_map=catalogo_map, layout="carousel")
-    else:
-        st.info(
-            "Aún no hay fichas oficiales publicadas en `data/generated/normas_oficiales/`. "
-            "Se mostrarán automáticamente tras la primera ejecución del radar diario."
+    tab_diario, tab_prensa = st.tabs([
+        f"🏛️ Normas de El Peruano ({len(fichas_oficiales)})",
+        f"📰 Monitoreo en Prensa ({len(normas_filtradas)})",
+    ])
+
+    with tab_diario:
+        if fichas_oficiales:
+            render_normas_showcase_strip(fichas_oficiales)
+        render_normas_comentadas_subsection(
+            show_header=False,
+            show_showcase=False,
+            skip_detail_check=True,
         )
 
-    st.markdown("---")
-
-    # CATEGORÍA 2 (EXPLICITAMENTE SEGUNDA EN ORDEN): Normas comentadas y Radar diario (El Peruano)
-    render_normas_comentadas_subsection(
-        show_header=True,
-        show_showcase=False,
-        skip_detail_check=True,
-    )
-
-    st.markdown("---")
-
-    # CATEGORÍA 3: Seguimiento de Normas Legales (Coyuntura y Prensa)
-    st.header("⚖️ Seguimiento de Normas Legales")
-    st.markdown("Monitoreo regulatorio automatizado de decretos, leyes y resoluciones sectoriales en prensa.")
-    normas = load_normas()
-    normas_filtradas = [n for n in normas if n.get("grupo") == "Noticias sobre normas legales"] or normas
-    render_normas_carousel(normas_filtradas)
+    with tab_prensa:
+        st.caption("Decretos, proyectos de ley y resoluciones sectoriales reportados en prensa.")
+        render_normas_carousel(normas_filtradas)

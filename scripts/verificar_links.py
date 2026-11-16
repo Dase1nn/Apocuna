@@ -66,10 +66,32 @@ def _extract_nested_file(rel_path: str, child_keys: tuple) -> list:
     return items
 
 
+def _extract_dict_groups(rel_path: str, group_keys: tuple, title_key: str) -> list:
+    if not os.path.exists(rel_path):
+        return []
+    with open(rel_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    items = []
+    for gk in group_keys:
+        for item in data.get(gk, []):
+            raw_u = item.get("url")
+            items.append({
+                "archivo": rel_path.replace("\\", "/"),
+                "id": item.get("id", ""),
+                "titulo": item.get(title_key) or item.get("titulo") or item.get("nombre", ""),
+                "url": raw_u.strip() if raw_u else None,
+            })
+    return items
+
+
 def load_all_urls() -> list:
     items = []
     items.extend(_extract_flat_file(os.path.join("data", "fuentes.json"), "nombre", "url"))
+    items.extend(_extract_flat_file(os.path.join("data", "informes_sectoriales.json"), "nombre", "url"))
+    items.extend(_extract_flat_file(os.path.join("data", "evaluaciones_politicas.json"), "titulo", "url"))
     items.extend(_extract_flat_file(os.path.join("data", "eventos.json"), "titulo", "enlace"))
+    items.extend(_extract_dict_groups(os.path.join("data", "fen_catalogo.json"), ("impact_cards", "master_tools"), "nombre"))
+    items.extend(_extract_dict_groups(os.path.join("data", "revistas_gestion.json"), ("revistas", "memorias_congresos", "papers_ensayos"), "titulo"))
     items.extend(_extract_nested_file(os.path.join("data", "polity.json"), ("tarjetas",)))
     items.extend(_extract_nested_file(os.path.join("data", "estudiantes.json"), ("tarjetas", "apuntes")))
     items.extend(_extract_flat_file(os.path.join("data", "cursos.json"), "nombre", "url"))

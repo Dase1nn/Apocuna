@@ -74,6 +74,16 @@
     "tipo": "repositorio"
   },
   {
+    "id": "f_041",
+    "bloque": "Datos abiertos y microdatos",
+    "nombre": "Índice de Competitividad Regional (INCORE)",
+    "institucion": "IPE",
+    "descripcion_corta": "Indicadores económicos, laborales, educativos e institucionales por departamento.",
+    "url": "https://incoreperu.pe",
+    "tipo": "portal",
+    "ficha_id": "ipe_incore"
+  },
+  {
     "id": "f_009",
     "bloque": "Control gubernamental y conflictividad social",
     "nombre": "Repositorio General de Reportes",
@@ -107,6 +117,25 @@
     "institucion": "Contraloría General de la República",
     "descripcion_corta": "Portal de la Contraloría.",
     "url": "https://www.gob.pe/contraloria",
+    "tipo": "portal"
+  },
+  {
+    "id": "f_040",
+    "bloque": "Control gubernamental y conflictividad social",
+    "nombre": "Portal de Gestión Pública",
+    "institucion": "PCM",
+    "descripcion_corta": "Normativa, modernización y rectoría de sistemas administrativos.",
+    "url": "https://www.gob.pe/institucion/pcm/tema/gestion-publica",
+    "tipo": "portal",
+    "ficha_id": "pcm_gestion_publica"
+  },
+  {
+    "id": "f_042",
+    "bloque": "Control gubernamental y conflictividad social",
+    "nombre": "Observatorio Electoral y Transparencia",
+    "institucion": "JNE / ONPE",
+    "descripcion_corta": "Consulta de hojas de vida, financiamiento partidario y procesos electorales.",
+    "url": "https://www.gob.pe/jne",
     "tipo": "portal"
   },
   {
@@ -261,87 +290,6 @@
     "descripcion_corta": "Publicaciones BID.",
     "url": "https://publications.iadb.org/",
     "tipo": "repositorio"
-  },
-  {
-    "id": "f_030",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "TIC en Hogares (Nota de Prensa II Trim. 2026)",
-    "institucion": "INEI",
-    "descripcion_corta": "Nota de Prensa sobre TIC.",
-    "url": "https://www.gob.pe/institucion/inei/noticias/1450362-el-64-5-de-los-hogares-del-pais-tiene-conexion-a-internet-durante-el-segundo-trimestre-de-2026",
-    "tipo": "informe"
-  },
-  {
-    "id": "f_031",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "TIC en Hogares (Informe Técnico I Trim. 2026)",
-    "institucion": "INEI",
-    "descripcion_corta": "Informe Técnico sobre TIC.",
-    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655560-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-i-trimestre-2026",
-    "tipo": "informe"
-  },
-  {
-    "id": "f_032",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "ENAHO Estado de la Niñez 2025",
-    "institucion": "INEI",
-    "descripcion_corta": "Informe ENAHO Niñez 2025.",
-    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655583-estado-de-la-ninez-y-adolescencia-2025",
-    "tipo": "informe"
-  },
-  {
-    "id": "f_033",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "Estructura Empresarial Lima 2025",
-    "institucion": "INEI",
-    "descripcion_corta": "Informe de Estructura Empresarial.",
-    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655609-region-lima-estructura-empresarial-2025",
-    "tipo": "informe"
-  },
-  {
-    "id": "f_034",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "Estudio Niñez Indígena y Afroperuana (Nota 2026)",
-    "institucion": "INEI",
-    "descripcion_corta": "Nota sobre el estudio.",
-    "url": "https://www.gob.pe/institucion/inei/noticias/1449181-presentan-estudio-sobre-el-estado-de-la-ninez-y-adolescencia-indigena-y-afroperuana-en-el-peru",
-    "tipo": "informe"
-  },
-  {
-    "id": "f_035",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "Informe Niñez Indígena y Afroperuana",
-    "institucion": "UNICEF",
-    "descripcion_corta": "Informe Niñez Indígena.",
-    "url": "https://www.unicef.org/peru/informes/ninez-y-adolescencia-indigena-y-afroperuana",
-    "tipo": "informe"
-  },
-  {
-    "id": "f_036",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "Integridad de Información Elecciones 2026",
-    "institucion": "PNUD",
-    "descripcion_corta": "Informe del PNUD sobre elecciones.",
-    "url": "https://www.undp.org/es/peru/publicaciones/integridad-de-la-informacion-en-las-elecciones-generales-2026",
-    "tipo": "informe"
-  },
-  {
-    "id": "f_037",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "Hito de Control (Puerto San Juan de Marcona)",
-    "institucion": "Contraloría General de la República",
-    "descripcion_corta": "Hito de Control Puerto Marcona.",
-    "url": "https://www.gob.pe/institucion/contraloria/noticias/1449744-contraloria-advierte-retraso-en-inversiones-del-nuevo-puerto-de-san-juan-de-marcona-por-demora-en-entrega-de-terrenos",
-    "tipo": "informe"
-  },
-  {
-    "id": "f_038",
-    "bloque": "Documentos e informes específicos",
-    "nombre": "Intervención Obra Educativa Parizada (Áncash)",
-    "institucion": "Contraloría General de la República",
-    "descripcion_corta": "Intervención de Contraloría en Áncash.",
-    "url": "https://www.gob.pe/institucion/contraloria/noticias/1373454-contraloria-interviene-en-chimbote-para-destrabar-obra-educativa-paralizada",
-    "tipo": "informe"
   },
   {
     "id": "f_039",

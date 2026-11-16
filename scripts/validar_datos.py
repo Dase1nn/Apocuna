@@ -58,6 +58,8 @@ def main():
     print("Iniciando validación de datos...")
     checks = [
         (os.path.join("data", "fuentes.json"), ["id", "bloque", "nombre", "institucion", "descripcion_corta", "url", "tipo"]),
+        (os.path.join("data", "informes_sectoriales.json"), ["id", "bloque", "nombre", "institucion", "descripcion_corta", "url", "tipo"]),
+        (os.path.join("data", "evaluaciones_politicas.json"), ["id", "nivel_prioridad", "programa_o_ambito", "politica_publica", "tipo_evaluacion", "titulo", "url"]),
         (os.path.join("data", "eventos.json"), ["id", "tipo", "titulo", "tematica", "fecha_limite", "enlace", "descripcion"]),
         (os.path.join("data", "generated", "noticias.json"), ["id", "titulo", "fuente", "categoria", "fecha_iso", "url", "resumen"]),
         (os.path.join("data", "generated", "normas.json"), ["id", "titulo", "tipo_norma", "entidad", "fecha_iso", "url", "grupo"]),
@@ -65,6 +67,33 @@ def main():
     ]
 
     success = all(validar_json(path, fields) for path, fields in checks)
+
+    fen_path = os.path.join("data", "fen_catalogo.json")
+    if os.path.exists(fen_path):
+        with open(fen_path, "r", encoding="utf-8") as f:
+            fen_data = json.load(f)
+        print(f"Validando {fen_path}...")
+        ok_fen = True
+        for item in fen_data.get("impact_cards", []):
+            ok_fen &= _check_item_fields(item, ["id", "institucion", "eje", "titulo", "descripcion", "url"], "impact_cards")
+        for item in fen_data.get("master_tools", []):
+            ok_fen &= _check_item_fields(item, ["id", "nombre", "institucion", "categoria", "frecuencia", "utilidad", "url"], "master_tools")
+        if ok_fen:
+            print(f"OK: {fen_path} es válido.")
+        success &= ok_fen
+
+    rev_path = os.path.join("data", "revistas_gestion.json")
+    if os.path.exists(rev_path):
+        with open(rev_path, "r", encoding="utf-8") as f:
+            rev_data = json.load(f)
+        print(f"Validando {rev_path}...")
+        ok_rev = True
+        for grupo in ("revistas", "memorias_congresos", "papers_ensayos"):
+            for item in rev_data.get(grupo, []):
+                ok_rev &= _check_item_fields(item, ["id", "tipo", "titulo", "url"], grupo)
+        if ok_rev:
+            print(f"OK: {rev_path} es válido.")
+        success &= ok_rev
     success &= validar_nested_json(
         os.path.join("data", "polity.json"),
         [("tarjetas", ["id", "titulo", "descripcion", "frecuencia", "fuente", "url"])]

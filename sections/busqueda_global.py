@@ -15,8 +15,10 @@ from utils.loaders import (
     load_evaluaciones_politicas,
     load_eventos,
     load_eventos_alertas,
+    load_fen_catalogo,
     load_fichas_tecnicas,
     load_fuentes,
+    load_informes_sectoriales,
     load_normas,
     load_normas_oficiales,
     load_notas,
@@ -132,7 +134,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
             seen_ficha_ids.add(fid)
             vista = "fen" if fid.startswith(("senamhi_", "windy_", "enfen_", "noaa_", "dhn_", "copernicus_", "sunass_", "ana_", "cenepred_", "indeci_", "igp_", "anin_")) else "polity"
             resultados.append({
-                "grupo": "Fuentes y Fichas Técnicas",
+                "grupo": "Políticas y Datos" if vista == "polity" else "Monitoreo El Niño",
                 "tipo_badge": "FICHA TÉCNICA",
                 "estado_badge": str(ft.get("frecuencia") or "Vigente").upper(),
                 "institucion": ft.get("institucion") or "",
@@ -145,33 +147,13 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
                 "fecha_sort": "",
             })
 
-    for sub in load_polity():
-        for t in sub.get("tarjetas", []):
-            if _matches_tokens(tokens, t.get("titulo"), t.get("descripcion"), t.get("fuente"), sub.get("subseccion")):
-                fid = resolve_ficha_id(t)
-                if fid and fid in seen_ficha_ids:
-                    continue
-                resultados.append({
-                    "grupo": "Fuentes y Fichas Técnicas",
-                    "tipo_badge": "INSUMO POLITY",
-                    "estado_badge": str(t.get("frecuencia") or "Permanente").upper(),
-                    "institucion": t.get("fuente") or "",
-                    "titulo": t.get("titulo") or "",
-                    "descripcion": t.get("descripcion") or "",
-                    "url_externa": t.get("url"),
-                    "label_externa": "Abrir recurso ↗",
-                    "url_interna": f"?vista=polity&ficha={urllib.parse.quote(fid, safe='')}" if fid else None,
-                    "label_interna": "📄 Ficha técnica →",
-                    "fecha_sort": "",
-                })
-
     for f in load_fuentes():
         if _matches_tokens(tokens, f.get("nombre"), f.get("institucion"), f.get("descripcion_corta"), f.get("bloque")):
             fid = resolve_ficha_id(f)
             if fid and fid in seen_ficha_ids:
                 continue
             resultados.append({
-                "grupo": "Fuentes y Fichas Técnicas",
+                "grupo": "Políticas y Datos",
                 "tipo_badge": str(f.get("tipo") or "FUENTE").upper(),
                 "estado_badge": "✓ AUDITADA",
                 "institucion": f.get("institucion") or "",
@@ -184,49 +166,60 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
                 "fecha_sort": "",
             })
 
-    # 5. Fenómeno El Niño (FEN) — Herramientas y radar en vivo
-    try:
-        from sections.fen import FEN_IMPACT_CARDS, MASTER_FEN_TOOLS
-        for tool in MASTER_FEN_TOOLS:
-            if _matches_tokens(tokens, tool.get("nombre"), tool.get("institucion"), tool.get("categoria"), tool.get("utilidad")):
-                fid = resolve_ficha_id(tool)
-                resultados.append({
-                    "grupo": "FEN / Clima",
-                    "tipo_badge": str(tool.get("categoria") or "FEN").upper(),
-                    "estado_badge": str(tool.get("frecuencia") or "Tiempo real").upper(),
-                    "institucion": tool.get("institucion") or "",
-                    "titulo": tool.get("nombre") or "",
-                    "descripcion": tool.get("utilidad") or "",
-                    "url_externa": tool.get("url"),
-                    "label_externa": "Abrir herramienta ↗",
-                    "url_interna": f"?vista=fen&ficha={urllib.parse.quote(fid, safe='')}" if fid else None,
-                    "label_interna": "📄 Ficha técnica →",
-                    "fecha_sort": "",
-                })
-        for imp in FEN_IMPACT_CARDS:
-            if _matches_tokens(tokens, imp.get("titulo"), imp.get("institucion"), imp.get("descripcion"), imp.get("eje")):
-                fid = resolve_ficha_id(imp)
-                resultados.append({
-                    "grupo": "FEN / Clima",
-                    "tipo_badge": "IMPACTO FEN",
-                    "estado_badge": "DATOS ABIERTOS",
-                    "institucion": imp.get("institucion") or "",
-                    "titulo": imp.get("titulo") or "",
-                    "descripcion": imp.get("descripcion") or "",
-                    "url_externa": imp.get("url"),
-                    "label_externa": "Consultar plataforma ↗",
-                    "url_interna": f"?vista=fen&ficha={urllib.parse.quote(fid, safe='')}" if fid else None,
-                    "label_interna": "📄 Ficha técnica →",
-                    "fecha_sort": "",
-                })
-    except Exception:
-        pass
+    for inf in load_informes_sectoriales():
+        if _matches_tokens(tokens, inf.get("nombre"), inf.get("institucion"), inf.get("descripcion_corta")):
+            resultados.append({
+                "grupo": "Políticas y Datos",
+                "tipo_badge": "INFORME",
+                "estado_badge": "RECIENTE",
+                "institucion": inf.get("institucion") or "",
+                "titulo": inf.get("nombre") or "",
+                "descripcion": inf.get("descripcion_corta") or "",
+                "url_externa": inf.get("url"),
+                "label_externa": "Leer informe ↗",
+                "fecha_sort": "",
+            })
 
-    # 6. Estudiantes, Cursos, Becas, Eventos y Notas
+    # 5. Monitoreo El Niño (FEN) desde data/fen_catalogo.json
+    fen_cat = load_fen_catalogo()
+    for tool in fen_cat.get("master_tools", []):
+        if _matches_tokens(tokens, tool.get("nombre"), tool.get("institucion"), tool.get("categoria"), tool.get("utilidad")):
+            fid = resolve_ficha_id(tool)
+            resultados.append({
+                "grupo": "Monitoreo El Niño",
+                "tipo_badge": str(tool.get("categoria") or "FEN").upper(),
+                "estado_badge": str(tool.get("frecuencia") or "Tiempo real").upper(),
+                "institucion": tool.get("institucion") or "",
+                "titulo": tool.get("nombre") or "",
+                "descripcion": tool.get("utilidad") or "",
+                "url_externa": tool.get("url"),
+                "label_externa": "Abrir herramienta ↗",
+                "url_interna": f"?vista=fen&ficha={urllib.parse.quote(fid, safe='')}" if fid else None,
+                "label_interna": "📄 Ficha técnica →",
+                "fecha_sort": "",
+            })
+    for imp in fen_cat.get("impact_cards", []):
+        if _matches_tokens(tokens, imp.get("titulo"), imp.get("institucion"), imp.get("descripcion"), imp.get("eje")):
+            fid = resolve_ficha_id(imp)
+            resultados.append({
+                "grupo": "Monitoreo El Niño",
+                "tipo_badge": "IMPACTO FEN",
+                "estado_badge": "DATOS ABIERTOS",
+                "institucion": imp.get("institucion") or "",
+                "titulo": imp.get("titulo") or "",
+                "descripcion": imp.get("descripcion") or "",
+                "url_externa": imp.get("url"),
+                "label_externa": "Consultar plataforma ↗",
+                "url_interna": f"?vista=fen&ficha={urllib.parse.quote(fid, safe='')}" if fid else None,
+                "label_interna": "📄 Ficha técnica →",
+                "fecha_sort": "",
+            })
+
+    # 6. Escuela y Becas / Congresos
     for c in load_cursos():
         if _matches_tokens(tokens, c.get("nombre"), c.get("proveedor"), c.get("tema"), c.get("descripcion_corta")):
             resultados.append({
-                "grupo": "Estudiantes y Eventos",
+                "grupo": "Escuela y Becas",
                 "tipo_badge": str(c.get("modalidad") or "CURSO").upper(),
                 "estado_badge": str(c.get("costo") or "ABIERTO").upper(),
                 "institucion": c.get("proveedor") or "",
@@ -240,7 +233,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
     for b in load_becas():
         if _matches_tokens(tokens, b.get("nombre"), b.get("institucion"), b.get("tipo")):
             resultados.append({
-                "grupo": "Estudiantes y Eventos",
+                "grupo": "Escuela y Becas",
                 "tipo_badge": str(b.get("tipo") or "BECA").upper(),
                 "estado_badge": "PORTAL OFICIAL",
                 "institucion": b.get("institucion") or "",
@@ -255,7 +248,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
         for ap in sub.get("apuntes", []):
             if _matches_tokens(tokens, ap.get("titulo"), ap.get("sistema"), ap.get("curso"), ap.get("resumen"), ap.get("normativa")):
                 resultados.append({
-                    "grupo": "Estudiantes y Eventos",
+                    "grupo": "Escuela y Becas",
                     "tipo_badge": "SISTEMA ADM.",
                     "estado_badge": str(ap.get("normativa") or "LOPE"),
                     "institucion": f"{ap.get('sistema', '')} • {ap.get('curso', '')}",
@@ -269,7 +262,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
     for ev in load_eventos():
         if _matches_tokens(tokens, ev.get("titulo"), ev.get("tematica"), ev.get("descripcion"), ev.get("tipo")):
             resultados.append({
-                "grupo": "Estudiantes y Eventos",
+                "grupo": "Biblioteca y Revistas",
                 "tipo_badge": str(ev.get("tipo") or "EVENTO").upper(),
                 "estado_badge": str(ev.get("fecha_limite") or "Vigente"),
                 "institucion": ev.get("tematica") or "",
@@ -287,7 +280,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
     )
     if _matches_tokens(tokens, "Base de Datos Políticas Nacionales CEPLAN SINAPLAN", ceplan_desc, "ministerios sectores decreto supremo"):
         resultados.append({
-            "grupo": "Polity & Policy / Fuentes",
+            "grupo": "Políticas y Datos",
             "tipo_badge": "BASE DE DATOS",
             "estado_badge": "OFICIAL CEPLAN",
             "institucion": "CEPLAN — SINAPLAN",
@@ -310,7 +303,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
         ):
             is_soc = ev.get("nivel_prioridad") == "programa_social"
             resultados.append({
-                "grupo": "Evaluaciones y Literatura Pública",
+                "grupo": "Políticas y Datos",
                 "tipo_badge": "PROGRAMA SOCIAL" if is_soc else "POLÍTICA PÚBLICA",
                 "estado_badge": f"{ev.get('tipo_evaluacion', 'EVALUACIÓN').upper()} • {ev.get('anio', '')}".strip(" •"),
                 "institucion": f"{ev.get('programa_o_ambito', '')} ({ev.get('entidad_evaluadora', '')})",
@@ -326,7 +319,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
     for rev in rev_data.get("revistas", []):
         if _matches_tokens(tokens, rev.get("titulo"), rev.get("institucion"), rev.get("pais_alcance"), rev.get("descripcion")):
             resultados.append({
-                "grupo": "Evaluaciones y Literatura Pública",
+                "grupo": "Biblioteca y Revistas",
                 "tipo_badge": str(rev.get("tipo") or "REVISTA").upper(),
                 "estado_badge": str(rev.get("frecuencia") or "Abierto").upper(),
                 "institucion": f"{rev.get('institucion', '')} • {rev.get('pais_alcance', '')}",
@@ -339,7 +332,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
     for mem in rev_data.get("memorias_congresos", []):
         if _matches_tokens(tokens, mem.get("titulo"), mem.get("institucion"), mem.get("alcance"), mem.get("descripcion")):
             resultados.append({
-                "grupo": "Evaluaciones y Literatura Pública",
+                "grupo": "Biblioteca y Revistas",
                 "tipo_badge": str(mem.get("tipo") or "MEMORIA CONGRESO").upper(),
                 "estado_badge": str(mem.get("alcance") or "IBEROAMÉRICA").upper(),
                 "institucion": mem.get("institucion") or "",
@@ -352,7 +345,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
     for pap in rev_data.get("papers_ensayos", []):
         if _matches_tokens(tokens, pap.get("titulo"), pap.get("revista"), pap.get("ambito"), pap.get("resumen")):
             resultados.append({
-                "grupo": "Evaluaciones y Literatura Pública",
+                "grupo": "Biblioteca y Revistas",
                 "tipo_badge": str(pap.get("tipo") or "PAPER").upper(),
                 "estado_badge": str(pap.get("ambito") or pap.get("anio") or "").upper(),
                 "institucion": pap.get("revista") or "",
@@ -367,7 +360,7 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
         meta = nota.get("meta") or {}
         if _matches_tokens(tokens, meta.get("titulo"), meta.get("autor"), meta.get("extracto"), nota.get("body")):
             resultados.append({
-                "grupo": "Notas y Ensayos",
+                "grupo": "Biblioteca y Revistas",
                 "tipo_badge": str(meta.get("tipo") or "NOTA").upper(),
                 "estado_badge": str(meta.get("fecha") or "Publicada"),
                 "institucion": meta.get("autor") or "Apocuna Hub",
@@ -377,7 +370,19 @@ def buscar_en_todo_el_sitio(query: str) -> list[dict]:
                 "fecha_sort": str(meta.get("fecha") or ""),
             })
 
-    return resultados
+    # Desduplicar resultados equivalentes manteniendo prioridad de primera inserción
+    deduped: list[dict] = []
+    seen_keys: set[tuple[str, str]] = set()
+    for r in resultados:
+        t_norm = _normalize_text(r.get("titulo") or "")
+        u_norm = str(r.get("url_externa") or r.get("url_interna") or r.get("nota_id") or "").strip().rstrip("/").lower()
+        k = (t_norm, u_norm)
+        if k in seen_keys:
+            continue
+        seen_keys.add(k)
+        deduped.append(r)
+
+    return deduped
 
 
 def _clear_global_search() -> None:
@@ -463,7 +468,7 @@ def render_busqueda_global(query: str) -> None:
             if st.button(f"📖 Leer nota: {n_item['titulo']}", key=f"btn_open_nota_search_{idx}"):
                 st.session_state["selected_note_id"] = n_item["nota_id"]
                 st.session_state["global_search_query"] = ""
-                st.session_state["current_page"] = "Notas"
+                st.session_state["current_page"] = "Biblioteca y Revistas"
                 st.rerun()
 
     if len(filtrados) > 60:

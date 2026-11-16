@@ -6,13 +6,23 @@ from components.apocunoso_branding import build_sidebar_brand_html
 OPTIONS_LIST = [
     "Inicio",
     "Rastrea la Norma",
-    "Polity and Policy",
-    "Fenómeno El Niño (FEN)",
-    "Estudiantes",
-    "Notas",
-    "Eventos",
-    "Sobre el sitio"
+    "Políticas y Datos",
+    "Monitoreo El Niño",
+    "Biblioteca y Revistas",
+    "Escuela y Becas",
+    "Sobre Apocuna",
 ]
+
+LEGACY_PAGE_ALIASES = {
+    "Polity and Policy": "Políticas y Datos",
+    "🌊 Fenómeno El Niño (FEN)": "Monitoreo El Niño",
+    "Fenómeno El Niño (FEN)": "Monitoreo El Niño",
+    "Notas": "Biblioteca y Revistas",
+    "Eventos": "Biblioteca y Revistas",
+    "Estudiantes": "Escuela y Becas",
+    "Estudiantes (DEMO)": "Escuela y Becas",
+    "Sobre el sitio": "Sobre Apocuna",
+}
 
 THEME_OPTIONS = ["💻 Auto", "🌙 Oscuro", "☀️ Claro"]
 
@@ -115,10 +125,8 @@ def render_sidebar():
         st.markdown("---")
 
         current = st.session_state.get("current_page", "Inicio")
-        if current == "Estudiantes (DEMO)":
-            current = "Estudiantes"
-        elif current == "🌊 Fenómeno El Niño (FEN)":
-            current = "Fenómeno El Niño (FEN)"
+        current = LEGACY_PAGE_ALIASES.get(current, current)
+        st.session_state.current_page = current
         default_idx = OPTIONS_LIST.index(current) if current in OPTIONS_LIST else 0
 
         menu = option_menu(
@@ -129,10 +137,9 @@ def render_sidebar():
                 "binoculars",
                 "bank",
                 "tsunami",
+                "journal-bookmark",
                 "mortarboard",
-                "journal-text",
-                "calendar-event",
-                "info-circle"
+                "info-circle",
             ],
             menu_icon="compass",
             default_index=default_idx,

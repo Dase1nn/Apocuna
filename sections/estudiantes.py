@@ -1,17 +1,21 @@
 import streamlit as st
-from utils.loaders import load_estudiantes, load_cursos, load_becas, load_academico
+
 from components.cards import (
+    render_becas_grid,
+    render_cursos_grid,
+    render_estudiantes_apuntes,
     render_kpi_ribbon,
     render_polity_cards,
-    render_estudiantes_apuntes,
-    render_cursos_grid,
-    render_becas_grid,
-    render_academico_carousel
+)
+from utils.loaders import (
+    load_becas,
+    load_cursos,
+    load_estudiantes,
 )
 
 
 def _index_subsecciones(subsecciones: list) -> dict:
-    """Indexa las subsecciones por ID para acceso O(1) sin bucles condicionales anidados."""
+    """Indexa las subsecciones por ID para acceso O(1)."""
     return {s.get("id", f"idx_{i}"): s for i, s in enumerate(subsecciones)}
 
 
@@ -31,24 +35,25 @@ def _filter_cursos(cursos: list, mod: str, costo: str, query: str) -> list:
     return [c for c in cursos if _matches_curso(c, mod, costo, q)]
 
 
-def _render_tab_sistemas(sub_map: dict):
+def _render_tab_sistemas(sub_map: dict) -> None:
     apuntes = sub_map.get("est_sub_5", {}).get("apuntes", [])
-    st.subheader("📚 Sistemas Administrativos del Estado Peruano")
-    st.markdown("Síntesis teóricas y enlaces directos a la normativa rectora de los sistemas administrativos (Ley N° 29158 - LOPE).")
+    st.subheader("🏛️ Sistemas Administrativos del Estado (LOPE)")
+    st.caption("Guías breves y normativa rectora de los sistemas nacionales bajo la Ley N° 29158.")
     render_estudiantes_apuntes(apuntes)
 
 
-def _render_tab_cursos(sub_map: dict, cursos: list):
-    st.subheader("🎓 Catálogo de Cursos, MOOCs y Materiales Abiertos (MIT OCW / ENAP / BID / CEPAL)")
+def _render_tab_cursos(sub_map: dict, cursos: list) -> None:
+    st.subheader("🎓 Cursos Abiertos y Especialización")
+    st.caption("Programas verificados de MIT OCW, ENAP-SERVIR, BID, CEPAL y análisis cuantitativo.")
     if cursos:
         col1, col2, col3 = st.columns([2, 1, 1])
         modalidades = ["Todas"] + sorted({c.get("modalidad", "") for c in cursos if c.get("modalidad")})
         costos = ["Todos"] + sorted({c.get("costo", "") for c in cursos if c.get("costo")})
         with col1:
             q_curso = st.text_input(
-                "🔎 Buscar por curso, universidad o temática:",
-                placeholder="Ej: MIT, R, Estadística, SERVIR, CEPAL, Ciencia Política...",
-                key="est_curso_search"
+                "🔎 Buscar curso o institución:",
+                placeholder="Ej: MIT, R, Estadística, SERVIR, CEPAL...",
+                key="est_curso_search",
             )
         with col2:
             f_mod = st.selectbox("Modalidad:", modalidades, key="est_curso_mod")
@@ -56,65 +61,55 @@ def _render_tab_cursos(sub_map: dict, cursos: list):
             f_costo = st.selectbox("Costo:", costos, key="est_curso_costo")
 
         filtrados = _filter_cursos(cursos, f_mod, f_costo, q_curso)
-        st.caption(f"Mostrando **{len(filtrados)}** de **{len(cursos)}** programas formativos verificados.")
+        st.caption(f"Mostrando **{len(filtrados)}** de **{len(cursos)}** cursos.")
         render_cursos_grid(filtrados)
 
-    st.markdown("---")
-    st.subheader("🛠️ Herramientas Metodológicas y Analíticas")
-    render_polity_cards(sub_map.get("est_sub_2", {}).get("tarjetas", []))
+    tools = sub_map.get("est_sub_2", {}).get("tarjetas", [])
+    if tools:
+        st.markdown("---")
+        st.subheader("🛠️ Caja de Herramientas Metodológicas")
+        render_polity_cards(tools)
 
 
-def _render_tab_investigacion(sub_map: dict, academico_data: list):
-    st.subheader("🔬 Últimas Alertas Académicas (OpenAlex, Politai, CLACSO)")
-    render_academico_carousel(academico_data)
-    st.markdown("---")
-    st.subheader("📖 Estado del Arte y Repositorios de Investigación")
-    render_polity_cards(sub_map.get("est_sub_1", {}).get("tarjetas", []))
-    st.markdown("---")
-    st.subheader("🗳️ Coyuntura y Debate Institucional")
-    render_polity_cards(sub_map.get("est_sub_3", {}).get("tarjetas", []))
-
-
-def _render_tab_becas_y_redes(sub_map: dict, becas: list):
-    st.subheader("🏆 Becas, Movilidad y Oportunidades")
+def _render_tab_becas(sub_map: dict, becas: list) -> None:
+    st.subheader("🏆 Portales de Becas y Movilidad")
     render_becas_grid(becas)
-    st.markdown("---")
-    st.subheader("🤝 Redes Estudiantiles, Congresos y Colegiatura Profesional (CPOL)")
-    render_polity_cards(sub_map.get("est_sub_4", {}).get("tarjetas", []))
+    gremio = sub_map.get("est_sub_4", {}).get("tarjetas", [])
+    if gremio:
+        st.markdown("---")
+        st.subheader("🤝 Colegiatura y Representación Profesional")
+        render_polity_cards(gremio)
 
 
-def render_estudiantes():
-    st.title("🎓 Estudiantes y Formación Metodológica")
+def render_estudiantes() -> None:
+    st.title("🎓 Escuela Pública y Becas")
     st.markdown(
-        '<div class="banner-demo-top">🚀 <strong>Ecosistema Formativo Activo:</strong> '
-        'Guías de los sistemas administrativos del Estado, catálogo de cursos abiertos (MIT OCW, ENAP, CEPAL, BID), '
-        'alertas bibliográficas vía OpenAlex y oportunidades de becas actualizadas automáticamente.</div>',
-        unsafe_allow_html=True
+        '<p class="hero-subtitle">Sistemas administrativos del Estado (LOPE), catálogo de cursos, guías metodológicas y becas.</p>',
+        unsafe_allow_html=True,
     )
 
     subsecciones = load_estudiantes()
     if not subsecciones:
-        st.info("No se encontró información en data/estudiantes.json.")
+        st.info("No se encontró información formativa registrada.")
         return
 
     sub_map = _index_subsecciones(subsecciones)
     cursos = load_cursos()
     becas = load_becas()
-    academico_data = load_academico()
     apuntes_count = len(sub_map.get("est_sub_5", {}).get("apuntes", []))
+    tools_count = len(sub_map.get("est_sub_2", {}).get("tarjetas", []))
 
     render_kpi_ribbon([
-        {"icon": "📚", "value": str(apuntes_count), "label": "Sistemas del Estado", "sub": "Guías normativas verificadas"},
-        {"icon": "🎓", "value": str(len(cursos)), "label": "Cursos y MOOCs", "sub": "MIT OCW, ENAP, BID, CEPAL, R"},
-        {"icon": "🔬", "value": str(len(academico_data)), "label": "Papers en Radar", "sub": "OpenAlex, Politai y CLACSO"},
-        {"icon": "🏆", "value": str(len(becas)), "label": "Portales de Becas", "sub": "PRONABEC y SENAJU"},
+        {"icon": "🏛️", "value": str(apuntes_count), "label": "Sistemas LOPE", "sub": "Normativa rectora estatal"},
+        {"icon": "🎓", "value": str(len(cursos)), "label": "Cursos Abiertos", "sub": "MIT, ENAP, BID, CEPAL"},
+        {"icon": "🛠️", "value": str(tools_count), "label": "Guías Técnicas", "sub": "R, Python y evaluación"},
+        {"icon": "🏆", "value": str(len(becas)), "label": "Becas y Gremio", "sub": "PRONABEC, SENAJU y CPOL"},
     ])
 
-    tab1, tab2, tab3, tab4 = st.tabs([
-        f"📚 Sistemas del Estado ({apuntes_count})",
-        f"🎓 Catálogo de Cursos ({len(cursos)})",
-        f"🔬 Investigación y Alertas ({len(academico_data)})",
-        f"🏆 Becas y Redes ({len(becas)})",
+    tab1, tab2, tab3 = st.tabs([
+        f"🏛️ Sistemas del Estado ({apuntes_count})",
+        f"🎓 Cursos y Metodología ({len(cursos)})",
+        f"🏆 Becas y Colegio ({len(becas)})",
     ])
 
     with tab1:
@@ -122,6 +117,4 @@ def render_estudiantes():
     with tab2:
         _render_tab_cursos(sub_map, cursos)
     with tab3:
-        _render_tab_investigacion(sub_map, academico_data)
-    with tab4:
-        _render_tab_becas_y_redes(sub_map, becas)
+        _render_tab_becas(sub_map, becas)

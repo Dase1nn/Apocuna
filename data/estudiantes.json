@@ -1,43 +1,5 @@
 [
   {
-    "id": "est_sub_1",
-    "subseccion": "1. Actualización académica y estado del arte",
-    "tarjetas": [
-      {
-        "id": "est_card_1_1",
-        "titulo": "Alertas Temáticas en Gobernanza Subnacional y Políticas Públicas [Automatizado]",
-        "descripcion": "Configuración de búsquedas y seguimiento de papers indexados y repositorios de tesis institucionales.",
-        "fuente": "Cybertesis / Repositorios Universitarios",
-        "frecuencia": "Semanal",
-        "url": "https://repositorio.iep.org.pe"
-      },
-      {
-        "id": "est_card_1_2",
-        "titulo": "Boletines de Centros de Pensamiento (Think Tanks) [Automatizado]",
-        "descripcion": "Revisión periódica de resúmenes de política (policy briefs) elaborados por CIES, IEP y GRADE para conectar teoría y coyuntura.",
-        "fuente": "CIES / IEP / GRADE",
-        "frecuencia": "Semanal",
-        "url": "https://cies.org.pe/investigaciones/"
-      },
-      {
-        "id": "est_card_1_3",
-        "titulo": "Revistas Especializadas en Ciencia Política y Administración [Automatizado]",
-        "descripcion": "Seguimiento de convocatorias para publicar artículos y ensayos de investigación estudiantil.",
-        "fuente": "Revistas Académicas",
-        "frecuencia": "Mensual",
-        "url": "https://clad.org/publicaciones/revista-clad"
-      },
-      {
-        "id": "est_card_1_4",
-        "titulo": "Alertas Bibliográficas Abiertas (OpenAlex) [Automatizado]",
-        "descripcion": "Búsqueda periódica automatizada de artículos sobre gobernanza y políticas públicas, consumiendo la API abierta de OpenAlex para suplir restricciones de licencia.",
-        "fuente": "OpenAlex",
-        "frecuencia": "Semanal",
-        "url": "https://openalex.org/"
-      }
-    ]
-  },
-  {
     "id": "est_sub_2",
     "subseccion": "2. Herramientas metodológicas y analíticas",
     "tarjetas": [
@@ -68,47 +30,9 @@
     ]
   },
   {
-    "id": "est_sub_3",
-    "subseccion": "3. Coyuntura y debate político",
-    "tarjetas": [
-      {
-        "id": "est_card_3_1",
-        "titulo": "Observatorios Electorales y Transparencia Institucional",
-        "descripcion": "Auditoría ciudadana de declaraciones juradas de hoja de vida y financiamiento partidario.",
-        "fuente": "JNE / ONPE / Datos Abiertos",
-        "frecuencia": "Semanal",
-        "url": "https://www.gob.pe/jne"
-      },
-      {
-        "id": "est_card_3_2",
-        "titulo": "Puntos de Opinión y Diseño Institucional en Prensa",
-        "descripcion": "Análisis crítico de notas de prensa, informes técnicos y debates sobre reformas electorales y políticas.",
-        "fuente": "INEI / Defensoría",
-        "frecuencia": "Diaria",
-        "url": "https://www.gob.pe/institucion/inei/noticias"
-      }
-    ]
-  },
-  {
     "id": "est_sub_4",
-    "subseccion": "4. Espacios de formación y redes",
+    "subseccion": "4. Gremio y habilitación profesional",
     "tarjetas": [
-      {
-        "id": "est_card_4_1",
-        "titulo": "Macrocoloquio de Estudiantes de Ciencia Política",
-        "descripcion": "Red nacional de estudiantes para deliberación en mesas temáticas sobre gestión pública y descentralización.",
-        "fuente": "Red de Estudiantes",
-        "frecuencia": "Anual",
-        "url": "https://linktr.ee/ximacrocp"
-      },
-      {
-        "id": "est_card_4_2",
-        "titulo": "Seminario de Investigación Educativa (SIEP)",
-        "descripcion": "Foro para la presentación de ponencias y discusión de tesis sobre gobernanza escolar y reformas curriculares.",
-        "fuente": "SIEP Perú",
-        "frecuencia": "Bienal",
-        "url": "https://siep.org.pe/"
-      },
       {
         "id": "est_card_4_3",
         "titulo": "Colegio de Politólogos del Perú (CPOL)",
@@ -127,7 +51,7 @@
   },
   {
     "id": "est_sub_5",
-    "subseccion": "5. Apuntes de clases y guías (Sistemas administrativos del Estado)",
+    "subseccion": "5. Sistemas administrativos del Estado (LOPE)",
     "apuntes": [
       {
         "id": "apunte_001",

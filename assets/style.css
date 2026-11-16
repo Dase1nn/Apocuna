@@ -194,8 +194,8 @@ body {
     background-color: var(--surface-bg);
     border: 2px solid var(--surface-border);
     box-shadow: 4px 4px 0px light-dark(#171B18, #080A09);
-    padding: 1.35rem 1.55rem 1.45rem 1.55rem;
-    margin-bottom: 1.15rem;
+    padding: 0.95rem 1.25rem 1.0rem 1.25rem;
+    margin-bottom: 0.85rem;
     border-radius: 0px;
     animation: fadeInSlide 0.28s var(--ease-out-expo) both;
 }
@@ -205,8 +205,8 @@ body {
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 0.85rem;
+    margin-bottom: 0.65rem;
 }
 
 .apocunoso-hero-brand {
@@ -268,9 +268,27 @@ body {
 
 .apocunoso-kene-mural-wrap {
     width: 100%;
-    margin: 0.2rem 0 1.15rem 0;
+    margin: 0.15rem 0 0.75rem 0;
     background-color: #FAF7E9;
     line-height: 0;
+}
+
+.apocunoso-quiet-strip {
+    background-color: var(--surface-elevated);
+    border: 1.5px solid var(--surface-border);
+    border-left: 5px solid #1B8668;
+    padding: 0.55rem 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.95rem;
+}
+
+.apocunoso-quiet-strip-text {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.42;
+    color: var(--text-body);
 }
 
 .apocunoso-kene-mural-wrap svg {
@@ -724,9 +742,10 @@ div[data-testid="stButton"] > button:hover {
 
 .card-header-meta {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.35rem 0.5rem;
     margin-bottom: 0.55rem;
 }
 
@@ -1015,14 +1034,21 @@ div[data-testid="stButton"] > button:hover {
     letter-spacing: 0.3px;
 }
 
-.badge-freq {
+.badge-freq,
+.badge-freq-diaria,
+.badge-freq-semanal,
+.badge-freq-mensual,
+.badge-freq-anual,
+.badge-freq-permanente {
     display: inline-block;
-    padding: 0.18rem 0.52rem;
-    font-size: 0.67rem;
-    font-weight: 700;
+    padding: 0.18rem 0.5rem;
+    font-family: var(--font-mono) !important;
+    font-size: 0.67rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
     text-transform: uppercase;
-    letter-spacing: 0.45px;
-    border-radius: 6px;
+    letter-spacing: 0.04em;
+    white-space: nowrap !important;
 }
 
 .badge-freq-diaria {
@@ -1057,12 +1083,14 @@ div[data-testid="stButton"] > button:hover {
 
 .badge-tipo {
     display: inline-block;
-    padding: 0.16rem 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.67rem;
-    font-weight: 800;
+    padding: 0.18rem 0.5rem;
+    font-family: var(--font-mono) !important;
+    font-size: 0.67rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
+    white-space: nowrap !important;
     background: light-dark(#EAE5D1, #262F2A);
     color: var(--text-title) !important;
     border: 1px solid var(--surface-border);
@@ -1100,10 +1128,14 @@ div[data-testid="stButton"] > button:hover {
 
 .badge-continua {
     display: inline-block;
-    padding: 0.18rem 0.52rem;
-    font-size: 0.67rem;
-    font-weight: 700;
-    border-radius: 6px;
+    padding: 0.18rem 0.5rem;
+    font-family: var(--font-mono) !important;
+    font-size: 0.67rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap !important;
     background: light-dark(rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.16));
     color: light-dark(#047857, #34D399) !important;
     border: 1px solid rgba(16, 185, 129, 0.35);
@@ -1111,10 +1143,14 @@ div[data-testid="stButton"] > button:hover {
 
 .badge-deadline {
     display: inline-block;
-    padding: 0.18rem 0.52rem;
-    font-size: 0.67rem;
-    font-weight: 700;
-    border-radius: 6px;
+    padding: 0.18rem 0.5rem;
+    font-family: var(--font-mono) !important;
+    font-size: 0.67rem !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap !important;
     background: light-dark(rgba(245, 158, 11, 0.12), rgba(245, 158, 11, 0.16));
     color: light-dark(#B45309, #FBBF24) !important;
     border: 1px solid rgba(245, 158, 11, 0.35);
@@ -3473,4 +3509,86 @@ header[data-testid="stHeader"]::before {
         border-right: none;
         border-bottom: 1.5px solid var(--surface-border);
     }
+}
+
+/* ============================================================================
+   27. ACCESOS RÁPIDOS DE INICIO, MIGAS DE PAN Y ALIGERAMIENTO APOCUNOSO
+   ============================================================================ */
+
+.home-quick-nav-card {
+    background-color: var(--surface-bg);
+    border: 1.5px solid var(--surface-border);
+    border-top: 5px solid var(--kene-blue);
+    padding: 0.72rem 0.85rem 0.65rem 0.85rem;
+    margin-bottom: 0.28rem;
+    min-height: 112px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.24rem;
+}
+
+.home-quick-nav-card.quick_blue { border-top-color: #2775AA; }
+.home-quick-nav-card.quick_green { border-top-color: #1B8668; }
+.home-quick-nav-card.quick_gold { border-top-color: #F0BB38; }
+.home-quick-nav-card.quick_pink { border-top-color: #DF6A90; }
+
+.home-quick-tag {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: var(--text-accent);
+    text-transform: uppercase;
+}
+
+.home-quick-nav-card h3 {
+    margin: 0 !important;
+    font-family: var(--font-display) !important;
+    font-size: 1.02rem !important;
+    font-weight: 900 !important;
+    line-height: 1.2 !important;
+    color: var(--text-title) !important;
+}
+
+.home-quick-nav-card p {
+    margin: 0 !important;
+    font-size: 0.82rem !important;
+    line-height: 1.38 !important;
+    color: var(--text-body) !important;
+}
+
+.home-quick-nav-card [data-testid="stHeaderActionElements"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.apocuna-breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    background-color: var(--surface-elevated);
+    border: 1px solid var(--surface-border);
+    padding: 0.3rem 0.65rem;
+    margin: 0.25rem 0 0.75rem 0;
+    display: inline-block;
+}
+
+/* Aligeramiento de bordes/sombras en elementos secundarios (Swiss flat discipline) */
+.kpi-metric-card,
+.legend-item-row,
+div[data-baseweb="select"] > div,
+div[data-baseweb="input"] > div,
+div[data-baseweb="base-input"] {
+    box-shadow: none !important;
+}
+
+/* Alturas más parejas en tarjetas de cuadrícula y carrusel */
+.fuente-card p,
+.card p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }

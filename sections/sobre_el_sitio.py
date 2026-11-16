@@ -171,8 +171,16 @@ FAMILIAS_LEYENDA = [
                 "Modalidad de programa formativo o portal oficial de becas y movilidad académica.",
             ),
             (
-                '<span class="badge-tipo">REVISTA</span> <span class="badge-tipo">CONGRESO</span>',
-                "Publicación científica arbitrada o encuentro académico para presentación de ponencias.",
+                '<span class="badge-tipo">REVISTA</span> <span class="badge-tipo">CONGRESO</span> <span class="badge-tipo">MEMORIA CONGRESO</span>',
+                "Publicación científica arbitrada, encuentro académico o actas y documentos de trabajo.",
+            ),
+            (
+                '<span class="badge-tipo">PROGRAMA SOCIAL</span> <span class="badge-tipo">POLÍTICA PÚBLICA</span>',
+                "Evaluación priorizada de intervención social (Juntos, Pensión 65, Cuna Más) o política sectorial/PpR.",
+            ),
+            (
+                '<span class="badge-tipo">BASE DE DATOS</span> <span class="badge-tipo">PAPER 2026</span>',
+                "Registro maestro CEPLAN/SINAPLAN o artículo reciente indexado en gestión y política pública.",
             ),
         ],
     },
@@ -229,6 +237,14 @@ FAMILIAS_LEYENDA = [
             (
                 '<span class="badge-portal badge-domain-green">GEOESPACIAL</span> <span class="badge-portal badge-domain-gold">PRESUPUESTAL</span> <span class="badge-portal badge-domain-pink">METEOROLÓGICO</span>',
                 "Dominios técnicos del FEN: cartografía de riesgo (SIGRID), gasto (MEF PP 0068) y clima (SENAMHI).",
+            ),
+            (
+                '<span class="badge-freq badge-domain-blue">IMPACTO • AÑO</span> <span class="badge-freq badge-domain-green">SEGUIMIENTO • AÑO</span> <span class="badge-freq badge-domain-gold">EDEP • AÑO</span> <span class="badge-freq badge-domain-pink">IMPLEMENTACIÓN • AÑO</span>',
+                "Tipo y año de evaluación pública: impacto causal, seguimiento SINAPLAN, diseño presupuestal (EDEP) o implementación.",
+            ),
+            (
+                '<span class="badge-freq badge-domain-blue">INVERSIÓN PÚBLICA</span> <span class="badge-freq badge-domain-blue">SERVICIO CIVIL</span> <span class="badge-freq badge-domain-blue">CAPACIDAD ESTATAL</span>',
+                "Ámbito temático de papers y ensayos en gestión, administración y política pública.",
             ),
         ],
     },

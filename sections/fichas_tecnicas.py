@@ -25,11 +25,11 @@ def _volver_al_catalogo(origen: str) -> None:
         del st.query_params["ficha"]
     if origen == "fen":
         st.query_params["vista"] = "fen"
-        st.session_state.current_page = "Fenómeno El Niño (FEN)"
+        st.session_state.current_page = "Monitoreo El Niño"
         st.session_state._last_qp_routed = "fen||"
     else:
         st.query_params["vista"] = "polity"
-        st.session_state.current_page = "Polity and Policy"
+        st.session_state.current_page = "Políticas y Datos"
         st.session_state._last_qp_routed = "polity||"
     st.rerun()
 
@@ -40,9 +40,9 @@ def render_ficha_tecnica_detalle(ficha_id: str, origen: str = "polity") -> bool:
     ficha = index.get(ficha_id)
 
     volver_label = (
-        "← Volver a Fenómeno El Niño (FEN)"
+        "← Volver a Monitoreo El Niño"
         if origen == "fen"
-        else "← Volver a Polity and Policy"
+        else "← Volver a Políticas y Datos"
     )
     if st.button(volver_label, key=f"btn_volver_ficha_top_{ficha_id}_{origen}"):
         _volver_al_catalogo(origen)
@@ -53,6 +53,11 @@ def render_ficha_tecnica_detalle(ficha_id: str, origen: str = "polity") -> bool:
 
     fid_canonico = str(ficha.get("id") or ficha_id)
     nombre_esc = html.escape(str(ficha.get("nombre") or "Fuente sin nombre"))
+    ruta_origen = "MONITOREO EL NIÑO" if origen == "fen" else "POLÍTICAS Y DATOS"
+    st.markdown(
+        f'<div class="apocuna-breadcrumb">{ruta_origen} / FICHA TÉCNICA / <strong>{html.escape(fid_canonico.upper())}</strong></div>',
+        unsafe_allow_html=True,
+    )
     inst_esc = html.escape(str(ficha.get("institucion") or "Institución Oficial"))
     cat_esc = html.escape(str(ficha.get("categoria") or "FUENTE DE INVESTIGACIÓN"))
     tipo_esc = html.escape(str(ficha.get("tipo_insumo") or "Datos / Recurso"))

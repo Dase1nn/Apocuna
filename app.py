@@ -14,9 +14,8 @@ from sections.home import render_home
 from sections.rastrea_la_norma import render_rastrea_la_norma
 from sections.polity import render_polity
 from sections.fen import render_fen
+from sections.biblioteca import render_biblioteca
 from sections.estudiantes import render_estudiantes
-from sections.notas import render_notas
-from sections.eventos import render_eventos
 from sections.sobre_el_sitio import render_sobre_el_sitio
 from sections.busqueda_global import render_busqueda_global
 
@@ -25,13 +24,18 @@ from utils.loaders import load_dashboard_kpis
 ROUTES = {
     "Inicio": render_home,
     "Rastrea la Norma": render_rastrea_la_norma,
+    "Políticas y Datos": render_polity,
     "Polity and Policy": render_polity,
+    "Monitoreo El Niño": render_fen,
     "🌊 Fenómeno El Niño (FEN)": render_fen,
     "Fenómeno El Niño (FEN)": render_fen,
+    "Biblioteca y Revistas": render_biblioteca,
+    "Notas": render_biblioteca,
+    "Eventos": render_biblioteca,
+    "Escuela y Becas": render_estudiantes,
     "Estudiantes (DEMO)": render_estudiantes,
     "Estudiantes": render_estudiantes,
-    "Notas": render_notas,
-    "Eventos": render_eventos,
+    "Sobre Apocuna": render_sobre_el_sitio,
     "Sobre el sitio": render_sobre_el_sitio,
 }
 
@@ -618,9 +622,13 @@ def main():
         if norma_qp or vista_qp in ("normas_comentadas", "rastrea_norma"):
             target_page = "Rastrea la Norma"
         elif vista_qp == "fen":
-            target_page = "Fenómeno El Niño (FEN)"
+            target_page = "Monitoreo El Niño"
         elif vista_qp == "polity" or ficha_qp:
-            target_page = "Polity and Policy"
+            target_page = "Políticas y Datos"
+        elif vista_qp == "biblioteca":
+            target_page = "Biblioteca y Revistas"
+        elif vista_qp == "escuela":
+            target_page = "Escuela y Becas"
 
         if target_page:
             st.session_state.current_page = target_page

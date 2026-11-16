@@ -16,6 +16,7 @@ from components.cards import (
     render_kpi_ribbon,
 )
 from sections.fichas_tecnicas import render_ficha_tecnica_detalle
+from utils.loaders import load_fen_catalogo
 
 PREVIEWS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "fen_previews")
 
@@ -378,213 +379,15 @@ def fetch_fen_radar() -> dict:
 
 
 # ==============================================================================
-# BLOQUE 3: IMPACTO SOCIOECONÓMICO / PRESUPUESTAL Y CATÁLOGO MAESTRO DE HERRAMIENTAS
+# BLOQUE 3: IMPACTO Y CATÁLOGO MAESTRO DE HERRAMIENTAS (DESDE data/fen_catalogo.json)
 # ==============================================================================
-FEN_IMPACT_CARDS = [
-    {
-        "id": "fen_impact_1",
-        "institucion": "MINISTERIO DE ECONOMÍA Y FINANZAS (MEF)",
-        "eje": "PRESUPUESTO • PP 0068 PREVAED",
-        "titulo": "MEF — Consulta Amigable y Programa Presupuestal 0068 (Reducción de Vulnerabilidad y Atención de Emergencias)",
-        "descripcion": (
-            "Seguimiento diario de la ejecución presupuestal (PIA, PIM, Certificado y Devengado) asignada a gobiernos "
-            "nacional, regionales y municipalidades en el PP 0068 PREVAED, FONDES y transferencias por decretos de urgencia FEN."
-        ),
-        "indicadores": ["PP 0068 PREVAED", "Avance Devengado (%)", "Gasto por Pliego / Distrito", "FONDES Emergencias"],
-        "url": "https://www.mef.gob.pe/es/seguimiento-de-la-ejecucion-presupuestal-consulta-amigable",
-        "btn_label": "Abrir Consulta Amigable MEF ↗",
-    },
-    {
-        "id": "fen_impact_2",
-        "institucion": "PCM • SECRETARÍA DE GOBIERNO Y TRANSFORMACIÓN DIGITAL",
-        "eje": "MICRODATOS • SINPAD / ANIN",
-        "titulo": "Plataforma Nacional de Datos Abiertos — Datasets de Emergencias, Damnificados y Obras de Prevención",
-        "descripcion": (
-            "Repositorio oficial de datos abiertos en formatos CSV/JSON con registros históricos y actuales del SINPAD (INDECI), "
-            "empadronamiento de damnificados, infraestructura pública dañada y ejecución de inversiones ante lluvias e inundaciones."
-        ),
-        "indicadores": ["Datasets CSV / JSON", "Emergencias SINPAD", "Padrón de Damnificados", "Inversiones ANIN"],
-        "url": "https://www.gob.pe/datosabiertos",
-        "btn_label": "Explorar Datos Abiertos PCM ↗",
-    },
-    {
-        "id": "fen_impact_3",
-        "institucion": "CONTRALORÍA GENERAL DE LA REPÚBLICA • OECE (SEACE)",
-        "eje": "CONTROL GUBERNAMENTAL • CONTRATACIONES",
-        "titulo": "Contraloría General y OECE — Control Concurrente de Obras de Prevención y Contrataciones por Emergencia",
-        "descripcion": (
-            "Fiscalización de descolmatación de cauces, defensas ribereñas, compra de maquinaria y contrataciones directas "
-            "bajo causal de emergencia o peligro inminente, identificando hitos de control y alertas de riesgos en la ejecución."
-        ),
-        "indicadores": ["Informes de Control Concurrente", "Contrataciones Directas SEACE", "Obras de Descolmatación", "Alertas de Riesgo"],
-        "url": "https://www.gob.pe/contraloria",
-        "btn_label": "Portal de Control Contraloría ↗",
-        "url_secundaria": "https://www.gob.pe/oece",
-        "label_secundaria": "Portal OECE (ex-OSCE)",
-    },
-    {
-        "id": "fen_impact_4",
-        "institucion": "MINSA (CDC PERÚ) • MIDAGRI",
-        "eje": "IMPACTO SANITARIO Y AGROPECUARIO",
-        "titulo": "CDC Perú (MINSA) y MIDAGRI — Vigilancia Epidemiológica Post-Lluvias y Monitoreo Agropecuario",
-        "descripcion": (
-            "Salas situacionales del Centro Nacional de Epidemiología (CDC Perú) para brotes climáticos asociados al FEN "
-            "(dengue, leptospirosis, EDAs, malaria) y estadísticas del MIDAGRI sobre superficie agrícola afectada y Seguro Agrario Catastrófico."
-        ),
-        "indicadores": ["Sala Situacional Dengue / FEN", "Vigilancia Epidemiológica", "Hectáreas Afectadas", "Seguro Agrario Catastrófico"],
-        "url": "https://www.dge.gob.pe/portalnuevo/",
-        "btn_label": "Abrir Portal CDC Perú (MINSA) ↗",
-        "url_secundaria": "https://www.gob.pe/midagri",
-        "label_secundaria": "Portal MIDAGRI",
-    },
-]
+def _get_fen_catalog_lists() -> tuple[list[dict], list[dict]]:
+    """Obtiene tarjetas de impacto y catálogo de herramientas FEN desde JSON cacheado."""
+    cat = load_fen_catalogo()
+    impact = cat.get("impact_cards", []) if isinstance(cat, dict) else []
+    tools = cat.get("master_tools", []) if isinstance(cat, dict) else []
+    return impact, tools
 
-MASTER_FEN_TOOLS = [
-    {
-        "id": "fen_tool_1",
-        "nombre": "Imágenes Satelitales GOES-19 (Canal Infrarrojo y Vapor de Agua)",
-        "institucion": "SENAMHI",
-        "categoria": "Meteorológico",
-        "frecuencia": "Tiempo real",
-        "utilidad": "Monitoreo de convección profunda, temperatura de topes nubosos y desplazamiento de sistemas de lluvias intensas en costa, sierra y selva.",
-        "url": "https://www.senamhi.gob.pe/?p=satelites-goes19",
-    },
-    {
-        "id": "fen_tool_2",
-        "nombre": "Avisos Meteorológicos de Corto Plazo y Activación de Quebradas",
-        "institucion": "SENAMHI",
-        "categoria": "Meteorológico",
-        "frecuencia": "Diaria",
-        "utilidad": "Alertas oficiales por niveles de peligro (amarillo, naranja, rojo) ante lluvias extremas, tormentas y activación repentina de quebradas (huaicos).",
-        "url": "https://www.senamhi.gob.pe/?p=avisos-meteorologicos",
-    },
-    {
-        "id": "fen_tool_3",
-        "nombre": "Monitoreo Hidrológico y Umbrales de Caudales de Ríos",
-        "institucion": "SENAMHI",
-        "categoria": "Hídrico/Saneamiento",
-        "frecuencia": "Diaria",
-        "utilidad": "Seguimiento hidrométrico de estaciones en las vertientes del Pacífico, Titicaca y Amazonas para anticipar desbordes e inundaciones fluviales.",
-        "url": "https://www.senamhi.gob.pe/?p=monitoreo-hidrologico",
-    },
-    {
-        "id": "fen_tool_4",
-        "nombre": "Windy.com — Modelos Numéricos ECMWF y GFS (Foco Perú / Pacífico)",
-        "institucion": "Windy / ECMWF / NOAA",
-        "categoria": "Meteorológico",
-        "frecuencia": "Tiempo real",
-        "utilidad": "Visualización multicapa de vientos alisios, anomalías térmicas del mar, presión atmosférica y pronóstico acumulado de lluvias hasta 10 días.",
-        "url": "https://www.windy.com/-9.190/-75.015?temp,-9.190,-75.015,5",
-    },
-    {
-        "id": "fen_tool_5",
-        "nombre": "Portal Oficial ENFEN y Monitoreo Bio-Oceanográfico del Pacífico",
-        "institucion": "ENFEN / IMARPE",
-        "categoria": "Oceanográfico",
-        "frecuencia": "Mensual",
-        "utilidad": "Estado del Sistema de Alerta ante El Niño Costero / La Niña, Índice Costero El Niño (ICEN), anomalías TSM en Niño 1+2 y ondas Kelvin.",
-        "url": "https://enfen.imarpe.gob.pe/",
-    },
-    {
-        "id": "fen_tool_6",
-        "nombre": "NOAA Climate Prediction Center — ENSO Diagnostic Discussion",
-        "institucion": "NOAA / NWS (EE. UU.)",
-        "categoria": "Oceanográfico",
-        "frecuencia": "Semanal",
-        "utilidad": "Referencia internacional sobre el Índice Oceánico de El Niño (ONI), evolución térmica en Niño 3.4 y proyecciones probabilísticas globales.",
-        "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/",
-    },
-    {
-        "id": "fen_tool_7",
-        "nombre": "Dirección de Hidrografía y Navegación (Oceanografía y Nivel del Mar)",
-        "institucion": "DHN — Marina de Guerra del Perú",
-        "categoria": "Oceanográfico",
-        "frecuencia": "Diaria",
-        "utilidad": "Monitoreo de estaciones mareográficas a lo largo del litoral peruano, anomalías del nivel medio del mar, oleajes anómalos y temperatura costera.",
-        "url": "https://www.dhn.mil.pe/portal/",
-    },
-    {
-        "id": "fen_tool_8",
-        "nombre": "Copernicus Marine Service (CMEMS) — Ocean Monitoring Indicators",
-        "institucion": "Unión Europea / Copernicus",
-        "categoria": "Oceanográfico",
-        "frecuencia": "Diaria",
-        "utilidad": "Mapas satelitales globales de anomalía de temperatura superficial del mar (SST), altimetría oceánica, salinidad y corrientes ecuatoriales.",
-        "url": "https://marine.copernicus.eu/",
-    },
-    {
-        "id": "fen_tool_9",
-        "nombre": "Centro de Análisis y Monitoreo CAMI Yaku (Cuencas y Resiliencia de EPS)",
-        "institucion": "SUNASS",
-        "categoria": "Hídrico/Saneamiento",
-        "frecuencia": "Permanente",
-        "utilidad": "Diagnóstico hidroclimático de cuencas de aporte, monitoreo de sequías/inundaciones y vulnerabilidad de las 50 Empresas Prestadoras de Servicios de Saneamiento.",
-        "url": "https://www.gob.pe/institucion/sunass/campa%C3%B1as/21633-cami-yaku",
-    },
-    {
-        "id": "fen_tool_10",
-        "nombre": "Observatorio Nacional del Agua y Recursos Hídricos (SNIRH)",
-        "institucion": "Autoridad Nacional del Agua (ANA)",
-        "categoria": "Hídrico/Saneamiento",
-        "frecuencia": "Diaria",
-        "utilidad": "Información oficial sobre volúmenes de reservorios y represas nacionales, disponibilidad hídrica por cuenca, puntos críticos y fajas marginales.",
-        "url": "https://snirh.ana.gob.pe/",
-    },
-    {
-        "id": "fen_tool_11",
-        "nombre": "SIGRID v3 — Sistema de Información para la Gestión del Riesgo de Desastres",
-        "institucion": "CENEPRED",
-        "categoria": "Geoespacial/Riesgos",
-        "frecuencia": "Permanente",
-        "utilidad": "Visor cartográfico nacional con escenarios de riesgo por lluvias intensas, inundaciones, movimientos en masa, susceptibilidad territorial y elementos expuestos.",
-        "url": "https://sigrid.cenepred.gob.pe/sigridv3/",
-    },
-    {
-        "id": "fen_tool_12",
-        "nombre": "INDECI / COEN — Reportes de Emergencias y Peligros (SINPAD)",
-        "institucion": "INDECI / COEN",
-        "categoria": "Geoespacial/Riesgos",
-        "frecuencia": "Diaria",
-        "utilidad": "Consolidación de daños a la vida, salud, viviendas e infraestructura pública (SINPAD) y boletines operativos del Centro de Operaciones de Emergencia Nacional.",
-        "url": "https://www.gob.pe/indeci",
-    },
-    {
-        "id": "fen_tool_13",
-        "nombre": "IGP — Monitoreo Geofísico de Deslizamientos y Huaicos (CENSIS)",
-        "institucion": "Instituto Geofísico del Perú (IGP)",
-        "categoria": "Geoespacial/Riesgos",
-        "frecuencia": "Permanente",
-        "utilidad": "Investigación aplicada sobre dinámica de flujos de detritos (huaicos), monitoreo geofísico en quebradas instrumentadas y variabilidad climática.",
-        "url": "https://www.gob.pe/igp",
-    },
-    {
-        "id": "fen_tool_14",
-        "nombre": "ANIN — Cartera de Proyectos de Prevención y Drenaje Pluvial",
-        "institucion": "Autoridad Nacional de Infraestructura (ANIN)",
-        "categoria": "Presupuestal/Impacto",
-        "frecuencia": "Mensual",
-        "utilidad": "Seguimiento de grandes proyectos de soluciones integrales en ríos, quebradas y sistemas de drenaje pluvial en las cuencas más vulnerables al FEN.",
-        "url": "https://www.gob.pe/anin",
-    },
-    {
-        "id": "fen_tool_15",
-        "nombre": "Consulta Amigable MEF — Programa Presupuestal 0068 (PREVAED)",
-        "institucion": "Ministerio de Economía y Finanzas (MEF)",
-        "categoria": "Presupuestal/Impacto",
-        "frecuencia": "Diaria",
-        "utilidad": "Auditoría financiera en tiempo real del presupuesto devengado para reducción de vulnerabilidad y atención de emergencias en los 3 niveles de gobierno.",
-        "url": "https://www.mef.gob.pe/es/seguimiento-de-la-ejecucion-presupuestal-consulta-amigable",
-    },
-    {
-        "id": "fen_tool_16",
-        "nombre": "CDC Perú — Sala Situacional de Brotes y Enfermedades Metaxénicas (Dengue / FEN)",
-        "institucion": "MINSA / CDC Perú",
-        "categoria": "Presupuestal/Impacto",
-        "frecuencia": "Semanal",
-        "utilidad": "Monitoreo epidemiológico de incremento de casos de dengue, leptospirosis y enfermedades diarreicas agudas desencadenadas por anomalías térmicas y lluvias.",
-        "url": "https://www.dge.gob.pe/portalnuevo/",
-    },
-]
 
 CATALOG_CATEGORIES = [
     "Todas",
@@ -596,33 +399,26 @@ CATALOG_CATEGORIES = [
 ]
 
 
-def _filter_catalog_tools(search_query: str, selected_category: str) -> list[dict]:
-    """Filtra el directorio maestro de herramientas del FEN por categoría y término de búsqueda."""
+def _filter_catalog_tools(tools: list[dict], search_query: str, selected_category: str) -> list[dict]:
+    """Filtra el directorio maestro de herramientas del FEN por categoría y término."""
     q = search_query.strip().lower()
     filtered = []
-    for tool in MASTER_FEN_TOOLS:
-        if selected_category != "Todas" and tool["categoria"] != selected_category:
+    for tool in tools:
+        if selected_category != "Todas" and tool.get("categoria") != selected_category:
             continue
         if q:
-            haystack = f"{tool['nombre']} {tool['institucion']} {tool['categoria']} {tool['utilidad']}".lower()
+            haystack = f"{tool.get('nombre', '')} {tool.get('institucion', '')} {tool.get('categoria', '')} {tool.get('utilidad', '')}".lower()
             if q not in haystack:
                 continue
         filtered.append(tool)
     return filtered
 
 
-def _render_fen_header():
-    """Renderiza el encabezado institucional y la cinta ejecutiva de KPIs de la sección FEN."""
+def _render_fen_header(tools_count: int):
+    """Renderiza el encabezado compacto y la cinta ejecutiva de KPIs de Monitoreo El Niño."""
+    st.title("🌊 Monitoreo El Niño (FEN)")
     st.markdown(
-        """
-        <div class="snow-card hero-intro-block">
-            <div class="hero-eyebrow">OBSERVATORIO CLIMÁTICO, GESTIÓN DEL RIESGO DE DESASTRES Y GOBERNANZA TERRITORIAL</div>
-            <h1 class="hero-intro-title">Fenómeno El Niño (FEN): Monitoreo en Tiempo Real, Normativa e Impacto Público</h1>
-            <p class="hero-intro-text">
-                Centro integrado de inteligencia climática y territorial que articula las plataformas satelitales, oceanográficas y geoespaciales del Estado peruano y agencias internacionales con el seguimiento de declaratorias de emergencia, ejecución presupuestal (PP 0068 PREVAED) e impactos sectoriales.
-            </p>
-        </div>
-        """,
+        '<p class="hero-subtitle">Vigilancia satelital y oceanográfica en tiempo real, declaratorias de emergencia y presupuesto PP 0068.</p>',
         unsafe_allow_html=True,
     )
 
@@ -631,26 +427,26 @@ def _render_fen_header():
             {
                 "icon": "🛰️",
                 "value": "5",
-                "label": "Visores en Tiempo Real",
+                "label": "Visores en Vivo",
                 "sub": "GOES-19, Windy, ENFEN, CAMI Yaku y SIGRID",
             },
             {
                 "icon": "📡",
-                "value": f"{len(MASTER_FEN_TOOLS)}",
-                "label": "Herramientas Verificadas",
-                "sub": "100% enlaces auditados (HTTP 200)",
+                "value": f"{tools_count}",
+                "label": "Herramientas",
+                "sub": "Enlaces oficiales auditados",
             },
             {
                 "icon": "⚖️",
                 "value": "TTL 30m",
-                "label": "Radar Legal y Prensa",
-                "sub": "El Peruano, PCM, ANIN, SENAMHI y COEN",
+                "label": "Radar Legal",
+                "sub": "El Peruano, PCM, ANIN y COEN",
             },
             {
                 "icon": "💰",
                 "value": "PP 0068",
-                "label": "Trazabilidad de Impacto",
-                "sub": "Presupuesto PREVAED, Contraloría y Salud",
+                "label": "Presupuesto FEN",
+                "sub": "PREVAED, Contraloría y Salud",
             },
         ]
     )
@@ -658,14 +454,10 @@ def _render_fen_header():
 
 def _render_block_2_radar():
     """Renderiza el Bloque 2: Radar Automatizado de Noticias y Normativa sobre El Niño."""
-    st.markdown("---")
     col_title, col_action = st.columns([3.4, 1.1])
     with col_title:
-        st.subheader("📡 Radar Automatizado de Normativa, Declaratorias y Coyuntura sobre El Niño")
-        st.caption(
-            "Monitoreo dinámico de decretos de emergencia, resoluciones sectoriales y cobertura verificada sobre lluvias extremas, "
-            "ENFEN, activación de quebradas y obras de prevención."
-        )
+        st.subheader("📡 Radar de Declaratorias y Coyuntura")
+        st.caption("Decretos de emergencia, avisos ENFEN/SENAMHI y cobertura verificada en tiempo real.")
     with col_action:
         st.write("")
         if st.button("🔄 Actualizar radar ahora", key="btn_refresh_fen_radar", use_container_width=True):
@@ -676,9 +468,8 @@ def _render_block_2_radar():
     st.markdown(
         f'<div class="fen-radar-status-bar">'
         f'<span><span class="status-dot-live"></span> <strong>Pipeline RSS Activo:</strong> '
-        f'Filtros: <code>"Fenómeno El Niño"</code> · <code>"ENFEN"</code> · <code>"SENAMHI lluvias"</code> · '
-        f'<code>"declaratoria de emergencia lluvias"</code> · <code>"COEN INDECI"</code></span>'
-        f'<span class="fen-radar-sync-pill">Última sincronización: {radar_data["sync_utc"]}</span>'
+        f'<code>El Niño</code> · <code>ENFEN</code> · <code>SENAMHI</code> · <code>COEN INDECI</code></span>'
+        f'<span class="fen-radar-sync-pill">Sync: {radar_data["sync_utc"]}</span>'
         f'</div>',
         unsafe_allow_html=True,
     )
@@ -687,8 +478,8 @@ def _render_block_2_radar():
     with col_oficial:
         st.markdown(
             '<div class="fen-column-header">'
-            '<h3>⚖️ A. Normas, Declaratorias y Sector Oficial</h3>'
-            '<p>El Peruano, PCM, ANIN, ANA, MIDAGRI, VIVIENDA, INDECI y ENFEN</p>'
+            '<h3>⚖️ A. Normas y Sector Oficial</h3>'
+            '<p>El Peruano, PCM, ANIN, ANA, INDECI y ENFEN</p>'
             '</div>',
             unsafe_allow_html=True,
         )
@@ -700,8 +491,8 @@ def _render_block_2_radar():
     with col_prensa:
         st.markdown(
             '<div class="fen-column-header">'
-            '<h3>📰 B. Coyuntura Climática y Prensa Nacional</h3>'
-            '<p>Cobertura verificada de agencias y medios nacionales sobre lluvias, caudales y alertas</p>'
+            '<h3>📰 B. Prensa Climática</h3>'
+            '<p>Reportes de lluvias, caudales y activación de quebradas</p>'
             '</div>',
             unsafe_allow_html=True,
         )
@@ -711,44 +502,37 @@ def _render_block_2_radar():
         )
 
 
-def _render_block_3_ecosystem():
-    """Renderiza el Bloque 3: Impacto Socioeconómico/Presupuestal + Catálogo Maestro Filtrable."""
-    st.markdown("---")
-    st.subheader("🏛️ Ecosistema de Datos Públicos para Medir el Impacto Socioeconómico y Presupuestal del FEN")
-    st.caption(
-        "Fuentes oficiales para auditar el gasto público en prevención y atención de desastres, "
-        "contrataciones de emergencia, afectación agrícola y vigilancia epidemiológica."
-    )
-    render_fen_impact_grid(FEN_IMPACT_CARDS)
+def _render_block_3_ecosystem(impact_cards: list[dict], master_tools: list[dict]):
+    """Renderiza el Bloque 3: Impacto Socioeconómico/Presupuestal + Catálogo Filtrable."""
+    st.subheader("💰 Presupuesto PP 0068 e Impacto Sectorial")
+    st.caption("Fuentes oficiales para auditar gasto PREVAED, damnificados SINPAD, control y salud.")
+    render_fen_impact_grid(impact_cards)
 
     st.markdown("---")
-    st.subheader("🧭 Catálogo Maestro y Filtrable de Herramientas de Monitoreo del FEN")
-    st.caption(
-        "Directorio técnico consolidado para investigadores, analistas de políticas públicas y equipos de gestión del riesgo de desastres."
-    )
+    st.subheader(f"🧭 Catálogo de Herramientas FEN ({len(master_tools)})")
 
     col_search, col_cat = st.columns([2.2, 1.3])
     with col_search:
         search_q = st.text_input(
-            "🔎 Buscar herramienta por nombre, institución, variable (SST, caudales, quebradas, presupuesto):",
+            "🔎 Buscar herramienta o variable:",
             placeholder="Ej: SENAMHI, ENFEN, NOAA, CamiYaku, SIGRID, ANA, PREVAED...",
             key="fen_catalog_search",
         )
     with col_cat:
         selected_cat = st.selectbox(
-            "Categoría técnica:",
+            "Categoría:",
             options=CATALOG_CATEGORIES,
             index=0,
             key="fen_catalog_category",
         )
 
-    filtered_tools = _filter_catalog_tools(search_q, selected_cat)
-    st.caption(f"Mostrando **{len(filtered_tools)}** de **{len(MASTER_FEN_TOOLS)}** plataformas oficiales auditadas.")
+    filtered_tools = _filter_catalog_tools(master_tools, search_q, selected_cat)
+    st.caption(f"Mostrando **{len(filtered_tools)}** de **{len(master_tools)}** plataformas verificadas.")
 
     tab_grid, tab_table = st.tabs(
         [
-            f"🗂️ Vista de Tarjetas Técnicas ({len(filtered_tools)})",
-            f"📋 Tabla Comparativa Completa ({len(filtered_tools)})",
+            f"🗂️ Tarjetas ({len(filtered_tools)})",
+            f"📋 Tabla ({len(filtered_tools)})",
         ]
     )
     with tab_grid:
@@ -760,10 +544,10 @@ def _render_block_3_ecosystem():
                 df,
                 column_config={
                     "nombre": st.column_config.TextColumn("Herramienta / Plataforma", width="medium"),
-                    "institucion": st.column_config.TextColumn("Institución Responsable", width="small"),
+                    "institucion": st.column_config.TextColumn("Institución", width="small"),
                     "categoria": st.column_config.TextColumn("Categoría", width="small"),
                     "frecuencia": st.column_config.TextColumn("Actualización", width="small"),
-                    "utilidad": st.column_config.TextColumn("Qué mide / Utilidad para Gestión Pública", width="large"),
+                    "utilidad": st.column_config.TextColumn("Qué mide / Utilidad", width="large"),
                     "url": st.column_config.LinkColumn("Enlace Directo", display_text="Abrir plataforma ↗", width="small"),
                 },
                 hide_index=True,
@@ -774,20 +558,29 @@ def _render_block_3_ecosystem():
 
 
 def render_fen():
-    """Punto de entrada principal de la sección Fenómeno El Niño (FEN)."""
+    """Punto de entrada principal de la sección Monitoreo El Niño (FEN)."""
     ficha_qp = st.query_params.get("ficha")
     if ficha_qp:
         render_ficha_tecnica_detalle(str(ficha_qp), origen="fen")
         return
 
-    _render_fen_header()
+    impact_cards, master_tools = _get_fen_catalog_lists()
+    _render_fen_header(len(master_tools))
 
-    st.subheader("🛰️ Panel Protagonista de Monitoreo Satelital, Oceanográfico y Geoespacial en Tiempo Real")
-    st.caption(
-        "Acceso directo a las 5 infraestructuras críticas de vigilancia del Fenómeno El Niño en el Perú y el Pacífico Oriental (Disposición 2x2 + 1)."
-    )
-    top_four, bottom_wide = _get_hero_cards()
-    render_fen_hero_grid(top_four, bottom_wide)
+    tab_visores, tab_radar, tab_eco = st.tabs([
+        "🛰️ Visores en Vivo (5)",
+        "📡 Radar Legal y Prensa",
+        f"💰 Presupuesto y Catálogo ({len(master_tools)})",
+    ])
 
-    _render_block_2_radar()
-    _render_block_3_ecosystem()
+    with tab_visores:
+        st.subheader("🛰️ Monitoreo Satelital, Oceanográfico y Geoespacial")
+        st.caption("Acceso directo a las 5 plataformas críticas en el Perú y el Pacífico Oriental.")
+        top_four, bottom_wide = _get_hero_cards()
+        render_fen_hero_grid(top_four, bottom_wide)
+
+    with tab_radar:
+        _render_block_2_radar()
+
+    with tab_eco:
+        _render_block_3_ecosystem(impact_cards, master_tools)

@@ -1,0 +1,83 @@
+[
+  {
+    "id": "f_030",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "TIC en Hogares (Nota de Prensa II Trim. 2026)",
+    "institucion": "INEI",
+    "descripcion_corta": "Nota de Prensa sobre conectividad y acceso a internet en hogares peruanos (II Trim. 2026).",
+    "url": "https://www.gob.pe/institucion/inei/noticias/1450362-el-64-5-de-los-hogares-del-pais-tiene-conexion-a-internet-durante-el-segundo-trimestre-de-2026",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_031",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "TIC en Hogares (Informe Técnico I Trim. 2026)",
+    "institucion": "INEI",
+    "descripcion_corta": "Informe Técnico sobre tecnologías de información y comunicación en los hogares.",
+    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655560-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-i-trimestre-2026",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_032",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "ENAHO Estado de la Niñez 2025",
+    "institucion": "INEI",
+    "descripcion_corta": "Informe estadístico de condiciones de vida de la niñez y adolescencia (ENAHO 2025).",
+    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655583-estado-de-la-ninez-y-adolescencia-2025",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_033",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "Estructura Empresarial Lima 2025",
+    "institucion": "INEI",
+    "descripcion_corta": "Informe demográfico de empresas, formalidad y tejido productivo en la región Lima.",
+    "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655609-region-lima-estructura-empresarial-2025",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_034",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "Estudio Niñez Indígena y Afroperuana (Nota 2026)",
+    "institucion": "INEI",
+    "descripcion_corta": "Presentación de indicadores sociales sobre niñez indígena y afroperuana en el Perú.",
+    "url": "https://www.gob.pe/institucion/inei/noticias/1449181-presentan-estudio-sobre-el-estado-de-la-ninez-y-adolescencia-indigena-y-afroperuana-en-el-peru",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_035",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "Informe Niñez Indígena y Afroperuana",
+    "institucion": "UNICEF",
+    "descripcion_corta": "Análisis de brechas territoriales, educación y salud en niñez indígena y afroperuana.",
+    "url": "https://www.unicef.org/peru/informes/ninez-y-adolescencia-indigena-y-afroperuana",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_036",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "Integridad de Información Elecciones 2026",
+    "institucion": "PNUD",
+    "descripcion_corta": "Informe del PNUD sobre integridad informativa en las Elecciones Generales 2026.",
+    "url": "https://www.undp.org/es/peru/publicaciones/integridad-de-la-informacion-en-las-elecciones-generales-2026",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_037",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "Hito de Control (Puerto San Juan de Marcona)",
+    "institucion": "Contraloría General de la República",
+    "descripcion_corta": "Informe de control concurrente sobre retrasos e inversiones portuarias en Marcona.",
+    "url": "https://www.gob.pe/institucion/contraloria/noticias/1449744-contraloria-advierte-retraso-en-inversiones-del-nuevo-puerto-de-san-juan-de-marcona-por-demora-en-entrega-de-terrenos",
+    "tipo": "informe"
+  },
+  {
+    "id": "f_038",
+    "bloque": "Informes sectoriales recientes",
+    "nombre": "Intervención Obra Educativa Paralizada (Áncash)",
+    "institucion": "Contraloría General de la República",
+    "descripcion_corta": "Intervención de control gubernamental para destrabar infraestructura educativa en Chimbote.",
+    "url": "https://www.gob.pe/institucion/contraloria/noticias/1373454-contraloria-interviene-en-chimbote-para-destrabar-obra-educativa-paralizada",
+    "tipo": "informe"
+  }
+]

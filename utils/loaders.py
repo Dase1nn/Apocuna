@@ -1,7 +1,6 @@
 import os
 import glob
 import json
-import markdown
 import requests
 import streamlit as st
 
@@ -158,6 +157,20 @@ def load_evaluaciones_politicas() -> list:
     """Carga el catálogo curado de evaluaciones de políticas y programas públicos en el Perú."""
     datos = _read_local_json("data", "evaluaciones_politicas.json", default=[], warn_on_error=True)
     return datos if isinstance(datos, list) else []
+
+
+@st.cache_data(show_spinner=False)
+def load_informes_sectoriales() -> list:
+    """Carga el registro de informes técnicos y sectoriales recientes."""
+    datos = _read_local_json("data", "informes_sectoriales.json", default=[], warn_on_error=True)
+    return datos if isinstance(datos, list) else []
+
+
+@st.cache_data(show_spinner=False)
+def load_fen_catalogo() -> dict:
+    """Carga las tarjetas de impacto y el catálogo maestro de herramientas del FEN."""
+    datos = _read_local_json("data", "fen_catalogo.json", default={}, warn_on_error=True)
+    return datos if isinstance(datos, dict) else {}
 
 
 @st.cache_data(show_spinner=False)
@@ -392,19 +405,6 @@ def load_becas():
     return _read_local_json("data", "becas.json")
 
 
-@st.cache_data(show_spinner=False)
-def load_sobre_el_sitio_html() -> str:
-    """Lee y compila a HTML data/sobre_el_sitio.md una única vez en caché."""
-    md_path = os.path.join("data", "sobre_el_sitio.md")
-    if not os.path.exists(md_path):
-        return ""
-    try:
-        with open(md_path, "r", encoding="utf-8") as f:
-            return markdown.markdown(f.read())
-    except Exception:
-        return ""
-
-
 @st.cache_data(ttl=600, show_spinner=False)
 def load_estado_pipeline() -> dict:
     """Carga el estado operativo del último pipeline automatizado."""
@@ -417,6 +417,7 @@ def load_dashboard_kpis() -> dict:
     noticias = load_noticias()
     normas = load_normas()
     fuentes = load_fuentes()
+    evaluaciones = load_evaluaciones_politicas()
     cursos = load_cursos()
     becas = load_becas()
     eventos = load_eventos()
@@ -430,6 +431,7 @@ def load_dashboard_kpis() -> dict:
         "noticias_total": len(noticias),
         "normas_total": len(normas),
         "fuentes_total": len(fuentes),
+        "evaluaciones_total": len(evaluaciones),
         "cursos_total": len(cursos),
         "becas_total": len(becas),
         "eventos_total": len(eventos),
