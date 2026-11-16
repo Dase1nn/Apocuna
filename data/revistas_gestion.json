@@ -1,0 +1,203 @@
+{
+  "revistas": [
+    {
+      "id": "rev_001",
+      "titulo": "Saber Servir",
+      "institucion": "Escuela Nacional de Administración Pública (ENAP - SERVIR)",
+      "pais_alcance": "Perú",
+      "tipo": "REVISTA",
+      "acceso": "Acceso Abierto",
+      "frecuencia": "Semestral",
+      "descripcion": "Revista oficial de gestión pública, servicio civil, integridad, descentralización y políticas públicas del Estado peruano.",
+      "url": "https://revista.enap.edu.pe"
+    },
+    {
+      "id": "rev_002",
+      "titulo": "Revista del CLAD Reforma y Democracia",
+      "institucion": "Centro Latinoamericano de Administración para el Desarrollo (CLAD)",
+      "pais_alcance": "Latinoamérica",
+      "tipo": "REVISTA",
+      "acceso": "Acceso Abierto",
+      "frecuencia": "Cuatrimestral",
+      "descripcion": "Referente regional sobre reforma del Estado, función pública, capacidad estatal, valor público y modernización administrativa.",
+      "url": "https://clad.org/publicaciones/revista-reforma-y-democracia/"
+    },
+    {
+      "id": "rev_003",
+      "titulo": "Gestión y Política Pública (GyPP)",
+      "institucion": "Centro de Investigación y Docencia Económicas (CIDE)",
+      "pais_alcance": "México / Latinoamérica",
+      "tipo": "REVISTA",
+      "acceso": "Acceso Abierto",
+      "frecuencia": "Semestral",
+      "descripcion": "Publicación líder en lengua española en análisis empírico y teórico de políticas públicas, implementación, gobernanza y burocracia.",
+      "url": "https://gestionypoliticapublica.cide.edu/index.php/gypp/es"
+    },
+    {
+      "id": "rev_004",
+      "titulo": "Estado, Gobierno y Gestión Pública",
+      "institucion": "Facultad de Gobierno — Universidad de Chile",
+      "pais_alcance": "Chile / Sudamérica",
+      "tipo": "REVISTA",
+      "acceso": "Acceso Abierto",
+      "frecuencia": "Semestral",
+      "descripcion": "Revista académica sobre evaluación de desempeño institucional, programas socioeducativos, gobernanza territorial y políticas sectoriales.",
+      "url": "https://revistaeggp.uchile.cl/"
+    },
+    {
+      "id": "rev_005",
+      "titulo": "Gestión y Análisis de Políticas Públicas (GAPP)",
+      "institucion": "Instituto Nacional de Administración Pública (INAP)",
+      "pais_alcance": "Iberoamérica",
+      "tipo": "REVISTA",
+      "acceso": "Acceso Abierto",
+      "frecuencia": "Cuatrimestral",
+      "descripcion": "Investigaciones sobre diseño, evaluación de impacto, desmantelamiento de políticas y administración pública comparada en Iberoamérica.",
+      "url": "https://revistasonline.inap.es/index.php/GAPP"
+    },
+    {
+      "id": "rev_006",
+      "titulo": "Revista de Ciencia Política y Gobierno",
+      "institucion": "Pontificia Universidad Católica del Perú (PUCP)",
+      "pais_alcance": "Perú / Región Andina",
+      "tipo": "REVISTA",
+      "acceso": "Acceso Abierto",
+      "frecuencia": "Semestral",
+      "descripcion": "Artículos revisados por pares sobre instituciones políticas, tecnocracia, relaciones Ejecutivo-Legislativo y diseño de políticas públicas.",
+      "url": "https://revistas.pucp.edu.pe/index.php/cienciapolitica"
+    },
+    {
+      "id": "rev_007",
+      "titulo": "Politai: Revista de Ciencia Política",
+      "institucion": "Pontificia Universidad Católica del Perú (PUCP)",
+      "pais_alcance": "Perú",
+      "tipo": "REVISTA",
+      "acceso": "Acceso Abierto",
+      "frecuencia": "Semestral",
+      "descripcion": "Revista especializada en diseño institucional, equilibrio de poderes, ciudadanía, reformas estatales y política subnacional peruana.",
+      "url": "https://revistas.pucp.edu.pe/index.php/politai"
+    },
+    {
+      "id": "rev_008",
+      "titulo": "OPERA (Observatorio de Políticas, Ejecución y Resultados de la Administración)",
+      "institucion": "Universidad Externado de Colombia",
+      "pais_alcance": "Colombia / Latinoamérica",
+      "tipo": "REVISTA",
+      "acceso": "Acceso Abierto",
+      "frecuencia": "Semestral",
+      "descripcion": "Publicación andina enfocada en evaluación de gestión pública, descentralización, finanzas territoriales y políticas comparadas.",
+      "url": "https://revistas.uexternado.edu.co/index.php/opera"
+    }
+  ],
+  "memorias_congresos": [
+    {
+      "id": "mem_001",
+      "titulo": "Congreso Internacional del CLAD sobre la Reforma del Estado y de la Administración Pública",
+      "institucion": "CLAD (Centro Latinoamericano de Administración para el Desarrollo)",
+      "alcance": "Iberoamérica",
+      "tipo": "MEMORIA CONGRESO",
+      "descripcion": "Actas, ponencias, paneles y documentos de trabajo anuales sobre modernización del Estado, servicio civil meritocrático, gobierno abierto e IA en gestión pública.",
+      "url": "https://clad.org/actividades/congreso-clad/"
+    },
+    {
+      "id": "mem_002",
+      "titulo": "GIGAPP Estudios Working Papers y Congreso Internacional de Administración y Políticas Públicas",
+      "institucion": "Grupo de Investigación en Gobierno, Administración y Políticas Públicas (GIGAPP)",
+      "alcance": "Iberoamérica",
+      "tipo": "MEMORIA CONGRESO",
+      "descripcion": "Colección de memorias y documentos de trabajo presentados en los congresos internacionales GIGAPP sobre capacidades estatales, innovación pública y gobernanza.",
+      "url": "https://www.gigapp.org/ewp/index.php/GIGAPP-EWP"
+    },
+    {
+      "id": "mem_003",
+      "titulo": "Portal Institucional GIGAPP — Congresos, Grupos de Trabajo y Publicaciones",
+      "institucion": "GIGAPP",
+      "alcance": "Iberoamérica",
+      "tipo": "MEMORIA CONGRESO",
+      "descripcion": "Archivo general de convocatorias, memorias temáticas, ensayos y redes iberoamericanas de administración pública.",
+      "url": "https://www.gigapp.org"
+    }
+  ],
+  "papers_ensayos": [
+    {
+      "id": "pap_001",
+      "anio": "2026",
+      "revista": "Saber Servir (ENAP - SERVIR)",
+      "ambito": "Perú — Inversión Pública",
+      "tipo": "PAPER 2026",
+      "titulo": "Paralización de obras públicas en el Perú: causas estructurales y desafíos para la gestión de inversiones",
+      "resumen": "Identifica nudos críticos en expedientes técnicos, arbitrajes, capacidades subnacionales y gobernanza de Invierte.pe responsables de la paralización de proyectos.",
+      "url": "https://revista.enap.edu.pe/index.php/ss/article/download/249/201"
+    },
+    {
+      "id": "pap_002",
+      "anio": "2026",
+      "revista": "Saber Servir (ENAP - SERVIR)",
+      "ambito": "Perú — Política Laboral y Social",
+      "tipo": "PAPER 2026",
+      "titulo": "Empleabilidad e inclusión social: factores asociados a la inserción laboral de poblaciones vulnerables en Lima y Callao",
+      "resumen": "Analiza determinantes de empleabilidad y efectividad de servicios públicos de intermediación y capacitación laboral para grupos vulnerables.",
+      "url": "https://revista.enap.edu.pe/index.php/ss/article/download/250/202"
+    },
+    {
+      "id": "pap_003",
+      "anio": "2026",
+      "revista": "Saber Servir (ENAP - SERVIR)",
+      "ambito": "Perú — Servicio Civil",
+      "tipo": "PAPER 2026",
+      "titulo": "La determinación de la sanción de suspensión en el servicio civil: propuesta de un sistema de dosificación cuantitativa",
+      "resumen": "Propone criterios objetivos y ponderables de proporcionalidad para el régimen disciplinario de la Ley del Servicio Civil en entidades públicas peruanas.",
+      "url": "https://revista.enap.edu.pe/index.php/ss/article/download/251/203"
+    },
+    {
+      "id": "pap_004",
+      "anio": "2026",
+      "revista": "Revista del CLAD Reforma y Democracia",
+      "ambito": "Latinoamérica — Capacidad Estatal",
+      "tipo": "PAPER 2026",
+      "titulo": "Capacidad estatal y valor público en institutos de investigación latinoamericanos: un modelo teórico",
+      "resumen": "Desarrolla un marco analítico que vincula capacidades administrativas, legitimidad científica y creación de valor público en entidades de I+D estatales.",
+      "url": "https://revista.clad.org/ryd/article/download/759/908"
+    },
+    {
+      "id": "pap_005",
+      "anio": "2026",
+      "revista": "Gestión y Política Pública (CIDE)",
+      "ambito": "Latinoamérica — Teoría de Políticas",
+      "tipo": "PAPER 2026",
+      "titulo": "El desmantelamiento de políticas: Modelo integral para analizar procesos, contenido y efectos",
+      "resumen": "Propone dimensiones empíricas para medir retrocesos, vaciamiento presupuestal o desmantelamiento simbólico y activo de políticas públicas consolidadas.",
+      "url": "https://www.redalyc.org/journal/133/133164289001/133164289001.pdf"
+    },
+    {
+      "id": "pap_006",
+      "anio": "2026",
+      "revista": "Estado, Gobierno y Gestión Pública (U. de Chile)",
+      "ambito": "Perú — Evaluación Retrospectiva",
+      "tipo": "PAPER 2026",
+      "titulo": "Crónica de un fracaso anunciado: la gestión precipitada y verticalista del programa socioeducativo Una Computadora Por Niño en el Perú (2007-2012)",
+      "resumen": "Estudio de caso sobre fallas de implementación top-down, brechas de capacitación docente y déficit de evaluación previa en política educativa tecnológica.",
+      "url": "https://doi.org/10.5354/0717-8980.2026.84215"
+    },
+    {
+      "id": "pap_007",
+      "anio": "2026",
+      "revista": "Estado, Gobierno y Gestión Pública (U. de Chile)",
+      "ambito": "Latinoamérica — Evaluación del Desempeño",
+      "tipo": "PAPER 2026",
+      "titulo": "Desacoplamiento institucional en el Sistema de Evaluación del Desempeño",
+      "resumen": "Examina cómo los sistemas de medición y seguimiento del desempeño estatal generan rutinas burocráticas desacopladas de decisiones sustantivas.",
+      "url": "https://doi.org/10.5354/0717-8980.2026.84919"
+    },
+    {
+      "id": "pap_008",
+      "anio": "2026",
+      "revista": "Politai: Revista de Ciencia Política (PUCP)",
+      "ambito": "Perú — Instituciones y Política",
+      "tipo": "PAPER 2026",
+      "titulo": "¿Vulneración al principio de separación de poderes?: El particular diseño del proceso de selección de los magistrados del Tribunal Constitucional del Perú",
+      "resumen": "Evalúa implicancias institucionales, reglas de mérito vs. discrecionalidad parlamentaria y contrapesos constitucionales en el Perú reciente.",
+      "url": "https://doi.org/10.18800/politai.202601.004"
+    }
+  ]
+}

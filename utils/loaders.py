@@ -154,6 +154,20 @@ def load_eventos():
 
 
 @st.cache_data(show_spinner=False)
+def load_evaluaciones_politicas() -> list:
+    """Carga el catálogo curado de evaluaciones de políticas y programas públicos en el Perú."""
+    datos = _read_local_json("data", "evaluaciones_politicas.json", default=[], warn_on_error=True)
+    return datos if isinstance(datos, list) else []
+
+
+@st.cache_data(show_spinner=False)
+def load_revistas_gestion() -> dict:
+    """Carga revistas, memorias de congresos y papers de gestión, administración y política pública."""
+    datos = _read_local_json("data", "revistas_gestion.json", default={}, warn_on_error=True)
+    return datos if isinstance(datos, dict) else {}
+
+
+@st.cache_data(show_spinner=False)
 def load_notas():
     """Carga y parsea las notas de investigación con frontmatter usando patrón *.md."""
     notas_dir = os.path.join("data", "notas")

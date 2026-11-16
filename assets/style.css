@@ -3296,3 +3296,181 @@ header[data-testid="stHeader"]::before {
         gap: 0.4rem;
     }
 }
+
+
+/* ============================================================================
+   25. BARRA DE BÚSQUEDA GENERAL SUPERIOR
+   ============================================================================ */
+.apocuna-top-search-anchor + div[data-testid="stHorizontalBlock"] {
+    background-color: var(--surface-elevated);
+    border: 1.5px solid var(--surface-border);
+    padding: 0.45rem 0.65rem;
+    margin: -0.45rem 0 1.05rem 0;
+    box-shadow: 2px 2px 0px var(--surface-border);
+    align-items: center;
+}
+
+/* ============================================================================
+   26. TARJETA HORIZONTAL CEPLAN (3/4 CAPTURA EXCEL + 1/4 LEYENDA)
+   ============================================================================ */
+
+.ceplan-spotlight-card {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: stretch;
+    background-color: var(--surface-bg);
+    border: 2px solid var(--surface-border);
+    border-top: 5px solid var(--kene-green);
+    box-shadow: var(--shadow-card);
+    margin: 0.5rem 0 1.35rem 0;
+    overflow: hidden;
+}
+
+.ceplan-spotlight-media {
+    background-color: var(--surface-elevated);
+    border-right: 1.5px solid var(--surface-border);
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: space-between;
+}
+
+.ceplan-spotlight-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1.5px solid var(--surface-border);
+    object-fit: contain;
+}
+
+.ceplan-media-caption {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding-top: 0.25rem;
+    border-top: 1px dashed var(--surface-border);
+}
+
+.ceplan-spotlight-legend {
+    padding: 0.78rem 0.88rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+    background-color: var(--surface-bg);
+}
+
+.ceplan-legend-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.ceplan-legend-title {
+    margin: 0.38rem 0 0 0 !important;
+    font-family: var(--font-display) !important;
+    font-size: 0.96rem !important;
+    font-weight: 800 !important;
+    line-height: 1.22 !important;
+    color: var(--text-title) !important;
+}
+
+.ceplan-stats-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem;
+}
+
+.ceplan-stat-box {
+    background-color: var(--surface-elevated);
+    border: 1.5px solid var(--surface-border);
+    padding: 0.38rem 0.5rem;
+}
+
+.ceplan-stat-num {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--text-title);
+}
+
+.ceplan-stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+}
+
+.ceplan-legend-list {
+    margin: 0;
+    padding-left: 1rem;
+    font-size: 0.77rem;
+    line-height: 1.4;
+    color: var(--text-body);
+}
+
+.ceplan-legend-list li + li {
+    margin-top: 0.25rem;
+}
+
+.ceplan-legend-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.38rem;
+    margin-top: auto;
+}
+
+.ceplan-legend-actions .btn-open {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0.42rem 0.55rem !important;
+    font-size: 0.74rem !important;
+}
+
+.fuente-card .card-header-meta span {
+    max-width: 100%;
+    white-space: normal;
+}
+
+.ceplan-spotlight-card [data-testid="stHeaderActionElements"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.eval-priority-banner {
+    background-color: var(--surface-elevated);
+    border: 1.5px solid var(--surface-border);
+    border-left: 5px solid var(--kene-blue);
+    padding: 0.65rem 0.9rem;
+    margin: 0.75rem 0 0.85rem 0;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-title);
+    font-family: var(--font-display);
+}
+
+.eval-priority-banner.is-general {
+    border-left-color: var(--kene-gold);
+}
+
+@media (max-width: 960px) {
+    .ceplan-spotlight-card {
+        grid-template-columns: 1fr;
+    }
+
+    .ceplan-spotlight-media {
+        border-right: none;
+        border-bottom: 1.5px solid var(--surface-border);
+    }
+}

@@ -18,6 +18,7 @@ from sections.estudiantes import render_estudiantes
 from sections.notas import render_notas
 from sections.eventos import render_eventos
 from sections.sobre_el_sitio import render_sobre_el_sitio
+from sections.busqueda_global import render_busqueda_global
 
 from utils.loaders import load_dashboard_kpis
 
@@ -630,6 +631,26 @@ def main():
 
     render_sidebar()
     load_css()
+
+    # Barra de búsqueda general en la parte superior del sitio
+    st.markdown('<div class="apocuna-top-search-anchor"></div>', unsafe_allow_html=True)
+    col_search_top, col_search_btn = st.columns([6.5, 1.0])
+    with col_search_top:
+        global_q = st.text_input(
+            "Buscador general",
+            placeholder="🔎 Buscar en todo Apocuna: normas de El Peruano, noticias, microdatos, fichas técnicas, FEN, cursos...",
+            key="global_search_query",
+            label_visibility="collapsed",
+        )
+    with col_search_btn:
+        if st.session_state.get("global_search_query", "").strip():
+            if st.button("✕ Limpiar", key="btn_top_clear_search", use_container_width=True):
+                st.session_state["global_search_query"] = ""
+                st.rerun()
+
+    if global_q and global_q.strip():
+        render_busqueda_global(global_q)
+        return
 
     current = st.session_state.get("current_page", "Inicio")
     renderer = ROUTES.get(current, render_home)
