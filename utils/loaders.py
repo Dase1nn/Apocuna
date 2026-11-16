@@ -93,6 +93,60 @@ def load_fuentes():
     return _read_local_json("data", "fuentes.json", warn_on_error=True)
 
 
+def _normalize_ficha_url(url: str | None) -> str:
+    """Normaliza una URL para coincidencia de respaldo en el índice de fichas técnicas."""
+    if not isinstance(url, str):
+        return ""
+    return url.strip().rstrip("/").lower()
+
+
+@st.cache_data(show_spinner=False)
+def load_fichas_tecnicas() -> list:
+    """Carga el catálogo estructurado de fichas técnicas metodológicas."""
+    datos = _read_local_json("data", "fichas_tecnicas.json", default=[], warn_on_error=True)
+    return datos if isinstance(datos, list) else []
+
+
+@st.cache_data(show_spinner=False)
+def load_fichas_tecnicas_index() -> dict:
+    """Indexa fichas técnicas por id canónico, aliases y URL oficial para resolución O(1)."""
+    index: dict = {}
+    for ficha in load_fichas_tecnicas():
+        if not isinstance(ficha, dict):
+            continue
+        fid = ficha.get("id")
+        if fid:
+            index[fid] = ficha
+        for alias in ficha.get("aliases") or []:
+            if alias and alias not in index:
+                index[alias] = ficha
+        norm_url = _normalize_ficha_url(ficha.get("url_oficial"))
+        if norm_url and f"__url__:{norm_url}" not in index:
+            index[f"__url__:{norm_url}"] = ficha
+    return index
+
+
+def resolve_ficha_id(item: dict) -> str | None:
+    """Devuelve el ID canónico de la ficha técnica asociada a una tarjeta/fuente si existe."""
+    if not isinstance(item, dict):
+        return None
+    index = load_fichas_tecnicas_index()
+    for key in (item.get("ficha_id"), item.get("id")):
+        if key and key in index:
+            return index[key].get("id")
+    norm_url = _normalize_ficha_url(item.get("url"))
+    if norm_url:
+        hit = index.get(f"__url__:{norm_url}")
+        if hit:
+            return hit.get("id")
+    portal = (item.get("portal") or "").strip().upper()
+    if portal == "PCM" and "pcm_datos_abiertos" in index:
+        return "pcm_datos_abiertos"
+    if portal == "MINSA" and "minsa_reunis" in index:
+        return "minsa_reunis"
+    return None
+
+
 @st.cache_data(show_spinner=False)
 def load_eventos():
     """Carga las revistas y congresos."""

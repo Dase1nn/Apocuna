@@ -12,6 +12,7 @@ from components.cards import (
     render_ckan_carousel,
     render_fuentes_grid
 )
+from sections.fichas_tecnicas import render_ficha_tecnica_detalle
 
 BLOQUES_FUENTES = [
     ("Datos abiertos y microdatos", "📊 1. Datos abiertos y microdatos", True),
@@ -75,6 +76,11 @@ def _render_catalogo_fuentes(fuentes: list):
 
 
 def render_polity():
+    ficha_qp = st.query_params.get("ficha")
+    if ficha_qp:
+        render_ficha_tecnica_detalle(str(ficha_qp), origen="polity")
+        return
+
     st.title("🏛️ Polity and Policy: Insumos, Fuentes y Datos Abiertos")
     st.markdown(
         '<p class="hero-subtitle">Metodologías, repositorios auditados y mecanismos de vigilancia institucional para la formulación, '

@@ -146,7 +146,7 @@ def render_sidebar():
         elif menu != prev_menu:
             st.session_state._last_sidebar_menu = menu
             st.session_state.current_page = menu
-            for qp_k in ("vista", "norma"):
+            for qp_k in ("vista", "norma", "ficha"):
                 if qp_k in st.query_params:
                     del st.query_params[qp_k]
 

@@ -15,6 +15,7 @@ from components.cards import (
     render_fen_radar_list,
     render_kpi_ribbon,
 )
+from sections.fichas_tecnicas import render_ficha_tecnica_detalle
 
 PREVIEWS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "fen_previews")
 
@@ -381,6 +382,7 @@ def fetch_fen_radar() -> dict:
 # ==============================================================================
 FEN_IMPACT_CARDS = [
     {
+        "id": "fen_impact_1",
         "institucion": "MINISTERIO DE ECONOMÍA Y FINANZAS (MEF)",
         "eje": "PRESUPUESTO • PP 0068 PREVAED",
         "titulo": "MEF — Consulta Amigable y Programa Presupuestal 0068 (Reducción de Vulnerabilidad y Atención de Emergencias)",
@@ -393,6 +395,7 @@ FEN_IMPACT_CARDS = [
         "btn_label": "Abrir Consulta Amigable MEF ↗",
     },
     {
+        "id": "fen_impact_2",
         "institucion": "PCM • SECRETARÍA DE GOBIERNO Y TRANSFORMACIÓN DIGITAL",
         "eje": "MICRODATOS • SINPAD / ANIN",
         "titulo": "Plataforma Nacional de Datos Abiertos — Datasets de Emergencias, Damnificados y Obras de Prevención",
@@ -405,6 +408,7 @@ FEN_IMPACT_CARDS = [
         "btn_label": "Explorar Datos Abiertos PCM ↗",
     },
     {
+        "id": "fen_impact_3",
         "institucion": "CONTRALORÍA GENERAL DE LA REPÚBLICA • OECE (SEACE)",
         "eje": "CONTROL GUBERNAMENTAL • CONTRATACIONES",
         "titulo": "Contraloría General y OECE — Control Concurrente de Obras de Prevención y Contrataciones por Emergencia",
@@ -419,6 +423,7 @@ FEN_IMPACT_CARDS = [
         "label_secundaria": "Portal OECE (ex-OSCE)",
     },
     {
+        "id": "fen_impact_4",
         "institucion": "MINSA (CDC PERÚ) • MIDAGRI",
         "eje": "IMPACTO SANITARIO Y AGROPECUARIO",
         "titulo": "CDC Perú (MINSA) y MIDAGRI — Vigilancia Epidemiológica Post-Lluvias y Monitoreo Agropecuario",
@@ -436,14 +441,16 @@ FEN_IMPACT_CARDS = [
 
 MASTER_FEN_TOOLS = [
     {
+        "id": "fen_tool_1",
         "nombre": "Imágenes Satelitales GOES-19 (Canal Infrarrojo y Vapor de Agua)",
         "institucion": "SENAMHI",
         "categoria": "Meteorológico",
-        "frecuencia": "Tiempo real (10 min)",
+        "frecuencia": "Tiempo real",
         "utilidad": "Monitoreo de convección profunda, temperatura de topes nubosos y desplazamiento de sistemas de lluvias intensas en costa, sierra y selva.",
         "url": "https://www.senamhi.gob.pe/?p=satelites-goes19",
     },
     {
+        "id": "fen_tool_2",
         "nombre": "Avisos Meteorológicos de Corto Plazo y Activación de Quebradas",
         "institucion": "SENAMHI",
         "categoria": "Meteorológico",
@@ -452,6 +459,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.senamhi.gob.pe/?p=avisos-meteorologicos",
     },
     {
+        "id": "fen_tool_3",
         "nombre": "Monitoreo Hidrológico y Umbrales de Caudales de Ríos",
         "institucion": "SENAMHI",
         "categoria": "Hídrico/Saneamiento",
@@ -460,6 +468,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.senamhi.gob.pe/?p=monitoreo-hidrologico",
     },
     {
+        "id": "fen_tool_4",
         "nombre": "Windy.com — Modelos Numéricos ECMWF y GFS (Foco Perú / Pacífico)",
         "institucion": "Windy / ECMWF / NOAA",
         "categoria": "Meteorológico",
@@ -468,14 +477,16 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.windy.com/-9.190/-75.015?temp,-9.190,-75.015,5",
     },
     {
+        "id": "fen_tool_5",
         "nombre": "Portal Oficial ENFEN y Monitoreo Bio-Oceanográfico del Pacífico",
         "institucion": "ENFEN / IMARPE",
         "categoria": "Oceanográfico",
-        "frecuencia": "Quincenal / Mensual",
+        "frecuencia": "Mensual",
         "utilidad": "Estado del Sistema de Alerta ante El Niño Costero / La Niña, Índice Costero El Niño (ICEN), anomalías TSM en Niño 1+2 y ondas Kelvin.",
         "url": "https://enfen.imarpe.gob.pe/",
     },
     {
+        "id": "fen_tool_6",
         "nombre": "NOAA Climate Prediction Center — ENSO Diagnostic Discussion",
         "institucion": "NOAA / NWS (EE. UU.)",
         "categoria": "Oceanográfico",
@@ -484,6 +495,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/",
     },
     {
+        "id": "fen_tool_7",
         "nombre": "Dirección de Hidrografía y Navegación (Oceanografía y Nivel del Mar)",
         "institucion": "DHN — Marina de Guerra del Perú",
         "categoria": "Oceanográfico",
@@ -492,6 +504,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.dhn.mil.pe/portal/",
     },
     {
+        "id": "fen_tool_8",
         "nombre": "Copernicus Marine Service (CMEMS) — Ocean Monitoring Indicators",
         "institucion": "Unión Europea / Copernicus",
         "categoria": "Oceanográfico",
@@ -500,6 +513,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://marine.copernicus.eu/",
     },
     {
+        "id": "fen_tool_9",
         "nombre": "Centro de Análisis y Monitoreo CAMI Yaku (Cuencas y Resiliencia de EPS)",
         "institucion": "SUNASS",
         "categoria": "Hídrico/Saneamiento",
@@ -508,6 +522,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.gob.pe/institucion/sunass/campa%C3%B1as/21633-cami-yaku",
     },
     {
+        "id": "fen_tool_10",
         "nombre": "Observatorio Nacional del Agua y Recursos Hídricos (SNIRH)",
         "institucion": "Autoridad Nacional del Agua (ANA)",
         "categoria": "Hídrico/Saneamiento",
@@ -516,6 +531,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://snirh.ana.gob.pe/",
     },
     {
+        "id": "fen_tool_11",
         "nombre": "SIGRID v3 — Sistema de Información para la Gestión del Riesgo de Desastres",
         "institucion": "CENEPRED",
         "categoria": "Geoespacial/Riesgos",
@@ -524,6 +540,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://sigrid.cenepred.gob.pe/sigridv3/",
     },
     {
+        "id": "fen_tool_12",
         "nombre": "INDECI / COEN — Reportes de Emergencias y Peligros (SINPAD)",
         "institucion": "INDECI / COEN",
         "categoria": "Geoespacial/Riesgos",
@@ -532,6 +549,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.gob.pe/indeci",
     },
     {
+        "id": "fen_tool_13",
         "nombre": "IGP — Monitoreo Geofísico de Deslizamientos y Huaicos (CENSIS)",
         "institucion": "Instituto Geofísico del Perú (IGP)",
         "categoria": "Geoespacial/Riesgos",
@@ -540,6 +558,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.gob.pe/igp",
     },
     {
+        "id": "fen_tool_14",
         "nombre": "ANIN — Cartera de Proyectos de Prevención y Drenaje Pluvial",
         "institucion": "Autoridad Nacional de Infraestructura (ANIN)",
         "categoria": "Presupuestal/Impacto",
@@ -548,6 +567,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.gob.pe/anin",
     },
     {
+        "id": "fen_tool_15",
         "nombre": "Consulta Amigable MEF — Programa Presupuestal 0068 (PREVAED)",
         "institucion": "Ministerio de Economía y Finanzas (MEF)",
         "categoria": "Presupuestal/Impacto",
@@ -556,6 +576,7 @@ MASTER_FEN_TOOLS = [
         "url": "https://www.mef.gob.pe/es/seguimiento-de-la-ejecucion-presupuestal-consulta-amigable",
     },
     {
+        "id": "fen_tool_16",
         "nombre": "CDC Perú — Sala Situacional de Brotes y Enfermedades Metaxénicas (Dengue / FEN)",
         "institucion": "MINSA / CDC Perú",
         "categoria": "Presupuestal/Impacto",
@@ -754,6 +775,11 @@ def _render_block_3_ecosystem():
 
 def render_fen():
     """Punto de entrada principal de la sección Fenómeno El Niño (FEN)."""
+    ficha_qp = st.query_params.get("ficha")
+    if ficha_qp:
+        render_ficha_tecnica_detalle(str(ficha_qp), origen="fen")
+        return
+
     _render_fen_header()
 
     st.subheader("🛰️ Panel Protagonista de Monitoreo Satelital, Oceanográfico y Geoespacial en Tiempo Real")

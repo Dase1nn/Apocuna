@@ -1,10 +1,17 @@
 import html
+import urllib.parse
 import streamlit as st
 
+from utils.loaders import resolve_ficha_id
+
 FREQ_BADGE_MAP = {
+    "tiempo real": "badge-freq-diaria",
     "diaria": "badge-freq-diaria",
     "semanal": "badge-freq-semanal",
     "mensual": "badge-freq-mensual",
+    "anual": "badge-freq-anual",
+    "bienal": "badge-freq-anual",
+    "permanente": "badge-freq-permanente",
 }
 
 
@@ -31,6 +38,16 @@ def _action_button(raw_url: str | None, label: str = "Abrir ↗", fallback: str 
     if url_s:
         return f'<a href="{url_s}" target="_blank" rel="noopener noreferrer" class="btn-open">{escape(label)}</a>'
     return f'<span class="btn-demo-disabled">{escape(fallback)}</span>'
+
+
+def _ficha_tecnica_button(item: dict, vista_origen: str = "polity") -> str:
+    """Genera el botón interno de Ficha Técnica Metodológica cuando la fuente está catalogada."""
+    fid = resolve_ficha_id(item)
+    if not fid:
+        return ""
+    fid_q = urllib.parse.quote(str(fid), safe="")
+    vista_q = urllib.parse.quote(str(vista_origen), safe="")
+    return f'<a href="?vista={vista_q}&amp;ficha={fid_q}" target="_self" class="btn-ficha-tecnica">📄 Ficha técnica →</a>'
 
 
 def _demo_badge(item: dict) -> str:
@@ -189,11 +206,12 @@ def _render_portales_directos(portales_directos: list):
         institucion = escape(item.get("institucion", ""))
         desc = escape(item.get("descripcion_corta", ""))
         btn_html = _action_button(item.get("url"), "Abrir portal ↗", "Portal no disponible")
+        ficha_btn = _ficha_tecnica_button(item, "polity")
         cards_list.append(
             f'<div class="card">'
-            f'<div class="card-header-meta"><span class="badge-portal">{institucion}</span><span class="card-date">Portal Oficial</span></div>'
-            f'<div><h3>{nombre}</h3><p>{desc}</p></div>'
-            f'{btn_html}'
+            f'<div class="card-header-meta"><span class="badge-tipo">PORTAL OFICIAL</span><span class="badge-freq badge-freq-permanente">PERMANENTE</span></div>'
+            f'<div><div class="inst">{institucion}</div><h3>{nombre}</h3><p>{desc}</p></div>'
+            f'<div class="card-actions-row">{btn_html}{ficha_btn}</div>'
             f'</div>'
         )
     st.markdown(f'<div class="card-container">{"".join(cards_list)}</div>', unsafe_allow_html=True)
@@ -213,11 +231,12 @@ def render_ckan_carousel(ckan_list: list, portales_directos: list = None):
         portal = escape(item.get("portal", "CKAN"))
         fecha = _short_date(item.get("fecha_modificacion_iso"))
         btn_html = _action_button(item.get("url"), "Abrir dataset ↗")
+        ficha_btn = _ficha_tecnica_button(item, "polity")
         cards_list.append(
             f'<div class="card">'
             f'<div class="card-header-meta"><span class="badge-portal">{portal}</span><span class="card-date">{fecha}</span></div>'
             f'<div><h3>{titulo}</h3></div>'
-            f'{btn_html}'
+            f'<div class="card-actions-row">{btn_html}{ficha_btn}</div>'
             f'</div>'
         )
 
@@ -225,7 +244,7 @@ def render_ckan_carousel(ckan_list: list, portales_directos: list = None):
 
 
 def render_fuentes_grid(fuentes: list):
-    """Renderiza una cuadrícula de tarjetas de fuentes con etiqueta de tipo e institución."""
+    """Renderiza una cuadrícula de tarjetas de fuentes con etiqueta unificada de tipo y auditoría."""
     if not fuentes:
         st.info("No se encontraron fuentes que coincidan con el criterio seleccionado.")
         return
@@ -237,15 +256,17 @@ def render_fuentes_grid(fuentes: list):
         desc = escape(item.get("descripcion_corta", ""))
         tipo = escape(item.get("tipo", "recurso")).upper()
         btn_html = _action_button(item.get("url"), "Explorar fuente ↗")
+        ficha_btn = _ficha_tecnica_button(item, "polity")
 
         cards_list.append(
             f'<div class="fuente-card">'
             f'<div>'
-            f'<div class="card-header-meta"><span class="inst">{institucion}</span><span class="badge-curso">{tipo}</span></div>'
+            f'<div class="card-header-meta"><span class="badge-tipo">{tipo}</span><span class="badge-continua">✓ AUDITADA</span></div>'
+            f'<div class="inst">{institucion}</div>'
             f'<h4>{nombre}</h4>'
             f'<p>{desc}</p>'
             f'</div>'
-            f'{btn_html}'
+            f'<div class="card-actions-row">{btn_html}{ficha_btn}</div>'
             f'</div>'
         )
 
@@ -260,8 +281,20 @@ def _resolve_freq_class(frecuencia: str) -> str:
     return "badge-freq-permanente"
 
 
+def _resolve_polity_tipo(item: dict) -> str:
+    explicit = (item.get("tipo") or "").strip()
+    if explicit:
+        return explicit.upper()
+    blob = f"{item.get('titulo', '')} {item.get('fuente', '')}".lower()
+    if any(k in blob for k in ("microdatos", "enaho", "escale", "incore", "cepalstat", "indicadores")):
+        return "MICRODATOS / SERIE"
+    if any(k in blob for k in ("boletines", "normas", "el peruano")):
+        return "NORMA LEGAL"
+    return "INSUMO TÉCNICO"
+
+
 def render_polity_cards(tarjetas: list):
-    """Renderiza tarjetas para las subsecciones de Polity and Policy con etiquetas de frecuencia."""
+    """Renderiza tarjetas para las subsecciones de Polity and Policy con taxonomía unificada."""
     if not tarjetas:
         st.info("No hay insumos disponibles con el filtro actual.")
         return
@@ -272,14 +305,16 @@ def render_polity_cards(tarjetas: list):
         desc = escape(item.get("descripcion", ""))
         frecuencia = str(item.get("frecuencia", "Permanente"))
         fuente = escape(item.get("fuente", ""))
+        tipo_label = escape(_resolve_polity_tipo(item))
         freq_class = _resolve_freq_class(frecuencia)
         freq_badge = f'<span class="badge-freq {freq_class}">{escape(frecuencia)}</span>'
         btn_html = _action_button(item.get("url"), "Abrir recurso ↗")
+        ficha_btn = _ficha_tecnica_button(item, "polity")
 
         cards_list.append(
             f'<div class="fuente-card">'
-            f'<div><div class="card-header-meta">{freq_badge}<span class="inst">{fuente}</span></div><h4>{titulo}</h4><p>{desc}</p></div>'
-            f'{btn_html}'
+            f'<div><div class="card-header-meta"><span class="badge-tipo">{tipo_label}</span>{freq_badge}</div><div class="inst">{fuente}</div><h4>{titulo}</h4><p>{desc}</p></div>'
+            f'<div class="card-actions-row">{btn_html}{ficha_btn}</div>'
             f'</div>'
         )
 
@@ -287,7 +322,7 @@ def render_polity_cards(tarjetas: list):
 
 
 def render_estudiantes_apuntes(apuntes: list):
-    """Renderiza tarjetas de apuntes de sistemas administrativos con etiqueta de curso y enlace normativo."""
+    """Renderiza tarjetas de apuntes de sistemas administrativos con etiqueta de tipo y norma rectora."""
     if not apuntes:
         st.info("No hay apuntes disponibles.")
         return
@@ -304,14 +339,13 @@ def render_estudiantes_apuntes(apuntes: list):
         cards_list.append(
             f'<div class="fuente-card">'
             f'<div>'
-            f'<div class="card-header-meta"><span class="badge-curso">{curso}</span><span class="badge-portal">{normativa}</span></div>'
-            f'<div class="inst">{sistema}</div>'
+            f'<div class="card-header-meta"><span class="badge-tipo">SISTEMA ADM.</span><span class="badge-portal">{normativa}</span></div>'
+            f'<div class="inst">{sistema} • {curso}</div>'
             f'<h4>{titulo}</h4>'
             f'<p>{resumen}</p>'
             f'</div>'
             f'<div class="card-actions-row">'
             f'{normativa_btn}'
-            f'<span class="btn-demo-disabled">Ficha PDF (Próximamente)</span>'
             f'</div>'
             f'</div>'
         )
@@ -369,7 +403,7 @@ def render_eventos_grid(eventos: list):
             f'<div class="fuente-card">'
             f'<div>'
             f'<div class="card-header-meta">'
-            f'<span class="badge-portal">{tipo}</span>'
+            f'<span class="badge-tipo">{tipo}</span>'
             f'<span class="{badge_cls}">{badge_icon} {fecha_limite}</span>'
             f'</div>'
             f'<div class="inst">{tematica}</div>'
@@ -445,16 +479,20 @@ def render_eventos_alertas_carousel(alertas: list):
 
 
 def _resolve_costo_badge(costo: str) -> str:
-    c_lower = costo.lower()
+    c_lower = costo.lower().strip()
+    if "certificado de pago" in c_lower:
+        return '<span class="badge-continua">GRATUITO (CERT. OPCIONAL)</span>'
     if "gratuito" in c_lower and "pago" not in c_lower:
-        return f'<span class="badge-continua">{escape(costo)}</span>'
+        return '<span class="badge-continua">GRATUITO</span>'
+    if "verificar" in c_lower:
+        return '<span class="badge-deadline">CONSULTAR EN PORTAL</span>'
     if "pago" in c_lower:
         return f'<span class="badge-deadline">{escape(costo)}</span>'
-    return f'<span class="badge-curso">{escape(costo)}</span>'
+    return f'<span class="badge-tipo">{escape(costo)}</span>'
 
 
 def render_cursos_grid(cursos: list):
-    """Renderiza tarjetas de cursos con insignias de costo, modalidad, idioma y descripción."""
+    """Renderiza tarjetas de cursos con insignias de modalidad, costo, idioma y verificación."""
     if not cursos:
         st.info("No hay cursos disponibles con estos filtros.")
         return
@@ -476,7 +514,7 @@ def render_cursos_grid(cursos: list):
         cards_list.append(
             f'<div class="fuente-card">'
             f'<div>'
-            f'<div class="card-header-meta"><span class="badge-curso">{modalidad}</span>{costo_badge}</div>'
+            f'<div class="card-header-meta"><span class="badge-tipo">{modalidad}</span>{costo_badge}</div>'
             f'<div class="inst">{proveedor} • {idioma}</div>'
             f'<h4>{nombre}</h4>'
             f'<p>{tema}</p>'
@@ -490,7 +528,7 @@ def render_cursos_grid(cursos: list):
 
 
 def render_becas_grid(becas: list):
-    """Renderiza tarjetas de becas con aviso accesible en modo claro y oscuro."""
+    """Renderiza tarjetas de becas con etiqueta de tipo unificada y verificación."""
     if not becas:
         st.info("No hay becas disponibles.")
         return
@@ -506,7 +544,7 @@ def render_becas_grid(becas: list):
         cards_list.append(
             f'<div class="fuente-card">'
             f'<div>'
-            f'<div class="card-header-meta"><span class="badge-portal">{tipo}</span><span class="card-date">Verificado: {verificado_en}</span></div>'
+            f'<div class="card-header-meta"><span class="badge-tipo">{tipo}</span><span class="badge-continua">✓ VERIFICADO: {verificado_en}</span></div>'
             f'<div class="inst">{institucion}</div>'
             f'<h4>{nombre}</h4>'
             f'<div class="beca-warning-box">'
@@ -652,11 +690,25 @@ def render_fen_impact_grid(impact_cards: list[dict]):
             f'</div>'
             f'<div class="card-actions-row">'
             f'{_action_button(item.get("url"), item.get("btn_label", "Consultar plataforma ↗"))}'
+            f'{_ficha_tecnica_button(item, "fen")}'
             f'{sec_btn}'
             f'</div>'
             f'</div>'
         )
     st.markdown(f'<div class="fuentes-grid">{"".join(cards_html)}</div>', unsafe_allow_html=True)
+
+
+def _resolve_fen_domain_class(categoria: str) -> str:
+    c_lower = categoria.lower()
+    if "oceanográfico" in c_lower or "hídrico" in c_lower:
+        return "badge-domain-blue"
+    if "geoespacial" in c_lower:
+        return "badge-domain-green"
+    if "presupuestal" in c_lower:
+        return "badge-domain-gold"
+    if "meteorológico" in c_lower:
+        return "badge-domain-pink"
+    return ""
 
 
 def render_fen_catalog_grid(tools: list[dict]):
@@ -669,24 +721,27 @@ def render_fen_catalog_grid(tools: list[dict]):
     for item in tools:
         nombre = escape(item.get("nombre", ""))
         institucion = escape(item.get("institucion", ""))
-        categoria = escape(item.get("categoria", ""))
+        cat_raw = str(item.get("categoria", ""))
+        categoria = escape(cat_raw).upper()
         frecuencia = escape(item.get("frecuencia", "Tiempo real"))
         utilidad = escape(item.get("utilidad", ""))
         freq_cls = _resolve_freq_class(frecuencia)
+        dom_cls = _resolve_fen_domain_class(cat_raw)
 
         cards_html.append(
             f'<div class="fuente-card">'
             f'<div>'
             f'<div class="card-header-meta">'
-            f'<span class="badge-portal">{categoria}</span>'
+            f'<span class="badge-portal {dom_cls}">{categoria}</span>'
             f'<span class="badge-freq {freq_cls}">{frecuencia}</span>'
             f'</div>'
             f'<div class="inst">{institucion}</div>'
             f'<h4>{nombre}</h4>'
             f'<p>{utilidad}</p>'
             f'</div>'
-            f'<div class="card-footer-action">'
+            f'<div class="card-actions-row">'
             f'{_action_button(item.get("url"), "Abrir herramienta ↗")}'
+            f'{_ficha_tecnica_button(item, "fen")}'
             f'</div>'
             f'</div>'
         )

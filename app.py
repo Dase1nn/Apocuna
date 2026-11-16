@@ -97,16 +97,46 @@ div[data-testid="stButton"] > button:hover {
     border: 1.5px solid #FAF7E9 !important;
 }
 .norma-btn-ghost,
-.btn-fen-secondary {
+.btn-fen-secondary,
+.btn-ficha-tecnica {
     background-color: #202723 !important;
     color: #FAF7E9 !important;
     border: 1.5px solid #4A5750 !important;
+    border-left: 4px solid #F0BB38 !important;
 }
 .norma-btn-ghost:hover,
-.btn-fen-secondary:hover {
+.btn-fen-secondary:hover,
+.btn-ficha-tecnica:hover {
     background-color: #262F2A !important;
     border-color: #F0BB38 !important;
     color: #F0BB38 !important;
+}
+.ficha-tecnica-hero,
+.ficha-ref-card {
+    background-color: #181D1A !important;
+    border-color: #4A5750 !important;
+    color: #FAF7E9 !important;
+}
+.ficha-format-chip,
+.badge-tipo {
+    background-color: #262F2A !important;
+    color: #FAF7E9 !important;
+    border-color: #4A5750 !important;
+}
+.legend-item-row {
+    background-color: #202723 !important;
+    color: #DCE0DB !important;
+    border-color: #4A5750 !important;
+}
+.badge-freq-anual {
+    background-color: rgba(240, 187, 56, 0.18) !important;
+    color: #F0BB38 !important;
+    border-color: #F0BB38 !important;
+}
+.badge-freq-permanente {
+    background-color: rgba(163, 176, 168, 0.16) !important;
+    color: #DCE0DB !important;
+    border-color: #A3B0A8 !important;
 }
 [data-testid="stExpander"],
 [data-testid="stExpander"] details {
@@ -336,16 +366,46 @@ div[data-testid="stButton"] > button:hover {
     border: 1.5px solid #171B18 !important;
 }
 .norma-btn-ghost,
-.btn-fen-secondary {
+.btn-fen-secondary,
+.btn-ficha-tecnica {
     background-color: #FAF7E9 !important;
     color: #171B18 !important;
     border: 1.5px solid #171B18 !important;
+    border-left: 4px solid #1B8668 !important;
 }
 .norma-btn-ghost:hover,
-.btn-fen-secondary:hover {
+.btn-fen-secondary:hover,
+.btn-ficha-tecnica:hover {
     background-color: #EAE5D1 !important;
-    border-color: #2775AA !important;
-    color: #1E5D88 !important;
+    border-color: #1B8668 !important;
+    color: #171B18 !important;
+}
+.ficha-tecnica-hero,
+.ficha-ref-card {
+    background-color: #FAF7E9 !important;
+    border-color: #171B18 !important;
+    color: #171B18 !important;
+}
+.ficha-format-chip,
+.badge-tipo {
+    background-color: #EAE5D1 !important;
+    color: #171B18 !important;
+    border-color: #171B18 !important;
+}
+.legend-item-row {
+    background-color: #F2EFE0 !important;
+    color: #252B27 !important;
+    border-color: #171B18 !important;
+}
+.badge-freq-anual {
+    background-color: rgba(240, 187, 56, 0.24) !important;
+    color: #171B18 !important;
+    border-color: #171B18 !important;
+}
+.badge-freq-permanente {
+    background-color: rgba(78, 87, 82, 0.12) !important;
+    color: #252B27 !important;
+    border-color: #4E5752 !important;
 }
 [data-testid="stExpander"],
 [data-testid="stExpander"] details {
@@ -548,13 +608,25 @@ def main():
         st.session_state.theme_mode = "☀️ Claro"
 
     qp = st.query_params
-    qp_sig = f"{qp.get('vista', '')}|{qp.get('norma', '')}"
-    if (qp.get("norma") or qp.get("vista") in ("normas_comentadas", "rastrea_norma")) and st.session_state.get("_last_qp_routed") != qp_sig:
-        st.session_state.current_page = "Rastrea la Norma"
-        st.session_state._last_qp_routed = qp_sig
-        theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '☀️ Claro')}"
-        st.session_state.pop(theme_key, None)
-        st.session_state.pop("_last_sidebar_menu", None)
+    vista_qp = str(qp.get("vista") or "")
+    norma_qp = str(qp.get("norma") or "")
+    ficha_qp = str(qp.get("ficha") or "")
+    qp_sig = f"{vista_qp}|{norma_qp}|{ficha_qp}"
+    if qp_sig != "||" and st.session_state.get("_last_qp_routed") != qp_sig:
+        target_page = None
+        if norma_qp or vista_qp in ("normas_comentadas", "rastrea_norma"):
+            target_page = "Rastrea la Norma"
+        elif vista_qp == "fen":
+            target_page = "Fenómeno El Niño (FEN)"
+        elif vista_qp == "polity" or ficha_qp:
+            target_page = "Polity and Policy"
+
+        if target_page:
+            st.session_state.current_page = target_page
+            st.session_state._last_qp_routed = qp_sig
+            theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '☀️ Claro')}"
+            st.session_state.pop(theme_key, None)
+            st.session_state.pop("_last_sidebar_menu", None)
 
     render_sidebar()
     load_css()

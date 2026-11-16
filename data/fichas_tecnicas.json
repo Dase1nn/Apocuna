@@ -1,0 +1,1649 @@
+[
+  {
+    "id": "inei_microdatos_enaho_endes",
+    "aliases": ["card_pol_2_1", "f_005", "f_032", "f_034"],
+    "nombre": "Portal Integrado de Microdatos INEI (ENAHO, ENDES y ENAPRES)",
+    "institucion": "Instituto Nacional de Estadística e Informática (INEI)",
+    "categoria": "MICRODATOS Y ENCUESTAS NACIONALES",
+    "tipo_insumo": "Microdatos anonimizados (.SAV, .DTA, .CSV) + Diccionarios",
+    "frecuencia": "Trimestral / Anual",
+    "acceso": "Acceso abierto gratuito (descarga directa HTTPS sin registro)",
+    "url_oficial": "https://proyectos.inei.gob.pe/microdatos/",
+    "resumen_ejecutivo": "Fuente primaria del Estado peruano para la investigación cuantitativa en pobreza, mercado laboral, salud materno-infantil, nutrición y acceso a servicios públicos.",
+    "contenido_variables": {
+      "descripcion": "Agrupa las principales encuestas continuas de hogares a nivel nacional con sus respectivos módulos temáticos, cuestionarios, fichas técnicas y factores de expansión.",
+      "modulos_principales": [
+        "ENAHO (Encuesta Nacional de Hogares): Características de vivienda, educación (módulo 300), salud (400), empleo e ingresos (500), sumarias de pobreza/gasto (34), programas sociales (37/700) y gobernabilidad (85).",
+        "ENDES (Encuesta Demográfica y de Salud Familiar): Fecundidad, salud materna, mortalidad infantil, antropometría y pruebas de hemoglobina (anemia y desnutrición crónica).",
+        "ENAPRES (Encuesta Nacional de Programas Presupuestales): Acceso a agua clorada, saneamiento, seguridad ciudadana (victimización y percepción) y gestión municipal."
+      ],
+      "formatos": ["SPSS (.sav)", "Stata (.dta)", "Valores separados por comas (.csv)", "Diccionarios de variables y Diseño Muestral (PDF)"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Vivienda particular, hogar, persona residente habitual y niños menores de 5 años / mujeres en edad fértil (ENDES).",
+      "cobertura_geografica": "Nacional, urbano/rural, 24 departamentos + Provincia Constitucional del Callao y 8 dominios geográficos.",
+      "cobertura_temporal": "Series anuales y trimestrales continuas (ENAHO continua desde 2004 al presente; ENDES continua desde 2004; ENAPRES desde 2010).",
+      "llaves_cruce": "CONGLOME + VIVIENDA + HOGAR + CODPERSO (cruce exacto inter-módulos en ENAHO); CASEID / HHID (ENDES); UBIGEO (6 dígitos INEI para cruce territorial con SIAF, REUNIS o SIGRID)."
+    },
+    "usos_aplicaciones": [
+      "Estimación oficial de pobreza monetaria, pobreza multidimensional, vulnerabilidad y desigualdad (coeficiente de Gini).",
+      "Evaluaciones de impacto cuasi-experimentales (Diferencias en Diferencias, Propensity Score Matching, Regresión Discontinua) de programas sociales y políticas sectoriales.",
+      "Análisis econométrico de informalidad laboral, retornos a la educación, brechas de género y determinantes de la anemia infantil."
+    ],
+    "precauciones_metodologicas": [
+      "Aplicar obligatoriamente los pesos muestrales (factor07 / facpob07 en ENAHO; hv005/1000000 o v005/1000000 en ENDES) y declarar diseño complejo (conglome como conglomerado y estrato).",
+      "La inferencia directa a nivel distrital en ENAHO o ENDES carece de representatividad estadística sin modelos de Estimación en Áreas Pequeñas (SAE).",
+      "Verificar cortes metodológicos de pandemia (2020–2021) donde hubo aplicación telefónica parcial en módulos específicos."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Evolución de la Pobreza Monetaria en el Perú: Informes Técnicos Anuales",
+        "autores": "INEI & Comisión Consultiva para la Estimación de la Pobreza",
+        "anio": "2024–2026",
+        "uso_especifico": "Cálculo oficial de líneas de pobreza, gasto real per cápita y vulnerabilidad mediante módulos Sumaria de ENAHO.",
+        "url": "https://www.inei.gob.pe/estadisticas/indice-tematico/"
+      },
+      {
+        "titulo": "Investigaciones aplicadas en educación, trabajo y protección social",
+        "autores": "Grupo de Análisis para el Desarrollo (GRADE)",
+        "anio": "2022–2026",
+        "uso_especifico": "Construcción de paneles anuales de hogares ENAHO y análisis de microdatos ENDES para evaluar trayectorias infantiles y laborales.",
+        "url": "https://grade.org.pe/publicaciones/"
+      },
+      {
+        "titulo": "Documentos de investigación del Concurso Anual CIES",
+        "autores": "Consorcio de Investigación Económica y Social (CIES)",
+        "anio": "2021–2026",
+        "uso_especifico": "Estudios econométricos sobre anemia (ENDES), victimización (ENAPRES) e informalidad laboral (ENAHO) en departamentos del Perú.",
+        "url": "https://cies.org.pe/investigaciones/"
+      }
+    ]
+  },
+  {
+    "id": "inei_indice_tematico",
+    "aliases": ["f_006", "f_030", "f_031", "f_033"],
+    "nombre": "Índice Temático de Estadísticas e Indicadores Nacionales (INEI)",
+    "institucion": "Instituto Nacional de Estadística e Informática (INEI)",
+    "categoria": "SERIES AGREGADAS E INDICADORES OFICIALES",
+    "tipo_insumo": "Tabulados estadísticos (.XLSX, .CSV) e Informes Técnicos",
+    "frecuencia": "Mensual / Trimestral / Anual",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.inei.gob.pe/estadisticas/indice-tematico/",
+    "resumen_ejecutivo": "Repositorio centralizado de series agregadas oficiales del Perú en demografía, cuentas nacionales, precios (IPC), empleo, TIC en hogares y estructura empresarial.",
+    "contenido_variables": {
+      "descripcion": "Compendia cuadros estadísticos listos para análisis macroeconómico, regional y sectorial sin requerir procesamiento previo de microdatos.",
+      "modulos_principales": [
+        "Economía: PBI por actividad económica, índices de precios al consumidor (IPC Lima y nacional), estructura empresarial y demografía de empresas.",
+        "Población y Vivienda: Proyecciones poblacionales oficiales por distrito/edad/sexo, Censos Nacionales 2017 y tabulados temáticos.",
+        "Social y Medio Ambiente: Pobreza, cobertura de TIC e internet en hogares, indicadores ambientales y brechas territoriales."
+      ],
+      "formatos": ["Excel (.xlsx / .xls)", "PDF (Informes Técnicos Trimestrales)"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Agregados nacionales, departamentales, provinciales y distritales (en proyecciones censales).",
+      "cobertura_geografica": "Todo el territorio nacional (según indicador: nacional, Lima Metropolitana o 25 regiones).",
+      "cobertura_temporal": "Series mensuales de corto plazo (IPC/producción) e históricas censales y anuales multi-década.",
+      "llaves_cruce": "Nombre o código UBIGEO departamental/provincial y código CIIU Rev. 4 para actividad económica."
+    },
+    "usos_aplicaciones": [
+      "Obtención de denominadores poblacionales oficiales por departamento, provincia y distrito para calcular tasas por 10,000 o 100,000 habitantes.",
+      "Deflactación de series monetarias nominales usando el IPC o el deflactor implícito del PBI.",
+      "Análisis de conectividad digital en hogares (TIC) y densidad empresarial regional."
+    ],
+    "precauciones_metodologicas": [
+      "Comprobar el año base de las series reales (ej. PBI base 2007 vs. empalmes; IPC base diciembre 2021).",
+      "Distinguir entre proyecciones poblacionales intercensales y conteos muestrales de encuestas continuas."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Las Tecnologías de Información y Comunicación en los Hogares (Informes Técnicos Trimestrales)",
+        "autores": "INEI",
+        "anio": "2026",
+        "uso_especifico": "Medición oficial trimestral de acceso a internet, telefonía móvil y computadora por área urbano/rural y nivel educativo.",
+        "url": "https://www.gob.pe/institucion/inei/informes-publicaciones/8655560-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-i-trimestre-2026"
+      },
+      {
+        "titulo": "Indicadores Económicos y Sociales Comparados del Perú",
+        "autores": "Instituto Peruano de Economía (IPE) / CEPAL",
+        "anio": "2023–2026",
+        "uso_especifico": "Construcción de series reales regionales combinando Cuentas Nacionales y proyecciones demográficas del INEI.",
+        "url": "https://ipe.org.pe/nuestras-publicaciones/"
+      }
+    ]
+  },
+  {
+    "id": "minedu_escale",
+    "aliases": ["card_pol_2_2", "f_007", "f_008"],
+    "nombre": "ESCALE — Estadística de la Calidad Educativa y Censo Escolar",
+    "institucion": "Ministerio de Educación (MINEDU)",
+    "categoria": "ESTADÍSTICAS SECTORIALES Y CENSO ESCOLAR",
+    "tipo_insumo": "Microdatos censales (.DBF/.DTA/.CSV), Padrón II.EE. y Tabulados",
+    "frecuencia": "Anual",
+    "acceso": "Acceso abierto gratuito (sin registro)",
+    "url_oficial": "https://escale.minedu.gob.pe/censo-escolar",
+    "resumen_ejecutivo": "Censo anual universal de todas las instituciones educativas públicas y privadas del país, con datos georreferenciados de matrícula, docentes, infraestructura y deserción.",
+    "contenido_variables": {
+      "descripcion": "Registra a nivel de código modular y código de local escolar información censal exhaustiva del sistema educativo peruano (Educación Básica Regular, Especial, Alternativa, Técnico-Productiva y Superior No Universitaria).",
+      "modulos_principales": [
+        "Padrón de Instituciones Educativas: Coordenadas geográficas (latitud/longitud), UBIGEO, nivel/modalidad, gestión (pública/privada) y lengua.",
+        "Censo Educativo (Matrícula, Docentes y Recursos): Alumnos matriculados por grado/edad/sexo, docentes por condición laboral y equipamiento TIC.",
+        "Local Escolar e Infraestructura: Estado físico de aulas, acceso a agua potable, desagüe, electricidad, internet y cerco perimétrico."
+      ],
+      "formatos": ["Bases comprimidas (.zip con .dbf / .csv)", "Diccionarios de datos", "Consultor interactivo en línea"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Código Modular (servicio educativo) y Código de Local Escolar (infraestructura física).",
+      "cobertura_geografica": "Universal a nivel nacional (llega hasta nivel de centro poblado y coordenada GPS por escuela).",
+      "cobertura_temporal": "Series anuales comparables desde 1998/2004 hasta la fecha.",
+      "llaves_cruce": "COD_MOD (código modular de 7 dígitos), CODLOCAL (código de local de 6 dígitos), UBIGEO y COD_UGEL / DRE."
+    },
+    "usos_aplicaciones": [
+      "Mapeo geoespacial de brechas de infraestructura escolar y vulnerabilidad física ante lluvias o sismos (cruce con SIGRID CENEPRED).",
+      "Cálculo de tasas de transición, atraso escolar, tamaño promedio de aula y ratio alumno/docente a nivel distrital o de UGEL.",
+      "Selección de grupos de control o líneas base en evaluaciones de impacto de intervenciones educativas."
+    ],
+    "precauciones_metodologicas": [
+      "Un mismo local escolar (CODLOCAL) puede albergar múltiples códigos modulares (ej. inicial, primaria y secundaria o turnos mañana/tarde); evitar doble conteo de infraestructura.",
+      "Verificar el módulo 'Resultado del Ejercicio Educativo' vs. 'Matrícula Inicial' pues responden a momentos distintos del año escolar."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Investigaciones en Educación y Aprendizajes (Uso de Censo Escolar ESCALE y ECE/ENLA)",
+        "autores": "Grupo de Análisis para el Desarrollo (GRADE)",
+        "anio": "2022–2026",
+        "uso_especifico": "Análisis de segregación escolar, brechas urbano-rurales de infraestructura y oferta educativa privada vs. pública usando COD_MOD y UBIGEO.",
+        "url": "https://grade.org.pe/publicaciones/areas/educacion-y-aprendizajes/"
+      },
+      {
+        "titulo": "Tendencias en la Educación Peruana — Tableros de Indicadores ESCALE",
+        "autores": "Unidad de Estadística Educativa (UEE - MINEDU)",
+        "anio": "2024–2026",
+        "uso_especifico": "Seguimiento oficial de brechas de cierre, tasa neta de matrícula y estado de locales escolares.",
+        "url": "https://escale.minedu.gob.pe/"
+      }
+    ]
+  },
+  {
+    "id": "ipe_incore",
+    "aliases": ["card_pol_2_3", "f_019"],
+    "nombre": "INCORE — Índice de Competitividad Regional e Informes Económicos",
+    "institucion": "Instituto Peruano de Economía (IPE)",
+    "categoria": "ÍNDICES COMPUESTOS SUBNACIONALES",
+    "tipo_insumo": "Tablas de puntajes estandarizados, rankings e informes regionales",
+    "frecuencia": "Anual (INCORE) / Mensual (análisis económicos)",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://incoreperu.pe",
+    "resumen_ejecutivo": "Índice compuesto que cuantifica anualmente el desempeño relativo de las 25 regiones del Perú en 6 pilares y más de 40 indicadores oficiales estandarizados.",
+    "contenido_variables": {
+      "descripcion": "Estandariza indicadores provenientes de INEI, BCRP, MEF, MINSA, MINEDU, MTC y Osinergmin en una escala comparativa (0 a 10) por región.",
+      "modulos_principales": [
+        "Entorno Económico: PBI real por trabajador, gasto real por hogar, stock de capital e inversión pública.",
+        "Infraestructura y Salud: Acceso a servicios básicos, red vial pavimentada, cobertura de internet fijo, esperanza de vida y anemia.",
+        "Educación, Laboral e Instituciones: Rendimiento escolar, informalidad laboral, conflictividad social, resolución de expedientes y percepción de gestión regional."
+      ],
+      "formatos": ["Portal interactivo con descarga de bases históricas (.xlsx/.csv)", "Informes regionales PDF"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Departamento / Región (24 departamentos + Callao; en algunas ediciones Lima Metropolitana y Lima Provincias diferenciadas).",
+      "cobertura_geografica": "Nacional (comparativa subnacional interregional).",
+      "cobertura_temporal": "Serie histórica comparable desde 2013 al presente.",
+      "llaves_cruce": "Código/Nombre de Departamento (cruce directo con PBI departamental BCRP/INEI y transferencias de canon MEF)."
+    },
+    "usos_aplicaciones": [
+      "Benchmarking rápido de brechas estructurales entre regiones del Perú para tesis de gestión pública y planes de desarrollo concertado.",
+      "Análisis de correlación entre capacidad institucional regional y ejecución presupuestal o crecimiento regional."
+    ],
+    "precauciones_metodologicas": [
+      "Al ser un índice de posición relativa (min-max anual entre regiones), un cambio en el puntaje de una región depende también del desempeño de las demás; usar los valores crudos de los subindicadores para comparaciones longitudinales absolutas."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Índice de Competitividad Regional (INCORE) — Ediciones Anuales",
+        "autores": "Instituto Peruano de Economía (IPE)",
+        "anio": "2023–2026",
+        "uso_especifico": "Diagnóstico comparativo anual de productividad, brechas sociales e institucionalidad subnacional.",
+        "url": "https://incoreperu.pe"
+      },
+      {
+        "titulo": "Publicaciones y Análisis Económicos Regionales",
+        "autores": "Instituto Peruano de Economía (IPE)",
+        "anio": "2024–2026",
+        "uso_especifico": "Cruces entre conflictividad, inversión minera y desempeño social departamental.",
+        "url": "https://ipe.org.pe/nuestras-publicaciones/"
+      }
+    ]
+  },
+  {
+    "id": "cepal_cepalstat",
+    "aliases": ["card_pol_2_4", "f_021", "f_022", "f_023"],
+    "nombre": "CEPALSTAT — Portal, API y Repositorio Estadístico de América Latina y el Caribe",
+    "institucion": "Comisión Económica para América Latina y el Caribe (CEPAL / ONU)",
+    "categoria": "SERIES COMPARADAS MULTILATERALES Y API REST",
+    "tipo_insumo": "Base multidimensional + API REST (JSON/CSV) + Publicaciones",
+    "frecuencia": "Continua / Anual",
+    "acceso": "Acceso abierto gratuito (API pública sin clave)",
+    "url_oficial": "https://statistics.cepal.org/portal/cepalstat/",
+    "resumen_ejecutivo": "Infraestructura de datos armonizados de CEPAL para comparar indicadores económicos, sociales, demográficos y ambientales del Perú frente a otros países de América Latina y el Caribe.",
+    "contenido_variables": {
+      "descripcion": "Reúne miles de indicadores estadísticos armonizados regionalmente bajo estándares internacionales y ofrece descarga masiva y consumo automatizado vía API.",
+      "modulos_principales": [
+        "Socio-demográfico: Pobreza armonizada CEPAL, desigualdad (Gini, quintiles), empleo, educación, salud y brechas de género.",
+        "Económico y Fiscal: Cuentas nacionales en dólares corrientes y constantes, deuda pública, balanza de pagos, IED y recaudación tributaria.",
+        "Ambiental y ODS: Emisiones, cobertura forestal, indicadores de seguimiento de los Objetivos de Desarrollo Sostenible (ODS) y desastres."
+      ],
+      "formatos": ["API REST JSON/XML (`api-cepalstat.cepal.org`)", "CSV / Excel (.xlsx)", "Perfiles nacionales PDF"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "País-año (y en indicadores seleccionados, sexo, área urbana/rural o grupo etario).",
+      "cobertura_geografica": "33 países de América Latina y el Caribe (incluido Perú) y agregados subregionales (Comunidad Andina, Alianza del Pacífico).",
+      "cobertura_temporal": "Series largas históricas desde 1950/1990 según dimensión hasta el año vigente.",
+      "llaves_cruce": "Código ISO-3 de país (`PER`) y códigos de indicador CEPALSTAT / ODS."
+    },
+    "usos_aplicaciones": [
+      "Estudios de política comparada entre Perú, Chile, Colombia y México con metodologías armonizadas (ej. medición comparable de pobreza o presión tributaria).",
+      "Automatización de tableros en R o Python consumiendo directamente `api-cepalstat.cepal.org`."
+    ],
+    "precauciones_metodologicas": [
+      "Las cifras de pobreza o desempleo de CEPALSTAT pasan por un proceso de armonización regional, por lo que pueden diferir ligeramente de la cifra oficial nacional reportada por INEI para ese año."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Panorama Social de América Latina y el Caribe / Estudio Económico Anual",
+        "autores": "CEPAL (División de Estadísticas y División de Desarrollo Social)",
+        "anio": "2024–2026",
+        "uso_especifico": "Comparación regional de distribución del ingreso, gasto social y recuperación post-choques con series armonizadas CEPALSTAT.",
+        "url": "https://www.cepal.org/es/publicaciones"
+      }
+    ]
+  },
+  {
+    "id": "pcm_datos_abiertos",
+    "aliases": ["f_001", "f_002", "fen_impact_2"],
+    "nombre": "Plataforma Nacional de Datos Abiertos del Perú (PNDA — PCM / SGTD)",
+    "institucion": "Presidencia del Consejo de Ministros (PCM) — Secretaría de Gobierno y Transformación Digital",
+    "categoria": "PORTAL NACIONAL DE DATOS ABIERTOS (CKAN)",
+    "tipo_insumo": "Datasets abiertos (.CSV, .JSON, .SHP) + API CKAN + Diccionarios de Datos",
+    "frecuencia": "Continua (según entidad publicadora)",
+    "acceso": "Acceso abierto gratuito (Licencia Open Data Perú)",
+    "url_oficial": "https://www.datosabiertos.gob.pe",
+    "resumen_ejecutivo": "Catálogo oficial unificado del Estado peruano donde ministerios, organismos públicos, municipalidades y agencias (INDECI/SINPAD, OSCE, SUSALUD, MIDAGRI, etc.) publican bases de datos granulares descargables.",
+    "contenido_variables": {
+      "descripcion": "Aloja miles de conjuntos de datos estructurados acompañados de su diccionario de datos, metadatos de actualización y fecha de corte.",
+      "modulos_principales": [
+        "Gestión del Riesgo (INDECI / SINPAD / ANIN): Registro histórico de emergencias ocurridas, población damnificada/afectada y distritos en emergencia.",
+        "Contrataciones, Salud y Economía: Licitaciones, ejecución de inversiones, establecimientos de salud (IPRESS), denuncias y movilidad.",
+        "Gobierno Digital y Transparencia: Estándar nacional de interoperabilidad y gobernanza de datos abiertos (`gob.pe/datosabiertos`)."
+      ],
+      "formatos": ["CSV", "JSON", "Excel (.xlsx)", "GeoJSON / Shapefile", "API CKAN (`package_search`, `datastore_search`)"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Variable según dataset: registro administrativo individual (emergencia, establecimiento, contrato, beneficiario) o serie distrital.",
+      "cobertura_geografica": "Nacional con alta granularidad distrital (en registros administrativos con campo UBIGEO).",
+      "cobertura_temporal": "Desde 2015–2020 hasta actualización semanal/mensual vigente según organismo publicador.",
+      "llaves_cruce": "UBIGEO (6 dígitos INEI), RUC de entidad/proveedor y código único de inversión (CUI / SNIP)."
+    },
+    "usos_aplicaciones": [
+      "Auditar la ocurrencia histórica y localización distrital de emergencias por lluvias, huaicos e inundaciones (datasets SINPAD).",
+      "Cruzar ejecución presupuestal (MEF), contrataciones públicas y población afectada por distrito en estudios de gestión del riesgo y anticorrupción.",
+      "Alimentar modelos de Machine Learning y análisis espacial con registros administrativos oficiales."
+    ],
+    "precauciones_metodologicas": [
+      "Revisar el diccionario de datos de cada dataset: algunas entidades codifican fechas o ceros iniciales de UBIGEO (ej. Amazonas `010101`) como entero en CSV, requiriendo padding a 6 caracteres (`zfill(6)`).",
+      "El consumo programático directo desde redes externas puede enfrentar reglas de firewall/WAF; descargar manualmente los CSV oficiales ante timeouts."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Catálogo de Datasets Nacionales — Plataforma Nacional de Datos Abiertos",
+        "autores": "Secretaría de Gobierno y Transformación Digital (PCM)",
+        "anio": "2024–2026",
+        "uso_especifico": "Publicación oficial de bases de datos abiertas de emergencias SINPAD, contrataciones y servicios públicos interoperables.",
+        "url": "https://www.gob.pe/datosabiertos"
+      },
+      {
+        "titulo": "Estudios de Gestión Pública e Integridad basada en Datos Administrativos",
+        "autores": "Videnza Instituto / Contraloría General de la República",
+        "anio": "2023–2026",
+        "uso_especifico": "Explotación de datos abiertos de contrataciones, inversiones CUI y emergencias para análisis de brechas y control público.",
+        "url": "https://videnzainstituto.org/"
+      }
+    ]
+  },
+  {
+    "id": "minsa_reunis",
+    "aliases": ["f_003"],
+    "nombre": "REUNIS — Repositorio Único Nacional de Información en Salud",
+    "institucion": "Ministerio de Salud (MINSA) — OGTI",
+    "categoria": "SISTEMA INTEGRADO DE INFORMACIÓN EN SALUD",
+    "tipo_insumo": "Tableros dinámicos, reportes estadísticos y bases abiertas (.CSV/.XLSX)",
+    "frecuencia": "Semanal / Mensual",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.minsa.gob.pe/reunis/",
+    "resumen_ejecutivo": "Plataforma estadística oficial del MINSA que integra registros de atenciones (HIS), egresos hospitalarios, morbilidad, mortalidad, recursos humanos e infraestructura sanitaria.",
+    "contenido_variables": {
+      "descripcion": "Centraliza información administrativa y estadística de las Redes Integradas de Salud (DIRESA/GERESA/DIRIS) y de los distintos subsistemas del sector.",
+      "modulos_principales": [
+        "Morbilidad y Defunciones (SINADEF / HIS): Causas de consulta externa y mortalidad registradas según clasificación CIE-10.",
+        "Recursos y Capacidad Instalada (RENIPRESS / INFORHUS): Número de establecimientos de salud por categoría (I-1 a III-2), camas y personal médico por distrito.",
+        "Salud Materno-Infantil y Anemia: Seguimiento operativo de tamizaje, suplementación de hierro, control CRED e inmunizaciones."
+      ],
+      "formatos": ["Tableros PowerBI / Web", "Descarga de tablas CSV / Excel", "Fichas técnicas de indicadores"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Establecimiento de salud (código RENAES/IPRESS), distrito, provincia, DIRESA/GERESA.",
+      "cobertura_geografica": "Nacional (todo establecimiento registrado en RENIPRESS, hasta nivel distrital y punto geográfico).",
+      "cobertura_temporal": "Series mensuales y anuales continuas (especialmente robustas desde 2016/2018 a la actualidad).",
+      "llaves_cruce": "Código UBIGEO (distrital), Código único IPRESS y código CIE-10 de diagnóstico."
+    },
+    "usos_aplicaciones": [
+      "Evaluar la densidad de recursos humanos médicos y capacidad de respuesta sanitaria por distrito frente a emergencias climáticas.",
+      "Contrastar registros administrativos de anemia infantil o vacunación (HIS/SIEN) con estimaciones muestrales de la ENDES.",
+      "Estudiar patrones estacionales de mortalidad y demanda de atenciones en salud."
+    ],
+    "precauciones_metodologicas": [
+      "A diferencia de la ENDES (muestra poblacional representativa), REUNIS proviene de registros administrativos de quienes acuden a establecimientos públicos (sesgo de demanda y cobertura territorial de oferta).",
+      "Validar siempre el denominador poblacional utilizado en coberturas (población asignada MINSA vs. proyección INEI)."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Repositorio de Indicadores Sanitarios Nacionales y Regionales REUNIS",
+        "autores": "Oficina General de Tecnologías de la Información — MINSA",
+        "anio": "2024–2026",
+        "uso_especifico": "Seguimiento oficial de brechas de recursos humanos, cobertura de inmunizaciones, mortalidad y capacidad hospitalaria.",
+        "url": "https://www.minsa.gob.pe/reunis/"
+      }
+    ]
+  },
+  {
+    "id": "minsa_cdc_peru",
+    "aliases": ["f_004", "fen_impact_4", "fen_tool_16"],
+    "nombre": "CDC Perú — Portal de Vigilancia Epidemiológica y Salas Situacionales (Dengue / FEN)",
+    "institucion": "Centro Nacional de Epidemiología, Prevención y Control de Enfermedades (CDC Perú — MINSA)",
+    "categoria": "VIGILANCIA EPIDEMIOLÓGICA EN SALUD PÚBLICA",
+    "tipo_insumo": "Salas situacionales semanales, boletines epidemiológicos y series por semana epidemiológica (SE)",
+    "frecuencia": "Semanal (por Semana Epidemiológica)",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.dge.gob.pe/portalnuevo/",
+    "resumen_ejecutivo": "Fuente oficial de vigilancia epidemiológica del Perú para detectar brotes de enfermedades sujetas a notificación obligatoria, clave para medir impactos sanitarios de olas de calor y lluvias del Fenómeno El Niño.",
+    "contenido_variables": {
+      "descripcion": "Registra casos notificados (confirmados, probables), incidencia acumulada, letalidad y defunciones por distrito y semana epidemiológica.",
+      "modulos_principales": [
+        "Enfermedades Metaxénicas y Zoonóticas: Dengue (con/sin signos de alarma y dengue grave), malaria, zika, chikungunya y leptospirosis.",
+        "Enfermedades Diarreicas Agudas (EDAs) e Infecciones Respiratorias (IRAs): Vigilancia por grupo etario en periodos de anomalías térmicas e inundaciones.",
+        "Alertas Epidemiológicas y Boletines: Reportes semanales oficiales ante incrementos anómalos de casos o cambios de serotipo."
+      ],
+      "formatos": ["Salas situacionales interactivas", "Boletines Epidemiológicos PDF", "Tablas exportables / Datasets epidemiológicos en Datos Abiertos"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Caso notificado agregado por Semana Epidemiológica (SE 1–52), grupo de edad y distrito de procedencia.",
+      "cobertura_geografica": "Nacional (todo el sistema de vigilancia epidemiológica NotiWeb a nivel distrital y regional).",
+      "cobertura_temporal": "Series semanales continuas históricas desde 2000/2010 hasta la semana epidemiológica en curso.",
+      "llaves_cruce": "UBIGEO distrital + Año + Semana Epidemiológica (permite modelos de rezago temporal cruzando temperatura/lluvia SENAMHI con incidencia de dengue)."
+    },
+    "usos_aplicaciones": [
+      "Modelos epidemiológicos de series de tiempo cruzando anomalías térmicas o precipitaciones (SENAMHI/ENFEN) con brotes de dengue o leptospirosis.",
+      "Evaluación de respuesta presupuestal ante emergencias sanitarias declaradas por decretos de urgencia.",
+      "Vigilancia comparativa de magnitud de brotes epidémicos entre temporadas FEN (ej. 2017, 2023–2024 y actuales)."
+    ],
+    "precauciones_metodologicas": [
+      "Los datos de las últimas 1–2 semanas epidemiológicas suelen estar sujetos a regularización por retraso en la notificación de establecimientos remotos.",
+      "Diferenciar en los análisis entre casos confirmados por laboratorio vs. casos probables notificados."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Boletín Epidemiológico del Perú y Salas Situacionales de Dengue",
+        "autores": "CDC Perú — Ministerio de Salud",
+        "anio": "2023–2026",
+        "uso_especifico": "Registro semanal oficial de incidencia distrital, tasas de letalidad y caracterización de brotes asociados a anomalías climáticas.",
+        "url": "https://www.dge.gob.pe/portalnuevo/"
+      },
+      {
+        "titulo": "Estudios de Impacto Sanitario y Financiero frente a Choques Climáticos (MIDAGRI / MINSA)",
+        "autores": "Organización Panamericana de la Salud / CIES",
+        "anio": "2023–2025",
+        "uso_especifico": "Análisis retrospectivo de brotes de arbovirosis vinculados al Fenómeno El Niño y asignación de gasto sanitario de emergencia.",
+        "url": "https://cies.org.pe/investigaciones/"
+      }
+    ]
+  },
+  {
+    "id": "mef_consulta_amigable",
+    "aliases": ["fen_impact_1", "fen_tool_15"],
+    "nombre": "Consulta Amigable MEF (SIAF) — Seguimiento de Ejecución Presupuestal y PP 0068 (PREVAED)",
+    "institucion": "Ministerio de Economía y Finanzas (MEF)",
+    "categoria": "FINANZAS PÚBLICAS Y PRESUPUESTO POR RESULTADOS",
+    "tipo_insumo": "Consultor en tiempo real del SIAF-RP (.CSV / .XLSX)",
+    "frecuencia": "Diaria",
+    "acceso": "Acceso abierto gratuito (descarga directa de cuadros)",
+    "url_oficial": "https://www.mef.gob.pe/es/seguimiento-de-la-ejecucion-presupuestal-consulta-amigable",
+    "resumen_ejecutivo": "Sistema de transparencia fiscal diaria del Estado peruano que registra al sol cada etapa del gasto público (PIA, PIM, Certificado, Compromiso, Devengado y Girado) por nivel de gobierno, pliego y proyecto.",
+    "contenido_variables": {
+      "descripcion": "Permite desagregar el presupuesto público de ingresos y gastos desde nivel nacional hasta municipalidad distrital y proyecto de inversión específico (CUI).",
+      "modulos_principales": [
+        "Gasto Total y Categorías Presupuestales: Programas Presupuestales por Resultados — incluido el PP 0068 (Reducción de Vulnerabilidad y Atención de Emergencias por Desastres - PREVAED).",
+        "Niveles de Gobierno y Pliegos: Gobierno Nacional (ministerios/ANIN), Gobiernos Regionales y 1,890+ Municipalidades Provinciales y Distritales.",
+        "Financiamiento de Emergencias: Transferencias del FONDES y partidas extraordinarias por Decretos de Urgencia ante el Fenómeno El Niño."
+      ],
+      "formatos": ["Tablas web exportables a Excel / CSV", "Datasets masivos en Datos Abiertos MEF"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Pliego / Unidad Ejecutora / Proyecto (CUI) / Genérica de gasto / Actividad.",
+      "cobertura_geografica": "Universal: todas las entidades públicas del Perú (nacional, regional y local/distrital).",
+      "cobertura_temporal": "Actualización diaria del año fiscal en curso y series históricas anuales cerradas desde 1999/2012.",
+      "llaves_cruce": "Código de Departamento/Provincia/Distrito de la Unidad Ejecutora o ubicación del proyecto, Código Único de Inversiones (CUI) y Programa Presupuestal (`0068`)."
+    },
+    "usos_aplicaciones": [
+      "Medir la eficacia real de ejecución financiera (ratio Devengado / PIM %) de obras de descolmatación, defensas ribereñas y prevención ante lluvias.",
+      "Evaluar la relación entre transferencias fiscales extraordinarias por desastres, capacidad burocrática municipal y reducción de daños SINPAD.",
+      "Investigar descentralización fiscal, gasto por función (Salud, Educación, Orden Público) y brechas de inversión pública."
+    ],
+    "precauciones_metodologicas": [
+      "El Presupuesto Institucional Modificado (PIM) cambia durante todo el año mediante créditos suplementarios; no confundir baja ejecución temprana tras una transferencia reciente con incapacidad estructural sin revisar fecha de incorporación.",
+      "El devengado financiero refleja la obligación de pago contraída por avance valorizado, no siempre la culminación física operativa (contrastar con Invierte.pe / Contraloría)."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Seguimiento de la Ejecución Presupuestal del Sector Público Peruano (SIAF)",
+        "autores": "Ministerio de Economía y Finanzas (MEF) — Dirección General de Presupuesto Público",
+        "anio": "2024–2026",
+        "uso_especifico": "Monitoreo diario oficial del devengado y del Programa Presupuestal 0068 PREVAED en los tres niveles de gobierno.",
+        "url": "https://www.mef.gob.pe/es/seguimiento-de-la-ejecucion-presupuestal-consulta-amigable"
+      },
+      {
+        "titulo": "Estudios sobre Capacidad Estatal Subnacional y Calidad del Gasto Público",
+        "autores": "CIES / Videnza Instituto",
+        "anio": "2022–2026",
+        "uso_especifico": "Cruce de datos SIAF (Consulta Amigable) con indicadores de brechas sociales (INEI) y reportes de control de Contraloría.",
+        "url": "https://videnzainstituto.org/"
+      }
+    ]
+  },
+  {
+    "id": "el_peruano_normas",
+    "aliases": ["card_pol_1_1"],
+    "nombre": "Boletines de Normas Legales del Diario Oficial El Peruano",
+    "institucion": "Editora Perú / Presidencia del Consejo de Ministros (PCM)",
+    "categoria": "REGISTRO OFICIAL NORMATIVO (POLITY & POLICY)",
+    "tipo_insumo": "Cuadernillos diarios HTML/PDF de Normas Legales",
+    "frecuencia": "Diaria",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://busquedas.elperuano.pe/",
+    "resumen_ejecutivo": "Fuente auténtica y obligatoria de vigencia normativa en el Perú: publica diariamente leyes, decretos legislativos, decretos supremos, resoluciones ministeriales, ordenanzas y declaratorias de emergencia.",
+    "contenido_variables": {
+      "descripcion": "Contiene el texto íntegro oficial de todo dispositivo legal con eficacia jurídica publicado por los poderes del Estado, organismos constitucionales autónomos y gobiernos subnacionales.",
+      "modulos_principales": [
+        "Rango Normativo: Ley, Decreto Legislativo, Decreto de Urgencia, Decreto Supremo, Resolución Suprema, Resolución Ministerial, Ordenanza.",
+        "Metadatos Jurídicos: Número de norma, entidad emisora, fecha de publicación, sumilla oficial y número de operación (`OP`).",
+        "Anexos y Separatas Especiales: Reglamentos técnicos, presupuestos institucionales y lineamientos de Políticas Nacionales."
+      ],
+      "formatos": ["Buscador web HTML", "Cuadernillo PDF oficial por fecha y norma individual"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Dispositivo legal individual (identificado por fecha, rango, número y número de orden OP).",
+      "cobertura_geografica": "Nacional (incluye también ordenanzas regionales y municipales con alcance subnacional).",
+      "cobertura_temporal": "Publicación diaria ininterrumpida; archivo digital consultable multianual.",
+      "llaves_cruce": "Número de dispositivo legal (ej. `D.S. N° 015-2026-PCM`), RUC/Entidad emisora y citas normativas cruzadas."
+    },
+    "usos_aplicaciones": [
+      "Trazabilidad empírica de cambios institucionales (*Polity*), políticas públicas sectoriales (*Policy*), transferencias presupuestales y estados de emergencia.",
+      "Análisis de texto jurídico (NLP), redes de citación legal y alineación con Políticas Nacionales del CEPLAN (como implementa Apocuna en *Rastrea la Norma*)."
+    ],
+    "precauciones_metodologicas": [
+      "La publicación en El Peruano marca la vigencia salvo disposición expresa de vacatio legis; verificar siempre fe de erratas y derogaciones posteriores en el SPIJ (MINJUSDH)."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Observatorio Normativo Diario Apocuna — Radar Polity & Policy",
+        "autores": "Apocuna Hub (sobre cuadernillos oficiales de El Peruano)",
+        "anio": "2026",
+        "uso_especifico": "Clasificación diaria automatizada, extracción de normas citadas y trazabilidad SHA-256 de dispositivos de alcance institucional y regulatorio.",
+        "url": "https://busquedas.elperuano.pe/"
+      }
+    ]
+  },
+  {
+    "id": "pcm_gestion_publica",
+    "aliases": ["card_pol_1_2"],
+    "nombre": "Portal Temático de Gestión Pública (PCM / gob.pe)",
+    "institucion": "Presidencia del Consejo de Ministros (PCM) — Secretaría de Gestión Pública",
+    "categoria": "ARQUITECTURA DEL ESTADO Y MODERNIZACIÓN",
+    "tipo_insumo": "Normativa rectora, guías metodológicas, informes y servicios ciudadanos",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.gob.pe/institucion/pcm/tema/gestion-publica",
+    "resumen_ejecutivo": "Centro documental del ente rector en modernización del Estado peruano (Política Nacional de Modernización de la Gestión Pública, gestión por procesos, calidad regulatoria y simplificación administrativa).",
+    "contenido_variables": {
+      "descripcion": "Reúne los lineamientos de diseño organizacional (ROF, MOP), Análisis de Impacto Regulatorio (AIR Ex Ante), gestión por resultados y coordinación intersectorial.",
+      "modulos_principales": [
+        "Modernización y Calidad Regulatoria: Guías de Análisis de Impacto Regulatorio y eliminación de barreras burocráticas.",
+        "Estructura y Funcionamiento Estatal: Reglamentos de Organización y Funciones y modelos de articulación territorial."
+      ],
+      "formatos": ["Fichas web estructuradas (gob.pe)", "Documentos PDF de guías y lineamientos"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Instrumentos rectores de gestión pública aplicables a todas las entidades del Poder Ejecutivo, GORES y Municipalidades.",
+      "cobertura_geografica": "Nacional.",
+      "cobertura_temporal": "Actualización permanente (repositorio histórico y normativa vigente).",
+      "llaves_cruce": "Decretos Supremos rectores (ej. D.S. N° 103-2022-PCM) y clasificación de sistemas administrativos de la LOPE."
+    },
+    "usos_aplicaciones": [
+      "Marco conceptual y normativo para diagnosticar capacidad estatal, diseño organizacional y calidad regulatoria en estudios sobre el aparato público peruano.",
+      "Referencia obligatoria en análisis de Políticas Nacionales y coordinación intergubernamental."
+    ],
+    "precauciones_metodologicas": [
+      "Complementar la revisión doctrinaria de la SGP con evidencia de implementación efectiva recogida por Contraloría y SERVIR."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Política Nacional de Modernización de la Gestión Pública al 2030 y Guías Metodológicas",
+        "autores": "Secretaría de Gestión Pública — PCM",
+        "anio": "2022–2026",
+        "uso_especifico": "Estándar metodológico para evaluación de calidad regulatoria, gestión por procesos y servicios públicos orientados al ciudadano.",
+        "url": "https://www.gob.pe/institucion/pcm/tema/gestion-publica"
+      }
+    ]
+  },
+  {
+    "id": "contraloria_control",
+    "aliases": ["card_pol_1_3", "f_011", "f_012", "f_037", "f_038", "fen_impact_3"],
+    "nombre": "Contraloría General de la República — Control Gubernamental, Hitos de Control y OECE",
+    "institucion": "Contraloría General de la República (CGR) / OECE",
+    "categoria": "CONTROL GUBERNAMENTAL Y FISCALIZACIÓN DE OBRAS",
+    "tipo_insumo": "Informes de Control Concurrente/Posterior, alertas de riesgo y registros de contrataciones",
+    "frecuencia": "Diaria / Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.gob.pe/contraloria",
+    "resumen_ejecutivo": "Fuente primaria sobre desempeño operativo real de la administración pública, obras paralizadas, riesgos en contrataciones directas y desviaciones detectadas por el Sistema Nacional de Control.",
+    "contenido_variables": {
+      "descripcion": "Documenta hallazgos técnicos y legales sobre ejecución de inversiones públicas, compras estatales y cumplimiento de metas físicas en los tres niveles de gobierno.",
+      "modulos_principales": [
+        "Control Concurrente e Hitos de Control: Alertas preventivas en tiempo real durante la ejecución de proyectos estratégicos y obras de prevención FEN.",
+        "Obras Paralizadas y Auditoría de Cumplimiento: Diagnósticos nacionales de proyectos trabados por entidad, departamento y causal.",
+        "Contrataciones de Emergencia (OECE / ex-OSCE): Seguimiento de adjudicaciones directas por peligro inminente."
+      ],
+      "formatos": ["Buscador de informes PDF", "Notas oficiales de alertas de control", "Portales de transparencia CGR/OECE"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Informe de Control / Obra pública (CUI) / Entidad auditada.",
+      "cobertura_geografica": "Nacional (todo gobierno nacional, regional, local y empresas públicas).",
+      "cobertura_temporal": "Publicación diaria continua de informes y alertas.",
+      "llaves_cruce": "Código Único de Inversiones (CUI), RUC de entidad/contratista y UBIGEO."
+    },
+    "usos_aplicaciones": [
+      "Identificar mecanismos empíricos de parálisis de obra, retrasos contractuales y riesgos de corrupción en infraestructura pública.",
+      "Triangular el avance financiero reportado en SIAF-MEF frente al avance físico real verificado en campo por auditores."
+    ],
+    "precauciones_metodologicas": [
+      "Los Informes de Control Concurrente señalan 'situaciones adversas' preventivas que aún pueden ser subsanadas por el gestor público, a diferencia de los informes de auditoría posterior con presunta responsabilidad."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Reportes de Obras Paralizadas e Informes de Control Concurrente en Emergencias",
+        "autores": "Contraloría General de la República del Perú",
+        "anio": "2024–2026",
+        "uso_especifico": "Cuantificación de inversiones paralizadas por región/sector e identificación de retrasos críticos en obras de infraestructura y prevención.",
+        "url": "https://www.gob.pe/institucion/contraloria/noticias"
+      }
+    ]
+  },
+  {
+    "id": "iep_opinion_repositorio",
+    "aliases": ["card_pol_3_1", "f_014", "f_015"],
+    "nombre": "Encuestas de Opinión y Repositorio Institucional IEP",
+    "institucion": "Instituto de Estudios Peruanos (IEP)",
+    "categoria": "OPINIÓN PÚBLICA Y CIENCIA POLÍTICA EMPÍRICA",
+    "tipo_insumo": "Encuestas mensuales de opinión, fichas técnicas muestrales y repositorios académicos",
+    "frecuencia": "Mensual / Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://estudiosdeopinion.iep.org.pe/",
+    "resumen_ejecutivo": "Serie periódica de referencia en el Perú sobre aprobación presidencial/congresal, confianza institucional, cultura política y percepciones ciudadanas por macrozona.",
+    "contenido_variables": {
+      "descripcion": "Publica informes detallados de encuesta telefónica nacional con desagregación por ámbito (Lima Metropolitana, Perú urbano, Perú rural), macrozonas (Norte, Centro, Sur, Oriente), sexo, edad y nivel socioeconómico.",
+      "modulos_principales": [
+        "Pulso Político y Coyuntura: Aprobación de autoridades, identificación partidaria, evaluación de protestas y salida electoral.",
+        "Cultura Política e Institucionalidad: Confianza en poderes del Estado, tolerancia autoritaria y prioridades percibidas.",
+        "Repositorio IEP (`repositorio.iep.org.pe`): Libros, documentos de trabajo y estudios históricos/sociopolíticos en acceso abierto."
+      ],
+      "formatos": ["Informes PDF con tablas desagregadas y márgenes de error", "Documentos de trabajo OAI/DSpace"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Población mayor de 18 años con acceso a telefonía en el Perú (muestras nacionales típicas ~1,200 casos).",
+      "cobertura_geografica": "Nacional por macrozonas y ámbitos urbano/rural.",
+      "cobertura_temporal": "Series mensuales continuas de coyuntura política (y archivo histórico en repositorio IEP).",
+      "llaves_cruce": "Macrozona geográfica, año-mes de levantamiento y grupo socioeconómico (A/B, C, D/E)."
+    },
+    "usos_aplicaciones": [
+      "Analizar ciclos de legitimidad democrática, polarización territorial (ej. Sur vs. Lima) y crisis de representación política.",
+      "Vincular coyunturas normativas o shocks económicos con cambios en la opinión pública."
+    ],
+    "precauciones_metodologicas": [
+      "Verificar siempre el método de recolección (encuesta telefónica probabilística por RDD vs. encuestas presenciales) y el margen de error por submuestra al analizar macrozonas pequeñas."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Informes de Opinión Pública IEP — Serie Mensual de Coyuntura Política",
+        "autores": "Instituto de Estudios Peruanos (IEP)",
+        "anio": "2022–2026",
+        "uso_especifico": "Medición longitudinal de aprobación institucional, apoyo a la democracia y clivajes urbano-rurales en el Perú.",
+        "url": "https://estudiosdeopinion.iep.org.pe/"
+      },
+      {
+        "titulo": "Documentos de Trabajo del Repositorio Institucional IEP",
+        "autores": "Investigadores del IEP",
+        "anio": "2020–2026",
+        "uso_especifico": "Investigación politológica, sociológica e histórica en acceso abierto sobre Estado y sociedad peruana.",
+        "url": "https://repositorio.iep.org.pe"
+      }
+    ]
+  },
+  {
+    "id": "defensoria_conflictos",
+    "aliases": ["card_pol_3_2", "f_009", "f_010"],
+    "nombre": "Reportes de Conflictos Sociales y Reportes Defensoriales",
+    "institucion": "Defensoría del Pueblo del Perú — Adjuntía para la Prevención de Conflictos Sociales",
+    "categoria": "CONFLICTIVIDAD SOCIAL Y DERECHOS HUMANOS",
+    "tipo_insumo": "Reportes mensuales estandarizados, series estadísticas y alertas tempranas",
+    "frecuencia": "Mensual",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.defensoria.gob.pe/areas_tematicas/paz-social-y-prevencion-de-conflictos/",
+    "resumen_ejecutivo": "Registro oficial continuo más largo y sistemático de la conflictividad social en el Perú, clasificando casos activos/latentes por región, tipología y etapa de diálogo.",
+    "contenido_variables": {
+      "descripcion": "Cada reporte mensual cataloga caso por caso la ubicación, actores involucrados, demanda central, tipo de conflicto (socioambiental, gobierno local/regional/nacional, laboral, demarcación) y acciones colectivas de protesta.",
+      "modulos_principales": [
+        "Inventario Mensual de Conflictos: Estado (activo vs. latente), fase (temprana, escalamiento, crisis, desescalamiento, diálogo) y ubicación.",
+        "Acciones Colectivas y Diálogo: Número mensual de protestas, heridos/fallecidos y mesas de diálogo con presencia estatal.",
+        "Reportes Defensoriales Temáticos (`categorias_de_documentos/reportes`): Evaluaciones especiales de servicios públicos, gestión ambiental y derechos."
+      ],
+      "formatos": ["Reportes Mensuales PDF con cuadros estadísticos comparativos", "Fichas por caso"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Caso de conflicto social identificado (por departamento/provincia/distrito) y mes-año.",
+      "cobertura_geografica": "Nacional (24 departamentos + Callao, con detalle provincial/distrital por caso).",
+      "cobertura_temporal": "Serie mensual continua desde 2004 hasta la actualidad.",
+      "llaves_cruce": "Departamento/Provincia/Distrito (UBIGEO), sector económico (minería, hidrocarburos, hídrico) y mes de reporte."
+    },
+    "usos_aplicaciones": [
+      "Estudiar la geografía de la conflictividad socioambiental y su relación con canon minero, pobreza o consultas previas.",
+      "Construir series de tiempo de movilización social y estabilidad subnacional."
+    ],
+    "precauciones_metodologicas": [
+      "Los casos de conflicto reflejan hechos registrados por oficinas defensoriales; un aumento en el conteo de conflictos socioambientales no implica automáticamente violencia física si el caso está en 'fase de diálogo'."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Reporte Mensual de Conflictos Sociales (Serie Histórica 2004–2026)",
+        "autores": "Defensoría del Pueblo del Perú",
+        "anio": "2024–2026",
+        "uso_especifico": "Contabilidad sistemática mensual de conflictos activos, latentes, socioambientales y mesas de diálogo territorial.",
+        "url": "https://www.defensoria.gob.pe/areas_tematicas/paz-social-y-prevencion-de-conflictos/"
+      }
+    ]
+  },
+  {
+    "id": "grade_evidencia",
+    "aliases": ["card_pol_3_3", "f_016", "f_017", "f_018"],
+    "nombre": "GRADE — Investigaciones Aplicadas y Documentos de Política (Policy Briefs)",
+    "institucion": "Grupo de Análisis para el Desarrollo (GRADE)",
+    "categoria": "THINK TANK / INVESTIGACIÓN EMPÍRICA APLICADA",
+    "tipo_insumo": "Artículos, libros, documentos de investigación y briefs de política",
+    "frecuencia": "Continua / Semanal",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://grade.org.pe/publicaciones/",
+    "resumen_ejecutivo": "Uno de los principales centros independientes de investigación empírica económica y social del Perú, referente en diseños longitudinales (Niños del Milenio), educación, trabajo y desarrollo rural.",
+    "contenido_variables": {
+      "descripcion": "Producción científica y aplicada que combina encuestas longitudinales propias, microdatos INEI/ESCALE y evaluaciones experimentales/cuasi-experimentales.",
+      "modulos_principales": [
+        "Educación y Aprendizajes: Evaluación de brechas docentes, aprendizajes, educación rural y superior.",
+        "Pobreza, Protección Social y Trabajo: Evaluaciones de impacto de transferencias condicionadas, informalidad y género.",
+        "Documentos de Política: Síntesis ejecutivas orientadas a tomadores de decisión y reforma institucional."
+      ],
+      "formatos": ["PDF de acceso abierto", "Referencias bibliográficas y anexos metodológicos"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Estudios nacionales y subnacionales (cohortes Niños del Milenio, hogares, escuelas y distritos).",
+      "cobertura_geografica": "Perú (con comparaciones internacionales en proyectos multipaís).",
+      "cobertura_temporal": "Archivo digital completo de investigaciones desde la década de 1980 hasta la actualidad.",
+      "llaves_cruce": "Áreas temáticas y fuentes primarias documentadas (ENAHO, ENDES, ECE, Censo Escolar, Niños del Milenio)."
+    },
+    "usos_aplicaciones": [
+      "Estado del arte metodológico para diseños de tesis y evaluaciones de políticas públicas en el Perú.",
+      "Identificación de estrategias de identificación causal validadas sobre datos administrativos peruanos."
+    ],
+    "precauciones_metodologicas": [
+      "Consultar los anexos técnicos de cada documento para replicar definiciones exactas de variables o recortes muestrales."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Catálogo de Documentos de Política y Estudios Sectoriales GRADE",
+        "autores": "Grupo de Análisis para el Desarrollo (GRADE)",
+        "anio": "2022–2026",
+        "uso_especifico": "Evidencia empírica aplicada en educación, mercado laboral, violencia y protección social para formulación de políticas públicas.",
+        "url": "https://grade.org.pe/publicaciones_categorias/documento-de-politica/"
+      }
+    ]
+  },
+  {
+    "id": "pnud_peru",
+    "aliases": ["card_pol_3_4", "f_025", "f_036"],
+    "nombre": "PNUD Perú — Informes de Desarrollo Humano, Gobernabilidad e Integridad",
+    "institucion": "Programa de las Naciones Unidas para el Desarrollo (PNUD Perú)",
+    "categoria": "DESARROLLO HUMANO Y GOBERNABILIDAD",
+    "tipo_insumo": "Informes Nacionales (IDH Perú), diagnósticos electorales y reportes de integridad",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.undp.org/es/peru/publicaciones",
+    "resumen_ejecutivo": "Publicaciones técnicas de Naciones Unidas sobre Índice de Desarrollo Humano (IDH) subnacional del Perú, gobernabilidad democrática, integridad de la información electoral y resiliencia climática.",
+    "contenido_variables": {
+      "descripcion": "Integra estadísticas demográficas, educativas y de ingreso para calcular índices territoriales multidimensionales y diagnósticos institucionales.",
+      "modulos_principales": [
+        "Desarrollo Humano Territorial: Cálculos de IDH por distrito/provincia (esperanza de vida, escolaridad e ingreso familiar).",
+        "Gobernabilidad Democrática e Integridad Electoral: Diagnósticos recientes sobre desinformación e integridad en procesos electorales (ej. Elecciones 2026)."
+      ],
+      "formatos": ["Informes PDF", "Anexos estadísticos descargables en ediciones del IDH"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Distrito / Provincia / Departamento (en IDH Perú) o análisis institucional nacional.",
+      "cobertura_geografica": "Todo el Perú.",
+      "cobertura_temporal": "Ediciones periódicas del IDH Perú e informes recientes 2024–2026.",
+      "llaves_cruce": "UBIGEO distrital/provincial en tabulados del IDH."
+    },
+    "usos_aplicaciones": [
+      "Utilizar el IDH distrital como variable de control o estratificación socioeconómica territorial.",
+      "Respaldar diagnósticos de calidad democrática, desinformación electoral e integridad pública."
+    ],
+    "precauciones_metodologicas": [
+      "Al comparar ediciones distintas del IDH subnacional del Perú, revisar posibles ajustes metodológicos en la estimación de ingresos familiares."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Integridad de la Información en las Elecciones Generales 2026 e Informes de Desarrollo Humano",
+        "autores": "PNUD Perú",
+        "anio": "2024–2026",
+        "uso_especifico": "Diagnósticos institucionales sobre ecosistema informativo electoral, vulnerabilidad territorial y desarrollo humano en el Perú.",
+        "url": "https://www.undp.org/es/peru/publicaciones/integridad-de-la-informacion-en-las-elecciones-generales-2026"
+      }
+    ]
+  },
+  {
+    "id": "cies_investigaciones",
+    "aliases": ["card_pol_4_1", "f_013"],
+    "nombre": "CIES — Investigaciones Económicas y Sociales Basadas en Evidencia",
+    "institucion": "Consorcio de Investigación Económica y Social (CIES)",
+    "categoria": "CONSORCIO ACADÉMICO Y EVALUACIÓN DE POLÍTICAS",
+    "tipo_insumo": "Repositorios de investigaciones concursables y propuestas de política",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://cies.org.pe/investigaciones/",
+    "resumen_ejecutivo": "Principal red de investigación aplicada de más de 40 universidades e institutos peruanos, con estudios concursables rigurosos que utilizan microdatos oficiales de INEI, MEF, MINSA y MINEDU.",
+    "contenido_variables": {
+      "descripcion": "Agrupa investigaciones revisadas por pares sobre gestión pública, economía ambiental, salud, descentralización, educación y empleo.",
+      "modulos_principales": [
+        "Concurso Anual de Investigación: Proyectos empíricos regionales y nacionales con metodología cuantitativa/mixta explícita.",
+        "Elecciones y Políticas Públicas: Documentos de propuesta orientados a reformas concretas del Estado."
+      ],
+      "formatos": ["PDF completos", "Resúmenes ejecutivos de política"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Estudios de cobertura nacional y regional en todo el Perú (incluyendo investigación descentralizada).",
+      "cobertura_geografica": "Perú (nacional y subnacional).",
+      "cobertura_temporal": "Acervo histórico de más de 25 años hasta investigaciones 2025–2026.",
+      "llaves_cruce": "Ejes temáticos, años de concurso e instituciones ejecutoras."
+    },
+    "usos_aplicaciones": [
+      "Identificar cómo investigadores peruanos han resuelto problemas concretos de limpieza y cruce entre bases públicas (ENAHO, SIAF, REUNIS, SIGRID).",
+      "Revisar literatura previa antes de formular un proyecto de tesis o consultoría pública."
+    ],
+    "precauciones_metodologicas": [
+      "Comprobar si cada documento publicado corresponde a informe final aprobado o versión preliminar de trabajo."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Catálogo de Investigaciones Concursables CIES",
+        "autores": "Consorcio de Investigación Económica y Social (CIES)",
+        "anio": "2020–2026",
+        "uso_especifico": "Producción de evidencia académica descentralizada para la evaluación de políticas económicas, sociales y ambientales en el Perú.",
+        "url": "https://cies.org.pe/investigaciones/"
+      }
+    ]
+  },
+  {
+    "id": "banco_mundial_okr",
+    "aliases": ["card_pol_4_2", "f_028"],
+    "nombre": "Open Knowledge Repository (OKR) — Banco Mundial",
+    "institucion": "Banco Mundial (World Bank Group)",
+    "categoria": "REPOSITORIO MULTILATERAL DE EVIDENCIA",
+    "tipo_insumo": "Working papers, evaluaciones de impacto, informes Perú y manuales técnicos",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito (Creative Commons / Open Access)",
+    "url_oficial": "https://openknowledge.worldbank.org/",
+    "resumen_ejecutivo": "Repositorio oficial de conocimiento abierto del Banco Mundial, fuente clave de evaluaciones de impacto, Revisiones de Gasto Público (PER) y diagnósticos macro-fiscales para el Perú.",
+    "contenido_variables": {
+      "descripcion": "Indexa publicaciones revisadas, libros metodológicos de econometría de evaluación de impacto y reportes país específicos sobre Perú.",
+      "modulos_principales": [
+        "Revisiones de Gasto Público y Pobreza (PER / Poverty Assessment Peru): Evaluaciones del sistema fiscal, protección social y productividad.",
+        "Policy Research Working Papers & Manuales Metodológicos: Literatura técnica con DOI persistente y datos de réplica en casos seleccionados."
+      ],
+      "formatos": ["PDF open access", "Metadatos DOI y citas estandarizadas"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Publicaciones por país (`Peru`), región (`LAC`) o sector de política.",
+      "cobertura_geografica": "Global y específica para el Perú.",
+      "cobertura_temporal": "Archivo histórico completo hasta publicaciones recientes.",
+      "llaves_cruce": "DOI, clasificación temática JEL/Banco Mundial y código ISO `PER`."
+    },
+    "usos_aplicaciones": [
+      "Consultar literatura de frontera y manuales metodológicos de evaluación de programas públicos.",
+      "Comparar recomendaciones de política fiscal y productividad para economías andinas."
+    ],
+    "precauciones_metodologicas": [
+      "Distinguir entre reportes institucionales oficiales del país y *Policy Research Working Papers* (que expresan puntos de vista de sus autores)."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Colección de Informes Económicos, Gasto Público y Desarrollo sobre el Perú (OKR)",
+        "autores": "World Bank Group",
+        "anio": "2023–2026",
+        "uso_especifico": "Diagnósticos empíricos sobre productividad, brechas de infraestructura, resiliencia climática y eficiencia del gasto público en el Perú.",
+        "url": "https://openknowledge.worldbank.org/"
+      }
+    ]
+  },
+  {
+    "id": "bid_publicaciones",
+    "aliases": ["card_pol_4_3", "f_029"],
+    "nombre": "Repositorio de Publicaciones del Banco Interamericano de Desarrollo (BID)",
+    "institucion": "Banco Interamericano de Desarrollo (BID)",
+    "categoria": "REPOSITORIO MULTILATERAL DE POLÍTICAS",
+    "tipo_insumo": "Monografías, notas técnicas, estudios sectoriales y evaluaciones en América Latina",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://publications.iadb.org/",
+    "resumen_ejecutivo": "Biblioteca técnica especializada en modernización del Estado, servicio civil, gobernanza digital, política fiscal, desastres naturales e infraestructura pública en América Latina y Perú.",
+    "contenido_variables": {
+      "descripcion": "Provee notas técnicas operativas, estudios comparados del servicio civil y análisis cuantitativos de desempeño institucional en países miembros.",
+      "modulos_principales": [
+        "Gestión Pública y Reforma del Estado: Índices comparativos de servicio civil, presupuesto por resultados y gobierno digital.",
+        "Economía del Cambio Climático y Riesgos: Metodologías de evaluación económica de desastres y resiliencia fiscal."
+      ],
+      "formatos": ["PDF descargables", "Metadatos bibliográficos y DOI"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Documento técnico por país (`Perú`), sector y tipo de publicación.",
+      "cobertura_geografica": "América Latina y el Caribe (con amplia colección dedicada al Perú).",
+      "cobertura_temporal": "Histórico completo hasta publicaciones actuales.",
+      "llaves_cruce": "DOI, idioma (`es`/`en`), país (`Peru`) y descriptor temático."
+    },
+    "usos_aplicaciones": [
+      "Contextualizar reformas del servicio civil peruano (SERVIR), sistemas de inversión (Invierte.pe) y digitalización frente a pares latinoamericanos.",
+      "Adoptar marcos de evaluación costo-beneficio aplicados a infraestructura y prevención de desastres."
+    ],
+    "precauciones_metodologicas": [
+      "Verificar el año de levantamiento de las métricas comparadas en índices institucionales multipaís (ej. Índice de Desarrollo del Servicio Civil)."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Colección de Notas Técnicas sobre Gestión Pública, Política Fiscal y Resiliencia en el Perú",
+        "autores": "Banco Interamericano de Desarrollo (BID)",
+        "anio": "2022–2026",
+        "uso_especifico": "Evaluaciones comparadas de capacidades estatales, gobernanza digital y gestión del riesgo financiero ante desastres.",
+        "url": "https://publications.iadb.org/"
+      }
+    ]
+  },
+  {
+    "id": "unicef_peru",
+    "aliases": ["card_pol_4_4", "f_024", "f_035"],
+    "nombre": "UNICEF Perú — Estudios sobre Niñez, Adolescencia y Cierre de Brechas",
+    "institucion": "Fondo de las Naciones Unidas para la Infancia (UNICEF Perú)",
+    "categoria": "POLÍTICAS SOCIALES E INFANCIA",
+    "tipo_insumo": "Informes estadísticos, análisis presupuestales en infancia y estudios interculturales",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.unicef.org/peru/publicaciones",
+    "resumen_ejecutivo": "Estudios especializados que combinan microdatos INEI/ENDES/ENAHO y seguimiento presupuestal MEF para analizar derechos, salud, educación e interculturalidad en niños, niñas y adolescentes del Perú.",
+    "contenido_variables": {
+      "descripcion": "Destaca por desagregaciones que no suelen estar visibles en reportes estándar, incluyendo niñez indígena amazónica/andina, afroperuana y análisis del gasto público en infancia.",
+      "modulos_principales": [
+        "Estado de la Niñez Indígena y Afroperuana: Indicadores desagregados por autoidentificación étnica y lengua materna.",
+        "Análisis del Presupuesto Público en Niñez: Cuantificación del gasto nacional y regional orientado a primera infancia y adolescencia."
+      ],
+      "formatos": ["Informes PDF con tabulados técnicos", "Resúmenes gráficos"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Población menor de 18 años en el Perú (con cortes por edad, sexo, región y etnicidad).",
+      "cobertura_geografica": "Nacional y ámbitos vulnerables priorizados (Amazonía, sierra rural, periferias urbanas).",
+      "cobertura_temporal": "Estudios periódicos actualizados (incluyendo reportes 2025–2026 junto al INEI).",
+      "llaves_cruce": "Autoidentificación étnica / lengua materna (ENAHO/ENDES) y funciones presupuestales SIAF."
+    },
+    "usos_aplicaciones": [
+      "Documentar brechas interseccionales en anemia, acceso educativo y violencia infantil para diseño de programas focalizados.",
+      "Respaldar metodologías de seguimiento del gasto público destinado a grupos vulnerables."
+    ],
+    "precauciones_metodologicas": [
+      "En desagregaciones por pueblos indígenas u originarios en encuestas de hogares, comprobar los tamaños muestrales y coeficientes de variación reportados en las notas técnicas."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Estado de la Niñez y Adolescencia Indígena y Afroperuana en el Perú",
+        "autores": "UNICEF Perú & INEI",
+        "anio": "2026",
+        "uso_especifico": "Cálculo desagregado de pobreza, educación, salud e identidad cultural en población infantil y adolescente indígena y afroperuana.",
+        "url": "https://www.unicef.org/peru/informes/ninez-y-adolescencia-indigena-y-afroperuana"
+      }
+    ]
+  },
+  {
+    "id": "videnza_gestion",
+    "aliases": ["f_020"],
+    "nombre": "Videnza Instituto — Publicaciones y Análisis de Gestión Pública",
+    "institucion": "Videnza Instituto",
+    "categoria": "THINK TANK DE GESTIÓN PÚBLICA",
+    "tipo_insumo": "Estudios aplicados, diagnósticos de inversión pública y propuestas regulatorias",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://videnzainstituto.org/",
+    "resumen_ejecutivo": "Centro de pensamiento enfocado en el funcionamiento operativo del Estado peruano: eficiencia de inversiones públicas, compras estatales, salud y saneamiento.",
+    "contenido_variables": {
+      "descripcion": "Analiza datos administrativos del MEF, Invierte.pe, OSCE y Contraloría para diagnosticar cuellos de botella en la provisión de servicios públicos.",
+      "modulos_principales": [
+        "Gestión de Inversiones y Descentralización: Análisis de calidad del gasto municipal y regional.",
+        "Salud, Minería Responsable y Desarrollo Territorial: Estudios sobre brechas sectoriales y ejecución de obras por impuestos."
+      ],
+      "formatos": ["Informes PDF", "Observatorios temáticos web"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Gobiernos regionales, municipalidades y sectores del Poder Ejecutivo.",
+      "cobertura_geografica": "Nacional y territorial.",
+      "cobertura_temporal": "Publicaciones continuas contemporáneas.",
+      "llaves_cruce": "Pliegos MEF, CUI de proyectos y sectores administrativos."
+    },
+    "usos_aplicaciones": [
+      "Referencia técnica para evaluar reformas en contratación pública, infraestructura social y descentralización."
+    ],
+    "precauciones_metodologicas": [
+      "Revisar en cada documento las fuentes administrativas primarias citadas y la fecha de corte de los registros."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Estudios de Gestión Pública y Desempeño Subnacional",
+        "autores": "Videnza Instituto",
+        "anio": "2023–2026",
+        "uso_especifico": "Diagnóstico cuantitativo de ejecución de inversiones, gestión sanitaria y propuestas de reforma estatal en el Perú.",
+        "url": "https://videnzainstituto.org/"
+      }
+    ]
+  },
+  {
+    "id": "oit_ilostat",
+    "aliases": ["f_026", "f_027"],
+    "nombre": "OIT Países Andinos & ILOSTAT Data — Estadísticas Laborales Comparadas",
+    "institucion": "Organización Internacional del Trabajo (OIT)",
+    "categoria": "ESTADÍSTICAS LABORALES INTERNACIONALES",
+    "tipo_insumo": "Base de datos global descargable (.CSV/.XLSX) + API + Informes Andinos",
+    "frecuencia": "Trimestral / Anual",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://ilostat.ilo.org/data/",
+    "resumen_ejecutivo": "Base oficial mundial de estadísticas laborales armonizadas de la OIT, junto con informes de la oficina andina en Lima sobre empleo informal, salarios reales, seguridad social y diálogo laboral.",
+    "contenido_variables": {
+      "descripcion": "Estándar internacional de estadísticas del trabajo bajo resoluciones CIET (empleo informal, tasa de participación, horas trabajadas, productividad laboral, salario mínimo).",
+      "modulos_principales": [
+        "ILOSTAT Bulk Download / Explorer: Indicadores laborales por país, sexo, tramo de edad, rama de actividad (ISIC) y nivel educativo.",
+        "Panorama Laboral / Oficina OIT Países Andinos: Reportes regionales con foco en Perú, Colombia, Ecuador y Bolivia."
+      ],
+      "formatos": ["CSV / Excel / SPSS / Stata / R (`Rilostat`) vía ILOSTAT", "PDF de informes regionales"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "País-año o país-trimestre (con desagregaciones demográficas y por sector económico).",
+      "cobertura_geografica": "Global (incluido Perú y región andina).",
+      "cobertura_temporal": "Series largas históricas y trimestrales actualizadas.",
+      "llaves_cruce": "Código ISO-3 (`PER`), clasificaciones internacionales ISIC Rev. 4 e ISCO-08."
+    },
+    "usos_aplicaciones": [
+      "Comparar la tasa de informalidad laboral peruana y brechas salariales de género frente a países andinos y OCDE usando criterios armonizados.",
+      "Importar directamente series en R o Python mediante descarga masiva de ILOSTAT."
+    ],
+    "precauciones_metodologicas": [
+      "Algunas definiciones armonizadas de informalidad de la OIT difieren levemente de los criterios operativos locales del MTPE/INEI; revisar el metadato `source` en ILOSTAT."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Panorama Laboral de América Latina y el Caribe / Base ILOSTAT Perú",
+        "autores": "Organización Internacional del Trabajo (OIT)",
+        "anio": "2024–2026",
+        "uso_especifico": "Seguimiento comparado de recuperación del empleo formal, empleo juvenil e informalidad en el Perú y países andinos.",
+        "url": "https://www.ilo.org/es/regiones-y-paises/america-latina-y-el-caribe/oficina-de-la-oit-para-los-paises-andinos"
+      }
+    ]
+  },
+  {
+    "id": "cideu_urbano",
+    "aliases": ["f_039"],
+    "nombre": "CIDEU — Observatorio de Pensamiento Estratégico Urbano",
+    "institucion": "Centro Iberoamericano de Desarrollo Estratégico Urbano (CIDEU)",
+    "categoria": "PLANIFICACIÓN URBANA Y GOBERNANZA MUNICIPAL",
+    "tipo_insumo": "Repositorio de guías metodológicas, casos urbanos y herramientas de gestión municipal",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://cideu.org/observatorio-del-pensamiento-estrategico-urbano/publicaciones/",
+    "resumen_ejecutivo": "Red iberoamericana de ciudades con metodologías probadas para planificación estratégica urbana, gobernanza metropolitana, espacio público y resiliencia municipal.",
+    "contenido_variables": {
+      "descripcion": "Documenta experiencias comparadas de gestión municipal y metodologías participativas para gobiernos locales.",
+      "modulos_principales": [
+        "Estrategia Urbana y Gobernanza Local: Manuales de planeamiento estratégico participativo y desarrollo urbano sostenible.",
+        "Banco de Proyectos y Casos Iberoamericanos: Soluciones municipales replicables en movilidad, ambiente y regeneración urbana."
+      ],
+      "formatos": ["Guías y cuadernos PDF", "Fichas de experiencias urbanas"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Ciudad / Gobierno local miembro y proyectos urbanos estratégicos.",
+      "cobertura_geografica": "Iberoamérica (incluyendo ciudades peruanas como Lima, Arequipa, Trujillo, Cusco y Piura).",
+      "cobertura_temporal": "Acervo histórico de metodologías y publicaciones contemporáneas.",
+      "llaves_cruce": "Nombre de ciudad, eje de estrategia urbana y año de publicación."
+    },
+    "usos_aplicaciones": [
+      "Diseño de planes de desarrollo urbano, gobernanza metropolitana y adaptación climática a escala municipal.",
+      "Referencia de casos comparados para investigaciones sobre políticas locales en el Perú."
+    ],
+    "precauciones_metodologicas": [
+      "Al adaptar experiencias iberoamericanas a municipalidades peruanas, contrastar competencias legales y financiamiento asignado en la Ley Orgánica de Municipalidades y el MEF."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Cuadernos de Pensamiento Estratégico Urbano CIDEU",
+        "autores": "CIDEU — Observatorio del Pensamiento Estratégico Urbano",
+        "anio": "2022–2026",
+        "uso_especifico": "Sistematización de metodologías de planificación territorial urbana y políticas locales sostenibles en Iberoamérica.",
+        "url": "https://cideu.org/observatorio-del-pensamiento-estrategico-urbano/publicaciones/"
+      }
+    ]
+  },
+  {
+    "id": "senamhi_goes19",
+    "aliases": ["fen_tool_1"],
+    "nombre": "Imágenes Satelitales GOES-19 (Canal Infrarrojo y Vapor de Agua) — SENAMHI",
+    "institucion": "Servicio Nacional de Meteorología e Hidrología del Perú (SENAMHI)",
+    "categoria": "MONITOREO SATELITAL EN TIEMPO REAL (FEN)",
+    "tipo_insumo": "Visor satelital meteorológico multiespectral (cada 10 minutos)",
+    "frecuencia": "Tiempo real (10 min)",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.senamhi.gob.pe/?p=satelites-goes19",
+    "resumen_ejecutivo": "Observación satelital geoestacionaria de alta frecuencia sobre el territorio peruano y Pacífico oriental para detectar formación de tormentas convectivas, lluvias extremas y trasvase de nubosidad.",
+    "contenido_variables": {
+      "descripcion": "Provee animaciones y cuadros en tiempo casi real de bandas espectrales infrarrojas (temperatura de brillo de topes nubosos), visible y vapor de agua.",
+      "modulos_principales": [
+        "Banda Infrarroja (IR 10.3 µm): Identifica núcleos convectivos profundos (topes muy fríos < -60 °C) asociados a precipitaciones intensas.",
+        "Banda Vapor de Agua y Visible (RGB GeoColor): Flujos de humedad troposférica desde la Amazonía hacia la sierra y costa norte."
+      ],
+      "formatos": ["Visor web interactivo con secuencias horarias"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Grilla espacial satelital geoestacionaria (resolución ~2 km en IR sobre Sudamérica).",
+      "cobertura_geografica": "Perú completo, cuenca amazónica y Océano Pacífico adyacente.",
+      "cobertura_temporal": "Actualización continua cada 10 minutos (archivo operativo reciente).",
+      "llaves_cruce": "Marca temporal UTC y delimitación departamental/cuenca."
+    },
+    "usos_aplicaciones": [
+      "Seguimiento operativo en tiempo real de eventos de lluvia extrema y tormentas convectivas en costa norte (Piura, Tumbes, Lambayeque) y sierra.",
+      "Validación visual inmediata de eventos que originan avisos meteorológicos y activación de quebradas."
+    ],
+    "precauciones_metodologicas": [
+      "Las imágenes satelitales estiman topes nubosos y probabilidad de convección, no reemplazan la medición directa de milímetros de lluvia en pluviómetros de superficie (red de estaciones SENAMHI)."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Monitoreo Satelital y Vigilancia Meteorológica Operativa del Perú",
+        "autores": "SENAMHI — Dirección de Meteorología y Evaluación Ambiental Atmosférica",
+        "anio": "2024–2026",
+        "uso_especifico": "Seguimiento continuo de sistemas convectivos asociados a eventos El Niño Costero y precipitaciones extremas.",
+        "url": "https://www.senamhi.gob.pe/?p=satelites-goes19"
+      }
+    ]
+  },
+  {
+    "id": "senamhi_avisos",
+    "aliases": ["fen_tool_2"],
+    "nombre": "Avisos Meteorológicos de Corto Plazo y Activación de Quebradas — SENAMHI",
+    "institucion": "Servicio Nacional de Meteorología e Hidrología del Perú (SENAMHI)",
+    "categoria": "ALERTA TEMPRANA METEOROLÓGICA (FEN)",
+    "tipo_insumo": "Avisos oficiales georreferenciados por nivel de peligro + mapas de susceptibilidad",
+    "frecuencia": "Diaria",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.senamhi.gob.pe/?p=avisos-meteorologicos",
+    "resumen_ejecutivo": "Sistema oficial de alerta temprana del Perú que emite avisos meteorológicos por niveles (amarillo, naranja, rojo) y alertas de posible activación de quebradas ante lluvias intensas.",
+    "contenido_variables": {
+      "descripcion": "Traduce pronósticos numéricos y umbrales históricos de precipitación en polígonos provinciales y distritales con vigencia temporal exacta.",
+      "modulos_principales": [
+        "Avisos Meteorológicos Numerados: Número de aviso, ventana de vigencia, nivel de peligro (Amarillo/Naranja/Rojo), provincias comprendidas y acumulados esperados (mm/día).",
+        "Aviso de Activación de Quebradas (24h): Nivel de peligrosidad (moderado, fuerte, extremo) basado en lluvias registradas en los últimos 7 días y pronóstico a 24h."
+      ],
+      "formatos": ["Polígonos web georreferenciados", "Listados de departamentos y provincias afectadas", "Boletines PDF"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Aviso emitido por ventana horaria y provincia / distrito afectado.",
+      "cobertura_geografica": "Nacional (costa, sierra y selva, por provincias y distritos).",
+      "cobertura_temporal": "Actualización diaria continua (24 a 72 horas de horizonte de pronóstico).",
+      "llaves_cruce": "Nombre/código de provincia y distrito (UBIGEO INEI) para cruce directo con infraestructura expuesta en SIGRID."
+    },
+    "usos_aplicaciones": [
+      "Evaluar la oportunidad y concordancia entre alertas tempranas meteorológicas y acciones preventivas municipales / declaratorias de emergencia.",
+      "Mapear recurrencia de avisos de nivel naranja/rojo por provincia durante temporadas de lluvias FEN."
+    ],
+    "precauciones_metodologicas": [
+      "Un aviso meteorológico indica probabilidad espacial de ocurrencia de eventos sobre un umbral regional; para analizar lluvia observada verificada usar los registros de estaciones meteorológicas."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Avisos Meteorológicos y Sistema de Alerta de Activación de Quebradas",
+        "autores": "SENAMHI Perú",
+        "anio": "2023–2026",
+        "uso_especifico": "Pronóstico operativo de peligro hidrometeorológico para activación de protocolos de Defensa Civil (COEN/INDECI) y gobiernos locales.",
+        "url": "https://www.senamhi.gob.pe/?p=avisos-meteorologicos"
+      }
+    ]
+  },
+  {
+    "id": "senamhi_hidrologia",
+    "aliases": ["fen_tool_3"],
+    "nombre": "Monitoreo Hidrológico y Umbrales de Caudales de Ríos — SENAMHI",
+    "institucion": "Servicio Nacional de Meteorología e Hidrología del Perú (SENAMHI)",
+    "categoria": "HIDROMETRÍA Y DESBORDES FLUVIALES (FEN)",
+    "tipo_insumo": "Series horarias/diarias de caudal (m³/s) y nivel de río (m) en estaciones hidrométricas",
+    "frecuencia": "Diaria",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.senamhi.gob.pe/?p=monitoreo-hidrologico",
+    "resumen_ejecutivo": "Red oficial de vigilancia hidrológica en tiempo real que mide caudales y niveles en las principales cuencas del Pacífico, Amazonas y Titicaca con umbrales operativos de desborde.",
+    "contenido_variables": {
+      "descripcion": "Reporta lecturas de estaciones automáticas y convencionales comparando el caudal instantáneo contra su promedio histórico y sus umbrales de alerta amarilla, naranja y roja.",
+      "modulos_principales": [
+        "Caudal Observado (m³/s) y Nivel de Agua (m): Mediciones en ríos críticos (Tumbes, Piura, Chira, Rímac, Santa, Chillón, Huallaga, Marañón, Amazonas).",
+        "Anomalía Hidrológica (%): Desviación porcentual respecto a la normal climática de cada estación."
+      ],
+      "formatos": ["Tablas en línea, hidrogramas interactivos y avisos hidrológicos"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Estación hidrométrica puntual (coordenadas GPS, cuenca y río).",
+      "cobertura_geografica": "Vertientes del Pacífico, Atlántico (Amazonas) y Lago Titicaca.",
+      "cobertura_temporal": "Lecturas diarias/horarias en tiempo real y registros de campaña hidrológica.",
+      "llaves_cruce": "Código de estación SENAMHI, código de cuenca Pfafstetter (ANA SNIRH) y departamento/distrito."
+    },
+    "usos_aplicaciones": [
+      "Estimar picos de descarga máxima y tiempos de concentración en crecidas asociadas al Fenómeno El Niño para modelar riesgo de inundación.",
+      "Cruzar excedencias de umbral hidrológico con infraestructura agrícola o vial dañada (SINPAD)."
+    ],
+    "precauciones_metodologicas": [
+      "Durante crecidas extremas o arrastre de sedimentos severos, algunas estaciones automáticas pueden sufrir fallas temporales de transmisión o requerir recalibración de curva de gasto."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Boletines Hidrológicos y Vigilancia de Caudales Nacionales",
+        "autores": "SENAMHI — Dirección de Hidrología",
+        "anio": "2023–2026",
+        "uso_especifico": "Seguimiento de umbrales críticos de desborde en cuencas de la costa norte, centro y selva peruana.",
+        "url": "https://www.senamhi.gob.pe/?p=monitoreo-hidrologico"
+      }
+    ]
+  },
+  {
+    "id": "windy_ecmwf_gfs",
+    "aliases": ["fen_tool_4"],
+    "nombre": "Windy.com — Modelos Numéricos Globales ECMWF y GFS (Foco Perú / Pacífico)",
+    "institucion": "Windy / ECMWF / NOAA GFS",
+    "categoria": "MODELACIÓN NUMÉRICA ATMOSFÉRICA (FEN)",
+    "tipo_insumo": "Visor espacial multicapa de modelos de predicción numérica global (NWP)",
+    "frecuencia": "Tiempo real (corridas cada 6–12 horas)",
+    "acceso": "Acceso abierto gratuito (versión web básica)",
+    "url_oficial": "https://www.windy.com/-9.190/-75.015?temp,-9.190,-75.015,5",
+    "resumen_ejecutivo": "Plataforma visual de referencia que superpone las corridas de los principales modelos atmosféricos globales (europeo ECMWF y estadounidense GFS) sobre el Pacífico ecuatorial y los Andes.",
+    "contenido_variables": {
+      "descripcion": "Visualiza en mapas animados de alta interactividad las variables dinámicas que explican el debilitamiento de vientos alisios y el acumulado de lluvias a mediano plazo.",
+      "modulos_principales": [
+        "Vientos en Superficie y Altura (850 hPa / 200 hPa): Detección de pulsos de viento oeste ecuatorial y debilitamiento del Anticiclón del Pacífico Sur.",
+        "Lluvia Acumulada (3h, 24h, 5d, 10d) y Anomalía de Temperatura del Mar: Pronóstico espacial comparando ECMWF (~9 km) frente a GFS (~22 km)."
+      ],
+      "formatos": ["Mapa interactivo WebGL con meteogramas puntuales por coordenada GPS"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Celda de grilla de modelo numérico global (9 km ECMWF / 22 km GFS).",
+      "cobertura_geografica": "Global (foco interactivo en Perú y Pacífico Tropical).",
+      "cobertura_temporal": "Pronóstico horario hasta 10 días vista, actualizado cada 6 a 12 horas.",
+      "llaves_cruce": "Coordenadas geográficas (Latitud, Longitud) y fecha UTC."
+    },
+    "usos_aplicaciones": [
+      "Comparar incertidumbre y convergencia entre modelos meteorológicos (ECMWF vs. GFS) antes de eventos lluviosos importantes.",
+      "Observar visualmente la interacción entre vientos del Pacífico oriental y humedad amazónica."
+    ],
+    "precauciones_metodologicas": [
+      "Los modelos globales tienen dificultad para capturar microclimas de valles interandinos estrechos debido a la resolución de topografía; usar junto con avisos oficiales de SENAMHI."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Integración de Modelos Globales ECMWF / NOAA en Análisis Operativo del Tiempo",
+        "autores": "European Centre for Medium-Range Weather Forecasts (ECMWF) / NOAA",
+        "anio": "2024–2026",
+        "uso_especifico": "Predicción numérica a mediano plazo de vientos alisios, ondas atmosféricas y precipitación acumulada en la costa oeste sudamericana.",
+        "url": "https://www.windy.com/-9.190/-75.015?temp,-9.190,-75.015,5"
+      }
+    ]
+  },
+  {
+    "id": "enfen_imarpe",
+    "aliases": ["fen_tool_5"],
+    "nombre": "Portal Oficial ENFEN — Índice Costero El Niño (ICEN) y Comunicados Multisectoriales",
+    "institucion": "Comisión Multisectorial ENFEN / Instituto del Mar del Perú (IMARPE)",
+    "categoria": "SISTEMA OFICIAL DE ALERTA EL NIÑO COSTERO",
+    "tipo_insumo": "Comunicados oficiales de estado de alerta, serie mensual ICEN y diagnósticos bio-oceanográficos",
+    "frecuencia": "Quincenal / Mensual",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://enfen.imarpe.gob.pe/",
+    "resumen_ejecutivo": "Autoridad científica oficial del Estado peruano encargada de declarar el estado del Sistema de Alerta ante El Niño Costero y La Niña Costera, publicando el índice ICEN y proyecciones oficiales.",
+    "contenido_variables": {
+      "descripcion": "Consolida observaciones in situ del mar peruano, boyas, satélites y modelos climáticos acoplados de SENAMHI, IMARPE, IGP, DHN, ANA e INDECI.",
+      "modulos_principales": [
+        "Índice Costero El Niño (ICEN): Promedio móvil trimestral de anomalías de Temperatura Superficial del Mar (TSM) en la región Niño 1+2 frente al Perú y Ecuador.",
+        "Estado del Sistema de Alerta: Clasificación oficial ('No activo', 'Vigilancia', 'Alerta de El Niño Costero' o 'La Niña Costera') con probabilidades estacionales por magnitud (débil, moderado, fuerte, extraordinario).",
+        "Diagnóstico de Ondas Kelvin y Pesquería: Monitoreo de ondas Kelvin cálidas/frías ecuatoriales, termoclina y recursos pelágicos (anchoveta)."
+      ],
+      "formatos": ["Comunicados Oficiales PDF (numerados)", "Series numéricas ICEN descargables (.txt/.csv)"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Mes / trimestre móvil sobre región Niño 1+2 (0°–10°S, 90°W–80°W) y litoral peruano.",
+      "cobertura_geografica": "Mar peruano y Pacífico oriental ecuatorial.",
+      "cobertura_temporal": "Serie histórica del ICEN desde 1950 al presente; comunicados mensuales/quincenales continuos.",
+      "llaves_cruce": "Año-Mes + Estado oficial ENFEN + Valor ICEN (°C) para regresiones o estudios de eventos históricos (1982–83, 1997–98, 2017, 2023–24)."
+    },
+    "usos_aplicaciones": [
+      "Variable climática exógena estándar en investigaciones econométricas que miden el impacto de El Niño Costero sobre PBI agrícola, pesquero, inflación de alimentos o emergencias.",
+      "Referencia institucional obligatoria para activar protocolos sectoriales de preparación y respuesta en el Perú."
+    ],
+    "precauciones_metodologicas": [
+      "No confundir el ICEN (Niño 1+2, frente a Perú/Ecuador) con el ONI de la NOAA (Niño 3.4, Pacífico central); un evento costero como el de 2017 puede ocurrir con ONI neutro en el Pacífico central."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Comunicados Oficiales ENFEN y Definición Operacional del Índice Costero El Niño (ICEN)",
+        "autores": "Comisión Multisectorial ENFEN (IMARPE, SENAMHI, IGP, DHN, ANA, INDECI)",
+        "anio": "2012–2026",
+        "uso_especifico": "Clasificación científica oficial de eventos El Niño Costero / La Niña Costera y determinación de magnitud térmica en la región Niño 1+2.",
+        "url": "https://enfen.imarpe.gob.pe/"
+      }
+    ]
+  },
+  {
+    "id": "noaa_cpc_enso",
+    "aliases": ["fen_tool_6"],
+    "nombre": "NOAA Climate Prediction Center — ENSO Diagnostic Discussion & Índice ONI",
+    "institucion": "NOAA / National Weather Service (Climate Prediction Center, EE. UU.)",
+    "categoria": "MONITOREO ENSO GLOBAL (NIÑO 3.4)",
+    "tipo_insumo": "Series semanales/mensuales ENSO, Índice Oceánico ONI y pronósticos probabilísticos globales",
+    "frecuencia": "Semanal (actualización lunes) / Mensual (Discusión Diagnóstica)",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/",
+    "resumen_ejecutivo": "Estándar científico internacional para el monitoreo de la Oscilación del Sur El Niño (ENSO) en el Pacífico Central (región Niño 3.4), mediante el Índice Oceánico de El Niño (ONI).",
+    "contenido_variables": {
+      "descripcion": "Provee series semanales de temperatura superficial del mar en las cuatro regiones Niño (Niño 1+2, Niño 3, Niño 3.4 y Niño 4), anomalías subsuperficiales de calor e índices atmosféricos (SOI).",
+      "modulos_principales": [
+        "Oceanic Niño Index (ONI): Media móvil trimestral de anomalías de TSM en Niño 3.4 (base climatológica centrada móvil de 30 años, ERSSTv5).",
+        "Pluma de Modelos IRI/CPC: Probabilidades mensuales por estación de El Niño, Neutro o La Niña a 9 meses vista."
+      ],
+      "formatos": ["Tablas ASCII/CSV directas de acceso público", "Boletines técnicos semanales y mensuales PDF"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Regiones oceánicas ecuatoriales Niño 1+2, 3, 3.4, 4 y trimestres móviles (DJF, JFM, ...).",
+      "cobertura_geografica": "Océano Pacífico Tropical completo.",
+      "cobertura_temporal": "Serie mensual homogénea desde 1950 a la actualidad.",
+      "llaves_cruce": "Año-Mes / Trimestre móvil para cruzar con series macroeconómicas, commodities, sequías andinas o precipitaciones amazónicas."
+    },
+    "usos_aplicaciones": [
+      "Analizar teleconexiones globales de El Niño/La Niña sobre déficit hídrico en la sierra sur peruana (ej. sequías vinculadas a Niño en Niño 3.4) y ciclos pesqueros.",
+      "Contrastar la señal del Pacífico Central (ONI) contra el calentamiento costero frente al Perú (ICEN)."
+    ],
+    "precauciones_metodologicas": [
+      "El umbral oficial de NOAA define El Niño global cuando el ONI >= +0.5 °C durante al menos 5 trimestres consecutivos superpuestos, lo cual difiere del criterio regional costero del ENFEN."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "ENSO Diagnostic Discussion & Historical Oceanic Niño Index (ERSSTv5)",
+        "autores": "NOAA Climate Prediction Center & International Research Institute (IRI)",
+        "anio": "1950–2026",
+        "uso_especifico": "Series de referencia estándar internacional para identificación de fases ENSO globales y análisis de teleconexiones climáticas.",
+        "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/"
+      }
+    ]
+  },
+  {
+    "id": "dhn_oceanografia",
+    "aliases": ["fen_tool_7"],
+    "nombre": "Dirección de Hidrografía y Navegación (DHN) — Estaciones Mareográficas y Oceanografía",
+    "institucion": "Dirección de Hidrografía y Navegación — Marina de Guerra del Perú",
+    "categoria": "OCEANOGRAFÍA COSTERA IN SITU (FEN)",
+    "tipo_insumo": "Datos mareográficos costeros, nivel medio del mar, temperatura superficial costera y avisos de oleaje",
+    "frecuencia": "Diaria",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.dhn.mil.pe/portal/",
+    "resumen_ejecutivo": "Red oficial de estaciones mareográficas a lo largo del litoral peruano (desde Talara hasta Matarani/Ilo), indispensable para detectar el arribo real de ondas Kelvin en la costa a través de elevaciones del nivel medio del mar.",
+    "contenido_variables": {
+      "descripcion": "Mide variables físicas en puertos y muelles costeros con sensores de contacto directo.",
+      "modulos_principales": [
+        "Nivel Medio del Mar y Anomalías (cm): Indicador físico directo de expansión térmica y paso de ondas Kelvin ecuatoriales frente al Perú.",
+        "Temperatura Superficial del Mar en Muelle (°C) y Avisos de Oleajes Anómalos (cierres de puertos)."
+      ],
+      "formatos": ["Boletines oceanográficos diarios/mensuales PDF", "Reportes de avisos de oleaje y estaciones costeras"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Estación mareográfica portuaria (Talara, Paita, Lobos de Afuera, Chimbote, Callao, San Juan de Marcona, Matarani, Ilo).",
+      "cobertura_geografica": "Litoral costero peruano completo.",
+      "cobertura_temporal": "Registros diarios continuos y reportes de boletines oceanográficos mensuales.",
+      "llaves_cruce": "Puerto/Estación costera y fecha."
+    },
+    "usos_aplicaciones": [
+      "Monitorear el impacto costero directo sobre puertos, caletas de pescadores artesanales y erosión litoral.",
+      "Verificar el arribo físico de ondas Kelvin oceánicas reportadas previamente por satélites altimétricos."
+    ],
+    "precauciones_metodologicas": [
+      "Las lecturas en muelles costeros reflejan dinámicas locales (surgencia costera, brisas marinas) además de la señal oceánica de gran escala."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Boletines Oceanográficos y Red Mareográfica del Litoral Peruano",
+        "autores": "Dirección de Hidrografía y Navegación (DHN) — Marina de Guerra del Perú",
+        "anio": "2023–2026",
+        "uso_especifico": "Registro in situ del nivel medio del mar, anomalías térmicas en puertos peruanos y monitoreo de oleajes anómalos.",
+        "url": "https://www.dhn.mil.pe/portal/"
+      }
+    ]
+  },
+  {
+    "id": "copernicus_cmems",
+    "aliases": ["fen_tool_8"],
+    "nombre": "Copernicus Marine Service (CMEMS) — Anomalías SST y Altimetría Oceánica",
+    "institucion": "Unión Europea / Copernicus Marine Environment Monitoring Service",
+    "categoria": "DATOS SATELITALES OCEÁNICOS DE ALTA RESOLUCIÓN",
+    "tipo_insumo": "Productos satelitales en grilla NetCDF/GeoTIFF y Visor MyOcean",
+    "frecuencia": "Diaria",
+    "acceso": "Acceso abierto gratuito (visor abierto; descarga NetCDF con registro gratuito)",
+    "url_oficial": "https://marine.copernicus.eu/",
+    "resumen_ejecutivo": "Infraestructura oceánica satelital europea con mapas de altísima resolución espacial de Temperatura Superficial del Mar (SST), anomalía del nivel del mar (SLA) y corrientes ecuatoriales.",
+    "contenido_variables": {
+      "descripcion": "Combina satélites altimétricos, radiómetros y boyas Argo en productos grillados globales diarios y series reanalizadas.",
+      "modulos_principales": [
+        "Sea Surface Temperature Anomaly (SST): Detalle fino de lenguas de agua cálida frente a Tumbes, Piura y Lambayeque.",
+        "Sea Level Anomaly (SLA) & Corrientes Geostróficas: Seguimiento espacial continuo de propagación de ondas Kelvin desde el Pacífico central hasta Sudamérica."
+      ],
+      "formatos": ["NetCDF-4 (.nc) descargable vía Python (`copernicusmarine`)", "Visor web interactivo MyOcean"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Celda de grilla espacial (hasta 0.05° / ~5 km en SST global L4 y 0.25° en altimetría).",
+      "cobertura_geografica": "Océano global, ideal para el Pacífico Ecuatorial y Mar de Grau.",
+      "cobertura_temporal": "Series satelitales reanalizadas desde 1993 hasta la actualización diaria casi en tiempo real.",
+      "llaves_cruce": "Coordenadas Lat/Lon + Tiempo (`time`) para extracción en xarray/Python."
+    },
+    "usos_aplicaciones": [
+      "Extracción automatizada en Python de series diarias de anomalía térmica frente a puertos o zonas pesqueras específicas del Perú.",
+      "Visualización espacial de corrientes marinas y zonas de afloramiento costero."
+    ],
+    "precauciones_metodologicas": [
+      "Las anomalías dependen de la climatología de referencia empleada; verificar el periodo base documentado en el manual de cada producto (PUM)."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Copernicus Marine Ocean State Reports & Global Ocean Reanalysis (GLORYS)",
+        "autores": "Mercator Ocean International / Copernicus Marine Service",
+        "anio": "2023–2026",
+        "uso_especifico": "Análisis cuantitativo de anomalías de SST, ondas ecuatoriales y variabilidad oceanográfica con productos satelitales L4.",
+        "url": "https://marine.copernicus.eu/"
+      }
+    ]
+  },
+  {
+    "id": "sunass_cami_yaku",
+    "aliases": ["fen_tool_9"],
+    "nombre": "CAMI Yaku — Centro de Análisis y Monitoreo Hidroclimático para Saneamiento",
+    "institucion": "Superintendencia Nacional de Servicios de Saneamiento (SUNASS)",
+    "categoria": "VULNERABILIDAD HÍDRICA Y AGUA POTABLE (FEN)",
+    "tipo_insumo": "Reportes de cuencas de aporte, vulnerabilidad operativa de EPS y avisos de turbidez/sequía",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.gob.pe/institucion/sunass/campa%C3%B1as/21633-cami-yaku",
+    "resumen_ejecutivo": "Observatorio técnico regulatorio de SUNASS que vincula el riesgo hidroclimático de cuencas de aporte con la continuidad del servicio de agua potable y saneamiento en las 50 EPS urbanas del país.",
+    "contenido_variables": {
+      "descripcion": "Evalúa tanto riesgos por exceso de lluvias/turbidez (huaicos que colmatan captaciones y paralizan plantas de tratamiento) como déficits hídricos.",
+      "modulos_principales": [
+        "Monitoreo de Cuencas de Aporte a EPS: Fuentes superficiales y subterráneas que abastecen a ciudades peruanas.",
+        "Indicadores de Vulnerabilidad y Planes de Contingencia: Nivel de exposición de plantas de tratamiento (PTAP) e infraestructura sanitaria."
+      ],
+      "formatos": ["Portal informativo, mapas temáticos y reportes técnicos PDF"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Empresa Prestadora de Servicios de Saneamiento (EPS) y cuenca de aporte asociada.",
+      "cobertura_geografica": "Ámbitos urbanos regulados por SUNASS en todo el Perú.",
+      "cobertura_temporal": "Actualización permanente ante eventos climáticos y campañas estacionales.",
+      "llaves_cruce": "Nombre de EPS / Ciudad y Unidad Hidrográfica (cuenca)."
+    },
+    "usos_aplicaciones": [
+      "Analizar vulnerabilidad de servicios básicos urbanos (cortes de agua por alta turbidez del río Rímac, Piura o Chira durante El Niño).",
+      "Evaluar inversiones regulatorias en mecanismos de retribución por servicios ecosistémicos hídricos (MERESE)."
+    ],
+    "precauciones_metodologicas": [
+      "Cubre principalmente ciudades bajo ámbito de las 50 EPS urbanas reguladas; para agua potable rural revisar registros del MVCS / JASS y ENAPRES."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Diagnósticos CAMI Yaku de Resiliencia Hidroclimática en Empresas Prestadoras",
+        "autores": "SUNASS — Dirección de Regulación Tarifaria y Fiscalización",
+        "anio": "2023–2026",
+        "uso_especifico": "Evaluación del riesgo de interrupción del servicio de agua potable por lluvias extremas, alta turbidez y déficit hídrico en ciudades peruanas.",
+        "url": "https://www.gob.pe/institucion/sunass/campa%C3%B1as/21633-cami-yaku"
+      }
+    ]
+  },
+  {
+    "id": "ana_snirh",
+    "aliases": ["fen_tool_10"],
+    "nombre": "SNIRH — Sistema Nacional de Información de Recursos Hídricos y Reservorios",
+    "institucion": "Autoridad Nacional del Agua (ANA / MIDAGRI)",
+    "categoria": "RECURSOS HÍDRICOS, REPRESAS Y CUENCAS (FEN)",
+    "tipo_insumo": "Series hidrológicas, almacenamiento diario de reservorios y cartografía de cuencas/fajas marginales",
+    "frecuencia": "Diaria",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://snirh.ana.gob.pe/",
+    "resumen_ejecutivo": "Sistema oficial del ente rector en recursos hídricos del Perú: consolida volúmenes diarios de reservorios (Poechos, Tinajones, Gallito Ciego, etc.), inventarios de puntos críticos en cauces y delimitación oficial de cuencas.",
+    "contenido_variables": {
+      "descripcion": "Integra la información operativa de Juntas de Usuarios, Consejos de Recursos Hídricos de Cuenca y proyectos especiales hidráulicos.",
+      "modulos_principales": [
+        "Almacenamiento de Reservorios Nacionales: Volumen útil actual (MMC) y porcentaje de llenado frente a capacidad máxima.",
+        "Puntos Críticos ante Desbordes e Inundaciones: Identificación georreferenciada de tramos fluviales vulnerables que requieren descolmatación o defensas ribereñas.",
+        "Codificación Pfafstetter de Cuencas y Fajas Marginales: Capas oficiales de unidades hidrográficas."
+      ],
+      "formatos": ["Tableros SNIRH, visores geoespaciales y descargas tabulares/shapefile"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Unidad hidrográfica (cuenca), reservorio específico o punto crítico fluvial.",
+      "cobertura_geografica": "159 unidades hidrográficas (cuencas) del Perú.",
+      "cobertura_temporal": "Reportes diarios de represas y series históricas hidrológicas.",
+      "llaves_cruce": "Código Pfafstetter de cuenca, código de punto crítico y UBIGEO."
+    },
+    "usos_aplicaciones": [
+      "Monitorear riesgos combinados de colmatación de reservorios estratégicos (ej. Poechos en Piura) y desfogues controlados aguas abajo durante el FEN.",
+      "Evaluar priorización presupuestal de obras de defensa ribereña cruzando puntos críticos ANA con ejecución MEF / ANIN."
+    ],
+    "precauciones_metodologicas": [
+      "La capacidad útil de los reservorios puede reducirse a lo largo de los años por sedimentación acumulada; verificar fecha del último levantamiento batimétrico."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Observatorio Nacional del Agua SNIRH e Inventario de Puntos Críticos",
+        "autores": "Autoridad Nacional del Agua (ANA)",
+        "anio": "2023–2026",
+        "uso_especifico": "Seguimiento diario de volumen útil en principales presas de irrigación y focalización de intervenciones de limpieza y encauzamiento de ríos.",
+        "url": "https://snirh.ana.gob.pe/"
+      }
+    ]
+  },
+  {
+    "id": "cenepred_sigrid",
+    "aliases": ["fen_tool_11"],
+    "nombre": "SIGRID v3 — Sistema de Información para la Gestión del Riesgo de Desastres",
+    "institucion": "Centro Nacional de Estimación, Prevención y Reducción del Riesgo de Desastres (CENEPRED)",
+    "categoria": "GEOESPACIAL Y ESCENARIOS DE RIESGO (FEN)",
+    "tipo_insumo": "Visor GIS nacional + Servicios WMS/WFS + Escenarios de riesgo distritales descargables",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://sigrid.cenepred.gob.pe/sigridv3/",
+    "resumen_ejecutivo": "Infraestructura geoespacial oficial del Perú para Gestión Prospectiva y Correctiva del Riesgo (SINAGERD): cruza peligros (inundación, huaicos, quebradas) con población, colegios y establecimientos de salud expuestos.",
+    "contenido_variables": {
+      "descripcion": "Agrupa capas vectoriales oficiales y estudios cuantitativos de escenarios de riesgo ante lluvias asociadas al Fenómeno El Niño y déficit hídrico.",
+      "modulos_principales": [
+        "Escenarios de Riesgo FEN: Cálculo por distrito de población, viviendas, instituciones educativas (MINEDU), centros de salud (MINSA) y vías expuestas en niveles Muy Alto, Alto, Medio y Bajo.",
+        "Cartografía de Susceptibilidad: Mapas de susceptibilidad a inundaciones y movimientos en masa (huaicos/deslizamientos INGEMMET/CENEPRED) y estudios EVAR."
+      ],
+      "formatos": ["Visor Web GIS", "Tablas Excel/PDF de Escenarios de Riesgo por distrito", "Servicios interoperables OGC (WMS/REST ArcGIS)"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Manzana censal / centro poblado / distrito / infraestructura puntual expuesta.",
+      "cobertura_geografica": "Nacional (cobertura al 100% de los distritos del Perú en escenarios climáticos).",
+      "cobertura_temporal": "Actualización continua por temporada estacional de lluvias y post-eventos mayores.",
+      "llaves_cruce": "UBIGEO distrital (6 dígitos INEI), CODLOCAL escolar (ESCALE) e IPRESS (MINSA)."
+    },
+    "usos_aplicaciones": [
+      "Calcular índices de exposición distrital para evaluar si las declaratorias de emergencia y transferencias presupuestales (FONDES/PREVAED) se alinean con los distritos en riesgo Muy Alto.",
+      "Integrar capas cartográficas de quebradas y vulnerabilidad territorial en estudios GIS (QGIS/Python GeoPandas)."
+    ],
+    "precauciones_metodologicas": [
+      "Los escenarios nacionales de riesgo representan susceptibilidad agregada a escala regional (1:100,000 o similar); las obras específicas requieren Estudios de Evaluación de Riesgos (EVAR) de detalle local."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Escenarios de Riesgo por Inundaciones y Movimientos en Masa ante el Fenómeno El Niño",
+        "autores": "CENEPRED — Dirección de Gestión de Procesos",
+        "anio": "2023–2026",
+        "uso_especifico": "Cuantificación oficial de distritos, población, viviendas, escuelas y establecimientos de salud con exposición muy alta ante lluvias FEN.",
+        "url": "https://sigrid.cenepred.gob.pe/sigridv3/"
+      }
+    ]
+  },
+  {
+    "id": "indeci_coen_sinpad",
+    "aliases": ["fen_tool_12"],
+    "nombre": "INDECI / COEN — Reportes Operativos de Emergencias y Base SINPAD",
+    "institucion": "Instituto Nacional de Defensa Civil (INDECI) — COEN",
+    "categoria": "REGISTRO DE DAÑOS Y EMERGENCIAS (SINPAD)",
+    "tipo_insumo": "Boletines diarios COEN + Registro nacional de daños SINPAD (también en Datos Abiertos)",
+    "frecuencia": "Diaria",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.gob.pe/indeci",
+    "resumen_ejecutivo": "Fuente oficial de registro de emergencias consumadas y Evaluación de Daños y Análisis de Necesidades (EDAN) en el Perú: contabiliza damnificados, afectados, viviendas colapsadas e infraestructura destruida.",
+    "contenido_variables": {
+      "descripcion": "Centraliza la información reportada por oficinas locales y regionales de Defensa Civil en el Sistema de Información Nacional para la Respuesta y Rehabilitación (SINPAD).",
+      "modulos_principales": [
+        "Registro de Daños SINPAD: Tipo de peligro (lluvias intensas, huaico, inundación, deslizamiento), fallecidos, damnificados, afectados, viviendas destruidas/inhabitables y hectáreas de cultivo perdidas.",
+        "Boletines e Informes de Emergencia COEN: Seguimiento hora a hora de eventos activos, carreteras bloqueadas y ayuda humanitaria entregada."
+      ],
+      "formatos": ["Boletines PDF COEN", "Datasets descargables SINPAD en Datos Abiertos PCM (.CSV)"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Evento de emergencia registrado (código SINPAD) con fecha y UBIGEO distrital exacto.",
+      "cobertura_geografica": "Nacional hasta nivel distrital y centro poblado.",
+      "cobertura_temporal": "Registro histórico continuo de emergencias desde 2003 a la actualidad.",
+      "llaves_cruce": "UBIGEO (6 dígitos INEI), fecha de ocurrencia del evento y código SINPAD."
+    },
+    "usos_aplicaciones": [
+      "Variable dependiente estándar en estudios económicos para medir pérdidas humanas y materiales reales por lluvias, desbordes e inundaciones por distrito.",
+      "Analizar correlación temporal entre anomalías térmicas ICEN/ONI y picos de emergencias registradas."
+    ],
+    "precauciones_metodologicas": [
+      "Los registros SINPAD dependen inicialmente de la capacidad de reporte (fichas EDAN) de las municipalidades distritales, pudiendo presentar subregistro en zonas muy aisladas o actualizaciones posteriores tras validación."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Compendios Estadísticos de Emergencias y Base de Datos SINPAD",
+        "autores": "INDECI — Oficina General de Tecnologías y COEN",
+        "anio": "2020–2026",
+        "uso_especifico": "Medición oficial distrital de población damnificada, viviendas colapsadas e infraestructura afectada por peligros hidrometeorológicos.",
+        "url": "https://www.gob.pe/indeci"
+      }
+    ]
+  },
+  {
+    "id": "igp_censis_huaicos",
+    "aliases": ["fen_tool_13"],
+    "nombre": "IGP — Investigación Climática y Monitoreo Geofísico de Huaicos",
+    "institucion": "Instituto Geofísico del Perú (IGP)",
+    "categoria": "GEOFÍSICA, HUAICOS Y CIENCIA CLIMÁTICA (FEN)",
+    "tipo_insumo": "Boletines científicos El Niño, redes geofísicas en quebradas y estudios técnicos",
+    "frecuencia": "Permanente",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.gob.pe/igp",
+    "resumen_ejecutivo": "Entidad rectora en investigación geofísica y atmosférica del Perú; aporta instrumentación avanzada de flujos de detritos (huaicos), física de ondas Kelvin ecuatoriales y boletines científicos del FEN.",
+    "contenido_variables": {
+      "descripcion": "Combina sensores sísmicos/geofísicos instalados en quebradas críticas (como Huaycoloro o Rímac) con investigación física sobre el acoplamiento océano-atmósfera en el Perú.",
+      "modulos_principales": [
+        "Boletín Científico El Niño (IGP): Notas de divulgación técnica y resultados de investigación sobre ondas Kelvin, teleconexiones y lluvias extremas.",
+        "Monitoreo de Quebradas Instrumentadas y CENSIS: Detección temprana de vibraciones del terreno generadas por flujos de detritos (huaicos)."
+      ],
+      "formatos": ["Boletines científicos PDF", "Portales y visores operativos del IGP"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Cuenca / quebrada instrumentada y escalas espaciales regionales del Pacífico y Andes.",
+      "cobertura_geografica": "Nacional (con énfasis en quebradas de Lima/costa central, Arequipa y mar peruano).",
+      "cobertura_temporal": "Investigación y monitoreo permanente.",
+      "llaves_cruce": "Publicaciones periódicas por año y área científica del IGP."
+    },
+    "usos_aplicaciones": [
+      "Fundamento físico riguroso para explicar en trabajos académicos la dinámica de ondas Kelvin, trasvases de lluvia andina y génesis de huaicos.",
+      "Referente técnico para sistemas de alerta temprana basados en instrumentación geofísica."
+    ],
+    "precauciones_metodologicas": [
+      "Las redes experimentales de alerta en quebradas instrumentadas están localizadas en sitios piloto críticos y no cubren la totalidad de quebradas del país."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Boletín Técnico 'Generación de información y monitoreo del Fenómeno El Niño'",
+        "autores": "Instituto Geofísico del Perú (IGP)",
+        "anio": "2014–2026",
+        "uso_especifico": "Publicación científica periódica sobre dinámica oceanográfica, diversidad de eventos El Niño (costero vs. Pacífico central) e instrumentación de huaicos.",
+        "url": "https://www.gob.pe/igp"
+      }
+    ]
+  },
+  {
+    "id": "anin_infraestructura",
+    "aliases": ["fen_tool_14"],
+    "nombre": "ANIN — Cartera de Proyectos Integrales de Prevención y Drenaje Pluvial",
+    "institucion": "Autoridad Nacional de Infraestructura (ANIN)",
+    "categoria": "INFRAESTRUCTURA RESILIENTE DE GRAN ESCALA (FEN)",
+    "tipo_insumo": "Cartera de megaproyectos de control de inundaciones, drenaje pluvial y quebradas",
+    "frecuencia": "Mensual",
+    "acceso": "Acceso abierto gratuito",
+    "url_oficial": "https://www.gob.pe/anin",
+    "resumen_ejecutivo": "Organismo ejecutor de proyectos emblemáticos de soluciones integrales en cuencas fluviales (Tumbes, Piura, La Libertad, Áncash, Lima, Ica), defensas ribereñas, quebradas y sistemas de drenaje pluvial urbano.",
+    "contenido_variables": {
+      "descripcion": "Da seguimiento al portafolio heredado y ampliado de obras integrales frente al Fenómeno El Niño de gran complejidad técnica.",
+      "modulos_principales": [
+        "Soluciones Integrales de Ríos y Quebradas: Paquetes de diques, gaviones, reservorios laminadores y encauzamiento en cuencas críticas.",
+        "Sistemas de Drenaje Pluvial Urbano: Proyectos integrales para ciudades vulnerables de la costa norte y centro."
+      ],
+      "formatos": ["Fichas y notas de avance en portal institucional gob.pe/anin", "Trazabilidad de CUI en Consulta Amigable/Invierte.pe"]
+    },
+    "alcance_cobertura": {
+      "unidad_analisis": "Proyecto Integral / Paquete de intervención por cuenca o ciudad.",
+      "cobertura_geografica": "Cuencas priorizadas de costa y regiones altamente expuestas al FEN.",
+      "cobertura_temporal": "Actualización mensual de hitos de adjudicación y ejecución física/financiera.",
+      "llaves_cruce": "Código Único de Inversiones (CUI) del proyecto y nombre de cuenca/región."
+    },
+    "usos_aplicaciones": [
+      "Evaluar la brecha entre la reconstrucción reactiva tradicional y las soluciones integrales de cuenca de largo plazo en la política de infraestructura resiliente peruana.",
+      "Cruzar el portafolio ANIN con reportes de Control Concurrente de Contraloría y gasto del MEF."
+    ],
+    "precauciones_metodologicas": [
+      "Muchos megaproyectos integrales combinan múltiples subcomponentes bajo contratos colaborativos G2G/NEC; contrastar siempre avance físico de subentregables frente al devengado global del CUI."
+    ],
+    "investigaciones_referencia": [
+      {
+        "titulo": "Cartera de Soluciones Integrales de Control de Inundaciones, Quebradas y Drenaje Pluvial",
+        "autores": "Autoridad Nacional de Infraestructura (ANIN)",
+        "anio": "2024–2026",
+        "uso_especifico": "Seguimiento institucional de la ejecución y entrega de megaobras preventivas frente a eventos climáticos extremos en cuencas críticas del Perú.",
+        "url": "https://www.gob.pe/anin"
+      }
+    ]
+  }
+]

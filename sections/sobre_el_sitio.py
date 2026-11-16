@@ -1,4 +1,4 @@
-"""Sección 'Sobre el sitio' estructurada en tarjetas ordenadas de 2 columnas (apocunoso-style)."""
+"""Sección 'Sobre el sitio': Identidad, Manual Breve y Leyenda Oficial de Etiquetas (apocunoso-style)."""
 
 import streamlit as st
 
@@ -77,6 +77,192 @@ TARJETAS_SOBRE_EL_SITIO = [
 ]
 
 
+MANUAL_MODULOS = [
+    {
+        "orden": "MÓDULO 01",
+        "eyebrow": "PORTADA Y TELEMETRÍA EN VIVO",
+        "color_class": "about-card-blue",
+        "titulo": "Inicio y Radar Automatizado de Coyuntura",
+        "contenido_html": (
+            "<p>La vista <strong>Inicio</strong> concentra el pulso diario de la plataforma en tres bloques:</p>"
+            "<ul>"
+            "<li><strong>KPIs y Boletín Matutino:</strong> Contadores automáticos de noticias, normas monitoreadas, "
+            "fuentes auditadas y el acceso directo matutino a <em>El Peruano</em>.</li>"
+            "<li><strong>Carruseles Temáticos:</strong> Noticias clasificadas en <em>Gestión Pública</em>, "
+            "<em>Políticas Públicas</em> y <em>Política y Gobernabilidad</em>.</li>"
+            "<li><strong>Selector de Apariencia:</strong> Desde la barra lateral puedes alternar al instante entre "
+            "<strong>Auto</strong>, <strong>Oscuro</strong> y <strong>Claro</strong>.</li>"
+            "</ul>"
+        ),
+    },
+    {
+        "orden": "MÓDULO 02",
+        "eyebrow": "VIGILANCIA REGULATORIA · EL PERUANO",
+        "color_class": "about-card-green",
+        "titulo": "Rastrea la Norma (Trazabilidad y Verificación IA)",
+        "contenido_html": (
+            "<p>Sigue el ciclo completo de las normas legales publicadas diariamente en el diario oficial:</p>"
+            "<ul>"
+            "<li><strong>Diagrama de Flujo:</strong> Muestra en 5 pasos la recolección respetuosa, filtros "
+            "determinísticos, hash <code>SHA-256</code> y verificación de citas por IA.</li>"
+            "<li><strong>Filtros Combinados:</strong> Filtra por fecha de edición, subtema, entidad emisora o "
+            "<strong>Política Nacional (CEPLAN)</strong>.</li>"
+            "<li><strong>Fichas Analíticas y Permalink:</strong> Pulsa <code>Analizar ficha →</code> para abrir "
+            "qué dispone, repercusiones y citas normativas verificadas.</li>"
+            "</ul>"
+        ),
+    },
+    {
+        "orden": "MÓDULO 03",
+        "eyebrow": "BASES DE DATOS Y FICHAS METODOLÓGICAS",
+        "color_class": "about-card-gold",
+        "titulo": "Polity & Policy y Fichas Técnicas de Fuentes",
+        "contenido_html": (
+            "<p>Organiza las fuentes primarias del Estado, think tanks y organismos multilaterales:</p>"
+            "<ul>"
+            "<li><strong>Doble acción en tarjetas:</strong> El botón <code>Abrir recurso ↗</code> te lleva al "
+            "portal oficial, mientras que <code>📄 Ficha técnica →</code> abre su documentación metodológica dentro de Apocuna.</li>"
+            "<li><strong>Qué trae cada Ficha Técnica:</strong> Variables y formatos (<code>.dta</code>, <code>.sav</code>, "
+            "<code>.csv</code>), unidad de análisis, llaves de cruce (<code>UBIGEO</code>, <code>CUI</code>, <code>COD_MOD</code>), "
+            "precauciones estadísticas e investigaciones donde se ha utilizado.</li>"
+            "</ul>"
+        ),
+    },
+    {
+        "orden": "MÓDULO 04",
+        "eyebrow": "CLIMA, FORMACIÓN Y DIFUSIÓN",
+        "color_class": "about-card-pink",
+        "titulo": "Fenómeno El Niño (FEN), Estudiantes, Notas y Eventos",
+        "contenido_html": (
+            "<p>Cuatro espacios especializados para investigación aplicada y formación:</p>"
+            "<ul>"
+            "<li><strong>Fenómeno El Niño (FEN):</strong> Visores satelitales/oceanográficos en vivo, radar RSS "
+            "de declaratorias de emergencia, seguimiento presupuestal <code>PP 0068 PREVAED</code> y herramientas con Ficha Técnica.</li>"
+            "<li><strong>Estudiantes:</strong> Apuntes normativos de los Sistemas Administrativos (LOPE), cursos abiertos "
+            "(MIT, ENAP, CEPAL, BID), alertas OpenAlex y becas.</li>"
+            "<li><strong>Notas y Eventos:</strong> Lector editorial de ensayos propios y directorio de revistas/congresos.</li>"
+            "</ul>"
+        ),
+    },
+]
+
+
+FAMILIAS_LEYENDA = [
+    {
+        "familia": "FAMILIA 01",
+        "eyebrow": "ARRIBA A LA IZQUIERDA DE CADA TARJETA",
+        "color_class": "about-card-blue",
+        "titulo": "Tipo y Naturaleza del Recurso",
+        "filas": [
+            (
+                '<span class="badge-tipo">PORTAL</span> <span class="badge-tipo">REPOSITORIO</span>',
+                "Plataforma institucional oficial o archivo documental/bibliográfico en línea.",
+            ),
+            (
+                '<span class="badge-tipo">MICRODATOS / SERIE</span> <span class="badge-tipo">API</span>',
+                "Bases de datos descargables (ENAHO, ENDES, ESCALE, CEPALSTAT) o interfaz programática.",
+            ),
+            (
+                '<span class="badge-tipo">NORMA LEGAL</span> <span class="badge-tipo">SISTEMA ADM.</span>',
+                "Dispositivo oficial de <em>El Peruano</em> o síntesis normativa de los sistemas del Estado (LOPE).",
+            ),
+            (
+                '<span class="badge-tipo">MOOC / AUTOGUIADO</span> <span class="badge-tipo">BECA</span>',
+                "Modalidad de programa formativo o portal oficial de becas y movilidad académica.",
+            ),
+            (
+                '<span class="badge-tipo">REVISTA</span> <span class="badge-tipo">CONGRESO</span>',
+                "Publicación científica arbitrada o encuentro académico para presentación de ponencias.",
+            ),
+        ],
+    },
+    {
+        "familia": "FAMILIA 02",
+        "eyebrow": "ARRIBA A LA DERECHA DE CADA TARJETA",
+        "color_class": "about-card-green",
+        "titulo": "Frecuencia de Actualización y Condición",
+        "filas": [
+            (
+                '<span class="badge-freq badge-freq-diaria">TIEMPO REAL</span> <span class="badge-freq badge-freq-diaria">DIARIA</span>',
+                "Monitoreo satelital continuo o publicación oficial con actualización diaria.",
+            ),
+            (
+                '<span class="badge-freq badge-freq-semanal">SEMANAL</span> <span class="badge-freq badge-freq-mensual">MENSUAL</span>',
+                "Reportes epidemiológicos/opinión semanales o boletines y series de frecuencia mensual.",
+            ),
+            (
+                '<span class="badge-freq badge-freq-anual">ANUAL</span> <span class="badge-freq badge-freq-permanente">PERMANENTE</span>',
+                "Censos o eventos anuales/bienales (ocre) y archivos o guías estables (piedra).",
+            ),
+            (
+                '<span class="badge-continua">GRATUITO</span> <span class="badge-continua">GRATUITO (CERT. OPCIONAL)</span>',
+                "Acceso abierto sin costo; algunos MOOC cobran únicamente por emitir certificado.",
+            ),
+            (
+                '<span class="badge-continua">🟢 RECEPCIÓN CONTINUA</span> <span class="badge-deadline">⏳ PLAZO / CONSULTAR</span>',
+                "Estado de postulación de revistas científicas, congresos o costo sujeto a verificación.",
+            ),
+        ],
+    },
+    {
+        "familia": "FAMILIA 03",
+        "eyebrow": "SEÑAL TEMÁTICA (NORMAS Y MONITOREO FEN)",
+        "color_class": "about-card-gold",
+        "titulo": "Ejes Analíticos y Dominios Técnicos",
+        "filas": [
+            (
+                '<span class="badge-portal badge-domain-blue">EJE: POLITY</span>',
+                "Normas sobre arquitectura del Estado, sistemas administrativos, competencia y reforma institucional.",
+            ),
+            (
+                '<span class="badge-portal badge-domain-green">EJE: POLICY</span>',
+                "Normas sobre políticas públicas sectoriales (salud, educación, ambiente, economía, transferencias).",
+            ),
+            (
+                '<span class="badge-portal badge-domain-pink">EJE: MIXTO</span>',
+                "Dispositivos que articulan cambios institucionales y decisiones regulatorias sectoriales.",
+            ),
+            (
+                '<span class="badge-portal badge-domain-blue">OCEANOGRÁFICO / HÍDRICO</span>',
+                "Plataformas del mar peruano, ENSO, cuencas hidrográficas y reservorios (ENFEN, NOAA, ANA, SUNASS).",
+            ),
+            (
+                '<span class="badge-portal badge-domain-green">GEOESPACIAL</span> <span class="badge-portal badge-domain-gold">PRESUPUESTAL</span> <span class="badge-portal badge-domain-pink">METEOROLÓGICO</span>',
+                "Dominios técnicos del FEN: cartografía de riesgo (SIGRID), gasto (MEF PP 0068) y clima (SENAMHI).",
+            ),
+        ],
+    },
+    {
+        "familia": "FAMILIA 04",
+        "eyebrow": "TRAZABILIDAD, VERIFICACIÓN Y ACCIÓN INTERNA",
+        "color_class": "about-card-pink",
+        "titulo": "Estado Editorial, Auditoría y Fichas Técnicas",
+        "filas": [
+            (
+                '<span class="norma-estado-pill" style="background:#1B8668;color:#FAF7E9;">REVISADO</span>',
+                "Ficha de norma curada o reemplazada manualmente en <code>data/normas_comentadas/</code>.",
+            ),
+            (
+                '<span class="norma-estado-pill" style="background:#B45309;color:#FAF7E9;">BORRADOR IA</span>',
+                "Síntesis automática por IA con citas validadas contra el texto oficial (requiere verificación humana).",
+            ),
+            (
+                '<span class="norma-estado-pill" style="background:#2775AA;color:#FAF7E9;">RADAR SIN IA</span>',
+                "Norma indexada en modo determinístico mediante reglas y hash <code>SHA-256</code>.",
+            ),
+            (
+                '<span class="badge-continua">✓ AUDITADA / VERIFICADO</span>',
+                "Enlace oficial comprobado mediante script automatizado de disponibilidad HTTP.",
+            ),
+            (
+                '<span class="btn-ficha-tecnica">📄 FICHA TÉCNICA →</span>',
+                "Botón interno que abre la documentación metodológica completa (variables, alcance, cruces e investigaciones).",
+            ),
+        ],
+    },
+]
+
+
 REFERENCIAS_APA = [
     (
         "Barrientos del Monte, F. (2019).",
@@ -109,11 +295,8 @@ REFERENCIAS_APA = [
 ]
 
 
-def render_sobre_el_sitio() -> None:
-    """Renderiza la sección 'Sobre el sitio' con tarjetas ordenadas en 2 columnas."""
-    st.title("🏛️ Sobre Apocuna: Propósito, Identidad y Metodología")
-
-    # Bloque introductorio general a ancho completo (Orden 00)
+def _render_tab_identidad() -> None:
+    """Pestaña 1: Propósito, historia institucional, marco analítico y fuentes APA."""
     st.markdown(
         """
         <div class="apocunoso-about-intro">
@@ -133,7 +316,6 @@ def render_sobre_el_sitio() -> None:
         unsafe_allow_html=True,
     )
 
-    # Grilla de 2 columnas con las 4 preguntas numeradas en orden (01, 02, 03, 04)
     cards_html = []
     for item in TARJETAS_SOBRE_EL_SITIO:
         cards_html.append(
@@ -155,7 +337,6 @@ def render_sobre_el_sitio() -> None:
         unsafe_allow_html=True,
     )
 
-    # Tarjeta inferior de ancho completo para Referencias Bibliográficas (Orden 05)
     refs_items = "".join(
         f'<div class="apocunoso-ref-item"><strong>{autor}</strong> {obra}</div>'
         for autor, obra in REFERENCIAS_APA
@@ -173,3 +354,112 @@ def render_sobre_el_sitio() -> None:
         """,
         unsafe_allow_html=True,
     )
+
+
+def _render_tab_manual() -> None:
+    """Pestaña 2: Manual breve de uso del sitio en tarjetas de 2 columnas."""
+    st.markdown(
+        """
+        <div class="apocunoso-about-intro">
+            <div class="apocunoso-about-intro-head">
+                <span class="apocunoso-order-badge">00 · GUÍA RÁPIDA DE NAVEGACIÓN</span>
+                <span class="apocunoso-about-tag">MANUAL OPERATIVO DEL OBSERVATORIO</span>
+            </div>
+            <h2 class="apocunoso-about-intro-title">¿Cómo utilizar Apocuna Hub paso a paso?</h2>
+            <p class="apocunoso-about-intro-text">
+                La plataforma separa los recursos en módulos temáticos desde la barra lateral izquierda. Todas las fichas
+                normativas (<code>?vista=normas_comentadas&amp;norma=...</code>) y las Fichas Técnicas Metodológicas de bases de datos
+                (<code>?vista=polity&amp;ficha=...</code>) cuentan con <strong>enlace directo compartible (permalink)</strong> y botones de retorno sin perder contexto.
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    manual_cards = []
+    for item in MANUAL_MODULOS:
+        manual_cards.append(
+            f'<article class="apocunoso-about-card {item["color_class"]}">'
+            f'<div class="apocunoso-about-card-topbar"></div>'
+            f'<div class="apocunoso-about-card-inner">'
+            f'<div class="apocunoso-about-card-meta">'
+            f'<span class="apocunoso-order-badge">{item["orden"]}</span>'
+            f'<span class="apocunoso-about-eyebrow">{item["eyebrow"]}</span>'
+            f'</div>'
+            f'<h3 class="apocunoso-about-question">{item["titulo"]}</h3>'
+            f'<div class="apocunoso-about-body">{item["contenido_html"]}</div>'
+            f'</div>'
+            f'</article>'
+        )
+
+    st.markdown(
+        f'<div class="apocunoso-about-grid-2col">{"".join(manual_cards)}</div>',
+        unsafe_allow_html=True,
+    )
+
+
+def _render_tab_leyenda() -> None:
+    """Pestaña 3: Leyenda oficial unificada con chips reales en vivo."""
+    st.markdown(
+        """
+        <div class="apocunoso-about-intro">
+            <div class="apocunoso-about-intro-head">
+                <span class="apocunoso-order-badge">00 · GRAMÁTICA VISUAL DE TARJETAS</span>
+                <span class="apocunoso-about-tag">SISTEMA UNIFICADO DE 4 FAMILIAS (APOCUNOSO-STYLE)</span>
+            </div>
+            <h2 class="apocunoso-about-intro-title">¿Cómo leer las etiquetas de cualquier tarjeta?</h2>
+            <p class="apocunoso-about-intro-text">
+                Cada tarjeta del sitio sigue una regla espacial fija: <strong>arriba a la izquierda</strong> indica <em>qué tipo de recurso es</em>;
+                <strong>arriba a la derecha</strong> muestra <em>su frecuencia de actualización o estado</em>; debajo aparece la <strong>institución productora</strong>;
+                y al pie encontrarás los botones de acceso externo (<code>↗</code>) y análisis o ficha técnica interna (<code>→</code>).
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    legend_cards = []
+    for fam in FAMILIAS_LEYENDA:
+        rows_html = "".join(
+            f'<div class="legend-item-row">'
+            f'<div class="legend-chip-col">{chips}</div>'
+            f'<div class="legend-desc-col">{desc}</div>'
+            f'</div>'
+            for chips, desc in fam["filas"]
+        )
+        legend_cards.append(
+            f'<article class="apocunoso-about-card {fam["color_class"]}">'
+            f'<div class="apocunoso-about-card-topbar"></div>'
+            f'<div class="apocunoso-about-card-inner">'
+            f'<div class="apocunoso-about-card-meta">'
+            f'<span class="apocunoso-order-badge">{fam["familia"]}</span>'
+            f'<span class="apocunoso-about-eyebrow">{fam["eyebrow"]}</span>'
+            f'</div>'
+            f'<h3 class="apocunoso-about-question">{fam["titulo"]}</h3>'
+            f'<div class="legend-list">{rows_html}</div>'
+            f'</div>'
+            f'</article>'
+        )
+
+    st.markdown(
+        f'<div class="apocunoso-about-grid-2col">{"".join(legend_cards)}</div>',
+        unsafe_allow_html=True,
+    )
+
+
+def render_sobre_el_sitio() -> None:
+    """Renderiza la sección 'Sobre el sitio' en 3 pestañas: Identidad, Manual Breve y Leyenda."""
+    st.title("🏛️ Sobre Apocuna: Identidad, Manual y Leyenda")
+
+    tab_id, tab_manual, tab_leyenda = st.tabs([
+        "🏛️ Identidad y Propósito",
+        "🧭 Manual Breve del Sitio",
+        "🏷️ Leyenda de Etiquetas",
+    ])
+
+    with tab_id:
+        _render_tab_identidad()
+    with tab_manual:
+        _render_tab_manual()
+    with tab_leyenda:
+        _render_tab_leyenda()
