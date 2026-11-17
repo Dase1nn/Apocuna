@@ -205,6 +205,7 @@ def _render_tab_ceplan_y_evaluaciones(evals: list) -> None:
     if not evals:
         return
 
+    st.markdown('<div id="evaluaciones"></div>', unsafe_allow_html=True)
     st.subheader("📊 Evaluaciones de Políticas y Programas Públicos")
     st.caption("Prioridad por programas sociales (Juntos, Pensión 65, Cuna Más, Qali Warma, Haku Wiñay, Beca 18) y evaluaciones PpR.")
 
@@ -305,21 +306,64 @@ def render_polity():
     informes = load_informes_sectoriales()
 
     render_kpi_ribbon([
-        {"icon": "🗄️", "value": str(len(fuentes)), "label": "Fuentes Maestras", "sub": "Microdatos, control y think tanks"},
-        {"icon": "📋", "value": "51 / 38", "label": "Políticas CEPLAN", "sub": "Aprobadas y en proceso"},
-        {"icon": "📊", "value": str(len(evals)), "label": "Evaluaciones", "sub": "Programas sociales y PpR"},
-        {"icon": "📢", "value": str(len(alertas) + len(informes)), "label": "Alertas e Informes", "sub": "Coyuntura y control"},
+        {
+            "icon": "🗄️",
+            "value": str(len(fuentes)),
+            "label": "Fuentes Maestras",
+            "sub": "Microdatos, control y think tanks",
+            "href": "?vista=polity&tab=datos",
+        },
+        {
+            "icon": "📋",
+            "value": "51 / 38",
+            "label": "Políticas CEPLAN",
+            "sub": "Aprobadas y en proceso",
+            "href": "?vista=polity&tab=ceplan",
+        },
+        {
+            "icon": "📊",
+            "value": str(len(evals)),
+            "label": "Evaluaciones",
+            "sub": "Programas sociales y PpR",
+            "href": "?vista=polity&tab=ceplan#evaluaciones",
+        },
+        {
+            "icon": "📢",
+            "value": str(len(alertas) + len(informes)),
+            "label": "Alertas e Informes",
+            "sub": "Coyuntura y control",
+            "href": "?vista=polity&tab=alertas",
+        },
     ])
 
-    tab_datos, tab_ceplan, tab_alertas = st.tabs([
+    tab_opts = [
         f"📊 Datos y Microdatos ({len(fuentes)})",
         f"📋 CEPLAN y Evaluaciones ({len(evals)})",
         f"📢 Alertas e Informes ({len(alertas) + len(informes)})",
-    ])
+    ]
+    tab_qp_map = {"datos": tab_opts[0], "ceplan": tab_opts[1], "alertas": tab_opts[2]}
+    tab_qp = str(st.query_params.get("tab") or "")
+    if tab_qp in tab_qp_map and st.session_state.get("_last_tab_qp_polity") != tab_qp:
+        st.session_state["polity_active_tab"] = tab_qp_map[tab_qp]
+        st.session_state._last_tab_qp_polity = tab_qp
 
-    with tab_datos:
+    active_tab = st.segmented_control(
+        "Sección de Políticas y Datos",
+        options=tab_opts,
+        default=st.session_state.get("polity_active_tab", tab_opts[0]),
+        selection_mode="single",
+        label_visibility="collapsed",
+        key="polity_active_tab",
+        width="stretch",
+    )
+    if not active_tab:
+        active_tab = tab_opts[0]
+
+    st.markdown("<div style='height:0.35rem;'></div>", unsafe_allow_html=True)
+
+    if active_tab == tab_opts[0]:
         _render_tab_datos_y_microdatos(fuentes)
-    with tab_ceplan:
+    elif active_tab == tab_opts[1]:
         _render_tab_ceplan_y_evaluaciones(evals)
-    with tab_alertas:
+    else:
         _render_tab_alertas_e_informes(alertas, informes)

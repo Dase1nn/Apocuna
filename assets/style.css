@@ -2756,10 +2756,14 @@ div[data-testid="stButton"] > button,
     border-left: 5px solid var(--kene-blue) !important;
 }
 
-.kpi-grid-2x2 .kpi-metric-card:nth-child(1) { border-left-color: #2775AA !important; }
-.kpi-grid-2x2 .kpi-metric-card:nth-child(2) { border-left-color: #1B8668 !important; }
-.kpi-grid-2x2 .kpi-metric-card:nth-child(3) { border-left-color: #F0BB38 !important; }
-.kpi-grid-2x2 .kpi-metric-card:nth-child(4) { border-left-color: #DF6A90 !important; }
+.kpi-grid-2x2 .kpi-metric-card:nth-child(1),
+.kpi-ribbon-grid .kpi-metric-card:nth-child(1) { border-left-color: #2775AA !important; }
+.kpi-grid-2x2 .kpi-metric-card:nth-child(2),
+.kpi-ribbon-grid .kpi-metric-card:nth-child(2) { border-left-color: #1B8668 !important; }
+.kpi-grid-2x2 .kpi-metric-card:nth-child(3),
+.kpi-ribbon-grid .kpi-metric-card:nth-child(3) { border-left-color: #F0BB38 !important; }
+.kpi-grid-2x2 .kpi-metric-card:nth-child(4),
+.kpi-ribbon-grid .kpi-metric-card:nth-child(4) { border-left-color: #DF6A90 !important; }
 
 .boletines-featured-card {
     background: var(--surface-elevated) !important;

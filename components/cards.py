@@ -70,13 +70,18 @@ def render_kpi_ribbon(metrics: list[dict]):
         value = escape(m.get("value", "0"))
         label = escape(m.get("label", ""))
         sub = escape(m.get("sub", ""))
-        items_html.append(
-            f'<div class="kpi-metric-card">'
+        href = m.get("href")
+        inner = (
             f'<div class="kpi-metric-top"><span class="kpi-metric-icon">{icon}</span><span class="kpi-metric-value">{value}</span></div>'
             f'<div class="kpi-metric-label">{label}</div>'
             f'<div class="kpi-metric-sub">{sub}</div>'
-            f'</div>'
         )
+        if href:
+            href_esc = escape(str(href))
+            target_attr = ' target="_self"' if not str(href).startswith("#") else ""
+            items_html.append(f'<a href="{href_esc}"{target_attr} class="kpi-metric-card kpi-metric-link">{inner}</a>')
+        else:
+            items_html.append(f'<div class="kpi-metric-card">{inner}</div>')
     st.markdown(f'<div class="kpi-ribbon-grid">{"".join(items_html)}</div>', unsafe_allow_html=True)
 
 

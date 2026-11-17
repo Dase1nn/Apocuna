@@ -75,6 +75,7 @@ def _render_tab_revistas_y_papers(rev_data: dict, academico: list) -> None:
         st.markdown("---")
 
     if revistas:
+        st.markdown('<div id="revistas-lista"></div>', unsafe_allow_html=True)
         st.subheader(f"📰 Revistas de Gestión y Política Pública ({len(revistas)})")
         c1, c2 = st.columns([2, 1])
         with c1:
@@ -211,21 +212,64 @@ def render_biblioteca() -> None:
     )
 
     render_kpi_ribbon([
-        {"icon": "📝", "value": str(len(notas)), "label": "Notas y Ensayos", "sub": "Investigación aplicada"},
-        {"icon": "📰", "value": str(revistas_count), "label": "Revistas", "sub": "Perú y Latinoamérica"},
-        {"icon": "📄", "value": str(papers_count + len(academico)), "label": "Papers", "sub": "Curados y OpenAlex"},
-        {"icon": "🏛️", "value": str(memorias_count + len(eventos)), "label": "Congresos", "sub": "Actas y convocatorias"},
+        {
+            "icon": "📝",
+            "value": str(len(notas)),
+            "label": "Notas y Ensayos",
+            "sub": "Investigación aplicada",
+            "href": "?vista=biblioteca&tab=notas",
+        },
+        {
+            "icon": "📰",
+            "value": str(revistas_count),
+            "label": "Revistas",
+            "sub": "Perú y Latinoamérica",
+            "href": "?vista=biblioteca&tab=revistas#revistas-lista",
+        },
+        {
+            "icon": "📄",
+            "value": str(papers_count + len(academico)),
+            "label": "Papers",
+            "sub": "Curados y OpenAlex",
+            "href": "?vista=biblioteca&tab=revistas",
+        },
+        {
+            "icon": "🏛️",
+            "value": str(memorias_count + len(eventos)),
+            "label": "Congresos",
+            "sub": "Actas y convocatorias",
+            "href": "?vista=biblioteca&tab=congresos",
+        },
     ])
 
-    tab_rev, tab_notas, tab_cong = st.tabs([
+    tab_opts = [
         f"📰 Revistas y Papers ({revistas_count + papers_count})",
         f"📝 Notas y Ensayos ({len(notas)})",
         f"🏛️ Congresos y Memorias ({memorias_count + len(eventos)})",
-    ])
+    ]
+    tab_qp_map = {"revistas": tab_opts[0], "notas": tab_opts[1], "congresos": tab_opts[2]}
+    tab_qp = str(st.query_params.get("tab") or "")
+    if tab_qp in tab_qp_map and st.session_state.get("_last_tab_qp_bib") != tab_qp:
+        st.session_state["bib_active_tab"] = tab_qp_map[tab_qp]
+        st.session_state._last_tab_qp_bib = tab_qp
 
-    with tab_rev:
+    active_tab = st.segmented_control(
+        "Sección de Biblioteca y Revistas",
+        options=tab_opts,
+        default=st.session_state.get("bib_active_tab", tab_opts[0]),
+        selection_mode="single",
+        label_visibility="collapsed",
+        key="bib_active_tab",
+        width="stretch",
+    )
+    if not active_tab:
+        active_tab = tab_opts[0]
+
+    st.markdown("<div style='height:0.35rem;'></div>", unsafe_allow_html=True)
+
+    if active_tab == tab_opts[0]:
         _render_tab_revistas_y_papers(rev_data, academico)
-    with tab_notas:
+    elif active_tab == tab_opts[1]:
         _render_tab_notas(notas)
-    with tab_cong:
+    else:
         _render_tab_congresos_y_memorias(rev_data, eventos, alertas)

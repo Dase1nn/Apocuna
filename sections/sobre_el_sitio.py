@@ -116,9 +116,9 @@ MANUAL_MODULOS = [
         "orden": "MÓDULO 03",
         "eyebrow": "BASES DE DATOS Y FICHAS METODOLÓGICAS",
         "color_class": "about-card-gold",
-        "titulo": "Polity & Policy y Fichas Técnicas de Fuentes",
+        "titulo": "Políticas y Datos y Fichas Técnicas de Fuentes",
         "contenido_html": (
-            "<p>Organiza las fuentes primarias del Estado, think tanks y organismos multilaterales:</p>"
+            "<p>Organiza las fuentes primarias del Estado, think tanks, Políticas Nacionales CEPLAN y evaluaciones:</p>"
             "<ul>"
             "<li><strong>Doble acción en tarjetas:</strong> El botón <code>Abrir recurso ↗</code> te lleva al "
             "portal oficial, mientras que <code>📄 Ficha técnica →</code> abre su documentación metodológica dentro de Apocuna.</li>"
@@ -130,17 +130,18 @@ MANUAL_MODULOS = [
     },
     {
         "orden": "MÓDULO 04",
-        "eyebrow": "CLIMA, FORMACIÓN Y DIFUSIÓN",
+        "eyebrow": "CLIMA, BIBLIOTECA Y FORMACIÓN",
         "color_class": "about-card-pink",
-        "titulo": "Fenómeno El Niño (FEN), Estudiantes, Notas y Eventos",
+        "titulo": "Monitoreo El Niño, Biblioteca y Escuela y Becas",
         "contenido_html": (
-            "<p>Cuatro espacios especializados para investigación aplicada y formación:</p>"
+            "<p>Tres espacios especializados para monitoreo climático, hemeroteca pública y formación:</p>"
             "<ul>"
-            "<li><strong>Fenómeno El Niño (FEN):</strong> Visores satelitales/oceanográficos en vivo, radar RSS "
-            "de declaratorias de emergencia, seguimiento presupuestal <code>PP 0068 PREVAED</code> y herramientas con Ficha Técnica.</li>"
-            "<li><strong>Estudiantes:</strong> Apuntes normativos de los Sistemas Administrativos (LOPE), cursos abiertos "
-            "(MIT, ENAP, CEPAL, BID), alertas OpenAlex y becas.</li>"
-            "<li><strong>Notas y Eventos:</strong> Lector editorial de ensayos propios y directorio de revistas/congresos.</li>"
+            "<li><strong>Monitoreo El Niño:</strong> Visores satelitales/oceanográficos en vivo, radar RSS "
+            "de declaratorias de emergencia, seguimiento presupuestal <code>PP 0068 PREVAED</code> y 16 herramientas con Ficha Técnica.</li>"
+            "<li><strong>Biblioteca y Revistas:</strong> Ensayos propios, 12 revistas de gestión pública (Perú y Latinoamérica), "
+            "papers recientes, alertas OpenAlex y memorias de congresos.</li>"
+            "<li><strong>Escuela y Becas:</strong> Sistemas Administrativos (LOPE), cursos abiertos "
+            "(MIT, ENAP, CEPAL, BID), guías metodológicas y becas.</li>"
             "</ul>"
         ),
     },

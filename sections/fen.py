@@ -429,24 +429,28 @@ def _render_fen_header(tools_count: int):
                 "value": "5",
                 "label": "Visores en Vivo",
                 "sub": "GOES-19, Windy, ENFEN, CAMI Yaku y SIGRID",
+                "href": "?vista=fen&tab=visores",
             },
             {
                 "icon": "📡",
                 "value": f"{tools_count}",
                 "label": "Herramientas",
                 "sub": "Enlaces oficiales auditados",
+                "href": "?vista=fen&tab=catalogo#catalogo-fen",
             },
             {
                 "icon": "⚖️",
                 "value": "TTL 30m",
                 "label": "Radar Legal",
                 "sub": "El Peruano, PCM, ANIN y COEN",
+                "href": "?vista=fen&tab=radar",
             },
             {
                 "icon": "💰",
                 "value": "PP 0068",
                 "label": "Presupuesto FEN",
                 "sub": "PREVAED, Contraloría y Salud",
+                "href": "?vista=fen&tab=catalogo",
             },
         ]
     )
@@ -509,6 +513,7 @@ def _render_block_3_ecosystem(impact_cards: list[dict], master_tools: list[dict]
     render_fen_impact_grid(impact_cards)
 
     st.markdown("---")
+    st.markdown('<div id="catalogo-fen"></div>', unsafe_allow_html=True)
     st.subheader(f"🧭 Catálogo de Herramientas FEN ({len(master_tools)})")
 
     col_search, col_cat = st.columns([2.2, 1.3])
@@ -567,20 +572,37 @@ def render_fen():
     impact_cards, master_tools = _get_fen_catalog_lists()
     _render_fen_header(len(master_tools))
 
-    tab_visores, tab_radar, tab_eco = st.tabs([
+    tab_opts = [
         "🛰️ Visores en Vivo (5)",
         "📡 Radar Legal y Prensa",
         f"💰 Presupuesto y Catálogo ({len(master_tools)})",
-    ])
+    ]
+    tab_qp_map = {"visores": tab_opts[0], "radar": tab_opts[1], "catalogo": tab_opts[2]}
+    tab_qp = str(st.query_params.get("tab") or "")
+    if tab_qp in tab_qp_map and st.session_state.get("_last_tab_qp_fen") != tab_qp:
+        st.session_state["fen_active_tab"] = tab_qp_map[tab_qp]
+        st.session_state._last_tab_qp_fen = tab_qp
 
-    with tab_visores:
+    active_tab = st.segmented_control(
+        "Sección de Monitoreo El Niño",
+        options=tab_opts,
+        default=st.session_state.get("fen_active_tab", tab_opts[0]),
+        selection_mode="single",
+        label_visibility="collapsed",
+        key="fen_active_tab",
+        width="stretch",
+    )
+    if not active_tab:
+        active_tab = tab_opts[0]
+
+    st.markdown("<div style='height:0.35rem;'></div>", unsafe_allow_html=True)
+
+    if active_tab == tab_opts[0]:
         st.subheader("🛰️ Monitoreo Satelital, Oceanográfico y Geoespacial")
         st.caption("Acceso directo a las 5 plataformas críticas en el Perú y el Pacífico Oriental.")
         top_four, bottom_wide = _get_hero_cards()
         render_fen_hero_grid(top_four, bottom_wide)
-
-    with tab_radar:
+    elif active_tab == tab_opts[1]:
         _render_block_2_radar()
-
-    with tab_eco:
+    else:
         _render_block_3_ecosystem(impact_cards, master_tools)

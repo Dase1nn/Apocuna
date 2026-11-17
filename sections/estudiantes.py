@@ -67,6 +67,7 @@ def _render_tab_cursos(sub_map: dict, cursos: list) -> None:
     tools = sub_map.get("est_sub_2", {}).get("tarjetas", [])
     if tools:
         st.markdown("---")
+        st.markdown('<div id="herramientas-metodologicas"></div>', unsafe_allow_html=True)
         st.subheader("🛠️ Caja de Herramientas Metodológicas")
         render_polity_cards(tools)
 
@@ -100,21 +101,64 @@ def render_estudiantes() -> None:
     tools_count = len(sub_map.get("est_sub_2", {}).get("tarjetas", []))
 
     render_kpi_ribbon([
-        {"icon": "🏛️", "value": str(apuntes_count), "label": "Sistemas LOPE", "sub": "Normativa rectora estatal"},
-        {"icon": "🎓", "value": str(len(cursos)), "label": "Cursos Abiertos", "sub": "MIT, ENAP, BID, CEPAL"},
-        {"icon": "🛠️", "value": str(tools_count), "label": "Guías Técnicas", "sub": "R, Python y evaluación"},
-        {"icon": "🏆", "value": str(len(becas)), "label": "Becas y Gremio", "sub": "PRONABEC, SENAJU y CPOL"},
+        {
+            "icon": "🏛️",
+            "value": str(apuntes_count),
+            "label": "Sistemas LOPE",
+            "sub": "Normativa rectora estatal",
+            "href": "?vista=escuela&tab=sistemas",
+        },
+        {
+            "icon": "🎓",
+            "value": str(len(cursos)),
+            "label": "Cursos Abiertos",
+            "sub": "MIT, ENAP, BID, CEPAL",
+            "href": "?vista=escuela&tab=cursos",
+        },
+        {
+            "icon": "🛠️",
+            "value": str(tools_count),
+            "label": "Guías Técnicas",
+            "sub": "R, Python y evaluación",
+            "href": "?vista=escuela&tab=cursos#herramientas-metodologicas",
+        },
+        {
+            "icon": "🏆",
+            "value": str(len(becas)),
+            "label": "Becas y Gremio",
+            "sub": "PRONABEC, SENAJU y CPOL",
+            "href": "?vista=escuela&tab=becas",
+        },
     ])
 
-    tab1, tab2, tab3 = st.tabs([
+    tab_opts = [
         f"🏛️ Sistemas del Estado ({apuntes_count})",
         f"🎓 Cursos y Metodología ({len(cursos)})",
         f"🏆 Becas y Colegio ({len(becas)})",
-    ])
+    ]
+    tab_qp_map = {"sistemas": tab_opts[0], "cursos": tab_opts[1], "becas": tab_opts[2]}
+    tab_qp = str(st.query_params.get("tab") or "")
+    if tab_qp in tab_qp_map and st.session_state.get("_last_tab_qp_esc") != tab_qp:
+        st.session_state["esc_active_tab"] = tab_qp_map[tab_qp]
+        st.session_state._last_tab_qp_esc = tab_qp
 
-    with tab1:
+    active_tab = st.segmented_control(
+        "Sección de Escuela y Becas",
+        options=tab_opts,
+        default=st.session_state.get("esc_active_tab", tab_opts[0]),
+        selection_mode="single",
+        label_visibility="collapsed",
+        key="esc_active_tab",
+        width="stretch",
+    )
+    if not active_tab:
+        active_tab = tab_opts[0]
+
+    st.markdown("<div style='height:0.35rem;'></div>", unsafe_allow_html=True)
+
+    if active_tab == tab_opts[0]:
         _render_tab_sistemas(sub_map)
-    with tab2:
+    elif active_tab == tab_opts[1]:
         _render_tab_cursos(sub_map, cursos)
-    with tab3:
+    else:
         _render_tab_becas(sub_map, becas)
