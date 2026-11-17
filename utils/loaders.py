@@ -85,6 +85,7 @@ def _build_nota_entry(filepath: str) -> dict | None:
                 "fecha": meta.get("fecha") or "2026-10-01",
                 "imagen": meta.get("imagen", ""),
                 "maqueta": meta.get("maqueta", ""),
+                "maqueta_altura": meta.get("maqueta_altura", ""),
                 "tipo": meta.get("tipo") or "NOTA DE INVESTIGACIÓN",
                 "autor": meta.get("autor") or "Apocuna Hub",
                 "lectura_min": max(1, round(words / 200)),

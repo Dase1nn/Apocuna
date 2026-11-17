@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratorio de Traducción Política · Apocuna Hub</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Sistema Apocunoso-Style (Ndebele / Kené × Swiss International) */
+    html[data-theme="paper"] {
+      --bg: #FAF7E9;
+      --surface: #F2EFE0;
+      --surface-2: #EAE5D1;
+      --surface-card: #FFFFFF;
+      --ink: #171B18;
+      --ink-muted: #4E5752;
+      --ink-dim: #5B6660;
+      --border: rgba(23, 27, 24, 0.24);
+      --border-strong: #171B18;
+      --shadow-hard: 3px 3px 0px #171B18;
+      --grid-dot: rgba(23, 27, 24, 0.12);
+      --pill-active-bg: #171B18;
+      --pill-active-fg: #FAF7E9;
+
+      --c-blue: #2775AA;
+      --c-blue-bg: rgba(39, 117, 170, 0.12);
+      --c-green: #1B8668;
+      --c-green-bg: rgba(27, 134, 104, 0.12);
+      --c-gold: #A86D00;
+      --c-gold-fill: #F0BB38;
+      --c-gold-bg: rgba(240, 187, 56, 0.22);
+      --c-pink: #C94D77;
+      --c-red: #D93829;
+      --c-red-bg: rgba(217, 56, 41, 0.10);
+    }
+
+    html[data-theme="obsidian"] {
+      --bg: #121614;
+      --surface: #181D1A;
+      --surface-2: #202723;
+      --surface-card: #1C231F;
+      --ink: #FAF7E9;
+      --ink-muted: #DCE0DB;
+      --ink-dim: #A3B0A8;
+      --border: rgba(250, 247, 233, 0.22);
+      --border-strong: rgba(250, 247, 233, 0.56);
+      --shadow-hard: 3px 3px 0px #060807;
+      --grid-dot: rgba(240, 187, 56, 0.14);
+      --pill-active-bg: #F0BB38;
+      --pill-active-fg: #171B18;
+
+      --c-blue: #5AB0E6;
+      --c-blue-bg: rgba(90, 176, 230, 0.15);
+      --c-green: #34D399;
+      --c-green-bg: rgba(52, 211, 153, 0.14);
+      --c-gold: #F0BB38;
+      --c-gold-fill: #F0BB38;
+      --c-gold-bg: rgba(240, 187, 56, 0.18);
+      --c-pink: #F472B6;
+      --c-red: #F87171;
+      --c-red-bg: rgba(248, 113, 113, 0.14);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Top Bar */
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 16px;
+      background: var(--surface);
+      border-bottom: 2px solid var(--border-strong);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand-mark {
+      border: 1.5px solid var(--border-strong);
+      border-left: 4px solid var(--c-blue);
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--bg);
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+
+    .brand-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .brand-sub {
+      font-size: 11.5px;
+      color: var(--ink-muted);
+    }
+
+    .topbar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-apocuna {
+      appearance: none;
+      background: var(--bg);
+      color: var(--ink);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 6px;
+      padding: 6px 11px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--border-strong);
+      transition: transform 120ms ease, background 150ms ease, border-color 150ms ease;
+    }
+
+    .btn-apocuna:hover {
+      background: var(--surface-2);
+      border-color: var(--c-blue);
+      transform: translate(-1px, -1px);
+    }
+
+    .btn-apocuna.primary {
+      background: var(--c-blue);
+      color: #FFFFFF;
+      border-color: var(--border-strong);
+    }
+
+    .btn-apocuna.primary:hover {
+      filter: brightness(1.08);
+    }
+
+    /* Lab Container */
+    .lab-shell {
+      padding: 14px 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      background-color: var(--bg);
+      background-image: radial-gradient(var(--grid-dot) 1px, transparent 1px);
+      background-size: 18px 18px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--ink-muted);
+      margin-bottom: 6px;
+    }
+
+    /* 1. Scenario Cards */
+    .scenario-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .scenario-btn {
+      text-align: left;
+      padding: 9px 11px;
+      background: var(--surface);
+      border: 1.5px solid var(--border-strong);
+      border-left: 4px solid var(--border-strong);
+      border-radius: 7px;
+      cursor: pointer;
+      color: var(--ink);
+      font-family: inherit;
+      box-shadow: 2px 2px 0px var(--border-strong);
+      transition: all 150ms ease;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .scenario-btn:hover {
+      background: var(--surface-2);
+      border-left-color: var(--c-blue);
+    }
+
+    .scenario-btn.is-active {
+      background: var(--pill-active-bg);
+      color: var(--pill-active-fg);
+      border-color: var(--border-strong);
+      border-left: 5px solid var(--c-gold-fill);
+      box-shadow: var(--shadow-hard);
+    }
+
+    .scenario-country {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.8;
+    }
+
+    .scenario-btn.is-active .scenario-country {
+      color: var(--c-gold-fill);
+      opacity: 1;
+    }
+
+    html[data-theme="obsidian"] .scenario-btn.is-active .scenario-country {
+      color: var(--pill-active-fg);
+      opacity: 0.85;
+    }
+
+    .scenario-name {
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .scenario-cite {
+      font-size: 11px;
+      opacity: 0.82;
+    }
+
+    /* 2. Sequential 3-Step Control */
+    .stepper {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+      background: var(--surface);
+      padding: 6px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border-strong);
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+
+    .step-btn {
+      border: 1.5px solid transparent;
+      background: transparent;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      transition: all 160ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      text-align: center;
+    }
+
+    .step-btn:hover {
+      color: var(--ink);
+      background: var(--surface-2);
+    }
+
+    .step-btn.is-active {
+      background: var(--bg);
+      color: var(--ink);
+      border-color: var(--border-strong);
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      background: var(--surface-2);
+      color: var(--ink);
+      border: 1px solid var(--border-strong);
+      flex-shrink: 0;
+    }
+
+    .step-btn.is-active .step-num {
+      background: var(--c-blue);
+      color: #FFFFFF;
+      border-color: var(--border-strong);
+    }
+
+    /* Stage Container */
+    .stage-canvas {
+      background: var(--surface);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 14px 15px;
+      box-shadow: var(--shadow-hard);
+    }
+
+    .stage-intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .stage-intro-text {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      max-width: 74ch;
+    }
+
+    .stage-intro-text strong {
+      color: var(--ink);
+    }
+
+    .filter-toggle-btn {
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 11px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-strong);
+      background: var(--bg);
+      color: var(--ink);
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--border-strong);
+      transition: all 150ms ease;
+    }
+
+    .filter-toggle-btn.is-on {
+      background: var(--c-blue);
+      color: #FFFFFF;
+    }
+
+    /* STEP 1: 5 Input Cards + Animated Flow SVG */
+    .cards-radar-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .radar-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 7px;
+      padding: 10px 9px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      transition: all 220ms ease;
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+
+    .radar-card-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .radar-card-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .radar-card-stat {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--c-blue);
+      line-height: 1.2;
+    }
+
+    .radar-card-body {
+      font-size: 11px;
+      line-height: 1.4;
+      color: var(--ink-muted);
+    }
+
+    .radar-card-source {
+      margin-top: auto;
+      padding-top: 5px;
+      border-top: 1px dashed var(--border);
+      font-size: 10px;
+      color: var(--ink-dim);
+      font-weight: 600;
+    }
+
+    .radar-grid-filtered .radar-card[data-kind="noise"] {
+      opacity: 0.48;
+      border-style: dashed;
+      border-left: 4px solid var(--c-red);
+      box-shadow: none;
+    }
+
+    .radar-grid-filtered .radar-card[data-kind="noise"] .radar-card-badge {
+      background: var(--c-red-bg);
+      color: var(--c-red);
+      border-color: var(--c-red);
+    }
+
+    .radar-grid-filtered .radar-card[data-kind="data"] {
+      border-left: 4px solid var(--c-blue);
+      transform: translateY(-2px);
+    }
+
+    .radar-grid-filtered .radar-card[data-kind="data"] .radar-card-badge {
+      background: var(--c-blue-bg);
+      color: var(--c-blue);
+      border-color: var(--c-blue);
+    }
+
+    .svg-flow-box {
+      width: 100%;
+      margin: 4px 0;
+      display: block;
+      overflow: visible;
+    }
+
+    .flow-line-active {
+      stroke: var(--c-blue);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-dasharray: 6 5;
+      animation: dashFlow 1.25s linear infinite;
+    }
+
+    .flow-line-gold {
+      stroke: var(--c-green);
+      stroke-width: 2.5;
+      fill: none;
+      stroke-dasharray: 6 5;
+      animation: dashFlow 1.25s linear infinite;
+    }
+
+    .flow-line-muted {
+      stroke: var(--c-red);
+      stroke-opacity: 0.45;
+      stroke-width: 1.6;
+      fill: none;
+      stroke-dasharray: 3 4;
+    }
+
+    @keyframes dashFlow {
+      to {
+        stroke-dashoffset: -22;
+      }
+    }
+
+    @keyframes pulseCollector {
+      0%, 100% { r: 6; opacity: 1; }
+      50% { r: 9; opacity: 0.72; }
+    }
+
+    .collector-beacon {
+      fill: var(--c-green);
+      stroke: var(--border-strong);
+      stroke-width: 1.5;
+      animation: pulseCollector 1.4s ease-in-out infinite;
+    }
+
+    .synthesis-node {
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-left: 5px solid var(--c-green);
+      border-radius: 7px;
+      padding: 10px 13px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+
+    .synthesis-node-text {
+      font-size: 12px;
+      color: var(--ink);
+    }
+
+    .synthesis-node-text strong {
+      color: var(--c-green);
+    }
+
+    /* STEP 2: Politologist Desk */
+    .desk-input-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .mini-chip {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--c-blue-bg);
+      color: var(--c-blue);
+      border: 1px solid var(--c-blue);
+    }
+
+    .desk-arrow-center {
+      display: flex;
+      justify-content: center;
+      margin: 4px 0;
+    }
+
+    .problem-core-box {
+      background: var(--bg);
+      border: 2px solid var(--border-strong);
+      border-left: 5px solid var(--c-blue);
+      border-radius: 8px;
+      padding: 12px 14px;
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+
+    .problem-core-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--c-blue);
+      margin-bottom: 4px;
+    }
+
+    .problem-core-statement {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin-top: 11px;
+    }
+
+    .breakdown-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-top: 4px solid var(--c-blue);
+      border-radius: 7px;
+      padding: 10px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+    .breakdown-card:nth-child(2) { border-top-color: var(--c-gold-fill); }
+    .breakdown-card:nth-child(3) { border-top-color: var(--c-green); }
+
+    .breakdown-card h4 {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .breakdown-card p {
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--ink-muted);
+    }
+
+    .causal-split-note {
+      margin-top: auto;
+      padding-top: 5px;
+      border-top: 1px dashed var(--border);
+      font-size: 11px;
+      color: var(--ink-dim);
+    }
+
+    .trap-alert {
+      margin-top: 11px;
+      background: var(--c-red-bg);
+      border: 1.5px solid var(--c-red);
+      border-left: 5px solid var(--c-red);
+      border-radius: 7px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .trap-alert-header {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--c-red);
+    }
+
+    .trap-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .trap-wrong {
+      background: var(--bg);
+      border: 1px dashed var(--c-red);
+      border-radius: 6px;
+      padding: 8px 9px;
+      font-size: 11.5px;
+      color: var(--c-red);
+    }
+
+    .trap-wrong span {
+      text-decoration: line-through;
+    }
+
+    .trap-why {
+      font-size: 11.5px;
+      line-height: 1.45;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+    }
+
+    /* STEP 3: Scientific Justification */
+    .step3-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .contrast-switch {
+      display: inline-flex;
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 7px;
+      padding: 3px;
+      gap: 4px;
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+
+    .contrast-btn {
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: var(--ink-muted);
+      transition: all 150ms ease;
+    }
+
+    .contrast-btn.is-active[data-mode="rigorous"] {
+      background: var(--c-green);
+      color: #FFFFFF;
+    }
+
+    .contrast-btn.is-active[data-mode="naive"] {
+      background: var(--c-red);
+      color: #FFFFFF;
+    }
+
+    .stabilized-anchor {
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-left: 4px solid var(--c-blue);
+      border-radius: 7px;
+      padding: 9px 11px;
+      font-size: 12px;
+      color: var(--ink-muted);
+    }
+
+    .stabilized-anchor strong {
+      color: var(--c-blue);
+      display: block;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .pillars-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 9px 0;
+    }
+
+    .legend-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 1px solid var(--border-strong);
+    }
+
+    .legend-pill.social { background: var(--c-blue-bg); color: var(--c-blue); border-color: var(--c-blue); }
+    .legend-pill.practical { background: var(--c-green-bg); color: var(--c-green); border-color: var(--c-green); }
+    .legend-pill.gap { background: var(--c-gold-bg); color: var(--c-gold); border-color: var(--c-gold-fill); }
+
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.social { background: var(--c-blue); }
+    .dot.practical { background: var(--c-green); }
+    .dot.gap { background: var(--c-gold-fill); }
+
+    .justification-card {
+      background: var(--bg);
+      border: 1.5px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 13px 14px;
+      box-shadow: 2px 2px 0px var(--border-strong);
+    }
+
+    .justification-paragraph {
+      font-size: 13px;
+      line-height: 1.82;
+      color: var(--ink);
+    }
+
+    .hl-social { background: var(--c-blue-bg); border-bottom: 2px solid var(--c-blue); padding: 1px 4px; border-radius: 3px; }
+    .hl-practical { background: var(--c-green-bg); border-bottom: 2px solid var(--c-green); padding: 1px 4px; border-radius: 3px; }
+    .hl-gap { background: var(--c-gold-bg); border-bottom: 2px solid var(--c-gold-fill); padding: 1px 4px; border-radius: 3px; }
+
+    .pillars-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 11px;
+    }
+
+    .pillar-box {
+      border-radius: 7px;
+      padding: 9px 10px;
+      font-size: 11.5px;
+      line-height: 1.42;
+      color: var(--ink-muted);
+      border: 1px solid var(--border-strong);
+    }
+    .pillar-box.social { background: var(--c-blue-bg); border-left: 4px solid var(--c-blue); }
+    .pillar-box.practical { background: var(--c-green-bg); border-left: 4px solid var(--c-green); }
+    .pillar-box.gap { background: var(--c-gold-bg); border-left: 4px solid var(--c-gold-fill); }
+
+    .pillar-box strong {
+      display: block;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+    }
+    .pillar-box.social strong { color: var(--c-blue); }
+    .pillar-box.practical strong { color: var(--c-green); }
+    .pillar-box.gap strong { color: var(--c-gold); }
+
+    .naive-wrapper {
+      background: var(--c-red-bg);
+      border: 1.5px solid var(--c-red);
+      border-radius: 8px;
+      padding: 12px 13px;
+    }
+
+    .naive-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .flaw-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 5px;
+      background: var(--bg);
+      color: var(--c-red);
+      border: 1px solid var(--c-red);
+    }
+
+    .naive-mark {
+      background: var(--c-red-bg);
+      border-bottom: 2px dashed var(--c-red);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+
+    .naive-callout-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9.5px;
+      font-weight: 700;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--c-red);
+      color: #FFFFFF;
+      vertical-align: super;
+      margin-left: 2px;
+    }
+
+    .naive-diagnostic-list {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .naive-diag-item {
+      background: var(--bg);
+      border: 1px solid var(--c-red);
+      border-radius: 6px;
+      padding: 8px 9px;
+      font-size: 11.5px;
+      line-height: 1.4;
+      color: var(--ink-muted);
+    }
+    .naive-diag-item strong { color: var(--c-red); display: block; margin-bottom: 2px; }
+
+    /* Footer */
+    .lab-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 8px;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 13px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--border-strong);
+      transition: all 140ms ease;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      border-color: var(--c-blue);
+      color: var(--c-blue);
+      transform: translate(-1px, -1px);
+    }
+
+    .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+
+    .nav-progress {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink-muted);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 22, 20, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 1000;
+    }
+    .modal-backdrop.is-open { display: flex; }
+
+    .modal-panel {
+      background: var(--bg);
+      border: 2px solid var(--border-strong);
+      border-radius: 10px;
+      width: 100%;
+      max-width: 820px;
+      max-height: 86vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 5px 5px 0px var(--border-strong);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 12px 16px;
+      background: var(--surface);
+      border-bottom: 1.5px solid var(--border-strong);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .modal-title { font-size: 14.5px; font-weight: 700; color: var(--ink); }
+
+    .modal-close {
+      border: 1.5px solid var(--border-strong);
+      background: var(--bg);
+      color: var(--ink);
+      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    .modal-tabs {
+      display: flex;
+      gap: 7px;
+      padding: 9px 16px;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .modal-tab-btn {
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 6px;
+      border: 1.5px solid var(--border-strong);
+      background: var(--bg);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .modal-tab-btn.is-active {
+      background: var(--pill-active-bg);
+      color: var(--pill-active-fg);
+    }
+
+    .modal-body {
+      padding: 14px 16px;
+      overflow-y: auto;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--ink-muted);
+    }
+
+    .source-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border-strong);
+      border-left: 4px solid var(--c-blue);
+      border-radius: 7px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+    .source-card h4 { font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+    .source-card p { margin-bottom: 5px; }
+    .doi-link { font-size: 11.5px; font-weight: 700; color: var(--c-blue); text-decoration: none; }
+    .doi-link:hover { text-decoration: underline; }
+
+    @media (max-width: 900px) {
+      .cards-radar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .svg-flow-box { display: none; }
+      .scenario-tabs, .breakdown-grid, .pillars-summary-grid, .trap-comparison, .naive-diagnostic-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .cards-radar-grid, .stepper { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark mono">TRADUCCIÓN · LATAM</div>
+      <div>
+        <div class="brand-title">Laboratorio de Traducción Política</div>
+        <div class="brand-sub">Del malestar social a la justificación científica · 3 casos empíricos latinoamericanos (Apocunoso-Style)</div>
+      </div>
+    </div>
+    <div class="topbar-controls">
+      <button type="button" class="btn-apocuna" id="openSourcesBtn">Ver Fuentes y Casos LatAm</button>
+      <button type="button" class="btn-apocuna" id="themeToggleBtn">Tinta Amazónica</button>
+    </div>
+  </header>
+
+  <main class="lab-shell">
+    <div>
+      <div class="section-kicker mono">1. Selecciona un caso empírico latinoamericano (2021–2022)</div>
+      <div class="scenario-tabs" id="scenarioTabs" role="tablist" aria-label="Escenarios latinoamericanos"></div>
+    </div>
+
+    <div class="stepper" role="tablist" aria-label="Pasos de transformación analítica">
+      <button type="button" class="step-btn is-active" data-step="1">
+        <span class="step-num">1</span>
+        <span>Paso 1: Radar Social</span>
+      </button>
+      <button type="button" class="step-btn" data-step="2">
+        <span class="step-num">2</span>
+        <span>Paso 2: Mesa del Politólogo</span>
+      </button>
+      <button type="button" class="step-btn" data-step="3">
+        <span class="step-num">3</span>
+        <span>Paso 3: Justificación Científica</span>
+      </button>
+    </div>
+
+    <div class="stage-canvas" id="stageCanvas" aria-live="polite"></div>
+
+    <div class="lab-footer">
+      <button type="button" class="nav-btn" id="prevStepBtn">← Paso anterior</button>
+      <span class="nav-progress mono" id="navProgress">PASO 1 DE 3</span>
+      <button type="button" class="nav-btn" id="nextStepBtn">Siguiente paso →</button>
+    </div>
+  </main>
+
+  <!-- MODAL: VER FUENTES Y CASOS LATAM -->
+  <div class="modal-backdrop" id="sourcesModal" role="dialog" aria-modal="true" aria-labelledby="sourcesModalTitle">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h3 class="modal-title" id="sourcesModalTitle">Fuentes Teóricas, Indicadores Oficiales y Casos Latinoamericanos</h3>
+        <button type="button" class="modal-close" id="closeModalBtn" aria-label="Cerrar ventana">×</button>
+      </div>
+      <div class="modal-tabs" role="tablist">
+        <button type="button" class="modal-tab-btn is-active" data-modal-tab="casos">3 Casos LatAm (2021–2022)</button>
+        <button type="button" class="modal-tab-btn" data-modal-tab="empirico">Indicadores Oficiales</button>
+        <button type="button" class="modal-tab-btn" data-modal-tab="teoria">Marco Teórico (APA 7)</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    const SCENARIOS = [
+      {
+        id: 'medellin',
+        country: 'Colombia · Medellín',
+        shortTitle: 'Desplazamiento por obra pública',
+        cite: 'Gómez & Mayorga Martínez (2021)',
+        journal: 'Gestión y Política Pública, 30(1), 31–60',
+        doi: 'https://doi.org/10.29265/gypp.v30i1.803',
+        inputs: [
+          {
+            kind: 'noise',
+            tag: 'Titular mediático',
+            title: '“Vecinos frenan el progreso vial por desacuerdos económicos”',
+            body: 'Crónica local que retrata las protestas del norte de Medellín como resistencia aislada y regateo individual.',
+            source: 'Ruido mediático coyuntural · Sin medición causal'
+          },
+          {
+            kind: 'data',
+            tag: 'DANE · ECV (2021–2023)',
+            title: 'Déficit habitacional urbano nacional',
+            stat: '24,1% → 19,6%',
+            body: 'Porcentaje de hogares en cabeceras urbanas colombianas con déficit habitacional (~2,7 millones), concentrado en estratos bajos.',
+            source: 'DANE, Encuesta Nacional de Calidad de Vida'
+          },
+          {
+            kind: 'data',
+            tag: 'Alcaldía · Censo predial',
+            title: 'Viviendas mapeadas en La Paralela',
+            stat: '~297 viviendas',
+            body: 'Hogares de estratos 1, 2 y 3 asentados por más de 30 años notificados para adquisición predial por obras del Metrocable Línea P.',
+            source: 'Alcaldía de Medellín / Registro Línea P'
+          },
+          {
+            kind: 'noise',
+            tag: 'Queja anecdótica',
+            title: '“El avalúo de mi vecino salió más alto que el mío”',
+            body: 'Reclamo fragmentado centrado únicamente en diferencias puntuales de tasación entre predios colindantes.',
+            source: 'Percepción individual · Sin alcance institucional'
+          },
+          {
+            kind: 'data',
+            tag: 'CEPAL / ONU-Hábitat',
+            title: 'Vulnerabilidad urbana regional',
+            stat: '~45% déficit · 16–17% informal',
+            body: 'En América Latina y el Caribe, ~45% de hogares presenta déficit habitacional y ~100 millones residen en asentamientos informales.',
+            source: 'CEPALSTAT / Seguimiento ODS 11'
+          }
+        ],
+        problemStatement: 'Las familias de estratos 1, 2 y 3 del sector La Paralela (Comuna 5, Medellín) experimentan desplazamiento involuntario intraurbano y deterioro socioeconómico tras obras públicas viales debido a que la baja densidad de la red institucional encuadra la intervención como mera indemnización predial (top-down) y desarticula su hábitat barrial (bottom-up).',
+        breakdown: {
+          population: 'Hogares de estratos 1, 2 y 3 (~297 viviendas consolidadas) en el sector La Paralela, Comuna 5 - Castilla, Medellín, Colombia.',
+          causal: 'Responsabilidad causal: la baja densidad en la red de actores impide conciliar la compra predial estatal con la pérdida de tejido social barrial.',
+          political: 'Responsabilidad política: Alcaldía de Medellín, ISVIMED, Metro de Medellín y Concejo Municipal en protección a moradores.',
+          competence: 'Alcaldía de Medellín, Instituto Social de Vivienda y Hábitat (ISVIMED), Metro de Medellín y Concejo Municipal.'
+        },
+        wrongTrap: {
+          phrasing: '“El problema en La Paralela es que faltan recursos económicos para pagar avalúos más altos o falta una nueva ordenanza.”',
+          explanation: 'Define el problema como ausencia de dinero o normas (Subirats et al., 2008). Confunde el instrumento con la causa: si la red institucional mantiene una lógica unilateral, el desarraigo persiste.'
+        },
+        rigorous: {
+          segments: [
+            {
+              pillar: 'social',
+              text: 'La intervención por obras de infraestructura en el sector La Paralela de Medellín afecta a cerca de 297 hogares populares de estratos 1 y 2 en un país donde el déficit habitacional urbano alcanza 19,6%, provocando desplazamiento involuntario y ruptura de redes comunitarias.'
+            },
+            {
+              pillar: 'practical',
+              text: ' Analizar esta brecha ofrece evidencia relacional para que la Alcaldía y el ISVIMED rediseñen la política de protección a moradores, sustituyendo esquemas puramente indemnizatorios por protocolos participativos de reasentamiento.'
+            },
+            {
+              pillar: 'gap',
+              text: ' Teóricamente, supera la literatura clásica de implementación —que asume el problema público como un dato consensuado ex ante—, probando cómo redes poco densas producen concepciones divergentes del problema.'
+            }
+          ],
+          pillarsSummary: {
+            social: 'Documenta el desarraigo inducido sobre hogares de estratos 1 y 2 ante el déficit habitacional urbano.',
+            practical: 'Orienta protocolos participativos de reasentamiento integral en el ISVIMED y la Alcaldía.',
+            gap: 'Cuestiona el supuesto de consenso ex ante en la implementación mediante análisis de redes de políticas.'
+          }
+        },
+        naive: {
+          flaws: [
+            { id: 1, label: 'Sentido común sin indicadores' },
+            { id: 2, label: 'Tautología: falta de dinero y leyes' },
+            { id: 3, label: 'Sin delimitación territorial' },
+            { id: 4, label: 'Sin vacío teórico' }
+          ],
+          parts: [
+            { text: 'Es evidente que las grandes obras en nuestras ciudades siempre son injustas con los vecinos pobres ', flaw: 1 },
+            { text: 'y que el verdadero problema es que ', flaw: null },
+            { text: 'falta presupuesto municipal para pagarles lo que piden y faltan leyes más duras contra las constructoras.', flaw: 2 },
+            { text: ' Por eso es importante investigar este tema ', flaw: null },
+            { text: 'para ayudar a todas las personas que sufren en cualquier barrio del país,', flaw: 3 },
+            { text: ' esperando que las autoridades tengan más sensibilidad humana.', flaw: 4 }
+          ],
+          diagnostics: [
+            { title: '1. Juicio moral sin evidencia', text: 'Reemplaza los datos del DANE y del censo predial por apreciaciones genéricas.' },
+            { title: '2. Trampa de ausencia de solución', text: 'Reduce el problema a “falta presupuesto” o “faltan leyes”, clausurando el análisis de redes.' },
+            { title: '3. Escala difusa', text: 'Habla de “cualquier barrio del país” sin acotar La Paralela ni estratos afectados.' },
+            { title: '4. Sin knowledge gap', text: 'No dialoga con literatura politológica ni orienta instrumentos municipales.' }
+          ]
+        }
+      },
+      {
+        id: 'puebla',
+        country: 'México · Zautla, Puebla',
+        shortTitle: 'Agua rural, género y territorio',
+        cite: 'Soares (2022)',
+        journal: 'Perfiles Latinoamericanos, 30(59), 1–26',
+        doi: 'https://doi.org/10.18504/pl3059-013-2022',
+        inputs: [
+          {
+            kind: 'noise',
+            tag: 'Nota de prensa',
+            title: '“Sequía estacional reduce agua en la Sierra Norte de Puebla”',
+            body: 'Encabezado que atribuye la escasez a un fenómeno climático pasajero y omite las brechas de infraestructura local.',
+            source: 'Discurso naturalista · Oculta agencia institucional'
+          },
+          {
+            kind: 'data',
+            tag: 'INEGI · Censo 2020 y campo',
+            title: 'Brecha estatal vs. intermitencia real',
+            stat: '95,4% nominal vs. 58% sin flujo',
+            body: 'Puebla reporta 95,4% de viviendas con agua entubada, pero en El Mirador (Zautla) 58% carece de suministro continuo.',
+            source: 'INEGI (Censo 2020) y levantamiento en Zautla'
+          },
+          {
+            kind: 'data',
+            tag: 'CONEVAL · Pobreza municipal',
+            title: 'Vulnerabilidad socioeconómica local',
+            stat: '85,5% en pobreza',
+            body: 'Porcentaje de población de Zautla en pobreza moderada o extrema, altamente dependiente de cultivos de traspatio.',
+            source: 'CONEVAL · Medición Municipal Puebla'
+          },
+          {
+            kind: 'noise',
+            tag: 'Relato cotidiano',
+            title: '“En el campo siempre ha sido costumbre que las mujeres acarreen agua”',
+            body: 'Percepción que normaliza las caminatas diarias como rol tradicional e impide problematizar la desigualdad temporal.',
+            source: 'Sentido común naturalizado · Sin recorte analítico'
+          },
+          {
+            kind: 'data',
+            tag: 'INEGI · ENUT',
+            title: 'Brecha de género en cuidados',
+            stat: '39,7 h vs. 18,2 h/sem',
+            body: 'Las mujeres mexicanas destinan 21,5 horas semanales más que los varones al trabajo no remunerado (>27 h en zonas rurales).',
+            source: 'INEGI, Encuesta Nacional sobre Uso del Tiempo'
+          }
+        ],
+        problemStatement: 'Las familias campesinas —y especialmente las mujeres encargadas del cuidado— en El Mirador (Zautla, Puebla) sufren privación hídrica efectiva y riesgo alimentario porque el diseño urbanocéntrico restringe el Derecho Humano al Agua al consumo doméstico mínimo, excluyendo usos de traspatio y descargando la intermitencia sobre el trabajo femenino.',
+        breakdown: {
+          population: 'Familias campesinas en pobreza multidimensional y mujeres rurales de El Mirador, municipio de Zautla, Puebla, México.',
+          causal: 'Responsabilidad causal: el diseño normativo restringe el derecho al uso doméstico urbano y oculta la intermitencia bajo el indicador binario de tubería.',
+          political: 'Responsabilidad política: CONAGUA, autoridades hidráulicas de Puebla y Ayuntamiento de Zautla como garantes de continuidad.',
+          competence: 'Comisión Nacional del Agua (CONAGUA), instancias estatales de Puebla, Ayuntamiento de Zautla y comités comunitarios.'
+        },
+        wrongTrap: {
+          phrasing: '“El problema en Zautla es que falta lluvia por el cambio climático o falta construir más tuberías municipales.”',
+          explanation: 'Reduce un déficit institucional a un accidente natural o falta de obra física (Stone, 1989). Aunque haya 95,4% de cobertura nominal, sin redefinir continuidad y uso de traspatio persiste la exclusión.'
+        },
+        rigorous: {
+          segments: [
+            {
+              pillar: 'social',
+              text: 'En un municipio con 85,5% de pobreza donde 58% de los hogares de El Mirador carece de agua continua pese al 95,4% nominal estatal, la precariedad hídrica agrava la brecha de trabajo no remunerado femenino y compromete la economía alimentaria de traspatio.'
+            },
+            {
+              pillar: 'practical',
+              text: ' Territorializar este diagnóstico aporta criterios para que CONAGUA y gobiernos locales sustituyan indicadores binarios de cobertura por estándares de continuidad, calidad y dotación productiva rural con enfoque de género.'
+            },
+            {
+              pillar: 'gap',
+              text: ' Teóricamente, cuestiona las concepciones homogéneas y urbanocéntricas del Derecho Humano al Agua, articulando ecología política feminista con el análisis territorial de políticas públicas.'
+            }
+          ],
+          pillarsSummary: {
+            social: 'Muestra cómo la intermitencia hídrica rural agrava la pobreza de tiempo femenina y amenaza el traspatio.',
+            practical: 'Propone reformular indicadores oficiales de cobertura del INEGI/CONAGUA y reglas de dotación rural.',
+            gap: 'Supera el enfoque urbanocéntrico del Derecho Humano al Agua integrando ecología política feminista.'
+          }
+        },
+        naive: {
+          flaws: [
+            { id: 1, label: 'Causalidad naturalista' },
+            { id: 2, label: 'Tautología: falta de tubos' },
+            { id: 3, label: 'Invisibilización de género' },
+            { id: 4, label: 'Sin vacío teórico' }
+          ],
+          parts: [
+            { text: 'En muchas comunidades rurales de México la gente sufre porque ', flaw: null },
+            { text: 'no llueve lo suficiente y es tradición del campo arreglarse como puedan,', flaw: 1 },
+            { text: ' además de que ', flaw: null },
+            { text: 'falta presupuesto federal para poner más tubos de agua potable en todas las sierras.', flaw: 2 },
+            { text: ' Se necesita estudiar esta situación ', flaw: null },
+            { text: 'porque el agua es muy importante para la vida humana,', flaw: 3 },
+            { text: ' recomendando al gobierno invertir más dinero en obras hidráulicas.', flaw: 4 }
+          ],
+          diagnostics: [
+            { title: '1. Atribución al clima o costumbre', text: 'Acepta la escasez como hecho natural o folclórico sin historia causal institucional.' },
+            { title: '2. Definición por ausencia de insumo', text: 'Reduce el diagnóstico a “faltan tubos”, ignorando que la cobertura nominal ya supera el 95%.' },
+            { title: '3. Ceguera territorial y de género', text: 'Omite la brecha de uso del tiempo (ENUT) y los usos productivos de traspatio.' },
+            { title: '4. Carece de vacío teórico', text: 'Apela a lugares comunes sin debatir los estándares jurídicos del agua.' }
+          ]
+        }
+      },
+      {
+        id: 'tucuman',
+        country: 'Argentina · Tucumán',
+        shortTitle: 'Movilidad urbana del cuidado',
+        cite: 'González-Alvo & Czytajlo (2022)',
+        journal: 'Íconos. Revista de Ciencias Sociales, (73), 35–56',
+        doi: 'https://doi.org/10.17141/iconos.73.2022.5232',
+        inputs: [
+          {
+            kind: 'noise',
+            tag: 'Reclamo viral',
+            title: '“El microcentro de Tucumán es un caos imposible para circular”',
+            body: 'Queja enfocada en la congestión del centro que reduce el transporte a fluidez automotriz en horas pico.',
+            source: 'Ruido urbano céntrico · Ignora la periferia'
+          },
+          {
+            kind: 'data',
+            tag: 'EOD · Motivos de viaje',
+            title: 'Trabajo remunerado vs. cuidados',
+            stat: '17,3% mujeres vs. 2,9% varones',
+            body: 'Los viajes por cuidado representan 17,3% en mujeres (2,9% en varones), quienes concentran 75,8% en motivo laboral vs. 58,6% femenino.',
+            source: 'Encuesta Origen-Destino (EOD) / Tucumán'
+          },
+          {
+            kind: 'data',
+            tag: 'EOD · Dependencia modal',
+            title: 'Caminata y colectivo en vulnerabilidad',
+            stat: '>60% modos colectivos / a pie',
+            body: 'Las mujeres de barrios populares dependen mayoritariamente del transporte público colectivo y la caminata frente al acceso masculino a auto privado.',
+            source: 'EOD Sistema Metropolitano de Tucumán'
+          },
+          {
+            kind: 'noise',
+            tag: 'Anécdota individual',
+            title: '“Las madres caminan mucho porque prefieren llevar a los chicos a pie”',
+            body: 'Atribución de desigualdades espaciales a decisiones personales sin examinar tarifas, rutas ni activos.',
+            source: 'Explicación individualista · Sin base empírica'
+          },
+          {
+            kind: 'data',
+            tag: 'BID / CEPAL',
+            title: 'Inseguridad y uso regional femenino',
+            stat: '≥50% usuarias · >60% acoso',
+            body: 'Las mujeres constituyen la mitad o más de las usuarias del transporte público en América Latina y >60% reporta acoso en trayectos.',
+            source: 'BID Transport Gender Lab / CEPAL'
+          }
+        ],
+        problemStatement: 'Las mujeres de barrios periféricos vulnerables del Sistema Metropolitano de Tucumán enfrentan exclusión socioespacial porque el transporte público y la infraestructura mantienen un diseño androcéntrico y radial-concéntrico orientado al viaje laboral pendular, penalizando los recorridos poligonales de la movilidad del cuidado.',
+        breakdown: {
+          population: 'Mujeres de hogares populares residentes en barrios vulnerables periféricos del Gran San Miguel de Tucumán, Argentina.',
+          causal: 'Responsabilidad causal: la planificación radial (periferia-centro) y la falta de integración tarifaria encarecen y alargan los viajes encadenados.',
+          political: 'Responsabilidad política: Secretarías de Transporte y Obras Públicas provinciales y municipios metropolitanos encargados de rutas y tarifas.',
+          competence: 'Gobierno de la Provincia de Tucumán (Transporte/Obras), municipios metropolitanos y entes reguladores de concesiones.'
+        },
+        wrongTrap: {
+          phrasing: '“El problema de movilidad en Tucumán es que faltan más líneas de colectivos y presupuesto para asfaltar calles.”',
+          explanation: 'Confunde un déficit de diseño institucional con cantidad de buses o asfalto (Subirats et al., 2008). Sumar buses en rutas radiales sin integrar tarifas perpetúa la exclusión.'
+        },
+        rigorous: {
+          segments: [
+            {
+              pillar: 'social',
+              text: 'En barrios vulnerables de Tucumán, las mujeres superan el 60% en viajes a pie y en colectivo y destinan 17,3% de sus desplazamientos a cuidados —casi seis veces más que los varones—, sufriendo segregación territorial e inseguridad.'
+            },
+            {
+              pillar: 'practical',
+              text: ' Cruzar la Encuesta Origen-Destino con cartografías barriales permite a Provincia y municipios diseñar trazados transversales interbarriales, boletos integrados para viajes encadenados y entornos peatonales seguros.'
+            },
+            {
+              pillar: 'gap',
+              text: ' Teóricamente, cubre la vacancia de estudios interseccionales sobre género y movilidad del cuidado en ciudades intermedias latinoamericanas frente al sesgo hacia megaciudades.'
+            }
+          ],
+          pillarsSummary: {
+            social: 'Visibiliza la brecha interseccional de clase y género en la accesibilidad cotidiana periférica.',
+            practical: 'Provee métricas de la EOD para reformar trazados transversales, tarifas e infraestructura barrial.',
+            gap: 'Llena el vacío empírico sobre movilidad del cuidado en ciudades intermedias de América Latina.'
+          }
+        },
+        naive: {
+          flaws: [
+            { id: 1, label: 'Confusión con congestión general' },
+            { id: 2, label: 'Tautología: faltan buses/calles' },
+            { id: 3, label: 'Omite movilidad del cuidado' },
+            { id: 4, label: 'Sin ciudad intermedia ni gap' }
+          ],
+          parts: [
+            { text: 'El tránsito en la ciudad empeora cada día porque ', flaw: null },
+            { text: 'hay demasiados autos en el centro y la gente tarda en llegar a su trabajo,', flaw: 1 },
+            { text: ' lo cual ocurre porque ', flaw: null },
+            { text: 'faltan más colectivos y dinero para pavimentar calles de barrios alejados.', flaw: 2 },
+            { text: ' Esta tesis busca ', flaw: null },
+            { text: 'proponer que el transporte sea rápido para todos los ciudadanos por igual,', flaw: 3 },
+            { text: ' ya que es un tema que preocupa en redes sociales.', flaw: 4 }
+          ],
+          diagnostics: [
+            { title: '1. Foco céntrico indiferenciado', text: 'Reduce el problema a la congestión central, borrando la asimetría laboral/cuidados.' },
+            { title: '2. Trampa de ausencia de solución', text: 'Diagnostica “faltan buses y asfalto” en lugar de cuestionar el diseño radial.' },
+            { title: '3. Falsa neutralidad', text: 'Desconoce los datos de EOD y BID sobre impacto desigual por género y estrato.' },
+            { title: '4. Sin vacío teórico', text: 'Justifica por “redes sociales” sin aportar al debate sobre ciudades intermedias.' }
+          ]
+        }
+      }
+    ];
+
+    const MODAL_CONTENT = {
+      casos: `
+        <div class="source-card">
+          <h4>Caso 1: Desplazamiento involuntario por obra pública en Medellín, Colombia</h4>
+          <p><strong>Referencia (APA 7):</strong> Gómez, G. E., &amp; Mayorga Martínez, G. A. (2021). Concepción diferenciada del problema público: Un análisis de la política pública de desplazamiento involuntario por obra pública en el sector La Paralela del municipio de Medellín, Colombia. <em>Gestión y Política Pública</em>, <em>30</em>(1), 31–60.</p>
+          <p><strong>Aporte central:</strong> Analiza cómo la baja densidad en la red de actores genera concepciones divergentes entre burocracia (indemnización predial) y población afectada (desarraigo socioeconómico).</p>
+          <a class="doi-link" href="https://doi.org/10.29265/gypp.v30i1.803" target="_blank" rel="noopener">DOI: https://doi.org/10.29265/gypp.v30i1.803 ↗</a>
+        </div>
+        <div class="source-card">
+          <h4>Caso 2: Acceso rural al agua, género y territorio en Zautla, Puebla, México</h4>
+          <p><strong>Referencia (APA 7):</strong> Soares, D. (2022). Territorio, género y derechos: El agua y el saneamiento en debate. <em>Perfiles Latinoamericanos</em>, <em>30</em>(59), 1–26.</p>
+          <p><strong>Aporte central:</strong> Contrasta cifras nominales con trabajo de campo en El Mirador (Zautla), demostrando que excluir usos productivos de traspatio sobrecarga el trabajo no remunerado femenino.</p>
+          <a class="doi-link" href="https://doi.org/10.18504/pl3059-013-2022" target="_blank" rel="noopener">DOI: https://doi.org/10.18504/pl3059-013-2022 ↗</a>
+        </div>
+        <div class="source-card">
+          <h4>Caso 3: Movilidad cotidiana del cuidado y vulnerabilidad en Tucumán, Argentina</h4>
+          <p><strong>Referencia (APA 7):</strong> González-Alvo, I., &amp; Czytajlo, N. (2022). Movilidad y género en contextos de vulnerabilidad: El caso del Sistema Metropolitano de Tucumán. <em>Íconos. Revista de Ciencias Sociales</em>, (73), 35–56.</p>
+          <p><strong>Aporte central:</strong> Cruza Encuesta Origen-Destino con vulnerabilidad barrial, revelando cómo un sistema radial penaliza los viajes encadenados del cuidado.</p>
+          <a class="doi-link" href="https://doi.org/10.17141/iconos.73.2022.5232" target="_blank" rel="noopener">DOI: https://doi.org/10.17141/iconos.73.2022.5232 ↗</a>
+        </div>
+      `,
+      empirico: `
+        <div class="source-card">
+          <h4>Medellín (DANE / Alcaldía / CEPAL)</h4>
+          <p><strong>DANE (ECV 2021–2023):</strong> Déficit habitacional urbano de 24,1% (2021) a 19,6% (2023); ~297 viviendas mapeadas en La Paralela (Línea P); ~45% déficit regional según CEPAL/ONU-Hábitat.</p>
+        </div>
+        <div class="source-card">
+          <h4>Zautla, Puebla (INEGI / CONEVAL)</h4>
+          <p><strong>INEGI &amp; CONEVAL:</strong> 95,4% nominal estatal vs. 58% sin flujo continuo en El Mirador; 85,5% pobreza municipal; brecha femenina de cuidados de 39,7 h vs. 18,2 h/semana (ENUT).</p>
+        </div>
+        <div class="source-card">
+          <h4>Tucumán (EOD / BID / CEPAL)</h4>
+          <p><strong>EOD &amp; BID/CEPAL:</strong> Viajes por cuidado 17,3% en mujeres vs. 2,9% en varones; &gt;60% dependencia de caminata/colectivo; &gt;60% reporte regional de acoso en trayectos.</p>
+        </div>
+      `,
+      teoria: `
+        <div class="source-card">
+          <h4>Eje A — Condición social vs. Problema público</h4>
+          <p><strong>Blumer (1971), Gusfield (1981), Cefaï (1996) &amp; Subirats et al. (2008):</strong> Definición colectiva en arenas públicas, propiedad del problema, separación entre responsabilidad causal/política y crítica a la tautología de falta de soluciones.</p>
+        </div>
+        <div class="source-card">
+          <h4>Eje B — Agenda, historias causales y argumentación</h4>
+          <p><strong>Cobb &amp; Elder (1972), Kingdon (1995), Stone (1989), Majone (1989) &amp; Aguilar Villanueva (1993):</strong> Paso de agenda sistémica a institucional, transformación de datos en evidencia persuasiva e historias causales tratables.</p>
+        </div>
+        <div class="source-card">
+          <h4>Eje C — Ciencias de políticas y justificación científica</h4>
+          <p><strong>Lasswell (1951), Lindblom &amp; Cohen (1979) &amp; Pérez-Liñán (2010):</strong> Orientación hacia problemas contextualizados, conocimiento utilizable e integración de relevancia social, práctica y vacío teórico.</p>
+        </div>
+      `
+    };
+
+    const initialTheme = document.documentElement.getAttribute('data-theme') || 'paper';
+    const state = {
+      scenarioIndex: 0,
+      step: 1,
+      step1Filtered: true,
+      step3Mode: 'rigorous',
+      modalTab: 'casos',
+      theme: initialTheme
+    };
+
+    const scenarioTabsEl = document.getElementById('scenarioTabs');
+    const stageCanvasEl = document.getElementById('stageCanvas');
+    const stepBtns = document.querySelectorAll('.step-btn');
+    const prevStepBtn = document.getElementById('prevStepBtn');
+    const nextStepBtn = document.getElementById('nextStepBtn');
+    const navProgressEl = document.getElementById('navProgress');
+    const sourcesModal = document.getElementById('sourcesModal');
+    const modalBody = document.getElementById('modalBody');
+    const modalTabBtns = document.querySelectorAll('.modal-tab-btn');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+    function syncThemeLabel() {
+      themeToggleBtn.textContent = state.theme === 'obsidian' ? 'Papel Kené' : 'Tinta Amazónica';
+    }
+
+    function toggleTheme() {
+      state.theme = state.theme === 'obsidian' ? 'paper' : 'obsidian';
+      document.documentElement.setAttribute('data-theme', state.theme);
+      syncThemeLabel();
+    }
+
+    function renderScenarioTabs() {
+      scenarioTabsEl.innerHTML = SCENARIOS.map((sc, idx) => `
+        <button type="button" class="scenario-btn ${idx === state.scenarioIndex ? 'is-active' : ''}" data-scenario="${idx}" role="tab" aria-selected="${idx === state.scenarioIndex}">
+          <span class="scenario-country mono">${sc.country}</span>
+          <span class="scenario-name">${sc.shortTitle}</span>
+          <span class="scenario-cite">${sc.cite}</span>
+        </button>
+      `).join('');
+
+      scenarioTabsEl.querySelectorAll('.scenario-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.scenarioIndex = Number(btn.dataset.scenario);
+          renderAll();
+        });
+      });
+    }
+
+    function updateControls() {
+      stepBtns.forEach((btn) => {
+        btn.classList.toggle('is-active', Number(btn.dataset.step) === state.step);
+      });
+      prevStepBtn.disabled = state.step === 1;
+      nextStepBtn.disabled = state.step === 3;
+      navProgressEl.textContent = `PASO ${state.step} DE 3`;
+    }
+
+    function renderStep1(scenario) {
+      const filteredClass = state.step1Filtered ? 'radar-grid-filtered' : '';
+      const toggleLabel = state.step1Filtered
+        ? 'Filtro metodológico activo (clic para ver entradas brutas)'
+        : 'Aplicar filtro metodológico →';
+
+      const cardsHtml = scenario.inputs.map((item) => {
+        const badgeText = state.step1Filtered && item.kind === 'noise'
+          ? 'Ruido no investigable'
+          : item.tag;
+        return `
+          <div class="radar-card" data-kind="${item.kind}">
+            <span class="radar-card-badge">${badgeText}</span>
+            <h4 class="radar-card-title">${item.title}</h4>
+            ${item.stat ? `<div class="radar-card-stat mono">${item.stat}</div>` : ''}
+            <p class="radar-card-body">${item.body}</p>
+            <div class="radar-card-source">${item.source}</div>
+          </div>
+        `;
+      }).join('');
+
+      const lineDataClass = 'flow-line-active';
+
+      stageCanvasEl.innerHTML = `
+        <div class="stage-intro">
+          <p class="stage-intro-text">
+            <strong>Detección empírica:</strong> Frente a 2 titulares o quejas anecdóticas de la arena pública, el politólogo filtra el ruido no investigable y canaliza 3 indicadores oficiales verificables.
+          </p>
+          <button type="button" class="filter-toggle-btn ${state.step1Filtered ? 'is-on' : ''}" id="toggleFilterBtn">
+            ${toggleLabel}
+          </button>
+        </div>
+
+        <div class="cards-radar-grid ${filteredClass}">
+          ${cardsHtml}
+        </div>
+
+        <svg class="svg-flow-box" viewBox="0 0 800 76" height="76" aria-hidden="true">
+          ${state.step1Filtered
+            ? `
+              <path d="M 80 4 L 80 34" class="flow-line-muted" />
+              <circle cx="80" cy="40" r="8" fill="var(--c-red-bg)" stroke="var(--c-red)" stroke-width="1.2" />
+              <text x="80" y="43.5" text-anchor="middle" font-size="10" font-weight="700" fill="var(--c-red)">×</text>
+
+              <path d="M 560 4 L 560 34" class="flow-line-muted" />
+              <circle cx="560" cy="40" r="8" fill="var(--c-red-bg)" stroke="var(--c-red)" stroke-width="1.2" />
+              <text x="560" y="43.5" text-anchor="middle" font-size="10" font-weight="700" fill="var(--c-red)">×</text>
+            `
+            : `
+              <path d="M 80 4 C 80 44, 360 34, 400 66" class="flow-line-active" />
+              <path d="M 560 4 C 560 38, 430 32, 400 66" class="flow-line-active" />
+            `}
+          <path d="M 240 4 C 240 38, 370 32, 400 66" class="${lineDataClass}" />
+          <path d="M 400 4 L 400 66" class="flow-line-gold" />
+          <path d="M 720 4 C 720 44, 440 34, 400 66" class="${lineDataClass}" />
+          <circle cx="400" cy="66" r="6" class="collector-beacon" />
+        </svg>
+
+        <div class="synthesis-node">
+          <div class="synthesis-node-text">
+            <strong>Síntesis depurada (3 indicadores oficiales):</strong> ${
+              state.step1Filtered
+                ? 'Las 2 anécdotas quedaron atenuadas como ruido no investigable; los 3 indicadores oficiales convergen hacia el análisis causal.'
+                : 'Mostrando las 5 entradas sin depuración metodológica. Activa el filtro para distinguir evidencia de ruido.'
+            }
+          </div>
+          <button type="button" class="btn-apocuna primary" id="goStep2Btn">Encuadrar en Paso 2 →</button>
+        </div>
+      `;
+
+      document.getElementById('toggleFilterBtn').addEventListener('click', () => {
+        state.step1Filtered = !state.step1Filtered;
+        renderStep1(scenario);
+      });
+
+      document.getElementById('goStep2Btn').addEventListener('click', () => {
+        setStep(2);
+      });
+    }
+
+    function renderStep2(scenario) {
+      const dataChips = scenario.inputs
+        .filter((item) => item.kind === 'data')
+        .map((item) => `<span class="mini-chip">${item.tag}: ${item.stat}</span>`)
+        .join('');
+
+      stageCanvasEl.innerHTML = `
+        <div class="stage-intro">
+          <p class="stage-intro-text">
+            <strong>Procesamiento y encuadre analítico:</strong> Los 3 indicadores filtrados se integran en una historia causal verificable, delimitando población, territorio y competencia estatal.
+          </p>
+        </div>
+
+        <div class="desk-input-strip">${dataChips}</div>
+
+        <div class="desk-arrow-center" aria-hidden="true">
+          <svg width="28" height="24" viewBox="0 0 28 24">
+            <path d="M14 2 L14 19 M8 14 L14 20 L20 14" stroke="var(--c-blue)" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <div class="problem-core-box">
+          <div class="problem-core-label mono">Enunciado Estructurado del Problema Público</div>
+          <p class="problem-core-statement">${scenario.problemStatement}</p>
+        </div>
+
+        <div class="breakdown-grid">
+          <div class="breakdown-card">
+            <h4>(a) Población y territorio afectado</h4>
+            <p>${scenario.breakdown.population}</p>
+          </div>
+          <div class="breakdown-card">
+            <h4>(b) Historia causal e institucional</h4>
+            <p>${scenario.breakdown.causal}</p>
+            <div class="causal-split-note">${scenario.breakdown.political}</div>
+          </div>
+          <div class="breakdown-card">
+            <h4>(c) Competencia estatal</h4>
+            <p>${scenario.breakdown.competence}</p>
+          </div>
+        </div>
+
+        <div class="trap-alert" role="note">
+          <div class="trap-alert-header">
+            <span>⚠ Error descartado: Definir el problema como falta de presupuesto o normas</span>
+          </div>
+          <div class="trap-comparison">
+            <div class="trap-wrong">
+              <strong>Formulación tautológica rechazada:</strong><br />
+              <span>${scenario.wrongTrap.phrasing}</span>
+            </div>
+            <div class="trap-why">
+              ${scenario.wrongTrap.explanation}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderStep3(scenario) {
+      const isRigorous = state.step3Mode === 'rigorous';
+
+      const bodyHtml = isRigorous
+        ? `
+          <div class="pillars-legend">
+            <span class="legend-pill social"><span class="dot social"></span>Relevancia Social</span>
+            <span class="legend-pill practical"><span class="dot practical"></span>Relevancia Práctica (Políticas Públicas)</span>
+            <span class="legend-pill gap"><span class="dot gap"></span>Vacío de Conocimiento Teórico</span>
+          </div>
+
+          <div class="justification-card">
+            <p class="justification-paragraph">
+              <span class="hl-social">${scenario.rigorous.segments[0].text}</span>
+              <span class="hl-practical">${scenario.rigorous.segments[1].text}</span>
+              <span class="hl-gap">${scenario.rigorous.segments[2].text}</span>
+            </p>
+            <div class="pillars-summary-grid">
+              <div class="pillar-box social">
+                <strong>Relevancia Social</strong>
+                ${scenario.rigorous.pillarsSummary.social}
+              </div>
+              <div class="pillar-box practical">
+                <strong>Relevancia Práctica</strong>
+                ${scenario.rigorous.pillarsSummary.practical}
+              </div>
+              <div class="pillar-box gap">
+                <strong>Vacío Teórico</strong>
+                ${scenario.rigorous.pillarsSummary.gap}
+              </div>
+            </div>
+          </div>
+        `
+        : `
+          <div class="naive-wrapper">
+            <div class="naive-badge-row">
+              ${scenario.naive.flaws.map((f) => `<span class="flaw-tag">✕ ${f.id}. ${f.label}</span>`).join('')}
+            </div>
+
+            <div class="justification-card">
+              <p class="justification-paragraph">
+                ${scenario.naive.parts.map((part) => {
+                  if (!part.flaw) return part.text;
+                  return `<span class="naive-mark">${part.text}<span class="naive-callout-num">${part.flaw}</span></span>`;
+                }).join('')}
+              </p>
+            </div>
+
+            <div class="naive-diagnostic-list">
+              ${scenario.naive.diagnostics.map((d) => `
+                <div class="naive-diag-item">
+                  <strong>${d.title}</strong>
+                  ${d.text}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+
+      stageCanvasEl.innerHTML = `
+        <div class="step3-top-bar">
+          <p class="stage-intro-text" style="flex: 1; min-width: 220px;">
+            <strong>Ensamblaje de la justificación:</strong> Contrasta cómo el problema público estabilizado produce un argumento científico frente a una redacción ingenua.
+          </p>
+          <div class="contrast-switch" role="group" aria-label="Comparar redacción">
+            <button type="button" class="contrast-btn ${isRigorous ? 'is-active' : ''}" data-mode="rigorous">
+              Justificación rigurosa
+            </button>
+            <button type="button" class="contrast-btn ${!isRigorous ? 'is-active' : ''}" data-mode="naive">
+              Justificación ingenua
+            </button>
+          </div>
+        </div>
+
+        <div class="stabilized-anchor">
+          <strong class="mono">Problema Público Estabilizado (${scenario.cite} · ${scenario.journal})</strong>
+          ${scenario.problemStatement}
+        </div>
+
+        <div class="desk-arrow-center" aria-hidden="true">
+          <svg width="28" height="24" viewBox="0 0 28 24">
+            <path d="M14 2 L14 19 M8 14 L14 20 L20 14" stroke="${isRigorous ? 'var(--c-green)' : 'var(--c-red)'}" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        ${bodyHtml}
+      `;
+
+      stageCanvasEl.querySelectorAll('.contrast-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          state.step3Mode = btn.dataset.mode;
+          renderStep3(scenario);
+        });
+      });
+    }
+
+    function renderStage() {
+      const scenario = SCENARIOS[state.scenarioIndex];
+      if (state.step === 1) renderStep1(scenario);
+      else if (state.step === 2) renderStep2(scenario);
+      else renderStep3(scenario);
+    }
+
+    function setStep(nextStep) {
+      state.step = Math.max(1, Math.min(3, nextStep));
+      updateControls();
+      renderStage();
+    }
+
+    function renderAll() {
+      renderScenarioTabs();
+      updateControls();
+      renderStage();
+    }
+
+    stepBtns.forEach((btn) => btn.addEventListener('click', () => setStep(Number(btn.dataset.step))));
+    prevStepBtn.addEventListener('click', () => setStep(state.step - 1));
+    nextStepBtn.addEventListener('click', () => setStep(state.step + 1));
+    themeToggleBtn.addEventListener('click', toggleTheme);
+
+    function renderModalBody() {
+      modalBody.innerHTML = MODAL_CONTENT[state.modalTab];
+      modalTabBtns.forEach((btn) => btn.classList.toggle('is-active', btn.dataset.modalTab === state.modalTab));
+    }
+
+    function openSourcesModal() { renderModalBody(); sourcesModal.classList.add('is-open'); }
+    function closeSourcesModal() { sourcesModal.classList.remove('is-open'); }
+
+    document.getElementById('openSourcesBtn').addEventListener('click', openSourcesModal);
+    document.getElementById('closeModalBtn').addEventListener('click', closeSourcesModal);
+    sourcesModal.addEventListener('click', (e) => { if (e.target === sourcesModal) closeSourcesModal(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sourcesModal.classList.contains('is-open')) closeSourcesModal();
+    });
+    modalTabBtns.forEach((btn) => btn.addEventListener('click', () => {
+      state.modalTab = btn.dataset.modalTab;
+      renderModalBody();
+    }));
+
+    syncThemeLabel();
+    renderAll();
+  </script>
+</body>
+</html>

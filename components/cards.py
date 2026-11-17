@@ -1,5 +1,6 @@
 import html
 import importlib
+import os
 import urllib.parse
 import streamlit as st
 import streamlit.components.v1 as components
@@ -428,22 +429,28 @@ def _render_maqueta_block(nota: dict) -> None:
     target_theme = "obsidian" if theme_mode == "🌙 Oscuro" else "paper"
     html_themed = html_src.replace('data-theme="paper"', f'data-theme="{target_theme}"', 1)
 
+    try:
+        altura = max(600, min(1300, int(meta.get("maqueta_altura") or 1040)))
+    except (TypeError, ValueError):
+        altura = 1040
+
     st.markdown(
         '<div class="note-meta" style="margin:0.8rem 0 0.35rem 0;">'
         '🎛️ MAQUETA INTERACTIVA ADAPTADA · PALETA APOCUNOSO-STYLE</div>',
         unsafe_allow_html=True,
     )
-    components.html(html_themed, height=1040, scrolling=True)
+    components.html(html_themed, height=altura, scrolling=True)
 
     gif_rel = meta.get("imagen", "")
     gif_bytes = load_local_asset_bytes(gif_rel) if str(gif_rel).lower().endswith(".gif") else b""
     if gif_bytes:
+        gif_name = os.path.basename(gif_rel.replace("\\", "/")) or "maqueta_apocunoso.gif"
         with st.expander("🎞️ Ver o descargar versión GIF animada de la maqueta"):
-            st.image(gif_bytes, caption="Ciclo dinámico de la caja negra de David Easton (Apocunoso-Style)", width="stretch")
+            st.image(gif_bytes, caption=f"{meta.get('titulo', 'Maqueta interactiva')} (Apocunoso-Style)", width="stretch")
             st.download_button(
                 "⬇️ Descargar maqueta animada (.gif)",
                 data=gif_bytes,
-                file_name="maqueta_easton_apocunoso.gif",
+                file_name=gif_name,
                 mime="image/gif",
                 key=f"dl_gif_{nota.get('id', 'nota')}",
             )
