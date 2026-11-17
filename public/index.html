@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apocuna Hub | Observatorio Peruano de Políticas Públicas, Normas y Datos Abiertos</title>
+  <meta name="description" content="Observatorio cívico y académico del Perú: seguimiento diario automatizado de normas legales de El Peruano (Polity &amp; Policy), Base de Datos de Políticas Nacionales CEPLAN, evaluaciones de programas sociales, microdatos con ficha técnica y monitoreo en tiempo real del Fenómeno El Niño (FEN)." />
+  <meta name="keywords" content="Apocuna Hub, políticas públicas Perú, El Peruano normas legales, CEPLAN políticas nacionales, evaluación de programas sociales Perú, Juntos, Pensión 65, Cuna Más, microdatos INEI ENAHO, Fenómeno El Niño SENAMHI ENFEN SIGRID, gestión pública Perú" />
+  <meta name="author" content="Apocuna Hub" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+
+  <!-- Sustituye el atributo content si verificas por etiqueta HTML en Google Search Console -->
+  <!-- <meta name="google-site-verification" content="PEGA_AQUI_TU_CODIGO_DE_VERIFICACION" /> -->
+
+  <link rel="canonical" href="https://apocuna.streamlit.app/" />
+  <link rel="icon" type="image/svg+xml" href="./assets/apocuna_logo.svg" />
+
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_PE" />
+  <meta property="og:site_name" content="Apocuna Hub" />
+  <meta property="og:title" content="Apocuna Hub | Evidencia, Normativa y Datos Públicos del Perú" />
+  <meta property="og:description" content="Radar diario de El Peruano, 51 Políticas Nacionales CEPLAN, 27 evaluaciones públicas, microdatos ENAHO/REUNIS/ESCALE con ficha técnica y monitoreo satelital FEN." />
+  <meta property="og:url" content="https://apocuna.streamlit.app/" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Apocuna Hub | Evidencia y Políticas Públicas del Perú" />
+  <meta name="twitter:description" content="Plataforma abierta para gestores públicos, investigadores y estudiantes de Ciencia Política en el Perú." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+
+  <!-- Datos Estructurados JSON-LD para Google Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://apocuna.streamlit.app/#website",
+        "name": "Apocuna Hub",
+        "url": "https://apocuna.streamlit.app/",
+        "inLanguage": "es-PE",
+        "description": "Observatorio peruano de vigilancia normativa (El Peruano), evaluación de políticas públicas (CEPLAN/MIDIS), microdatos verificados y monitoreo climático del Fenómeno El Niño."
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://apocuna.streamlit.app/#organization",
+        "name": "Apocuna Hub",
+        "url": "https://apocuna.streamlit.app/",
+        "sameAs": [
+          "https://github.com/Dase1nn/Apocuna"
+        ]
+      },
+      {
+        "@type": "DataCatalog",
+        "name": "Catálogo Auditado de Fuentes, Políticas CEPLAN y Evaluaciones — Apocuna Hub",
+        "url": "https://apocuna.streamlit.app/?vista=polity",
+        "creator": {
+          "@id": "https://apocuna.streamlit.app/#organization"
+        },
+        "keywords": [
+          "El Peruano",
+          "CEPLAN",
+          "ENAHO",
+          "ESCALE",
+          "REUNIS",
+          "Consulta Amigable MEF",
+          "SENAMHI",
+          "ENFEN",
+          "SIGRID"
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-frame">
+      <div class="hero-top">
+        <div class="brand-lockup">
+          <div class="logo-box">
+            <img src="./assets/apocuna_logo.svg" alt="Isotipo Apocuna Hub en geometría Kené" width="68" height="68" />
+          </div>
+          <div class="wordmark">
+            <span>APOCUNA</span>
+            <span>HUB<strong class="dot-green">.</strong></span>
+          </div>
+        </div>
+        <div class="motto-box">
+          <span>UN ESPACIO DE EVIDENCIA</span>
+          <span>PARA PENSAR EL PERÚ.</span>
+          <small>SISTEMA APOCUNOSO · ARTE KENÉ × SWISS INTERNATIONAL</small>
+        </div>
+      </div>
+
+      <div class="mural-wrap">
+        <img src="./assets/kene_banner.svg" alt="Mural geométrico Kené Shipibo-Konibo de Apocuna Hub" />
+      </div>
+
+      <div class="quiet-strip">
+        <span class="badge-mono">OBSERVATORIO DE EVIDENCIA · PERÚ</span>
+        <p>
+          Plataforma abierta para gestores públicos, analistas e investigadores: normativa diaria de
+          <strong>El Peruano</strong>, <strong>51 Políticas Nacionales CEPLAN</strong>, evaluaciones de impacto social,
+          microdatos con ficha técnica y monitoreo climático del <strong>Fenómeno El Niño (FEN)</strong>.
+        </p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn-primary" href="https://apocuna.streamlit.app/" rel="noopener">🚀 Ingresar a la Plataforma Interactiva ↗</a>
+        <a class="btn-secondary" href="https://apocuna.streamlit.app/?vista=normas_comentadas" rel="noopener">⚖️ Normas de El Peruano de Hoy →</a>
+        <a class="btn-secondary" href="https://apocuna.streamlit.app/?vista=polity&amp;tab=ceplan" rel="noopener">📋 Políticas CEPLAN y Evaluaciones →</a>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="sec-modulos">
+        <div class="section-head">
+          <h1 id="sec-modulos">Módulos Especializados de Apocuna Hub</h1>
+          <p>Arquitectura organizada por intención de uso para consulta rápida y rigor metodológico.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="module-card accent-blue">
+            <div class="card-meta">
+              <span class="tag-mono">VIGILANCIA DIARIA</span>
+              <span class="tag-status">EL PERUANO</span>
+            </div>
+            <h2>Rastrea la Norma</h2>
+            <p>
+              Seguimiento automatizado en dos pasadas diarias de Normas Legales oficiales, clasificación por ejes
+              <strong>Polity</strong> y <strong>Policy</strong>, trazabilidad SHA-256 y alineación con Políticas Nacionales CEPLAN.
+            </p>
+            <a class="card-link" href="https://apocuna.streamlit.app/?vista=normas_comentadas" rel="noopener">Abrir Rastrea la Norma ↗</a>
+          </article>
+
+          <article class="module-card accent-green">
+            <div class="card-meta">
+              <span class="tag-mono">DATOS &amp; EVIDENCIA</span>
+              <span class="tag-status">33 FUENTES · 27 EVALS</span>
+            </div>
+            <h2>Políticas y Datos Abiertos</h2>
+            <p>
+              Catálogo auditado con <strong>Fichas Técnicas Metodológicas</strong> (variables, llaves UBIGEO/CUI/COD_MOD y usos en R/Stata),
+              Base de Datos CEPLAN y 27 evaluaciones priorizadas de programas sociales (Juntos, Pensión 65, Cuna Más, Qali Warma, Haku Wiñay, Beca 18).
+            </p>
+            <a class="card-link" href="https://apocuna.streamlit.app/?vista=polity" rel="noopener">Explorar Políticas y Datos ↗</a>
+          </article>
+
+          <article class="module-card accent-gold">
+            <div class="card-meta">
+              <span class="tag-mono">RIESGO CLIMÁTICO</span>
+              <span class="tag-status">TIEMPO REAL</span>
+            </div>
+            <h2>Monitoreo El Niño (FEN)</h2>
+            <p>
+              Panel 2×2+1 con GOES-19 (SENAMHI), Windy ECMWF/GFS, ENFEN/IMARPE, CAMI Yaku (SUNASS) y SIGRID v3 (CENEPRED),
+              radar RSS de declaratorias de emergencia y auditoría presupuestal del <strong>PP 0068 PREVAED</strong>.
+            </p>
+            <a class="card-link" href="https://apocuna.streamlit.app/?vista=fen" rel="noopener">Abrir Monitoreo El Niño ↗</a>
+          </article>
+
+          <article class="module-card accent-pink">
+            <div class="card-meta">
+              <span class="tag-mono">HEMEROTECA PÚBLICA</span>
+              <span class="tag-status">PERÚ &amp; LATAM</span>
+            </div>
+            <h2>Biblioteca, Notas y Revistas</h2>
+            <p>
+              12 revistas especializadas en gestión y política pública (<em>Saber Servir</em>, <em>CLAD</em>, <em>CIDE</em>, <em>INAP</em>,
+              <em>U. de Chile</em>, <em>PUCP</em>, <em>FLACSO</em>), papers recientes, alertas OpenAlex, ensayos aplicados y congresos.
+            </p>
+            <a class="card-link" href="https://apocuna.streamlit.app/?vista=biblioteca" rel="noopener">Ir a Biblioteca y Revistas ↗</a>
+          </article>
+
+          <article class="module-card accent-blue">
+            <div class="card-meta">
+              <span class="tag-mono">FORMACIÓN &amp; ESTADO</span>
+              <span class="tag-status">LOPE · CURSOS</span>
+            </div>
+            <h2>Escuela Pública y Becas</h2>
+            <p>
+              Guías normativas de los 8 Sistemas Administrativos del Estado peruano (D.L. 1440, Invierte.pe, SINAPLAN, SERVIR, Control),
+              cursos abiertos (MIT OCW, ENAP, BID, CEPAL), guías de código y becas (PRONABEC, SENAJU).
+            </p>
+            <a class="card-link" href="https://apocuna.streamlit.app/?vista=escuela" rel="noopener">Entrar a Escuela y Becas ↗</a>
+          </article>
+
+          <article class="module-card accent-green">
+            <div class="card-meta">
+              <span class="tag-mono">DOCUMENTACIÓN</span>
+              <span class="tag-status">37 FICHAS</span>
+            </div>
+            <h2>Fichas Técnicas de Investigación</h2>
+            <p>
+              Acceso directo a documentación metodológica de insumos cuantitativos clave para tesis, evaluación económica y análisis subnacional en el Perú.
+            </p>
+            <ul class="mini-links">
+              <li><a href="https://apocuna.streamlit.app/?vista=polity&amp;ficha=inei_microdatos_enaho_endes" rel="noopener">ENAHO / ENDES (INEI Microdatos) ↗</a></li>
+              <li><a href="https://apocuna.streamlit.app/?vista=polity&amp;ficha=minedu_escale" rel="noopener">ESCALE y Censo Escolar (MINEDU) ↗</a></li>
+              <li><a href="https://apocuna.streamlit.app/?vista=polity&amp;ficha=mef_consulta_amigable" rel="noopener">Consulta Amigable SIAF (MEF) ↗</a></li>
+              <li><a href="https://apocuna.streamlit.app/?vista=fen&amp;ficha=cenepred_sigrid" rel="noopener">SIGRID v3 Gestión de Riesgos (CENEPRED) ↗</a></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>APOCUNA HUB.</strong> — Observatorio Peruano de Políticas Públicas, Evidencia y Gobernanza.
+      </div>
+      <div class="footer-links">
+        <a href="https://apocuna.streamlit.app/" rel="noopener">App en Vivo</a>
+        <a href="https://github.com/Dase1nn/Apocuna" rel="noopener noreferrer" target="_blank">Repositorio GitHub</a>
+        <a href="./sitemap.xml">Sitemap XML</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

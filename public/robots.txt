@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Reemplaza la URL cuando conectes tu dominio propio (ej. https://apocuna.pe/sitemap.xml)
+Sitemap: https://dase1nn.github.io/Apocuna/sitemap.xml

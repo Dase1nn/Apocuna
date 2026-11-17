@@ -1,0 +1,334 @@
+:root {
+  --kene-paper: #FAF7E9;
+  --kene-stone: #F2EFE0;
+  --kene-ink: #171B18;
+  --kene-body: #252B27;
+  --kene-muted: #4E5752;
+  --kene-blue: #2775AA;
+  --kene-pink: #DF6A90;
+  --kene-gold: #F0BB38;
+  --kene-green: #1B8668;
+  --font-display: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  border-radius: 0px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--kene-paper);
+  color: var(--kene-ink);
+  font-family: var(--font-display);
+  line-height: 1.55;
+}
+
+.page-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem 1.25rem;
+}
+
+.hero-frame {
+  background-color: var(--kene-paper);
+  border: 2px solid var(--kene-ink);
+  box-shadow: 4px 4px 0px var(--kene-ink);
+  padding: 1.15rem 1.35rem 1.25rem 1.35rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.logo-box {
+  width: 68px;
+  height: 68px;
+  border: 1.5px solid var(--kene-ink);
+  box-shadow: 3px 3px 0px var(--kene-ink);
+  background: var(--kene-paper);
+  line-height: 0;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 3vw, 2.45rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+}
+
+.dot-green {
+  color: var(--kene-green);
+}
+
+.motto-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.motto-box small {
+  margin-top: 0.3rem;
+  font-size: 0.65rem;
+  color: var(--kene-blue);
+  background: var(--kene-stone);
+  border: 1px solid var(--kene-ink);
+  padding: 0.14rem 0.45rem;
+  letter-spacing: 0.08em;
+}
+
+.mural-wrap {
+  margin: 0.2rem 0 0.85rem 0;
+  line-height: 0;
+  border: 1.5px solid var(--kene-ink);
+}
+
+.mural-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.quiet-strip {
+  background-color: var(--kene-stone);
+  border: 1.5px solid var(--kene-ink);
+  border-left: 5px solid var(--kene-green);
+  padding: 0.65rem 0.95rem;
+  margin-bottom: 0.9rem;
+}
+
+.quiet-strip p {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.95rem;
+  color: var(--kene-body);
+}
+
+.badge-mono {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--kene-blue);
+  text-transform: uppercase;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.58rem 0.9rem;
+  border: 1.5px solid var(--kene-ink);
+}
+
+.btn-primary {
+  background: var(--kene-ink);
+  color: var(--kene-paper);
+  box-shadow: 3px 3px 0px var(--kene-blue);
+}
+
+.btn-primary:hover {
+  background: var(--kene-blue);
+  box-shadow: 3px 3px 0px var(--kene-ink);
+}
+
+.btn-secondary {
+  background: var(--kene-stone);
+  color: var(--kene-ink);
+  border-left: 4px solid var(--kene-green);
+}
+
+.btn-secondary:hover {
+  background: #EAE5D1;
+  color: var(--kene-blue);
+}
+
+.section-head h1 {
+  margin: 0 0 0.25rem 0;
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.section-head p {
+  margin: 0 0 1.15rem 0;
+  color: var(--kene-muted);
+  font-size: 0.96rem;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.module-card {
+  background: var(--kene-paper);
+  border: 1.5px solid var(--kene-ink);
+  border-top-width: 5px;
+  box-shadow: 3px 3px 0px var(--kene-ink);
+  padding: 1rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.65rem;
+}
+
+.accent-blue { border-top-color: var(--kene-blue); }
+.accent-green { border-top-color: var(--kene-green); }
+.accent-gold { border-top-color: var(--kene-gold); }
+.accent-pink { border-top-color: var(--kene-pink); }
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.tag-mono,
+.tag-status {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.16rem 0.48rem;
+  border: 1px solid var(--kene-ink);
+}
+
+.tag-mono {
+  background: #EAE5D1;
+}
+
+.tag-status {
+  background: rgba(27, 134, 104, 0.12);
+  border-color: var(--kene-green);
+  color: #115E49;
+}
+
+.module-card h2 {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.module-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--kene-body);
+  flex-grow: 1;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: auto;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.48rem 0.72rem;
+  background: var(--kene-ink);
+  color: var(--kene-paper);
+  text-align: center;
+  border: 1.5px solid var(--kene-ink);
+}
+
+.card-link:hover {
+  background: var(--kene-blue);
+  border-color: var(--kene-blue);
+}
+
+.mini-links {
+  margin: 0;
+  padding-left: 1.05rem;
+  font-size: 0.82rem;
+}
+
+.mini-links li + li {
+  margin-top: 0.3rem;
+}
+
+.mini-links a {
+  color: var(--kene-blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mini-links a:hover {
+  text-decoration: underline;
+}
+
+.site-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--kene-ink);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--kene-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.footer-links a {
+  color: var(--kene-ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--kene-green);
+}
+
+@media (max-width: 960px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 660px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .motto-box {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
