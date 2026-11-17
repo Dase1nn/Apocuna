@@ -22,6 +22,7 @@ from utils.loaders import (
     load_eventos_alertas,
     load_notas,
     load_revistas_gestion,
+    sanitize_slug_param,
 )
 
 
@@ -248,7 +249,7 @@ def render_biblioteca() -> None:
         f"🏛️ Congresos y Memorias ({memorias_count + len(eventos)})",
     ]
     tab_qp_map = {"revistas": tab_opts[0], "notas": tab_opts[1], "congresos": tab_opts[2]}
-    tab_qp = str(st.query_params.get("tab") or "")
+    tab_qp = sanitize_slug_param(st.query_params.get("tab"), max_len=30)
     if tab_qp in tab_qp_map and st.session_state.get("_last_tab_qp_bib") != tab_qp:
         st.session_state["bib_active_tab"] = tab_qp_map[tab_qp]
         st.session_state._last_tab_qp_bib = tab_qp

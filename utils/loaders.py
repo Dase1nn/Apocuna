@@ -1,6 +1,7 @@
 import os
 import glob
 import json
+import re
 import requests
 import streamlit as st
 
@@ -11,8 +12,16 @@ except ImportError:
     CKAN_PCM_HABILITADO = False
 
 USER_AGENT = "ApocunaBot/1.0 (+https://github.com/Dase1nn/Apocuna)"
-LOADERS_VERSION = "2026-11-16-reorg"
+LOADERS_VERSION = "2026-11-16-sec"
 _BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def sanitize_slug_param(val, max_len: int = 120) -> str:
+    """Sanitiza parámetros de query string permitiendo solo [a-zA-Z0-9_-]."""
+    if not val:
+        return ""
+    clean = re.sub(r"[^a-zA-Z0-9_\-]", "", str(val).strip())
+    return clean[:max_len]
 
 
 @st.cache_resource

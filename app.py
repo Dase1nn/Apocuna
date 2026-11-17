@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 import utils.loaders as _loaders_mod
-if getattr(_loaders_mod, "LOADERS_VERSION", None) != "2026-11-16-reorg":
+if getattr(_loaders_mod, "LOADERS_VERSION", None) != "2026-11-16-sec":
     importlib.reload(_loaders_mod)
 
 from components.sidebar import render_sidebar
@@ -24,7 +24,7 @@ from sections.estudiantes import render_estudiantes
 from sections.sobre_el_sitio import render_sobre_el_sitio
 from sections.busqueda_global import render_busqueda_global
 
-from utils.loaders import load_dashboard_kpis
+from utils.loaders import load_dashboard_kpis, sanitize_slug_param
 
 ROUTES = {
     "Inicio": render_home,
@@ -618,9 +618,9 @@ def main():
         st.session_state.theme_mode = "☀️ Claro"
 
     qp = st.query_params
-    vista_qp = str(qp.get("vista") or "")
-    norma_qp = str(qp.get("norma") or "")
-    ficha_qp = str(qp.get("ficha") or "")
+    vista_qp = sanitize_slug_param(qp.get("vista"), max_len=40)
+    norma_qp = sanitize_slug_param(qp.get("norma"), max_len=140)
+    ficha_qp = sanitize_slug_param(qp.get("ficha"), max_len=80)
     qp_sig = f"{vista_qp}|{norma_qp}|{ficha_qp}"
     if qp_sig != "||" and st.session_state.get("_last_qp_routed") != qp_sig:
         target_page = None

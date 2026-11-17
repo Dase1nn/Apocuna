@@ -16,6 +16,7 @@ from utils.loaders import (
     load_normas,
     load_normas_oficiales,
     load_politicas_nacionales,
+    sanitize_slug_param,
 )
 
 
@@ -138,7 +139,7 @@ def render_rastrea_la_norma() -> None:
     catalogo = load_politicas_nacionales()
     catalogo_map = {p["id"]: p["nombre"] for p in catalogo if isinstance(p, dict) and p.get("id")}
 
-    norma_sel_id = st.query_params.get("norma")
+    norma_sel_id = sanitize_slug_param(st.query_params.get("norma"), max_len=140)
     if norma_sel_id:
         objetivo = next((f for f in fichas_oficiales if f.get("id") == norma_sel_id), None)
         if objetivo:

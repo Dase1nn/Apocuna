@@ -12,3 +12,13 @@ primaryColor = "#5AB0E6"
 backgroundColor = "#121614"
 secondaryBackgroundColor = "#181D1A"
 textColor = "#FAF7E9"
+
+[server]
+enableCORS = true
+enableXsrfProtection = true
+
+[client]
+showErrorDetails = "none"
+
+[browser]
+gatherUsageStats = false

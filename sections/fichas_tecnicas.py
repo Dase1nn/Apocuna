@@ -6,7 +6,7 @@ from typing import Any
 
 import streamlit as st
 
-from utils.loaders import load_fichas_tecnicas_index
+from utils.loaders import load_fichas_tecnicas_index, sanitize_slug_param
 
 
 def _safe_http_url(url: Any) -> str | None:
@@ -36,19 +36,20 @@ def _volver_al_catalogo(origen: str) -> None:
 
 def render_ficha_tecnica_detalle(ficha_id: str, origen: str = "polity") -> bool:
     """Renderiza la Ficha Técnica Metodológica completa de una fuente o herramienta."""
+    ficha_id_safe = sanitize_slug_param(ficha_id, max_len=80)
     index = load_fichas_tecnicas_index()
-    ficha = index.get(ficha_id)
+    ficha = index.get(ficha_id_safe)
 
     volver_label = (
         "← Volver a Monitoreo El Niño"
         if origen == "fen"
         else "← Volver a Políticas y Datos"
     )
-    if st.button(volver_label, key=f"btn_volver_ficha_top_{ficha_id}_{origen}"):
+    if st.button(volver_label, key=f"btn_volver_ficha_top_{ficha_id_safe}_{origen}"):
         _volver_al_catalogo(origen)
 
     if not ficha:
-        st.warning(f"No se encontró la ficha técnica solicitada (`{ficha_id}`).")
+        st.warning(f"No se encontró la ficha técnica solicitada (`{ficha_id_safe}`).")
         return False
 
     fid_canonico = str(ficha.get("id") or ficha_id)

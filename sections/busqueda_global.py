@@ -391,7 +391,7 @@ def _clear_global_search() -> None:
 
 def render_busqueda_global(query: str) -> None:
     """Renderiza los resultados del buscador general integrando todas las fuentes del sitio."""
-    q_clean = query.strip()
+    q_clean = query.strip()[:120]
     col_head, col_clear = st.columns([4, 1])
     with col_head:
         st.title(f'🔎 Buscador General: "{q_clean}"')

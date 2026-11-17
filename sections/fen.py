@@ -16,7 +16,7 @@ from components.cards import (
     render_kpi_ribbon,
 )
 from sections.fichas_tecnicas import render_ficha_tecnica_detalle
-from utils.loaders import load_fen_catalogo
+from utils.loaders import load_fen_catalogo, sanitize_slug_param
 
 PREVIEWS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets", "fen_previews")
 
@@ -564,9 +564,9 @@ def _render_block_3_ecosystem(impact_cards: list[dict], master_tools: list[dict]
 
 def render_fen():
     """Punto de entrada principal de la sección Monitoreo El Niño (FEN)."""
-    ficha_qp = st.query_params.get("ficha")
+    ficha_qp = sanitize_slug_param(st.query_params.get("ficha"), max_len=80)
     if ficha_qp:
-        render_ficha_tecnica_detalle(str(ficha_qp), origen="fen")
+        render_ficha_tecnica_detalle(ficha_qp, origen="fen")
         return
 
     impact_cards, master_tools = _get_fen_catalog_lists()
@@ -578,7 +578,7 @@ def render_fen():
         f"💰 Presupuesto y Catálogo ({len(master_tools)})",
     ]
     tab_qp_map = {"visores": tab_opts[0], "radar": tab_opts[1], "catalogo": tab_opts[2]}
-    tab_qp = str(st.query_params.get("tab") or "")
+    tab_qp = sanitize_slug_param(st.query_params.get("tab"), max_len=30)
     if tab_qp in tab_qp_map and st.session_state.get("_last_tab_qp_fen") != tab_qp:
         st.session_state["fen_active_tab"] = tab_qp_map[tab_qp]
         st.session_state._last_tab_qp_fen = tab_qp

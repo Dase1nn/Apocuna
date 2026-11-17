@@ -11,6 +11,7 @@ from utils.loaders import (
     load_becas,
     load_cursos,
     load_estudiantes,
+    sanitize_slug_param,
 )
 
 
@@ -137,7 +138,7 @@ def render_estudiantes() -> None:
         f"🏆 Becas y Colegio ({len(becas)})",
     ]
     tab_qp_map = {"sistemas": tab_opts[0], "cursos": tab_opts[1], "becas": tab_opts[2]}
-    tab_qp = str(st.query_params.get("tab") or "")
+    tab_qp = sanitize_slug_param(st.query_params.get("tab"), max_len=30)
     if tab_qp in tab_qp_map and st.session_state.get("_last_tab_qp_esc") != tab_qp:
         st.session_state["esc_active_tab"] = tab_qp_map[tab_qp]
         st.session_state._last_tab_qp_esc = tab_qp

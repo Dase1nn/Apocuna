@@ -19,6 +19,7 @@ from utils.loaders import (
     load_fuentes,
     load_informes_sectoriales,
     load_polity_alertas,
+    sanitize_slug_param,
 )
 
 CEPLAN_PAGE_URL = (
@@ -289,9 +290,9 @@ def _render_tab_alertas_e_informes(alertas: list, informes: list) -> None:
 
 
 def render_polity():
-    ficha_qp = st.query_params.get("ficha")
+    ficha_qp = sanitize_slug_param(st.query_params.get("ficha"), max_len=80)
     if ficha_qp:
-        render_ficha_tecnica_detalle(str(ficha_qp), origen="polity")
+        render_ficha_tecnica_detalle(ficha_qp, origen="polity")
         return
 
     st.title("🏛️ Políticas y Datos Abiertos")
@@ -342,7 +343,7 @@ def render_polity():
         f"📢 Alertas e Informes ({len(alertas) + len(informes)})",
     ]
     tab_qp_map = {"datos": tab_opts[0], "ceplan": tab_opts[1], "alertas": tab_opts[2]}
-    tab_qp = str(st.query_params.get("tab") or "")
+    tab_qp = sanitize_slug_param(st.query_params.get("tab"), max_len=30)
     if tab_qp in tab_qp_map and st.session_state.get("_last_tab_qp_polity") != tab_qp:
         st.session_state["polity_active_tab"] = tab_qp_map[tab_qp]
         st.session_state._last_tab_qp_polity = tab_qp

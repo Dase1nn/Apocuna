@@ -11,6 +11,7 @@ from utils.loaders import (
     load_norma_comentada_md,
     load_normas_oficiales,
     load_politicas_nacionales,
+    sanitize_slug_param,
 )
 
 
@@ -426,7 +427,7 @@ def render_normas_comentadas_subsection(
         return
 
     if not skip_detail_check:
-        norma_sel_id = st.query_params.get("norma")
+        norma_sel_id = sanitize_slug_param(st.query_params.get("norma"), max_len=140)
         if norma_sel_id:
             objetivo = next((f for f in fichas if f.get("id") == norma_sel_id), None)
             if objetivo:
