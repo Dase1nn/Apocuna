@@ -3584,6 +3584,21 @@ div[data-baseweb="base-input"] {
     box-shadow: none !important;
 }
 
+.kpi-metric-link {
+    display: block;
+    text-decoration: none !important;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.14s var(--ease-out-expo), box-shadow 0.14s var(--ease-out-expo), background-color 0.14s ease, border-color 0.14s ease;
+}
+
+.kpi-metric-link:hover {
+    transform: translate(-2px, -2px);
+    background-color: var(--surface-hover) !important;
+    border-color: var(--surface-border-hover) !important;
+    box-shadow: var(--shadow-card-hover) !important;
+}
+
 /* Alturas más parejas en tarjetas de cuadrícula y carrusel */
 .fuente-card p,
 .card p {

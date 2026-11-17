@@ -98,13 +98,38 @@ def render_home():
     # PULSO DIARIO: KPIs (izquierda) + Boletín del día (derecha)
     kpis = load_dashboard_kpis()
     render_home_radar_and_boletines_split([
-        {"icon": "📰", "value": str(kpis["noticias_total"]), "label": "Noticias en Radar", "sub": "Gestión, Políticas y Coyuntura"},
-        {"icon": "⚖️", "value": str(kpis["normas_total"]), "label": "Normas en Seguimiento", "sub": "Radar regulatorio diario"},
-        {"icon": "🗄️", "value": str(kpis["fuentes_total"]), "label": "Fuentes con Ficha", "sub": f"{kpis.get('evaluaciones_total', 27)} evaluaciones públicas"},
-        {"icon": "🎓", "value": str(kpis["oportunidades_total"]), "label": "Cursos, Becas y Eventos", "sub": f"Sync: {kpis['last_sync']}"},
+        {
+            "icon": "📰",
+            "value": str(kpis["noticias_total"]),
+            "label": "Noticias en Radar",
+            "sub": "Gestión, Políticas y Coyuntura",
+            "href": "#radar-noticias",
+        },
+        {
+            "icon": "⚖️",
+            "value": str(kpis["normas_total"]),
+            "label": "Normas en Seguimiento",
+            "sub": "Radar regulatorio diario",
+            "href": "?vista=normas_comentadas",
+        },
+        {
+            "icon": "🗄️",
+            "value": str(kpis["fuentes_total"]),
+            "label": "Fuentes con Ficha",
+            "sub": f"{kpis.get('evaluaciones_total', 27)} evaluaciones públicas",
+            "href": "?vista=polity",
+        },
+        {
+            "icon": "🎓",
+            "value": str(kpis["oportunidades_total"]),
+            "label": "Cursos, Becas y Eventos",
+            "sub": f"Sync: {kpis['last_sync']}",
+            "href": "?vista=escuela",
+        },
     ])
 
     # NOTICIAS POR CATEGORÍA (pre-agrupadas en caché O(1))
+    st.markdown('<div id="radar-noticias"></div>', unsafe_allow_html=True)
     st.header("📰 Radar de Noticias y Análisis")
     grupos_noticias = load_noticias_grouped()
 
