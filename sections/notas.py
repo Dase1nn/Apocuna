@@ -1,33 +1,10 @@
 import streamlit as st
 from utils.loaders import load_notas
-from components.cards import render_nota_horizontal
+from components.cards import render_nota_horizontal, render_nota_reader
 
 
 def _render_nota_detail(nota: dict):
-    if st.button("← Volver al índice de notas y ensayos", key="btn_back_to_list"):
-        st.session_state["selected_note_id"] = None
-        st.rerun()
-
-    meta = nota.get("meta", {})
-    st.markdown(
-        f"""
-        <div class="snow-card article-reader-header">
-            <div class="note-meta">{meta.get('tipo', 'ENSAYO')} • ⏱️ {meta.get('lectura_min', 3)} min de lectura ({meta.get('palabras', 0)} palabras)</div>
-            <h1 class="hero-intro-title">{meta.get('titulo', 'Sin título')}</h1>
-            <div class="note-author-date">✍️ Autor: <strong>{meta.get('autor', 'Apocuna Hub')}</strong> &nbsp;|&nbsp; 📅 Publicación: <strong>{meta.get('fecha', 'Reciente')}</strong></div>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown('<div class="article-reader-body">', unsafe_allow_html=True)
-    st.markdown(nota.get("body", ""))
-    st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown("---")
-
-    if st.button("← Volver al índice de notas y ensayos", key="btn_back_to_list_bottom"):
-        st.session_state["selected_note_id"] = None
-        st.rerun()
+    render_nota_reader(nota, "← Volver al índice de notas y ensayos", key_prefix="notas")
 
 
 def render_notas():

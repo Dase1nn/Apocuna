@@ -1,8 +1,19 @@
 import html
+import importlib
 import urllib.parse
 import streamlit as st
+import streamlit.components.v1 as components
 
-from utils.loaders import resolve_ficha_id
+import utils.loaders as _loaders_mod
+if not hasattr(_loaders_mod, "load_local_asset_data_uri"):
+    importlib.reload(_loaders_mod)
+
+from utils.loaders import (
+    load_local_asset_bytes,
+    load_local_asset_data_uri,
+    load_local_asset_text,
+    resolve_ficha_id,
+)
 
 FREQ_BADGE_MAP = {
     "tiempo real": "badge-freq-diaria",
@@ -364,7 +375,7 @@ def render_estudiantes_apuntes(apuntes: list):
 
 
 def render_nota_horizontal(nota: dict):
-    """Renderiza una nota en formato de tarjeta rectangular horizontal con tiempo estimado de lectura y extracto."""
+    """Renderiza una nota en formato de tarjeta rectangular horizontal con vista animada o ícono."""
     meta = nota.get("meta", {})
     titulo = escape(meta.get("titulo", "Sin título"))
     tipo = escape(meta.get("tipo", "NOTA DE INVESTIGACIÓN"))
@@ -374,12 +385,26 @@ def render_nota_horizontal(nota: dict):
     extracto = escape(meta.get("extracto", ""))
     extracto_html = f'<p class="note-excerpt">{extracto}</p>' if extracto else ""
 
+    media_uri = load_local_asset_data_uri(meta.get("imagen", ""))
+    if media_uri:
+        visual_html = (
+            f'<div class="note-img-gradient" style="padding:0.55rem;gap:0.45rem;">'
+            f'<img src="{media_uri}" alt="{titulo}" '
+            f'style="width:100%;height:112px;object-fit:cover;border-radius:6px;border:1.5px solid #171B18;" />'
+            f'<div class="note-type-badge">⚡ MAQUETA ANIMADA</div>'
+            f'</div>'
+        )
+    else:
+        visual_html = (
+            f'<div class="note-img-gradient">'
+            f'<div class="note-icon-large">📝</div>'
+            f'<div class="note-type-badge">{tipo}</div>'
+            f'</div>'
+        )
+
     card_html = (
         f'<div class="horizontal-note-card">'
-        f'<div class="note-img-gradient">'
-        f'<div class="note-icon-large">📝</div>'
-        f'<div class="note-type-badge">{tipo}</div>'
-        f'</div>'
+        f'{visual_html}'
         f'<div class="note-content">'
         f'<div class="note-meta">{tipo} • ⏱️ {lectura_min} min de lectura</div>'
         f'<h3 class="note-title">{titulo}</h3>'
@@ -389,6 +414,83 @@ def render_nota_horizontal(nota: dict):
         f'</div>'
     )
     st.markdown(card_html, unsafe_allow_html=True)
+
+
+def _render_maqueta_block(nota: dict) -> None:
+    """Inserta la maqueta interactiva HTML sincronizada con el tema Apocuna y opción GIF."""
+    meta = nota.get("meta", {})
+    maqueta_rel = meta.get("maqueta", "")
+    html_src = load_local_asset_text(maqueta_rel)
+    if not html_src:
+        return
+
+    theme_mode = st.session_state.get("theme_mode", "☀️ Claro")
+    target_theme = "obsidian" if theme_mode == "🌙 Oscuro" else "paper"
+    html_themed = html_src.replace('data-theme="paper"', f'data-theme="{target_theme}"', 1)
+
+    st.markdown(
+        '<div class="note-meta" style="margin:0.8rem 0 0.35rem 0;">'
+        '🎛️ MAQUETA INTERACTIVA ADAPTADA · PALETA APOCUNOSO-STYLE</div>',
+        unsafe_allow_html=True,
+    )
+    components.html(html_themed, height=1040, scrolling=True)
+
+    gif_rel = meta.get("imagen", "")
+    gif_bytes = load_local_asset_bytes(gif_rel) if str(gif_rel).lower().endswith(".gif") else b""
+    if gif_bytes:
+        with st.expander("🎞️ Ver o descargar versión GIF animada de la maqueta"):
+            st.image(gif_bytes, caption="Ciclo dinámico de la caja negra de David Easton (Apocunoso-Style)", width="stretch")
+            st.download_button(
+                "⬇️ Descargar maqueta animada (.gif)",
+                data=gif_bytes,
+                file_name="maqueta_easton_apocunoso.gif",
+                mime="image/gif",
+                key=f"dl_gif_{nota.get('id', 'nota')}",
+            )
+
+
+def render_nota_reader(nota: dict, back_label: str, key_prefix: str = "nota") -> None:
+    """Renderiza el lector completo de una nota o ensayo con maqueta interactiva embebida."""
+    if st.button(back_label, key=f"btn_back_{key_prefix}_top"):
+        st.session_state["selected_note_id"] = None
+        st.rerun()
+
+    meta = nota.get("meta", {})
+    st.markdown(
+        f"""
+        <div class="snow-card article-reader-header">
+            <div class="note-meta">{escape(meta.get('tipo', 'ENSAYO'))} • ⏱️ {meta.get('lectura_min', 3)} min ({meta.get('palabras', 0)} palabras)</div>
+            <h1 class="hero-intro-title">{escape(meta.get('titulo', 'Sin título'))}</h1>
+            <div class="note-author-date">✍️ Autor: <strong>{escape(meta.get('autor', 'Apocuna Hub'))}</strong> &nbsp;|&nbsp; 📅 Publicación: <strong>{escape(meta.get('fecha', 'Reciente'))}</strong></div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    body = nota.get("body", "")
+    has_maqueta = bool(meta.get("maqueta"))
+    split_marker = "\n## 3."
+
+    st.markdown('<div class="article-reader-body">', unsafe_allow_html=True)
+    if has_maqueta and split_marker in body:
+        part1, part2 = body.split(split_marker, 1)
+        st.markdown(part1)
+        st.markdown("</div>", unsafe_allow_html=True)
+        _render_maqueta_block(nota)
+        st.markdown('<div class="article-reader-body">', unsafe_allow_html=True)
+        st.markdown("## 3." + part2)
+    else:
+        st.markdown(body)
+        if has_maqueta:
+            st.markdown("</div>", unsafe_allow_html=True)
+            _render_maqueta_block(nota)
+            st.markdown('<div class="article-reader-body">', unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("---")
+
+    if st.button(back_label, key=f"btn_back_{key_prefix}_bottom"):
+        st.session_state["selected_note_id"] = None
+        st.rerun()
 
 
 def render_eventos_grid(eventos: list):

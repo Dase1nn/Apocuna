@@ -11,6 +11,7 @@ from components.cards import (
     render_eventos_grid,
     render_kpi_ribbon,
     render_nota_horizontal,
+    render_nota_reader,
 )
 import utils.loaders as _loaders_mod
 if not hasattr(_loaders_mod, "load_revistas_gestion"):
@@ -27,30 +28,7 @@ from utils.loaders import (
 
 
 def _render_nota_detail(nota: dict) -> None:
-    if st.button("← Volver a Notas y Ensayos", key="btn_back_to_list"):
-        st.session_state["selected_note_id"] = None
-        st.rerun()
-
-    meta = nota.get("meta", {})
-    st.markdown(
-        f"""
-        <div class="snow-card article-reader-header">
-            <div class="note-meta">{escape(meta.get('tipo', 'ENSAYO'))} • ⏱️ {meta.get('lectura_min', 3)} min ({meta.get('palabras', 0)} palabras)</div>
-            <h1 class="hero-intro-title">{escape(meta.get('titulo', 'Sin título'))}</h1>
-            <div class="note-author-date">✍️ Autor: <strong>{escape(meta.get('autor', 'Apocuna Hub'))}</strong> &nbsp;|&nbsp; 📅 Publicación: <strong>{escape(meta.get('fecha', 'Reciente'))}</strong></div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown('<div class="article-reader-body">', unsafe_allow_html=True)
-    st.markdown(nota.get("body", ""))
-    st.markdown("</div>", unsafe_allow_html=True)
-    st.markdown("---")
-
-    if st.button("← Volver a Notas y Ensayos", key="btn_back_to_list_bottom"):
-        st.session_state["selected_note_id"] = None
-        st.rerun()
+    render_nota_reader(nota, "← Volver a Notas y Ensayos", key_prefix="bib")
 
 
 def _render_tab_notas(notas: list) -> None:

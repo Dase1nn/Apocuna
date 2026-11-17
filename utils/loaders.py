@@ -1,3 +1,4 @@
+import base64
 import os
 import glob
 import json
@@ -83,6 +84,7 @@ def _build_nota_entry(filepath: str) -> dict | None:
                 "titulo": meta.get("titulo") or base_title,
                 "fecha": meta.get("fecha") or "2026-10-01",
                 "imagen": meta.get("imagen", ""),
+                "maqueta": meta.get("maqueta", ""),
                 "tipo": meta.get("tipo") or "NOTA DE INVESTIGACIÓN",
                 "autor": meta.get("autor") or "Apocuna Hub",
                 "lectura_min": max(1, round(words / 200)),
@@ -198,7 +200,56 @@ def load_notas():
         return []
     md_files = sorted(glob.glob(os.path.join(notas_dir, "*.md")))
     notas = [_build_nota_entry(fp) for fp in md_files]
-    return [n for n in notas if n is not None]
+    valid = [n for n in notas if n is not None]
+    return sorted(valid, key=lambda n: n.get("meta", {}).get("fecha", ""), reverse=True)
+
+
+def _resolve_safe_asset_path(rel_path: str, allowed_exts: tuple[str, ...]) -> str | None:
+    """Resuelve rutas locales exclusivamente dentro de assets/ evitando traversal."""
+    if not rel_path or not isinstance(rel_path, str):
+        return None
+    norm = rel_path.strip().replace("\\", "/").lstrip("/")
+    if not norm.startswith("assets/"):
+        return None
+    if not norm.lower().endswith(allowed_exts):
+        return None
+    assets_root = os.path.realpath(os.path.join(_BASE_DIR, "assets"))
+    candidate = os.path.realpath(os.path.join(_BASE_DIR, norm))
+    if not candidate.startswith(assets_root + os.sep):
+        return None
+    return candidate if os.path.isfile(candidate) else None
+
+
+@st.cache_data(show_spinner=False)
+def load_local_asset_text(rel_path: str) -> str:
+    """Lee un archivo textual seguro (.html/.svg) dentro de assets/."""
+    path = _resolve_safe_asset_path(rel_path, (".html", ".svg"))
+    if not path:
+        return ""
+    with open(path, "r", encoding="utf-8") as f:
+        return f.read()
+
+
+@st.cache_data(show_spinner=False)
+def load_local_asset_bytes(rel_path: str) -> bytes:
+    """Lee bytes en caché de un archivo multimedia seguro dentro de assets/."""
+    path = _resolve_safe_asset_path(rel_path, (".gif", ".png", ".jpg", ".jpeg", ".webp"))
+    if not path:
+        return b""
+    with open(path, "rb") as f:
+        return f.read()
+
+
+@st.cache_data(show_spinner=False)
+def load_local_asset_data_uri(rel_path: str) -> str:
+    """Convierte una imagen/GIF local segura dentro de assets/ en Data URI."""
+    raw = load_local_asset_bytes(rel_path)
+    if not raw:
+        return ""
+    ext = os.path.splitext(rel_path)[1].lower().lstrip(".")
+    mime = "jpeg" if ext == "jpg" else ext
+    b64 = base64.b64encode(raw).decode("ascii")
+    return f"data:image/{mime};base64,{b64}"
 
 
 def _resolve_data_base_url() -> str | None:
