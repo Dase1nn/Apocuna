@@ -1,5 +1,6 @@
 """Sección unificada: Biblioteca, Notas y Revistas."""
 
+import importlib
 import streamlit as st
 
 from components.cards import (
@@ -11,6 +12,10 @@ from components.cards import (
     render_kpi_ribbon,
     render_nota_horizontal,
 )
+import utils.loaders as _loaders_mod
+if not hasattr(_loaders_mod, "load_revistas_gestion"):
+    importlib.reload(_loaders_mod)
+
 from utils.loaders import (
     load_academico,
     load_eventos,

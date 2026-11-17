@@ -1,3 +1,4 @@
+import importlib
 import os
 import streamlit as st
 
@@ -8,6 +9,10 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="auto"
 )
+
+import utils.loaders as _loaders_mod
+if getattr(_loaders_mod, "LOADERS_VERSION", None) != "2026-11-16-reorg":
+    importlib.reload(_loaders_mod)
 
 from components.sidebar import render_sidebar
 from sections.home import render_home

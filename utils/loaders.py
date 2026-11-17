@@ -11,6 +11,7 @@ except ImportError:
     CKAN_PCM_HABILITADO = False
 
 USER_AGENT = "ApocunaBot/1.0 (+https://github.com/Dase1nn/Apocuna)"
+LOADERS_VERSION = "2026-11-16-reorg"
 _BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
