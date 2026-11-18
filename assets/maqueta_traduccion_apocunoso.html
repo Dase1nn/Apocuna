@@ -1514,26 +1514,7 @@
           ${cardsHtml}
         </div>
 
-        <svg class="svg-flow-box" viewBox="0 0 800 76" height="76" aria-hidden="true">
-          ${state.step1Filtered
-            ? `
-              <path d="M 80 4 L 80 34" class="flow-line-muted" />
-              <circle cx="80" cy="40" r="8" fill="var(--c-red-bg)" stroke="var(--c-red)" stroke-width="1.2" />
-              <text x="80" y="43.5" text-anchor="middle" font-size="10" font-weight="700" fill="var(--c-red)">×</text>
-
-              <path d="M 560 4 L 560 34" class="flow-line-muted" />
-              <circle cx="560" cy="40" r="8" fill="var(--c-red-bg)" stroke="var(--c-red)" stroke-width="1.2" />
-              <text x="560" y="43.5" text-anchor="middle" font-size="10" font-weight="700" fill="var(--c-red)">×</text>
-            `
-            : `
-              <path d="M 80 4 C 80 44, 360 34, 400 66" class="flow-line-active" />
-              <path d="M 560 4 C 560 38, 430 32, 400 66" class="flow-line-active" />
-            `}
-          <path d="M 240 4 C 240 38, 370 32, 400 66" class="${lineDataClass}" />
-          <path d="M 400 4 L 400 66" class="flow-line-gold" />
-          <path d="M 720 4 C 720 44, 440 34, 400 66" class="${lineDataClass}" />
-          <circle cx="400" cy="66" r="6" class="collector-beacon" />
-        </svg>
+        <svg id="flowSvg" class="svg-flow-box" viewBox="0 0 800 76" height="76" aria-hidden="true"></svg>
 
         <div class="synthesis-node">
           <div class="synthesis-node-text">
@@ -1547,6 +1528,8 @@
         </div>
       `;
 
+      alignFlowSvg();
+
       document.getElementById('toggleFilterBtn').addEventListener('click', () => {
         state.step1Filtered = !state.step1Filtered;
         renderStep1(scenario);
@@ -1556,6 +1539,54 @@
         setStep(2);
       });
     }
+
+    function alignFlowSvg() {
+      const svg = document.getElementById('flowSvg');
+      const grid = stageCanvasEl.querySelector('.cards-radar-grid');
+      if (!svg || !grid) return;
+
+      const svgRect = svg.getBoundingClientRect();
+      if (svgRect.width <= 0) return;
+
+      const W = Math.round(svgRect.width);
+      const H = 76;
+      svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+      const cards = Array.from(grid.querySelectorAll('.radar-card'));
+      if (cards.length !== 5) return;
+
+      const centers = cards.map((c) => {
+        const r = c.getBoundingClientRect();
+        return Math.round((r.left + r.width / 2) - svgRect.left);
+      });
+      const tx = centers[2];
+      const ty = 66;
+
+      let markup = '';
+      cards.forEach((card, idx) => {
+        const cx = centers[idx];
+        const isNoise = card.dataset.kind === 'noise';
+        if (state.step1Filtered && isNoise) {
+          markup += `
+            <path d="M ${cx} 2 L ${cx} 32" class="flow-line-muted" />
+            <circle cx="${cx}" cy="40" r="8" fill="var(--c-red-bg)" stroke="var(--c-red)" stroke-width="1.2" />
+            <text x="${cx}" y="43.5" text-anchor="middle" font-size="10" font-weight="700" fill="var(--c-red)">×</text>
+          `;
+        } else {
+          const isMid = Math.abs(cx - tx) < 3;
+          const cls = isMid && state.step1Filtered ? 'flow-line-gold' : 'flow-line-active';
+          const d = isMid
+            ? `M ${cx} 2 L ${tx} ${ty}`
+            : `M ${cx} 2 C ${cx} 42, ${Math.round((cx + tx) / 2)} 34, ${tx} ${ty}`;
+          markup += `<path d="${d}" class="${cls}" />`;
+        }
+      });
+
+      markup += `<circle cx="${tx}" cy="${ty}" r="6" class="collector-beacon" />`;
+      svg.innerHTML = markup;
+    }
+
+    window.addEventListener('resize', alignFlowSvg);
 
     function renderStep2(scenario) {
       const dataChips = scenario.inputs
