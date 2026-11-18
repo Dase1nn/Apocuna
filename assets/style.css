@@ -574,6 +574,10 @@ body {
 .boletines-featured-footer {
     margin-top: auto;
     padding-top: 0.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    align-items: center;
 }
 
 .btn-open-featured {
@@ -581,6 +585,16 @@ body {
     font-size: 0.88rem !important;
     font-weight: 700 !important;
     border-radius: 8px !important;
+}
+
+.btn-open-secondary {
+    background-color: var(--primary-color) !important;
+    color: #FFFFFF !important;
+    border: 1.5px solid var(--surface-border) !important;
+}
+
+.btn-open-secondary:hover {
+    background-color: var(--primary-hover) !important;
 }
 
 @media (max-width: 960px) {
