@@ -602,7 +602,7 @@ def load_css():
         mtime = os.path.getmtime(css_path)
         st.markdown(_get_cached_css(css_path, mtime), unsafe_allow_html=True)
 
-    theme_mode = st.session_state.get("theme_mode", "☀️ Claro")
+    theme_mode = st.session_state.get("theme_mode", "💻 Auto")
     if theme_mode == "🌙 Oscuro":
         st.markdown(DARK_THEME_OVERRIDE_CSS, unsafe_allow_html=True)
     elif theme_mode == "☀️ Claro":
@@ -615,7 +615,7 @@ def main():
     if "current_page" not in st.session_state:
         st.session_state.current_page = "Inicio"
     if "theme_mode" not in st.session_state:
-        st.session_state.theme_mode = "☀️ Claro"
+        st.session_state.theme_mode = "💻 Auto"
 
     qp = st.query_params
     vista_qp = sanitize_slug_param(qp.get("vista"), max_len=40)
@@ -638,7 +638,7 @@ def main():
         if target_page:
             st.session_state.current_page = target_page
             st.session_state._last_qp_routed = qp_sig
-            theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '☀️ Claro')}"
+            theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '💻 Auto')}"
             st.session_state.pop(theme_key, None)
             st.session_state.pop("_last_sidebar_menu", None)
 

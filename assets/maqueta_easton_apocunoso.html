@@ -1324,7 +1324,11 @@
       easton_ideal:{ civil: 85, corrupt: 8,  tech: 85, demand: 48, specInit: 74, diffInit: 80 }
     };
 
-    const initialTheme = document.documentElement.getAttribute('data-theme') || 'paper';
+    const rawTheme = document.documentElement.getAttribute('data-theme') || 'paper';
+    const initialTheme = rawTheme === 'auto'
+      ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'obsidian' : 'paper')
+      : rawTheme;
+    document.documentElement.setAttribute('data-theme', initialTheme);
 
     const state = {
       viewMode: 'xray',

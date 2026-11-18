@@ -18,7 +18,7 @@ def _go_to_page(page_name: str, clear_qp: bool = True) -> None:
             if qp_k in st.query_params:
                 del st.query_params[qp_k]
     st.session_state.current_page = page_name
-    theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '☀️ Claro')}"
+    theme_key = f"apocuna_nav_{st.session_state.get('theme_mode', '💻 Auto')}"
     st.session_state.pop(theme_key, None)
     st.session_state.pop("_last_sidebar_menu", None)
     st.rerun()

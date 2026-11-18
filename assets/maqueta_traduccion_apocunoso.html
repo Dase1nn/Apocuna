@@ -1420,7 +1420,11 @@
       `
     };
 
-    const initialTheme = document.documentElement.getAttribute('data-theme') || 'paper';
+    const rawTheme = document.documentElement.getAttribute('data-theme') || 'paper';
+    const initialTheme = rawTheme === 'auto'
+      ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'obsidian' : 'paper')
+      : rawTheme;
+    document.documentElement.setAttribute('data-theme', initialTheme);
     const state = {
       scenarioIndex: 0,
       step: 1,

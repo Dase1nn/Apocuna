@@ -104,9 +104,9 @@ def render_sidebar():
             unsafe_allow_html=True
         )
 
-        current_theme = st.session_state.get("theme_mode", "☀️ Claro")
+        current_theme = st.session_state.get("theme_mode", "💻 Auto")
         if current_theme not in THEME_OPTIONS:
-            current_theme = "☀️ Claro"
+            current_theme = "💻 Auto"
 
         st.markdown('<div class="sidebar-theme-label">🎨 MODO DE APARIENCIA (APOCUNOSO)</div>', unsafe_allow_html=True)
         selected_theme = st.segmented_control(

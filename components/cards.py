@@ -428,8 +428,13 @@ def _render_maqueta_block(nota: dict) -> None:
     if not html_src:
         return
 
-    theme_mode = st.session_state.get("theme_mode", "☀️ Claro")
-    target_theme = "obsidian" if theme_mode == "🌙 Oscuro" else "paper"
+    theme_mode = st.session_state.get("theme_mode", "💻 Auto")
+    if theme_mode == "🌙 Oscuro":
+        target_theme = "obsidian"
+    elif theme_mode == "☀️ Claro":
+        target_theme = "paper"
+    else:
+        target_theme = "auto"
     html_themed = html_src.replace('data-theme="paper"', f'data-theme="{target_theme}"', 1)
 
     try:
