@@ -118,12 +118,39 @@
       },
       {
         "id": "apunte_008",
-        "sistema": "Tesorería y Contabilidad",
+        "sistema": "Tesorería",
         "curso": "Administración Financiera",
-        "titulo": "Sistemas de Tesorería y Contabilidad Pública (D.L. N° 1441 y N° 1438)",
-        "resumen": "Gestión centralizada de fondos públicos mediante la Cuenta Única del Tesoro (CUT) e integración contable de los hechos económicos del Estado.",
-        "normativa": "D.L. 1441 / D.L. 1438",
+        "titulo": "Sistema Nacional de Tesorería (D.L. N° 1441)",
+        "resumen": "Gestión centralizada de los fondos públicos mediante la Cuenta Única del Tesoro (CUT), programación de caja y ejecución financiera de pagos del Estado.",
+        "normativa": "D.L. 1441",
         "url": "https://www.mef.gob.pe/es/tesoro-publico"
+      },
+      {
+        "id": "apunte_009",
+        "sistema": "Contabilidad",
+        "curso": "Administración Financiera",
+        "titulo": "Sistema Nacional de Contabilidad (D.L. N° 1438)",
+        "resumen": "Normativa, principios y registro contable integrado de los hechos económicos del sector público para la elaboración de la Cuenta General de la República.",
+        "normativa": "D.L. 1438",
+        "url": "https://www.mef.gob.pe/es/contabilidad-publica-sp-15226"
+      },
+      {
+        "id": "apunte_010",
+        "sistema": "Endeudamiento Público",
+        "curso": "Finanzas Públicas",
+        "titulo": "Sistema Nacional de Endeudamiento Público (D.L. N° 1437)",
+        "resumen": "Programación, concertación, desembolso y servicio de operaciones de endeudamiento interno y externo del Estado bajo reglas de sostenibilidad fiscal.",
+        "normativa": "D.L. 1437",
+        "url": "https://www.mef.gob.pe/es/endeudamiento-publico-sp-16075"
+      },
+      {
+        "id": "apunte_011",
+        "sistema": "Defensa Judicial del Estado",
+        "curso": "Derecho Administrativo",
+        "titulo": "Sistema Administrativo de Defensa Jurídica del Estado (D.L. N° 1326)",
+        "resumen": "Regula la defensa de los intereses del Estado en sede judicial, fiscal, arbitral y constitucional bajo la rectoría de la Procuraduría General del Estado (PGE).",
+        "normativa": "D.L. 1326",
+        "url": "https://www.gob.pe/procuraduria"
       }
     ]
   }

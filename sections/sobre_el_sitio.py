@@ -329,6 +329,34 @@ def _render_tab_identidad() -> None:
                 metodológicas y espacios de debate para la comunidad politológica, académica y ciudadana.
             </p>
         </div>
+        <div class="apocunoso-about-grid-2col" style="margin-bottom: 1.25rem;">
+            <article class="apocunoso-about-card about-card-blue">
+                <div class="apocunoso-about-card-topbar"></div>
+                <div class="apocunoso-about-card-inner">
+                    <div class="apocunoso-about-card-meta">
+                        <span class="apocunoso-order-badge">🎯 MISIÓN</span>
+                        <span class="apocunoso-about-eyebrow">PROPÓSITO OPERATIVO</span>
+                    </div>
+                    <h3 class="apocunoso-about-question">Misión</h3>
+                    <div class="apocunoso-about-body">
+                        <p>Democratizar el acceso a datos públicos auditados, trazabilidad normativa diaria y herramientas de análisis politológico en el Perú, transformando información estatal dispersa en evidencia verificable para fortalecer la investigación aplicada y la toma de decisiones públicas.</p>
+                    </div>
+                </div>
+            </article>
+            <article class="apocunoso-about-card about-card-green">
+                <div class="apocunoso-about-card-topbar"></div>
+                <div class="apocunoso-about-card-inner">
+                    <div class="apocunoso-about-card-meta">
+                        <span class="apocunoso-order-badge">🔭 VISIÓN</span>
+                        <span class="apocunoso-about-eyebrow">HORIZONTE INSTITUCIONAL</span>
+                    </div>
+                    <h3 class="apocunoso-about-question">Visión</h3>
+                    <div class="apocunoso-about-body">
+                        <p>Consolidarse como el observatorio digital de referencia en ciencia política, gestión pública y políticas basadas en evidencia en el Perú y la región andina, articulando rigor metodológico, transparencia institucional y participación académica y ciudadana.</p>
+                    </div>
+                </div>
+            </article>
+        </div>
         """,
         unsafe_allow_html=True,
     )
@@ -367,6 +395,43 @@ def _render_tab_identidad() -> None:
             </div>
             <h3 class="apocunoso-about-question">Sustento Histórico y Politológico</h3>
             <div class="apocunoso-refs-grid">{refs_items}</div>
+        </div>
+        <div class="apocunoso-about-grid-2col" style="margin-top: 1.25rem;">
+            <article class="apocunoso-about-card about-card-gold">
+                <div class="apocunoso-about-card-topbar"></div>
+                <div class="apocunoso-about-card-inner">
+                    <div class="apocunoso-about-card-meta">
+                        <span class="apocunoso-order-badge">06 · EQUIPO</span>
+                        <span class="apocunoso-about-eyebrow">INTEGRACIÓN DE APOCUNA HUB</span>
+                    </div>
+                    <h3 class="apocunoso-about-question">Equipo de Apocuna</h3>
+                    <div class="apocunoso-about-body">
+                        <ul>
+                            <li><strong>José Gastón Silva Ipanaque</strong></li>
+                            <li><strong>Gabriel Stefano Ancajima Raymundo</strong></li>
+                            <li><strong>Mario Alfonso Lanao De La Torre</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            <article class="apocunoso-about-card about-card-blue">
+                <div class="apocunoso-about-card-topbar"></div>
+                <div class="apocunoso-about-card-inner">
+                    <div class="apocunoso-about-card-meta">
+                        <span class="apocunoso-order-badge">07 · CONTACTO</span>
+                        <span class="apocunoso-about-eyebrow">CANALES DIRECTOS DE COORDINACIÓN</span>
+                    </div>
+                    <h3 class="apocunoso-about-question">Contacto Oficial</h3>
+                    <div class="apocunoso-about-body">
+                        <p><strong>José Gastón Silva Ipanaque</strong></p>
+                        <ul>
+                            <li><strong>Teléfono:</strong> <a href="tel:+51922739533">+51 922 739 533</a></li>
+                            <li><strong>Correo:</strong> <a href="mailto:gsilva7516@gmail.com">gsilva7516@gmail.com</a></li>
+                            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/jsilv" target="_blank" rel="noopener noreferrer">linkedin.com/in/jsilv ↗</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
         </div>
         """,
         unsafe_allow_html=True,
