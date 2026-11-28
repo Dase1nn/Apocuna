@@ -1,0 +1,88 @@
+{
+  "fuentes": {
+    "noticias": {
+      "last_success": "2026-11-28T03:07:46.385318Z",
+      "items": 30,
+      "errores": []
+    },
+    "normas": {
+      "last_success": "2026-11-28T03:07:46.902028Z",
+      "items": 10,
+      "errores": []
+    },
+    "ckan": {
+      "items": 0,
+      "portales": {
+        "PCM": {
+          "codigo": "deshabilitado",
+          "causa": "deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)"
+        },
+        "MINSA": {
+          "codigo": "sin conexión",
+          "causa": "sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+        }
+      },
+      "errores_recientes": [
+        "PCM: deshabilitado: el portal bloquea clientes automáticos (HTTP 418 de un WAF, verificado 2026-10-02)",
+        "MINSA: sin conexión: portal deshabilitado en config.py (no disponible, verificado 2026-10-02)"
+      ]
+    },
+    "academico": {
+      "last_success": "2026-11-27T07:07:20.652573Z",
+      "items": 17,
+      "errores": [
+        "CLACSO: HTTP 520"
+      ]
+    },
+    "polity": {
+      "last_success": "2026-11-27T18:43:08.521911Z",
+      "items": 20,
+      "errores": []
+    },
+    "eventos": {
+      "last_success": "2026-11-27T07:07:21.857456Z",
+      "items": 7,
+      "errores": []
+    },
+    "normas_diario": {
+      "last_success": "2026-11-28T04:48:36Z",
+      "ultimo_intento": "2026-11-28T04:48:36Z",
+      "ultimo_estado": "ok",
+      "publicado": true,
+      "fecha_objetivo": "2026-11-27",
+      "archivo_indice": "data/generated/normas_oficiales/2026-11.json",
+      "listado": {
+        "fecha": "20261127",
+        "tipo_publicacion": "NL",
+        "total_reportado": 56,
+        "recibidos": 56,
+        "paginas_consultadas": 3
+      },
+      "conteo": {
+        "total_listado": 56,
+        "excluidas_reglas": 31,
+        "incluidas_radar": 25,
+        "omitidas_idempotentes": 15,
+        "rechazadas_verificacion": 2,
+        "revisadas_por_persona": 0,
+        "publicadas_nuevas": 8,
+        "total_mes": 277
+      },
+      "ia": {
+        "habilitada": true,
+        "modelo": "gemini-3.5-flash-lite",
+        "version_instrucciones": "norma_v1",
+        "normas_ia_procesadas": 8,
+        "llamadas_ia_realizadas": 15,
+        "tokens_entrada": 65134,
+        "tokens_salida": 11528
+      },
+      "duracion_seg": 164.96,
+      "errores": [
+        "resolucion-3744-2026-mp-fn-2026-ministerio-publico: Verificación automática de salida IA fallida tras reintentos: Intento 3 (gemini-3.8-flash): error de respuesta o JSON (ServerError 504 DEADLINE_EXCEEDED Deadline expired before operation could complete.).",
+        "resolucion-0688-2026-untumbes-r-2026-instituciones-educativas: Verificación automática de salida IA fallida tras reintentos: Intento 3 (gemini-3.8-flash): error de respuesta o JSON (ServerError 503 UNAVAILABLE This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.)."
+      ]
+    }
+  },
+  "last_run": "2026-11-28T04:48:36Z"
+}
